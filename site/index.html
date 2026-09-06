@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuuz WMS Accelerator (modular) — Fuuz Accelerator</title>
+<meta name="description" content="Warehouse management on Fuuz: receiving, put-away, picking, packing, shipping and cycle counting — published as 15 readable modules, not one binary package.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://accelerators.fuuz.com/fuuz-wms-modular-accelerator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://accelerators.fuuz.com/fuuz-wms-modular-accelerator/">
+<meta property="og:site_name" content="Fuuz Accelerators">
+<meta property="og:title" content="Fuuz WMS Accelerator (modular) — Fuuz Accelerator">
+<meta property="og:description" content="Warehouse management on Fuuz: receiving, put-away, picking, packing, shipping and cycle counting — published as 15 readable modules, not one binary package.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/appicon-violet.svg">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Fuuz WMS Accelerator (modular)",
+  "url": "https://accelerators.fuuz.com/fuuz-wms-modular-accelerator/",
+  "description": "Warehouse management on Fuuz: receiving, put-away, picking, packing, shipping and cycle counting \u2014 published as 15 readable modules, not one binary package.",
+  "codeRepository": "https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator",
+  "applicationCategory": "BusinessApplication",
+  "runtimePlatform": "Fuuz",
+  "keywords": "Fuuz, accelerator, manufacturing, WMS Accelerator",
+  "author": {
+    "@type": "Organization",
+    "name": "Fuuz",
+    "url": "https://fuuz.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../"><img src="assets/logo-horizontal-on-midnight.svg" alt="Fuuz"></a>
+    <span class="section">Accelerators</span>
+    <nav>
+      <a href="#what">What it does</a>
+      <a href="#modules">Modules</a>
+      <a href="#docs">Documentation</a>
+      <a href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <p class="eyebrow">Accelerator &middot; Installs into a tenant</p>
+  <h1>Receiving Through Shipping, Module By <span class="accent">Module</span></h1>
+  <p class="lede">The WMS Accelerator covers the warehouse end to end — inbound receipt, inventory tracking, picking and packing, outbound shipping and cycle counting. This publication unpacks it into its 15 modules, so the flows behind each operation can be read before they are installed.</p>
+  <div class="ctas">
+    <a class="cta cta-primary" href="#modules">See the modules</a>
+    <a class="cta cta-secondary" href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator">Read the source</a>
+  </div>
+  <div class="chips"><span class="chip">15 modules</span><span class="chip">52 data models</span><span class="chip">49 data flows</span><span class="chip">43 screens</span><span class="chip">6 document designs</span></div>
+</div>
+
+<section id="what">
+  <div class="wrap">
+    <p class="sec-eyebrow">What it does</p>
+    <h2>The Warehouse, End To <span class="accent">End</span></h2>
+    <p class="sec-lede">Fifteen modules, each owning one part of the movement of goods through a site.</p>
+    <div class="grid"><div class="card"><h3>Receiving</h3><p>Inbound orders received against expected quantities, with the discrepancies recorded rather than silently absorbed.</p><div class="meta">orderReceiving &middot; 11 components</div></div><div class="card"><h3>Inventory tracking</h3><p>Split, move and adjust inventory with every change written to history — the largest module in the package alongside cycle counting.</p><div class="meta">inventoryTracking &middot; 14 components</div></div><div class="card"><h3>Cycle counting</h3><p>Scheduled and ad-hoc counts with variance capture, so accuracy is measured rather than assumed.</p><div class="meta">cycleCounting &middot; 14 components</div></div><div class="card"><h3>Picking and packing</h3><p>Pick lists worked from the floor, then packed into containers tracked through to the shipment.</p><div class="meta">picking &middot; packing &middot; 14 components</div></div><div class="card"><h3>Shipping and logistics</h3><p>Outbound shipment build, carrier handoff and the documents that travel with the goods.</p><div class="meta">shipping &middot; logistics &middot; 18 components</div></div><div class="card"><h3>Site and configuration</h3><p>Storage zones, units and locations — the structure everything else is organised within, and which an MES Area Map can auto-create.</p><div class="meta">siteManagement &middot; configuration</div></div></div>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="wrap">
+    <p class="sec-eyebrow">Modules</p>
+    <h2>Published As Components, Not A <span class="accent">Blob</span></h2>
+    <p class="sec-lede">A <code>.fuuz</code> package is a single archive. This publication unpacks it
+      into one directory per module, so a change to a flow reads as a change to a flow.</p>
+    <div class="metrics"><div class="metric"><span class="n">15</span><span class="l">Modules</span></div><div class="metric"><span class="n">52</span><span class="l">Data models</span></div><div class="metric"><span class="n">49</span><span class="l">Data flows</span></div><div class="metric"><span class="n">43</span><span class="l">Screens</span></div></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Module</th><th>Components</th><th>Contains</th></tr></thead>
+        <tbody><tr><td><code>configuration</code><br><span class="meta">Configuration</span></td><td>2</td><td>1 dataFlows &middot; 1 screens</td></tr><tr><td><code>cycleCounting</code><br><span class="meta">Cycle Counting</span></td><td>14</td><td>9 dataFlows &middot; 5 screens</td></tr><tr><td><code>dashboard</code><br><span class="meta">Dashboard</span></td><td>2</td><td>1 dataFlows &middot; 1 screens</td></tr><tr><td><code>inventory</code><br><span class="meta">Inventory</span></td><td>4</td><td>1 dataFlows &middot; 3 screens</td></tr><tr><td><code>inventoryTracking</code><br><span class="meta">Inventory Tracking</span></td><td>14</td><td>6 dataFlows &middot; 8 screens</td></tr><tr><td><code>logistics</code><br><span class="meta">Logistics</span></td><td>8</td><td>1 dataFlows &middot; 7 screens</td></tr><tr><td><code>orderProcessing</code><br><span class="meta">Order Processing</span></td><td>4</td><td>1 dataFlows &middot; 3 screens</td></tr><tr><td><code>orderReceiving</code><br><span class="meta">Order Receiving</span></td><td>11</td><td>5 dataFlows &middot; 6 screens</td></tr><tr><td><code>orderTracking</code><br><span class="meta">Order Tracking</span></td><td>3</td><td>3 dataFlows</td></tr><tr><td><code>packing</code><br><span class="meta">Packing</span></td><td>5</td><td>4 dataFlows &middot; 1 screens</td></tr><tr><td><code>picking</code><br><span class="meta">Picking</span></td><td>9</td><td>5 dataFlows &middot; 4 screens</td></tr><tr><td><code>quality</code><br><span class="meta">Quality</span></td><td>2</td><td>2 dataFlows</td></tr><tr><td><code>shipping</code><br><span class="meta">Shipping</span></td><td>10</td><td>8 dataFlows &middot; 2 screens</td></tr><tr><td><code>siteManagement</code><br><span class="meta">Site Management</span></td><td>1</td><td>1 screens</td></tr><tr><td><code>testing</code><br><span class="meta">Testing</span></td><td>2</td><td>1 dataFlows &middot; 1 screens</td></tr></tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <h3>Why some components sit outside <code>modules/</code></h3>
+      <p>Only data flows and screens carry a module in the package. Data models, document designs
+        and seed data carry none, so they are filed by type at the repository root rather than
+        assigned to a module on a guess.</p>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <p class="sec-eyebrow">Documentation</p>
+    <h2>Read It Before You <span class="accent">Install</span></h2>
+    <p class="sec-lede">Shipped with the accelerator, converted to markdown in the repository.</p>
+    <div class="resources">
+      <a class="resource" href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator/blob/main/docs/technical-overview.md">
+        <h3>Technical Overview</h3><p>What it is and is not, the core design, and what ships — at a glance.</p></a>
+      <a class="resource" href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator/blob/main/docs/setup-and-configuration.md">
+        <h3>Setup &amp; Configuration Guide</h3><p>Step-by-step configuration in a tenant where the package is installed.</p></a>
+      <a class="resource" href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator/blob/main/docs/as-is-build-reference.md">
+        <h3>AS IS Build Reference</h3><p>Architecture, functional-area map and the flow pattern the package follows.</p></a>
+      <a class="resource" href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator/tree/main/modules">
+        <h3>The modules</h3><p>Every flow, screen and model as committed JSON — the reference that cannot go stale.</p></a>
+    </div>
+    <div class="callout">
+      <h3>Pairs with MES</h3>
+      <p>If the site also runs the Fuuz MES Accelerator, the <strong>WMS Area Map</strong> Application Configuration auto-creates matching storage zones and units from the Areas and Workcenters defined in MES. Review it before finishing site setup on either side.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Fuuz&reg; is an Enterprise Industrial Intelligence Platform.
+      <a href="https://accelerators.fuuz.com/">All accelerators</a> &middot;
+      <a href="https://github.com/Fuuz-Platform/fuuz-wms-modular-accelerator">Source</a> &middot;
+      <a href="https://fuuz.com">fuuz.com</a></p>
+  </div>
+</footer>
+</body>
+</html>
