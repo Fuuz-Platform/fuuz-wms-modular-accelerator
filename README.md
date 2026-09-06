@@ -55,3 +55,9 @@ docs/                         guides and technical overview
 Install `package/WMS Accelerator - Mfg@0.0.7 1.fuuz` through the Fuuz platform's package
 installer. The exploded tree is for reading and reviewing; it is not the install
 artifact.
+
+## Documentation
+
+- [Technical Overview](docs/technical-overview.md) — what it is, how it is built, at a glance
+- [Setup & Configuration Guide](docs/setup-and-configuration.md) — step-by-step configuration in a tenant
+- [AS IS Build Reference](docs/as-is-build-reference.md) — architecture and functional-area map
