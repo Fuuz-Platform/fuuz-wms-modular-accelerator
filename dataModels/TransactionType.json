@@ -1,0 +1,273 @@
+{
+  "header": {
+    "id": "transactionType",
+    "name": "TransactionType",
+    "description": "The unique name/code that identifies a transaction type",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdqwe8zl2ujk0775cktjc3va",
+    "number": "4",
+    "dataModelId": "transactionType",
+    "modelDefinition": {
+      "name": "TransactionType",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "inventoryTracking",
+            "group": {
+              "id": "inventoryManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 9999
+          },
+          "labelField": "name",
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    { \"id\": $camelCase($after.name) }\r\n  ]\r\n)"
+          },
+          "editor": {
+            "autosort": true
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "queries": {
+            "defaultReadPreference": "secondary"
+          }
+        },
+        "mongo": {
+          "collection": "transactionType"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "name",
+          "type": "String!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "usable",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "customData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "integrationData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "lastInventories",
+          "description": "",
+          "type": "[Inventory!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "lastTransactionTypeId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "The unique name/code that identifies a transaction type"
+    },
+    "dataModelTypeId": null
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmdqwe8zl2ujk0775cktjc3va",
+      "dataModelVersion": {
+        "number": "4"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

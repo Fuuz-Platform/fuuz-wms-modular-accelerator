@@ -1,0 +1,518 @@
+{
+  "header": {
+    "id": "pickStep",
+    "name": "PickStep",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmruyn2p905bi013sfsblbbqm",
+    "number": "10",
+    "dataModelId": "pickStep",
+    "modelDefinition": {
+      "name": "PickStep",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "picking",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          }
+        },
+        "mongo": {
+          "collection": "pickStep"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "droppedOff",
+          "type": "Boolean",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "quantity",
+          "type": "Measure",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "dropoffStorageUnitId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "dropoffStorageUnit",
+          "description": "",
+          "type": "StorageUnit",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "dropoffStorageUnitId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineRelease",
+          "description": "",
+          "type": "OrderLineRelease",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "orderLineReleaseId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pick",
+          "description": "",
+          "type": "Pick",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "pickId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickStepStatusId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickStepStatus",
+          "description": "",
+          "type": "PickStepStatus",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "pickStepStatusId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickupStorageUnitId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickupStorageUnit",
+          "description": "",
+          "type": "StorageUnit",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "pickupStorageUnitId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "affectedNonConformances",
+          "description": "",
+          "type": "[NonConformance!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "affectedPickStepId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "causeNonConformances",
+          "description": "",
+          "type": "[NonConformance!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "causePickStepId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "inventoryPickSteps",
+          "description": "",
+          "type": "[InventoryPickStep!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "pickStepId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmruyn2p905bi013sfsblbbqm",
+      "dataModelVersion": {
+        "number": "10"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmp2y77uf01f40148gn65hd8p",
+      "dataModelVersion": {
+        "number": "9"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmmp1ht8l0diu07750m1d5fj4",
+      "dataModelVersion": {
+        "number": "8"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

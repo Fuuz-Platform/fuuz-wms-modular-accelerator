@@ -1,0 +1,52 @@
+{
+  "api": "application",
+  "modelName": "PickStatus",
+  "payload": [
+    {
+      "id": "cancelled",
+      "usable": true,
+      "description": "A pick that has been cancelled.",
+      "name": "Cancelled",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "completed",
+      "usable": true,
+      "description": "A pick in which all steps have been completed.",
+      "name": "Completed",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "new",
+      "usable": true,
+      "description": "A pick that has been created, but not yet configured.",
+      "name": "New",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ready",
+      "usable": true,
+      "description": "A pick that had been configured, but not yet started..",
+      "name": "Ready",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "started",
+      "usable": true,
+      "description": "A pick with at leaste one pick step that has been picked.",
+      "name": "Started",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

@@ -1,0 +1,457 @@
+{
+  "header": {
+    "id": "createExceptionModal",
+    "name": "Create Exception Modal",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "orderReceiving",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmegffjkv12pp087548b8hk87",
+    "number": "0.0.38",
+    "description": "",
+    "screenId": "createExceptionModal",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "screenDataFlowIds": []
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Form": 1,
+                    "Container": 3,
+                    "Text": 5,
+                    "Select": 6,
+                    "Float": 5,
+                    "Button Group": 2,
+                    "Action Button": 7,
+                    "Markdown": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "rtmhsULDa0"
+                ],
+                "linkedNodes": {}
+              },
+              "rtmhsULDa0": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "model": "ReceiptException"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "description": "Represents a report on received or expected inventory that was different from what was ordered; an exception to the order."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "FormMain"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "4RUlIoFt8f"
+                ],
+                "linkedNodes": {}
+              },
+              "4RUlIoFt8f": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMain"
+                },
+                "parent": "rtmhsULDa0",
+                "hidden": false,
+                "nodes": [
+                  "ATJ6Q4f4_u",
+                  "1XrIZkoIF8"
+                ],
+                "linkedNodes": {}
+              },
+              "aAlEAcCyjB": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "green",
+                  "icon": {
+                    "icon": "floppy-disk-pen",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateReceiptException($payload: [ReceiptExceptionCreatePayloadInput!]!) {\n  createReceiptException(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\r\n  \"payload\":{\r\n    \"create\":{\r\n          \"receiptExceptionReasonId\": $components.FormMain.data.receiptExceptionType.id,\r\n          \"description\": $components.FormMain.data.description,\r\n          \"receiptLineId\": $metadata.urlParameters.receiptLineId\r\n    }\r\n  }\r\n}",
+                        "post": "$components.Screen.fn.return()"
+                      },
+                      "message": "Exception added."
+                    }
+                  ],
+                  "title": "Save"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ButtonAccept"
+                },
+                "parent": "1XrIZkoIF8",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "EZhCgJfp_k": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "red",
+                  "icon": {
+                    "icon": "x",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return(null)"
+                    }
+                  ],
+                  "title": "Cancel"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ButtonCancel"
+                },
+                "parent": "1XrIZkoIF8",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "RVzAY3QP3q": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Receipt Exception Type",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "FormMain",
+                  "dataPath": "receiptExceptionType",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "",
+                  "field": "receiptExceptionType",
+                  "labelPath": "id",
+                  "orderByField": "id",
+                  "query": {
+                    "fields": [
+                      "receiptExceptionReason.id",
+                      "receiptExceptionReason.name"
+                    ]
+                  },
+                  "dataModel": "ReceiptExceptionReason",
+                  "selectFields": [
+                    "name"
+                  ],
+                  "additionalFields": [
+                    "id",
+                    "name"
+                  ]
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "SelectExceptionType"
+                },
+                "parent": "ATJ6Q4f4_u",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ZtqxZ3LNvK": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "100%",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Select an Exception type to create an exception for this receipt.",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {}
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextInstructions"
+                },
+                "parent": "ATJ6Q4f4_u",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "1XrIZkoIF8": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "4RUlIoFt8f",
+                "hidden": false,
+                "nodes": [
+                  "EZhCgJfp_k",
+                  "aAlEAcCyjB"
+                ],
+                "linkedNodes": {}
+              },
+              "SCWi2Eb7MM": {
+                "type": {
+                  "resolvedName": "MarkdownInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "markdown",
+                  "label": "Description",
+                  "formElement": "FormMain",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "description"
+                },
+                "displayName": "Markdown",
+                "custom": {
+                  "elementName": "Markdown1"
+                },
+                "parent": "ATJ6Q4f4_u",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ATJ6Q4f4_u": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "4RUlIoFt8f",
+                "hidden": false,
+                "nodes": [
+                  "ZtqxZ3LNvK",
+                  "RVzAY3QP3q",
+                  "SCWi2Eb7MM"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmbe027qs02u8014mg1j58e5y",
+      "title": "Create Exception Modal",
+      "path": "/receiving/orderReceiving/createExceptionModal",
+      "moduleId": "orderReceiving",
+      "screenId": "createExceptionModal",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

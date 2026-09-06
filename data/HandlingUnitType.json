@@ -1,0 +1,39 @@
+{
+  "api": "application",
+  "modelName": "HandlingUnitType",
+  "payload": [
+    {
+      "id": "bag",
+      "description": null,
+      "name": "Bag",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "box",
+      "description": null,
+      "name": "Box",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pallet",
+      "description": null,
+      "name": "Pallet",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tote",
+      "description": null,
+      "name": "Tote",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

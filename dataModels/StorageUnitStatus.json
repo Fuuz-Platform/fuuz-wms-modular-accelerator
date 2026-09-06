@@ -1,0 +1,191 @@
+{
+  "header": {
+    "id": "storageUnitStatus",
+    "name": "StorageUnitStatus",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdzedrbk4his0775ddh7c3hv",
+    "number": "5",
+    "dataModelId": "storageUnitStatus",
+    "modelDefinition": {
+      "name": "StorageUnitStatus",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "siteManagement",
+            "group": {
+              "id": "siteManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          },
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    {\r\n      \"id\": $camelCase($after.code)\r\n    }\r\n  ]\r\n)"
+          },
+          "labelField": "code"
+        },
+        "mongo": {
+          "collection": "storageUnitStatus"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "usable",
+          "type": "Boolean",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": null
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmdzedrbk4his0775ddh7c3hv",
+      "dataModelVersion": {
+        "number": "5"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

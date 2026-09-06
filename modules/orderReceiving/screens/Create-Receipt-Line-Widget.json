@@ -1,0 +1,1355 @@
+{
+  "header": {
+    "id": "createReceiptLineWidget",
+    "name": "Create Receipt Line Widget",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "orderReceiving",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmehno11y084s07756ilhe3l1",
+    "number": "0.0.26",
+    "description": "",
+    "screenId": "createReceiptLineWidget",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Form": 3,
+                    "Container": 14,
+                    "Text": 12,
+                    "Float": 1,
+                    "Date": 1,
+                    "Select": 7,
+                    "Button Group": 1,
+                    "Action Button": 5,
+                    "Icon": 2,
+                    "Integer": 1,
+                    "Number": 2,
+                    "Markdown": 2,
+                    "Switch": 2
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "DE2Esi3qh3"
+                ],
+                "linkedNodes": {}
+              },
+              "DE2Esi3qh3": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "He1Qrjud2Y",
+                  "g_BXpt4qim"
+                ],
+                "linkedNodes": {}
+              },
+              "RNbOU1oRF7": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": orderLineReleaseId\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id",
+                      "orderLineId",
+                      "orderLine.product.id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "model": "OrderLineRelease"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "description": "Order Line Releases are the individual ship/firm or plan schedules related to a single order number."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form2"
+                },
+                "parent": "He1Qrjud2Y",
+                "hidden": false,
+                "nodes": [
+                  "gURjDzyE6n"
+                ],
+                "linkedNodes": {}
+              },
+              "He1Qrjud2Y": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "DE2Esi3qh3",
+                "hidden": false,
+                "nodes": [
+                  "RNbOU1oRF7"
+                ],
+                "linkedNodes": {}
+              },
+              "BVGgY5Zi6z": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Order",
+                  "formElement": "Form2",
+                  "dataPath": "orderLine.order.number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "orderLine.order.number",
+                  "disabled": true
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "gURjDzyE6n",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dQY_7b9MaU": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Product",
+                  "formElement": "Form2",
+                  "dataPath": "orderLine.product.code",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "orderLine.product.code",
+                  "disabled": true,
+                  "query": {}
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "gURjDzyE6n",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "t6Uc8xkf3L": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Release",
+                  "formElement": "Form2",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "number",
+                  "description": "",
+                  "disabled": true
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text4"
+                },
+                "parent": "gURjDzyE6n",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gURjDzyE6n": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "space-evenly",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "RNbOU1oRF7",
+                "hidden": false,
+                "nodes": [
+                  "BVGgY5Zi6z",
+                  "dQY_7b9MaU",
+                  "t6Uc8xkf3L"
+                ],
+                "linkedNodes": {}
+              },
+              "g_BXpt4qim": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "DE2Esi3qh3",
+                "hidden": false,
+                "nodes": [
+                  "yMw4fiTKki"
+                ],
+                "linkedNodes": {}
+              },
+              "yMw4fiTKki": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false
+                  },
+                  "blockNavigationWhenDirty": true
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form3"
+                },
+                "parent": "g_BXpt4qim",
+                "hidden": false,
+                "nodes": [
+                  "GoZPqrrjIC",
+                  "f-kkmMKA8E",
+                  "jdS0VhzV3M",
+                  "HZUEmS1Q2i",
+                  "0tTqeyFhEP"
+                ],
+                "linkedNodes": {}
+              },
+              "dRX6YeYbp2": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container7"
+                },
+                "parent": "f-kkmMKA8E",
+                "hidden": false,
+                "nodes": [
+                  "c0Uo08olAk",
+                  "h07_K93n9d",
+                  "QsYy5W2i_6",
+                  "MPPekyn57H"
+                ],
+                "linkedNodes": {}
+              },
+              "c0Uo08olAk": {
+                "type": {
+                  "resolvedName": "NumberInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "25%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "number",
+                  "label": "Number Of Inventory",
+                  "formElement": "Form3",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "numberOfInventory",
+                  "defaultValue": "1"
+                },
+                "displayName": "Number",
+                "custom": {
+                  "elementName": "Number1"
+                },
+                "parent": "dRX6YeYbp2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QsYy5W2i_6": {
+                "type": {
+                  "resolvedName": "NumberInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "35%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "number",
+                  "label": "Quantity",
+                  "formElement": "Form3",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "quantity"
+                },
+                "displayName": "Number",
+                "custom": {
+                  "elementName": "Number2"
+                },
+                "parent": "dRX6YeYbp2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MPPekyn57H": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "20%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form3",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "unitId",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "unitId.id",
+                      "unitId.code"
+                    ]
+                  },
+                  "dataModel": "Unit",
+                  "selectFields": [
+                    "id",
+                    "name",
+                    "code"
+                  ],
+                  "additionalFields": [],
+                  "data": {
+                    "__transform": "$metadata.urlParameters.defaultQuantityUnitId"
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select3"
+                },
+                "parent": "dRX6YeYbp2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "h07_K93n9d": {
+                "type": {
+                  "resolvedName": "Icon"
+                },
+                "isCanvas": false,
+                "props": {
+                  "icon": {
+                    "icon": "slash-forward",
+                    "color": "primary",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Icon",
+                  "height": "48px",
+                  "width": "48px"
+                },
+                "displayName": "Icon",
+                "custom": {
+                  "elementName": "Icon2"
+                },
+                "parent": "dRX6YeYbp2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "f-kkmMKA8E": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container8"
+                },
+                "parent": "yMw4fiTKki",
+                "hidden": false,
+                "nodes": [
+                  "NprsNsr3on",
+                  "dRX6YeYbp2",
+                  "Ar9KWl20Rk"
+                ],
+                "linkedNodes": {}
+              },
+              "NprsNsr3on": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Inventory Details",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "body1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "formElement": "Form3"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text5"
+                },
+                "parent": "f-kkmMKA8E",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "HZUEmS1Q2i": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "yMw4fiTKki",
+                "hidden": false,
+                "nodes": [
+                  "Kt20DdpfEP",
+                  "KLv6L_nb3X"
+                ],
+                "linkedNodes": {}
+              },
+              "KLv6L_nb3X": {
+                "type": {
+                  "resolvedName": "MarkdownInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "markdown",
+                  "label": "Note",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "note",
+                  "formElement": "Form3"
+                },
+                "displayName": "Markdown",
+                "custom": {
+                  "elementName": "Markdown1"
+                },
+                "parent": "HZUEmS1Q2i",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Ar9KWl20Rk": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Add to New Handling Unit",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "addToHandlingUnit",
+                  "formElement": "Form3",
+                  "defaultValue": false
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "f-kkmMKA8E",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "jdS0VhzV3M": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container11"
+                },
+                "parent": "yMw4fiTKki",
+                "hidden": false,
+                "nodes": [
+                  "SmqONcSw97",
+                  "H3qCnGXE75"
+                ],
+                "linkedNodes": {}
+              },
+              "SmqONcSw97": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Lot",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "body1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "formElement": "Form3"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text7"
+                },
+                "parent": "jdS0VhzV3M",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "bOUHFJPVEd": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "90%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Lot",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "lotId",
+                  "formElement": "Form3",
+                  "labelPath": "number",
+                  "orderByField": "number",
+                  "query": {
+                    "fields": [
+                      "lotId.id",
+                      "lotId.number"
+                    ]
+                  },
+                  "dataModel": "Lot",
+                  "selectFields": [
+                    "number"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select5"
+                },
+                "parent": "H3qCnGXE75",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Kt20DdpfEP": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Note",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "body1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "formElement": "Form3"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "HZUEmS1Q2i",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0tTqeyFhEP": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container12"
+                },
+                "parent": "yMw4fiTKki",
+                "hidden": false,
+                "nodes": [
+                  "ORxNpjTn6n",
+                  "ICw111Kar9"
+                ],
+                "linkedNodes": {}
+              },
+              "ORxNpjTn6n": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "red",
+                  "icon": {
+                    "icon": "xmark-large",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return()"
+                    }
+                  ]
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "0tTqeyFhEP",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ICw111Kar9": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "createReceiptLine",
+                      "transforms": {
+                        "pre": "\r\n{\r\n  \"receiptLine\":$components.Form3.data~>| $ | {\r\n      \"orderLineId\": $components.Form2.data.orderLineId,\r\n      \"productId\": $components.Form2.data.orderLine.product.id,\r\n      \"quantity\":{ \"value\": $number(quantity) * $number(numberOfInventory), \"unitId\": unitId},\r\n      \"numberOfInventory\": $number(numberOfInventory),\r\n      \"lotId\": lotId.id\r\n    }, [\"unitId\"] |,\r\n  \"orderLineReleaseId\": $metadata.urlParameters.orderLineReleaseId      \r\n}\r\n"
+                      }
+                    },
+                    {
+                      "type": "message",
+                      "title": {
+                        "__transform": "data.message"
+                      },
+                      "transforms": {
+                        "post": "$components.Screen.fn.return()"
+                      }
+                    }
+                  ]
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "0tTqeyFhEP",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GoZPqrrjIC": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container13"
+                },
+                "parent": "yMw4fiTKki",
+                "hidden": false,
+                "nodes": [
+                  "fJXjtaqkr0"
+                ],
+                "linkedNodes": {}
+              },
+              "fJXjtaqkr0": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Receipt",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 1,
+                  "optionLimitFlex": 1,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "receiptId",
+                  "formElement": "Form3",
+                  "labelPath": "number",
+                  "orderByField": "createdAt",
+                  "query": {
+                    "fields": [
+                      "receiptId.id",
+                      "receiptId.number"
+                    ]
+                  },
+                  "dataModel": "Receipt",
+                  "selectFields": [
+                    "number",
+                    "order.number"
+                  ],
+                  "additionalFields": [],
+                  "additionalFilter": {
+                    "__transform": "{\n  \"_and\": [\n    {\n      \"orderId\": {\n        \"_eq\": $metadata.urlParameters.orderId\n      }\n    }\n  ]\n}",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "orderByDirection": "desc",
+                  "autoFill": true
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select6"
+                },
+                "parent": "GoZPqrrjIC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "H3qCnGXE75": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container14"
+                },
+                "parent": "jdS0VhzV3M",
+                "hidden": false,
+                "nodes": [
+                  "bOUHFJPVEd",
+                  "M_HalTehQl"
+                ],
+                "linkedNodes": {}
+              },
+              "M_HalTehQl": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "plus-large",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "5%",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": true,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "fields": [
+                        {
+                          "validation": {
+                            "required": true
+                          },
+                          "label": "Number",
+                          "name": "number",
+                          "type": "text",
+                          "dataPath": "number"
+                        },
+                        {
+                          "validation": {
+                            "required": true
+                          },
+                          "label": "Inventory Status",
+                          "name": "inventoryStatusId",
+                          "type": "select",
+                          "dataPath": "inventoryStatusId",
+                          "dataModel": "InventoryStatus",
+                          "labelPath": "code",
+                          "selectFields": [
+                            "code"
+                          ]
+                        },
+                        {
+                          "label": "Expires At",
+                          "name": "expiresAt",
+                          "type": "datetime",
+                          "dataPath": "expiresAt"
+                        },
+                        {
+                          "label": "Best Before At",
+                          "name": "bestBeforeAt",
+                          "type": "datetime",
+                          "dataPath": "bestBeforeAt"
+                        },
+                        {
+                          "label": "Received At",
+                          "name": "receivedAt",
+                          "type": "datetime",
+                          "dataPath": "receivedAt"
+                        },
+                        {
+                          "label": "Manufactured At",
+                          "name": "manufacturedAt",
+                          "type": "datetime",
+                          "dataPath": "manufacturedAt"
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "{\r\n  \"receivedAt\": $moment()\r\n}"
+                      },
+                      "title": "Create Lot"
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateLot($payload: [LotCreatePayloadInput!]!) {\n  createLot(payload: $payload) {\n    id\n    number\n  }\n}",
+                      "transforms": {
+                        "pre": "{\r\n  \"payload\":{\r\n    \"create\": data~>| $ | {\"productId\": $components.Form2.data.orderLine.product.id} |\r\n  }\r\n}",
+                        "post": "$components.Form3.fn.setValue(\"lotId\", $first($$.**.createLot))"
+                      }
+                    }
+                  ]
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton5"
+                },
+                "parent": "H3qCnGXE75",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmebznmgy0ipc0875eopn370s",
+      "title": "Create Receipt Line Widget",
+      "path": "/receiving/orderReceiving/createReceiptLineWidget",
+      "moduleId": "orderReceiving",
+      "screenId": "createReceiptLineWidget",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

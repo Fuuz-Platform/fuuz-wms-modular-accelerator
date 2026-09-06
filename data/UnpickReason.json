@@ -1,0 +1,43 @@
+{
+  "api": "application",
+  "modelName": "UnpickReason",
+  "payload": [
+    {
+      "id": "damaged",
+      "holdOnReturn": true,
+      "description": "Inventory was damaged before or after picking",
+      "name": "Damaged",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "error",
+      "holdOnReturn": false,
+      "description": "Picked incorrect inventory",
+      "name": "Error",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "other",
+      "holdOnReturn": false,
+      "description": "Other unpick reason",
+      "name": "Other",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "quantity",
+      "holdOnReturn": false,
+      "description": "Picked incorrect quantity",
+      "name": "Quantity Descrepancy",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

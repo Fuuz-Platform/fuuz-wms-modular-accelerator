@@ -1,0 +1,235 @@
+{
+  "api": "application",
+  "modelName": "Sequence",
+  "payload": [
+    {
+      "id": "bol",
+      "name": "BoL Number",
+      "type": "String",
+      "increment": 1,
+      "prefix": "BoL-",
+      "suffix": "",
+      "zeroPadding": 6,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "commercialInvoice",
+      "name": "CommercialInvoice",
+      "type": "String",
+      "increment": 1,
+      "prefix": "INV",
+      "suffix": "",
+      "zeroPadding": 6,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "count",
+      "name": "Count",
+      "type": "Int",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "countLine",
+      "name": "CountLine",
+      "type": "Int",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "countParameter",
+      "name": "CountParameter",
+      "type": "Int",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "countUpFromOne",
+      "name": "Count Up from One",
+      "type": "Int",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "handlingUnit",
+      "name": "HandlingUnit",
+      "type": "String",
+      "increment": 1,
+      "prefix": "HU",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory",
+      "type": "String",
+      "increment": 1,
+      "prefix": "S",
+      "suffix": "",
+      "zeroPadding": 12,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "load",
+      "name": "Load",
+      "type": "String",
+      "increment": 1,
+      "prefix": "L",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "order",
+      "name": "Order",
+      "type": "String",
+      "increment": 1,
+      "prefix": "OR",
+      "suffix": "",
+      "zeroPadding": 12,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "orderLine",
+      "name": "OrderLine",
+      "type": "String",
+      "increment": 1,
+      "prefix": "OL",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "orderLineRelease",
+      "name": "OrderLineRelease",
+      "type": "String",
+      "increment": 1,
+      "prefix": "OLR",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pick",
+      "name": "Pick",
+      "type": "String",
+      "increment": 1,
+      "prefix": "P",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "preferredProductStroageUnitPriority",
+      "name": "PreferredProductStroageUnitPriority  ",
+      "type": "Int",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "receipt",
+      "name": "Receipt",
+      "type": "String",
+      "increment": 1,
+      "prefix": "R",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "receiptException",
+      "name": "ReceiptException",
+      "type": "String",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "receiptLine",
+      "name": "ReceiptLine",
+      "type": "String",
+      "increment": 1,
+      "prefix": "",
+      "suffix": "",
+      "zeroPadding": 0,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shipment",
+      "name": "Shipment",
+      "type": "String",
+      "increment": 1,
+      "prefix": "SH",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shipmentLine",
+      "name": "ShipmentLine",
+      "type": "String",
+      "increment": 1,
+      "prefix": "SL",
+      "suffix": "",
+      "zeroPadding": 8,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

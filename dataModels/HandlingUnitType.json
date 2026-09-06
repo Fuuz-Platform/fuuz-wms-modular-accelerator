@@ -1,0 +1,169 @@
+{
+  "header": {
+    "id": "handlingUnitType",
+    "name": "HandlingUnitType",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmq5e8t30001n018777gwgtrp",
+    "number": "1",
+    "dataModelId": "handlingUnitType",
+    "modelDefinition": {
+      "name": "HandlingUnitType",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "inventoryTracking",
+            "group": {
+              "id": "inventoryManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          }
+        },
+        "mongo": {
+          "collection": "handlingUnitType"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "description",
+          "description": "",
+          "type": "String",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "name",
+          "description": "",
+          "type": "String",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "handlingUnits",
+          "description": "",
+          "type": "[HandlingUnit!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "handlingUnitTypeId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "setup"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmq5e8t30001n018777gwgtrp",
+      "dataModelVersion": {
+        "number": "1"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

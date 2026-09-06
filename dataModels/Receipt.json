@@ -1,0 +1,539 @@
+{
+  "header": {
+    "id": "receipt",
+    "name": "Receipt",
+    "description": "Receipt - 1 Receipt per BOL/PackingSilp or ASN number.\n\nA single receipt may have multiple line items being received.\n\nReceipts with active exceptions can not be confirmed.",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmq9iehyg00hq0161fmgd0ymk",
+    "number": "23",
+    "dataModelId": "receipt",
+    "modelDefinition": {
+      "name": "Receipt",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "orderReceiving",
+            "group": {
+              "id": "receiving"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "labelField": "number",
+          "editor": {
+            "autosort": true
+          },
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    {\r\n      \"id\": $uppercase($.number),\r\n      \"number\": $uppercase($.number)\r\n    }\r\n  ]\r\n)"
+          },
+          "customFields": {
+            "exposed": true
+          }
+        },
+        "mongo": {
+          "collection": "receipt"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "number",
+          "type": "String!",
+          "description": "System generated sequence number.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "sequence": {
+                "id": "receipt"
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "asnNumber",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "bolNumber",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "carrier",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "note",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "trackingNumber",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "truckNumber",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "receivedAt",
+          "type": "DateTime",
+          "description": "The actual received at Date time - not the same as when this receipt was created.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "confirmedAt",
+          "type": "Date",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "receiptStatusId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "receiptStatus",
+          "description": "",
+          "type": "ReceiptStatus!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "receiptStatusId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "dockStorageUnitId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "dockStorageUnit",
+          "description": "",
+          "type": "StorageUnit",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "dockStorageUnitId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "order",
+          "description": "",
+          "type": "Order",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "orderId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "receiptLines",
+          "description": "",
+          "type": "[ReceiptLine!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "receiptId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "Receipt - 1 Receipt per BOL/PackingSilp or ASN number.\n\nA single receipt may have multiple line items being received.\n\nReceipts with active exceptions can not be confirmed."
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmq9iehyg00hq0161fmgd0ymk",
+      "dataModelVersion": {
+        "number": "23"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmcl2upm305bv077516r1g3is",
+      "dataModelVersion": {
+        "number": "22"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "header": {
+    "id": "productPreferredStorageUnit",
+    "name": "ProductPreferredStorageUnit",
+    "description": "Used to determine which storage units each product is compatible with, and with what priority, for both filtering and auto-assigning features",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdyt3w0l4c94077508750she",
+    "number": "4",
+    "dataModelId": "productPreferredStorageUnit",
+    "modelDefinition": {
+      "name": "ProductPreferredStorageUnit",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "siteManagement",
+            "group": {
+              "id": "siteManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          },
+          "queries": {
+            "defaultReadPreference": "secondary"
+          },
+          "indices": [
+            {
+              "name": "CompositeKey",
+              "unique": true,
+              "fields": [
+                "productId",
+                "storageUnitId"
+              ]
+            },
+            {
+              "name": "onePriorityPerStorageUnitPerProduct",
+              "unique": true,
+              "fields": [
+                "productId",
+                "storageUnitId",
+                "priority"
+              ]
+            }
+          ]
+        },
+        "mongo": {
+          "collection": "productPreferredStorageUnit"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "priority",
+          "type": "Int!",
+          "description": "The priority of preference for a storage unit for some particular product. Each product may have any number of preferred storage units to pick from in ascending priority order.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "sequence": {
+                "id": "preferredProductStroageUnitPriority",
+                "keyField": "productId"
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "productId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "product",
+          "description": "",
+          "type": "Product!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "cascade",
+                "fields": {
+                  "from": "productId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "storageUnitId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "storageUnit",
+          "description": "",
+          "type": "StorageUnit!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "cascade",
+                "fields": {
+                  "from": "storageUnitId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "Used to determine which storage units each product is compatible with, and with what priority, for both filtering and auto-assigning features"
+    },
+    "dataModelTypeId": null
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmdyt3w0l4c94077508750she",
+      "dataModelVersion": {
+        "number": "4"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

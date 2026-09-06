@@ -1,0 +1,539 @@
+{
+  "header": {
+    "id": "countSelector",
+    "name": "Count Selector",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "cycleCounting",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmcz9cr400een077573hv36ei",
+    "number": "0.0.5",
+    "description": "",
+    "screenId": "countSelector",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": true,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 6,
+                    "Form": 2,
+                    "Cards": 1,
+                    "Text": 8
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "7-9W242VgZ",
+                  "6CdHclizvI"
+                ],
+                "linkedNodes": {}
+              },
+              "6CdHclizvI": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "ZpOEc7XIVc"
+                ],
+                "linkedNodes": {}
+              },
+              "ZpOEc7XIVc": {
+                "type": {
+                  "resolvedName": "Cards"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"countStatusId\":{\n      \"_eq\": \"Started\"\n    }\n  }\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "model": "Count"
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "padding": 8,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": true,
+                  "alignItems": "flex-start",
+                  "justifyContent": "start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "paddingLeft": "8px",
+                  "paddingRight": "8px"
+                },
+                "displayName": "Cards",
+                "custom": {
+                  "elementName": "Cards1"
+                },
+                "parent": "6CdHclizvI",
+                "hidden": false,
+                "nodes": [
+                  "XPkwbAlZFq"
+                ],
+                "linkedNodes": {}
+              },
+              "XPkwbAlZFq": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": true,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "onClickActions": {
+                    "__transform": "$navigateTo(\r\n  '/inventoryManagement/cycleCounting/countLocationSelector/' & $card.data.id,\r\n  {'newWindow': false, 'replace': false }\r\n)"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "ZpOEc7XIVc",
+                "hidden": false,
+                "nodes": [
+                  "i5DKoa4THV",
+                  "We9P_Oq04D",
+                  "cBeAx5tRCR",
+                  "KVvMHaGWXA",
+                  "0oA9gqf-CJ"
+                ],
+                "linkedNodes": {}
+              },
+              "i5DKoa4THV": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "h3",
+                  "formElement": "Cards1",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "",
+                  "field": "number",
+                  "labelPosition": {
+                    "id": "null",
+                    "label": "None"
+                  },
+                  "paddingTop": "8px",
+                  "paddingLeft": "8px",
+                  "paddingRight": "8px",
+                  "paddingBottom": "0px",
+                  "margin": "0px"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "XPkwbAlZFq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "We9P_Oq04D": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Actual Start At",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "subtitle1",
+                  "formElement": "Cards1",
+                  "dataPath": "actualStartAt",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "",
+                  "field": "actualStartAt",
+                  "labelPosition": {
+                    "id": "null",
+                    "label": "None"
+                  },
+                  "format": "datetime",
+                  "paddingRight": "0px"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "XPkwbAlZFq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "cBeAx5tRCR": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": {
+                    "__transform": "$isNotNilOrEmpty( data.countParameters.edges.node.product.code )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "type": "display",
+                  "label": "Product",
+                  "justifyContent": "start",
+                  "alignTextItems": "center",
+                  "labelFontSize": "h6",
+                  "fontSize": "body1",
+                  "formElement": "Cards1",
+                  "dataPath": "countParameters.edges.node.product.code",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "countParameters.edges.node.product.code",
+                  "data": {
+                    "__transform": "data.countParameters.edges.node.product.code"
+                  },
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "XPkwbAlZFq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KVvMHaGWXA": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": {
+                    "__transform": "$isNotNilOrEmpty( data.countParameters.edges.node.storageZone.code )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "type": "display",
+                  "label": "Storage Zone",
+                  "justifyContent": "start",
+                  "alignTextItems": "center",
+                  "labelFontSize": "h6",
+                  "fontSize": "body1",
+                  "formElement": "Cards1",
+                  "dataPath": "countParameters.edges.node.storageZone.code",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "countParameters.edges.node.storageZone.code",
+                  "data": {
+                    "__transform": "data.countParameters.edges.node.storageZone.code"
+                  },
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text4"
+                },
+                "parent": "XPkwbAlZFq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0oA9gqf-CJ": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": {
+                    "__transform": "$isNotNilOrEmpty( data.countParameters.edges.node.area.code )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "type": "display",
+                  "label": "Area",
+                  "justifyContent": "start",
+                  "alignTextItems": "center",
+                  "labelFontSize": "h6",
+                  "fontSize": "body1",
+                  "formElement": "Cards1",
+                  "dataPath": "countParameters.edges.node.area.code",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "countParameters.edges.node.area.code",
+                  "data": {
+                    "__transform": "data.countParameters.edges.node.area.code"
+                  },
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text6"
+                },
+                "parent": "XPkwbAlZFq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7-9W242VgZ": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "7Hm-b71FEi"
+                ],
+                "linkedNodes": {}
+              },
+              "7Hm-b71FEi": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "100%",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Counts In Progress",
+                        "type": "header-one",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "7-9W242VgZ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmcnskaix06mb07758mc676fn",
+      "title": "Counts Mobile ",
+      "path": "/inventoryManagement/cycleCounting/countSelector",
+      "moduleId": "cycleCounting",
+      "screenId": "countSelector",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

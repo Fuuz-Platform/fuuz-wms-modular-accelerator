@@ -1,0 +1,3319 @@
+{
+  "header": {
+    "id": "wmsDashboardSearchV3",
+    "name": "WMS Dashboard Search v3",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "dashboard",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrb2e0bg047i015m32v085cg",
+    "number": "0.0.8",
+    "description": "",
+    "dataFlowId": "wmsDashboardSearchV3",
+    "flow": {
+      "id": "cmrb2e0bg047i015m32v085cg",
+      "name": "WMS Dashboard Search v3",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "66a3347a-1469-4809-a790-f44f70b31964",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "f677f5aa-4678-4581-b12c-acae4970c095",
+              "f8567603-eb70-4681-8192-df0182585f7d"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "f677f5aa-4678-4581-b12c-acae4970c095",
+          "name": "Try Catch",
+          "type": "tryCatch",
+          "data": {
+            "catchNextNodes": [
+              "35684bed-adf1-4d69-87d2-22d6ff81e595"
+            ],
+            "tryNextNodes": [
+              "627445fc-8329-44c1-a1ff-7fe4571d1c6d"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "f8567603-eb70-4681-8192-df0182585f7d",
+          "name": "Log",
+          "type": "log",
+          "data": {
+            "messageTransform": "$",
+            "level": "Info",
+            "includeContext": false,
+            "includePayload": true,
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+          "name": "Route",
+          "type": "switch",
+          "data": {
+            "branches": [
+              {
+                "name": "Overview",
+                "transform": "$.tab = \"overview\"",
+                "nextNodes": [
+                  "15cbda77-b7f4-441a-b4f0-63e3abd4f35d"
+                ]
+              },
+              {
+                "name": "Receiving",
+                "transform": "$.tab = \"receiving\"",
+                "nextNodes": [
+                  "92435866-77ec-4109-8c74-73012e339f02"
+                ]
+              },
+              {
+                "name": "Shipping",
+                "transform": "$.tab = \"shipping\"",
+                "nextNodes": [
+                  "6566e41a-c9d5-4456-8792-f4466dc72a48"
+                ]
+              },
+              {
+                "name": "Inventory",
+                "transform": "$.tab = \"inventory\"",
+                "nextNodes": [
+                  "73c8210c-7fbc-423f-b38a-1d1a7c7466ef"
+                ]
+              },
+              {
+                "name": "Cycle Count",
+                "transform": "$.tab = \"cyclecount\"",
+                "nextNodes": [
+                  "6e2a2bb8-9985-444b-9b81-6ebb599f4b60"
+                ]
+              },
+              {
+                "name": "Error",
+                "transform": "true",
+                "nextNodes": [
+                  "35684bed-adf1-4d69-87d2-22d6ff81e595"
+                ]
+              }
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "92435866-77ec-4109-8c74-73012e339f02",
+          "name": "RCV — Read Filters",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $startOfDay := $tz = \"UTC\" ? $moment().utc().startOf('day').format() : $moment().tz($tz).startOf('day').format();\n  $endOfDay := $tz = \"UTC\" ? $moment().utc().endOf('day').format() : $moment().tz($tz).endOf('day').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"startOfDay\": $startOfDay, \"endOfDay\": $endOfDay\n  }\n)",
+            "nextNodes": [
+              "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+          "name": "RCV — Set KPI Context",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $linesReceivedToday := $.linesReceivedToday.total;\n  $linesReceivedMonth := $.linesReceivedMonth.total;\n  $pendingReceipts    := $.pendingReceipts.total;\n  $pendingLines       := $.pendingLines.total;\n\n  $supplierNames := $.topSupplierLines.edges.node.receipt.order.businessPartner.name;\n  $supplierCounts := $supplierNames ~> $reduce(function($acc, $name) {\n    $name ? $merge([$acc, {$name: ($lookup($acc, $name) ? $lookup($acc, $name) : 0) + 1}]) : $acc\n  }, {});\n  $topSupplier := $count($keys($supplierCounts)) > 0 ?\n    ($keys($supplierCounts) ~> $reduce(function($best, $name) {\n      $lookup($supplierCounts, $name) > $lookup($supplierCounts, $best) ? $name : $best\n    })) : \"—\";\n\n  $pendingColor := $pendingReceipts = 0 ? \"#1D9E7555\" : ($pendingReceipts <= 10 ? \"#F5C51855\" : \"#E5393555\");\n  $pendingLinesColor := $pendingLines = 0 ? \"#1D9E7555\" : ($pendingLines <= 20 ? \"#F5C51855\" : \"#E5393555\");\n\n  {\n    \"rcv\": {\n      \"linesReceivedToday\":      $string($linesReceivedToday),\n      \"linesReceivedMonth\":      $string($linesReceivedMonth),\n      \"pendingReceipts\":         $string($pendingReceipts),\n      \"pendingLines\":            $string($pendingLines),\n      \"topSupplier\":             $topSupplier,\n      \"linesReceivedTodayColor\": $linesReceivedToday > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"linesReceivedMonthColor\": $linesReceivedMonth > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"pendingReceiptsColor\":    $pendingColor,\n      \"pendingLinesColor\":       $pendingLinesColor,\n      \"topSupplierColor\":        \"#534AB755\"\n    }\n  }\n)",
+            "nextNodes": [
+              "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "98c8f9ef-debd-46d8-951f-cc201994d664",
+          "name": "RCV — All KPIs",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"sd\":$.startOfDay,\"ed\":$.endOfDay}",
+            "query": "query RCVKPIs(\n  $df: DateTime $dt: DateTime\n  $sd: DateTime $ed: DateTime\n) {\n  linesReceivedToday: receiptLine(where: {_and: [{createdAt:{_gte:$sd}}, {createdAt:{_lte:$ed}}]}) { total }\n  linesReceivedMonth: receiptLine(where: {_and: [{createdAt:{_gte:$df}}, {createdAt:{_lte:$dt}}]}) { total }\n  pendingReceipts: receipt(where: {receiptStatus:{id:{_eq:\"pendingConfirmation\"}}}) { total }\n  pendingLines: receiptLine(where: {receiptStatus:{id:{_eq:\"pendingConfirmation\"}}}) { total }\n  topSupplierLines: receiptLine(\n    where: {\n      _and: [\n        { createdAt: { _gte: $df } }\n        { createdAt: { _lte: $dt } }\n      ]\n    }\n    first: 1000\n    orderBy: [{ field: createdAt, direction: desc }]\n  ) {\n    edges {\n      node {\n        receipt {\n          order {\n            businessPartner {\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "49fbb6c6-b6f1-432a-bbc1-52c125069686"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+          "name": "RCV - Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "98c8f9ef-debd-46d8-951f-cc201994d664"
+            ],
+            "transform": "$"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+          "name": "SHIP — Read Filters",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  $startOfDay := $tz = \"UTC\" ? $moment().utc().startOf('day').format() : $moment().tz($tz).startOf('day').format();\n  $endOfDay := $tz = \"UTC\" ? $moment().utc().endOf('day').format() : $moment().tz($tz).endOf('day').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"startOfDay\": $startOfDay, \"endOfDay\": $endOfDay\n  }\n)",
+            "nextNodes": [
+              "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+          "name": "SHIP - Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "542f7681-f1da-4b99-b16b-58fe45d2cc8b"
+            ],
+            "transform": "$"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+          "name": "INV — Read Filters",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $exp7 := $tz = \"UTC\" ? $moment().utc().add(7,'days').endOf('day').format() : $moment().tz($tz).add(7,'days').endOf('day').format();\n  $exp30 := $tz = \"UTC\" ? $moment().utc().add(30,'days').endOf('day').format() : $moment().tz($tz).add(30,'days').endOf('day').format();\n  { \"now\": $now, \"exp7\": $exp7, \"exp30\": $exp30 }\n)",
+            "nextNodes": [
+              "b1e32dae-398c-4325-aedb-8dc3f8961e01"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+          "name": "CC — Read Filters",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $endOfMonth := $tz = \"UTC\" ? $moment().utc().endOf('month').format() : $moment().tz($tz).endOf('month').format();\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"now\": $now, \"endOfMonth\": $endOfMonth\n  }\n)",
+            "nextNodes": [
+              "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+          "name": "INV - Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "ff7dadac-1a94-47e4-ad52-30fbc49e0609"
+            ],
+            "transform": "$"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+          "name": "CC - Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "3153fc30-65b1-44da-ae9c-1ecc5d453f8f"
+            ],
+            "transform": "$"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+          "name": "SHIP - All KPIs",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"sd\":$.startOfDay,\"ed\":$.endOfDay}",
+            "query": "query SHIPKPIs(\n  $df: DateTime $dt: DateTime $dfp: DateTime $dtp: DateTime\n  $sd: DateTime $ed: DateTime\n) {\n  shippedCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shippedPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  shortCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shortPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  activeLoads: load(where: {_and:[{active:{_eq:true}},{loadStatus:{id:{_in:[\"new\",\"packed\",\"picked\"]}}}]}) { total }\n  departingToday: load(where: {_and: [{loadStatus:{id:{_in:[\"new\",\"packed\",\"picked\"]}}},{scheduledDepartAt:{_gte:$sd}},{scheduledDepartAt:{_lte:$ed}}]}) { total }\n  shippedToday: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$sd}},{departAt:{_lte:$ed}}]}) { total }\n}",
+            "nextNodes": [
+              "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+          "name": "INV - All KPIs",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\"now\":$.now,\"exp7\":$.exp7,\"exp30\":$.exp30}",
+            "query": "query INVKPIs($now: DateTime, $exp7: DateTime, $exp30: DateTime) {\n  totalLots: lot { total }\n  expiring7: lot(where: {_and:[{expiresAt:{_gte:$now}},{expiresAt:{_lte:$exp7}},{expiresAt:{_isNull:false}}]}) { total }\n  expiring30: lot(where: {_and:[{expiresAt:{_gte:$now}},{expiresAt:{_lte:$exp30}},{expiresAt:{_isNull:false}}]}) { total }\n  onHold: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_in:[\"hold\",\"qcHold\",\"qcInspect\",\"damaged\",\"mrb\"]}}}]}) { total }\n  activeInventory: inventory(where: {active:{_eq:true}}) { total }\n  damagedMrb: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_in:[\"damaged\",\"mrb\"]}}}]}) { total }\n  lostInventory: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_eq:\"lost\"}}}]}) { total }\n}",
+            "nextNodes": [
+              "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+          "name": "CC - All KPIs",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"now\":$.now}",
+            "query": "query CCKPIs(\n  $df: DateTime\n  $dfp: DateTime\n  $dtp: DateTime\n  $now: DateTime\n  $endOfMonth: DateTime\n) {\n  totalCurr: count(where: {\n    _and: [\n      { scheduledStartAt: { _gte: $df } }\n      { scheduledStartAt: { _lte: $endOfMonth } }\n    ]\n  }) { total }\n  totalPrev: count(where: {\n    _and: [\n      { scheduledStartAt: { _gte: $dfp } }\n      { scheduledStartAt: { _lte: $dtp } }\n    ]\n  }) { total }\n  completedCurr: count(where: {\n    _and: [\n      { completedAt: { _isNull: false } }\n      { completedAt: { _gte: $df } }\n      { completedAt: { _lte: $endOfMonth } }\n    ]\n  }) { total }\n  completedPrev: count(where: {\n    _and: [\n      { completedAt: { _isNull: false } }\n      { completedAt: { _gte: $dfp } }\n      { completedAt: { _lte: $dtp } }\n    ]\n  }) { total }\n  inProgress: count(where: {\n    _and: [\n      { actualStartAt: { _isNull: false } }\n      { completedAt: { _isNull: true } },\n      { countStatusId: { _in: [\"started\"]}}\n    ]\n  }) { total }\n  overdue: count(where: {\n    _and: [\n      { scheduledStartAt: { _lte: $now } }\n      { completedAt: { _isNull: true } }\n      { countStatus: { id: { _in: [\"new\", \"started\", \"countCompleted\"] } } }\n    ]\n  }) { total }\n  financeApproval: count(where: {\n    countStatus: { id: { _eq: \"pendingFinanceApproval\" } }\n  }\n  first: 1) { total }\n}",
+            "nextNodes": [
+              "4959305c-afc5-44df-b78d-3fa05a0f4278"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+          "name": "SHIP — Set KPI Context",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $shippedCurr  := $.shippedCurr.total;\n  $shortCurr    := $.shortCurr.total;\n  $activeLoads  := $.activeLoads.total;\n  $activeShips  := $.activeShipments.total;\n  $departToday  := $.departingToday.total;\n  $shippedToday := $.shippedToday.total;\n  {\n    \"ship\": {\n      \"shippedMd\":         $string($shippedCurr),\n      \"shortMd\":           $string($shortCurr),\n      \"activeLoadsMd\":     $string($activeLoads),\n      \"activeShipmentsMd\": $string($activeShips),\n      \"departingTodayMd\":  $string($departToday),\n      \"shippedTodayMd\":    $string($shippedToday),\n      \"shippedColor\":      $shippedCurr > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"shortColor\":        $shortCurr = 0 ? \"#1D9E7555\" : ($shortCurr <= 3 ? \"#F5C51855\" : \"#E5393555\"),\n      \"activeLoadsColor\":  $activeLoads > 0 ? \"#2196F355\" : \"#534AB755\",\n      \"activeShipmentsColor\": $activeShips > 0 ? \"#2196F355\" : \"#534AB755\",\n      \"departingTodayColor\":  $departToday > 0 ? \"#F5C51855\" : \"#1D9E7555\",\n      \"shippedTodayColor\":    $shippedToday > 0 ? \"#1D9E7555\" : \"#534AB755\"\n    }\n  }\n)",
+            "nextNodes": [
+              "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+          "name": "INV — Set KPI Context",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $totalLots := $.totalLots.total;\n  $exp7      := $.expiring7.total;\n  $exp30     := $.expiring30.total;\n  $onHold    := $.onHold.total;\n  $activeInv := $.activeInventory.total;\n  $damaged   := $.damagedMrb.total;\n  $lost := $.lostInventory.total;\n  {\n    \"inv\": {\n      \"totalMd\":     $string($totalLots),\n      \"exp7Md\":      $string($exp7),\n      \"exp30Md\":     $string($exp30),\n      \"holdMd\":      $string($onHold),\n      \"lostMd\": $string($lost),\n      \"damagedMd\":   $string($damaged),\n      \"totalColor\":  \"#534AB755\",\n      \"exp7Color\":   $exp7 = 0 ? \"#1D9E7555\" : ($exp7 <= 5 ? \"#F5C51855\" : \"#E5393555\"),\n      \"exp30Color\":  $exp30 = 0 ? \"#1D9E7555\" : ($exp30 <= 20 ? \"#F5C51855\" : \"#E5393555\"),\n      \"holdColor\":   $onHold = 0 ? \"#1D9E7555\" : ($onHold <= 10 ? \"#F5C51855\" : \"#E5393555\"),\n      \"lostColor\": $lost = 0 ? \"#1D9E7555\" : ($lost <= 5 ? \"#F5C51855\" : \"#E5393555\"),\n      \"damagedColor\":   $damaged = 0 ? \"#1D9E7555\" : ($damaged <= 5 ? \"#F5C51855\" : \"#E5393555\")\n    }\n  }\n)",
+            "nextNodes": [
+              "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+          "name": "CC — Set KPI Context",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $totalCurr := $.totalCurr.total;\n  $totalPrev := $.totalPrev.total;\n  $compCurr  := $.completedCurr.total;\n  $inProg    := $.inProgress.total;\n  $overdue   := $.overdue.total;\n  $finance   := $.financeApproval.total;\n  $pending   := $totalCurr - $compCurr - $inProg;\n  $compRate  := $totalCurr > 0 ? $round($compCurr / $totalCurr * 100) : 0;\n  {\n    \"cc\": {\n      \"totalMd\":        $string($totalCurr),\n      \"completedMd\":    $string($compCurr),\n      \"inProgressMd\":   $string($inProg),\n      \"pendingMd\":      $string($finance),\n      \"overdueMd\":      $string($overdue),\n      \"totalColor\":     \"#534AB755\",\n      \"completedColor\": $compRate >= 80 ? \"#1D9E7555\" : ($compRate >= 50 ? \"#F5C51855\" : \"#E5393555\"),\n      \"inProgressColor\":\"#2196F355\",\n      \"pendingColor\":   $finance = 0 ? \"#1D9E7555\" : ($finance <= 3 ? \"#F5C51855\" : \"#E5393555\"),\n      \"overdueColor\":   $overdue = 0 ? \"#1D9E7555\" : ($overdue <= 3 ? \"#F5C51855\" : \"#E5393555\")\n    }\n  }\n)",
+            "nextNodes": [
+              "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+          "name": "Overview - Read Filters",
+          "type": "transform",
+          "data": {
+            "nextNodes": [
+              "29fbcb0e-5db9-42be-afa6-7496b1dbead4"
+            ],
+            "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $month := $number($substring($now, 5, 2));\n  $year := $number($substring($now, 0, 4));\n  $monthNames := [\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\n                  \"July\",\"August\",\"September\",\"October\",\"November\",\"December\"];\n  $periodLabel := $monthNames[$month - 1] & \" \" & $string($year);\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  $exp7 := $tz = \"UTC\" ? $moment().utc().add(7,'days').format() : $moment().tz($tz).add(7,'days').format();\n  $exp30 := $tz = \"UTC\" ? $moment().utc().add(30,'days').format() : $moment().tz($tz).add(30,'days').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"exp7\": $exp7, \"exp30\": $exp30,\n    \"periodLabel\": $periodLabel\n  }\n)"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+          "name": "Overview - Context",
+          "type": "setContext",
+          "data": {
+            "nextNodes": [
+              "9b078f09-afe8-4077-847a-164421c256f4"
+            ],
+            "transform": "$"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "9b078f09-afe8-4077-847a-164421c256f4",
+          "name": "Overview— All KPIs",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"exp7\":$.exp7,\"exp30\":$.exp30}",
+            "query": "query OVERVIEWKPIs(\n  $df: DateTime $dt: DateTime\n  $dfp: DateTime $dtp: DateTime\n  $exp7: DateTime $exp30: DateTime\n) {\n  ordFulCurr: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{orderStatus:{id:{_eq:\"fulfilled\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  ordTotCurr: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  ordFulPrev: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{orderStatus:{id:{_eq:\"fulfilled\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  ordTotPrev: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  relFulCurr: orderLineRelease(where: {_and: [{active:{_eq:true}},{quantityLeft:{value:{_lte:0}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  relTotCurr: orderLineRelease(where: {_and: [{active:{_eq:true}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  relFulPrev: orderLineRelease(where: {_and: [{active:{_eq:true}},{quantityLeft:{value:{_lte:0}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  relTotPrev: orderLineRelease(where: {_and: [{active:{_eq:true}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  shippedCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shippedPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  shortCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shortPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  rcvPendCurr: receipt(where: {_and: [{receiptStatus:{id:{_eq:\"pendingConfirmation\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  rcvPendPrev: receipt(where: {_and: [{receiptStatus:{id:{_eq:\"pendingConfirmation\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  expLots7: lot(where: {_and: [{expiresAt:{_gte:$df}},{expiresAt:{_lte:$exp7}},{expiresAt:{_isNull:false}}]}) { total }\n  expLots30: lot(where: {_and: [{expiresAt:{_gte:$df}},{expiresAt:{_lte:$exp30}},{expiresAt:{_isNull:false}}]}) { total }\n}",
+            "nextNodes": [
+              "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+          "name": "Overview— Set KPI Context",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $ordFulCurr  := $.ordFulCurr.total;\n  $ordTotCurr  := $.ordTotCurr.total;\n  $ordFulPrev  := $.ordFulPrev.total;\n  $ordTotPrev  := $.ordTotPrev.total;\n  $relFulCurr  := $.relFulCurr.total;\n  $relTotCurr  := $.relTotCurr.total;\n  $relFulPrev  := $.relFulPrev.total;\n  $relTotPrev  := $.relTotPrev.total;\n  $shippedCurr := $.shippedCurr.total;\n  $shippedPrev := $.shippedPrev.total;\n  $shortCurr   := $.shortCurr.total;\n  $shortPrev   := $.shortPrev.total;\n  $rcvPendCurr := $.rcvPendCurr.total;\n  $rcvPendPrev := $.rcvPendPrev.total;\n  $expLots7    := $.expLots7.total;\n  $expLots30   := $.expLots30.total;\n\n  $trendFn := function($c,$p,$h) {(\n    $d := $c - $p; $pct := $p > 0 ? $round($d/$p*100) : 0;\n    $a := $d > 0 ? \"▲\" : ($d < 0 ? \"▼\" : \"▶\");\n    $pct != 0 ? $a & \" \" & $string($pct < 0 ? -$pct : $pct) & \"%\" : \"▶ 0%\")\n  };\n\n  $fulfillRateCurr := $ordTotCurr > 0 ? $round($ordFulCurr / $ordTotCurr * 100) : 0;\n  $fulfillRatePrev := $ordTotPrev > 0 ? $round($ordFulPrev / $ordTotPrev * 100) : 0;\n  $fillRateCurr    := $relTotCurr > 0 ? $round($relFulCurr / $relTotCurr * 100) : 0;\n  $fillRatePrev    := $relTotPrev > 0 ? $round($relFulPrev / $relTotPrev * 100) : 0;\n\n  $fulfillColor := $fulfillRateCurr >= 75 ? \"#1D9E7555\" : ($fulfillRateCurr >= 50 ? \"#F5C51855\" : \"#E5393555\");\n  $fillColor    := $fillRateCurr >= 90 ? \"#1D9E7555\" : ($fillRateCurr >= 75 ? \"#F5C51855\" : \"#E5393555\");\n  $shipColor    := \"#534AB755\";\n  $shortColor   := $shortCurr = 0 ? \"#1D9E7555\" : ($shortCurr <= 3 ? \"#F5C51855\" : \"#E5393555\");\n  $rcvColor     := $rcvPendCurr = 0 ? \"#1D9E7555\" : ($rcvPendCurr <= 10 ? \"#F5C51855\" : \"#E5393555\");\n  $lotsColor    := $expLots7 = 0 ? \"#1D9E7555\" : ($expLots7 <= 10 ? \"#F5C51855\" : \"#E5393555\");\n\n  $redCount    := $count([$fulfillColor,$fillColor,$shortColor,$rcvColor,$lotsColor][$= \"#E5393555\"]);\n  $yellowCount := $count([$fulfillColor,$fillColor,$shortColor,$rcvColor,$lotsColor][$= \"#F5C51855\"]);\n  $healthStatus := $redCount > 0 ? \"⚠ Critical\" : ($yellowCount > 0 ? \"◆ Needs Attention\" : \"✓ Good\");\n\n  {\n    \"kpi\": {\n      \"fulfillMd\":    $string($fulfillRateCurr) & \"%\",\n      \"fulfillTrend\": $trendFn($fulfillRateCurr, $fulfillRatePrev, true),\n      \"fillMd\":       $string($fillRateCurr) & \"%\",\n      \"fillTrend\":    $trendFn($fillRateCurr, $fillRatePrev, true),\n      \"shipMd\":       $string($shippedCurr),\n      \"shipTrend\":    $trendFn($shippedCurr, $shippedPrev, true),\n      \"shortMd\":      $string($shortCurr),\n      \"shortTrend\":   $trendFn($shortCurr, $shortPrev, false),\n      \"rcvMd\":        $string($rcvPendCurr),\n      \"rcvTrend\":     $trendFn($rcvPendCurr, $rcvPendPrev, false),\n      \"lotsMd\":       $string($expLots7),\n      \"fulfillColor\": $fulfillColor,\n      \"fillColor\":    $fillColor,\n      \"shipColor\":    $shipColor,\n      \"shortColor\":   $shortColor,\n      \"rcvColor\":     $rcvColor,\n      \"lotsColor\":    $lotsColor,\n      \"healthStatus\": $healthStatus,\n      \"currentMonth\": $.periodLabel\n    }\n  }\n)",
+            "nextNodes": [
+              "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.8"
+    },
+    "diagram": {
+      "id": "cmrb2e0bg047i015m32v085cg",
+      "offsetX": 26.28,
+      "offsetY": 160.09,
+      "zoom": 73.33,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "b181940c-4880-44fc-b68d-7b8b1a79c09b",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "5721bae9-6efa-4965-90b5-5643dd5b5f9c": {
+              "points": [
+                {
+                  "id": "5fe0b72e-7481-45b4-8b70-86569dc1d37b",
+                  "type": "point",
+                  "x": 4,
+                  "y": 449.33
+                },
+                {
+                  "id": "f3a05115-6153-493f-a5da-b3451fbf4da7",
+                  "type": "point",
+                  "x": 44.2,
+                  "y": 449.33
+                }
+              ],
+              "id": "5721bae9-6efa-4965-90b5-5643dd5b5f9c",
+              "type": "default",
+              "selected": false,
+              "source": "66a3347a-1469-4809-a790-f44f70b31964",
+              "sourcePort": "cmpzs48fj0083356pwh6wmw6q",
+              "target": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "targetPort": "cmpzs4bx30089356pe4xdx7gv",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "5d297c27-d3a3-4a09-974a-5ef7e5a1c49e": {
+              "points": [
+                {
+                  "id": "21af7a01-714c-4800-905e-e69c1f962d72",
+                  "type": "point",
+                  "x": 4,
+                  "y": 449.33
+                },
+                {
+                  "id": "697339f8-df74-4b6b-9924-747e56cfccd6",
+                  "type": "point",
+                  "x": 39.2,
+                  "y": 395.84
+                }
+              ],
+              "id": "5d297c27-d3a3-4a09-974a-5ef7e5a1c49e",
+              "type": "default",
+              "selected": false,
+              "source": "66a3347a-1469-4809-a790-f44f70b31964",
+              "sourcePort": "cmpzs48fj0083356pwh6wmw6q",
+              "target": "f8567603-eb70-4681-8192-df0182585f7d",
+              "targetPort": "cmpzs4s8u008p356pelo825gr",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "32355967-ea6f-4265-a70f-f2d0218986fa": {
+              "points": [
+                {
+                  "id": "21873dfc-6c58-45e2-a79c-a27476f26288",
+                  "type": "point",
+                  "x": 199,
+                  "y": 474.49
+                },
+                {
+                  "id": "ebbbc0e4-29ab-4ec7-8f2e-9ad66d618f0c",
+                  "type": "point",
+                  "selected": false,
+                  "x": 200,
+                  "y": 740
+                },
+                {
+                  "id": "1e95ad34-c510-4eb9-ab68-26030466c04f",
+                  "type": "point",
+                  "x": 439.2,
+                  "y": 739.33
+                }
+              ],
+              "id": "32355967-ea6f-4265-a70f-f2d0218986fa",
+              "type": "default",
+              "selected": false,
+              "source": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "sourcePort": "cmpzs4bx3008d356ph73hzonu",
+              "target": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+              "targetPort": "cmpzs554a0090356p69lmzxlj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "819124e9-a0f4-44b5-b38b-2d11fe8ae69e": {
+              "points": [
+                {
+                  "id": "8111b75b-c351-40c7-9c24-dfffe3564cbe",
+                  "type": "point",
+                  "x": 199,
+                  "y": 449.33
+                },
+                {
+                  "id": "7a3da68c-64d6-48e0-81c4-8c2e972d93b7",
+                  "type": "point",
+                  "x": 239.2,
+                  "y": 449.33
+                }
+              ],
+              "id": "819124e9-a0f4-44b5-b38b-2d11fe8ae69e",
+              "type": "default",
+              "selected": false,
+              "source": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "sourcePort": "cmpzs4bx3008b356plv4pk3bo",
+              "target": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "targetPort": "cmpzs5ju3009i356p742y39ig",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "2a45a6cd-7674-4542-b67d-dfed80da04eb": {
+              "points": [
+                {
+                  "id": "cd1840ef-617e-4dcf-a489-279d2bdc4b55",
+                  "type": "point",
+                  "x": 394,
+                  "y": 474.49
+                },
+                {
+                  "id": "df99ddff-602d-4f5b-bb02-ac6cfa18b842",
+                  "type": "point",
+                  "x": 464.2,
+                  "y": 444.33
+                }
+              ],
+              "id": "2a45a6cd-7674-4542-b67d-dfed80da04eb",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmpzs5tfr009v356p7snnl0i7",
+              "target": "92435866-77ec-4109-8c74-73012e339f02",
+              "targetPort": "cmpzs76f600c7356ptzw2mrd1",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9a56d3a6-daeb-4eb9-90ea-f14bac4e8f81": {
+              "points": [
+                {
+                  "id": "34deec17-c445-4018-91a4-ced8c2f88d46",
+                  "type": "point",
+                  "x": 1218.05,
+                  "y": 444.33
+                },
+                {
+                  "id": "d13f8350-ed3e-461f-9b27-0f51604cf282",
+                  "type": "point",
+                  "x": 1324.2,
+                  "y": 549.33
+                }
+              ],
+              "id": "9a56d3a6-daeb-4eb9-90ea-f14bac4e8f81",
+              "type": "default",
+              "selected": false,
+              "source": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+              "sourcePort": "cmpzsaijv00hn356ptc7b3voj",
+              "target": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "targetPort": "cmpzsb3ej00i8356pqyq2ief0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e7f5a002-473b-4027-a3cc-727fd65a6295": {
+              "points": [
+                {
+                  "id": "57d0a4ca-0ec8-40c2-ba07-7a3cb62272af",
+                  "type": "point",
+                  "x": 394,
+                  "y": 499.65
+                },
+                {
+                  "id": "be91b733-3eac-45d7-9766-431e5189126d",
+                  "type": "point",
+                  "x": 464.2,
+                  "y": 504.33
+                }
+              ],
+              "id": "e7f5a002-473b-4027-a3cc-727fd65a6295",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmpzs5tki009y356pmtfpk3uj",
+              "target": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+              "targetPort": "cmpzwjp0d031h356pld65z43b",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "6a08056a-61b8-49ce-b49e-e771a7734ef7": {
+              "points": [
+                {
+                  "id": "215f3218-0c99-462e-bf8b-fe0b98e157b5",
+                  "type": "point",
+                  "x": 394,
+                  "y": 524.81
+                },
+                {
+                  "id": "e7bf185a-1b60-4c83-859d-a07517eeaa20",
+                  "type": "point",
+                  "x": 464.2,
+                  "y": 574.33
+                }
+              ],
+              "id": "6a08056a-61b8-49ce-b49e-e771a7734ef7",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmpzs5uki00a1356pedn2d06r",
+              "target": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+              "targetPort": "cmpzwle4c033t356pgmjn15ch",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e6ea306f-d643-4f09-9200-4fecb08ee077": {
+              "points": [
+                {
+                  "id": "d431821e-1652-48e7-9b31-58fcfe5f09c2",
+                  "type": "point",
+                  "x": 394,
+                  "y": 549.97
+                },
+                {
+                  "id": "7262ecfe-efec-419a-84b1-0cb17b32b96f",
+                  "type": "point",
+                  "x": 464.2,
+                  "y": 639.33
+                }
+              ],
+              "id": "e6ea306f-d643-4f09-9200-4fecb08ee077",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmpzs5uwh00a4356pmw8fxtpn",
+              "target": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+              "targetPort": "cmpzwleap0345356phmthwujq",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "a6364fb7-1223-434a-b16b-ba24c67d9666": {
+              "points": [
+                {
+                  "id": "5a46794c-65c9-429f-b32e-bd2f7a27ca17",
+                  "type": "point",
+                  "x": 814,
+                  "y": 504.33
+                },
+                {
+                  "id": "f6415ffc-a1f2-44f6-b68d-a8163797610f",
+                  "type": "point",
+                  "x": 859.2,
+                  "y": 504.33
+                }
+              ],
+              "id": "a6364fb7-1223-434a-b16b-ba24c67d9666",
+              "type": "default",
+              "selected": false,
+              "source": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+              "sourcePort": "cmpzwl87v033f356pokz6z0wp",
+              "target": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+              "targetPort": "cmpzwnoi403dr356p7m730bev",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "a1da0818-a988-40a1-aa8a-dbdd3feb42e3": {
+              "points": [
+                {
+                  "id": "af5005aa-fe3d-48c9-b14f-19cefead6536",
+                  "type": "point",
+                  "x": 814,
+                  "y": 574.33
+                },
+                {
+                  "id": "a62fa712-fa73-4a8a-b242-be8d91670da8",
+                  "type": "point",
+                  "x": 859.2,
+                  "y": 574.33
+                }
+              ],
+              "id": "a1da0818-a988-40a1-aa8a-dbdd3feb42e3",
+              "type": "default",
+              "selected": false,
+              "source": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+              "sourcePort": "cmpzwmll0035p356pvd7b62ap",
+              "target": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+              "targetPort": "cmpzwoo8703f5356p1xeev7nx",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "59f4fdca-59de-4d17-bc53-a72bf4fc1e20": {
+              "points": [
+                {
+                  "id": "3a7d749f-e0b8-45f8-bc2e-d70b22162a90",
+                  "type": "point",
+                  "x": 814,
+                  "y": 639.33
+                },
+                {
+                  "id": "6948ca45-2f3e-45f8-9e1e-234ba50c9af9",
+                  "type": "point",
+                  "x": 859.2,
+                  "y": 639.33
+                }
+              ],
+              "id": "59f4fdca-59de-4d17-bc53-a72bf4fc1e20",
+              "type": "default",
+              "selected": false,
+              "source": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+              "sourcePort": "cmpzwmlzu0361356pvlyp5fvh",
+              "target": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+              "targetPort": "cmpzwp8a703g6356p5lgixuwj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9f204dda-f188-4b26-8f0c-f13ef8aa0376": {
+              "points": [
+                {
+                  "id": "2bb8cb8a-804f-4391-a22f-75d1141fe93d",
+                  "type": "point",
+                  "x": 1014,
+                  "y": 504.33
+                },
+                {
+                  "id": "b18141d8-ade1-431d-a3bb-8d79c1201158",
+                  "type": "point",
+                  "x": 1049.2,
+                  "y": 504.33
+                }
+              ],
+              "id": "9f204dda-f188-4b26-8f0c-f13ef8aa0376",
+              "type": "default",
+              "selected": false,
+              "source": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+              "sourcePort": "cmpzwnoi403dt356pxxc5o8mj",
+              "target": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+              "targetPort": "cmpzwqf0003hp356p4geeej1n",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "de06b4ba-2dbd-47d1-9cad-d92a65e30a5a": {
+              "points": [
+                {
+                  "id": "e6466dc6-78be-48b6-bf10-b1a0de36a878",
+                  "type": "point",
+                  "x": 1014,
+                  "y": 639.33
+                },
+                {
+                  "id": "d6398d90-5154-46a8-bb9e-2fe4fdf0c8d7",
+                  "type": "point",
+                  "x": 1049.2,
+                  "y": 639.33
+                }
+              ],
+              "id": "de06b4ba-2dbd-47d1-9cad-d92a65e30a5a",
+              "type": "default",
+              "selected": false,
+              "source": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+              "sourcePort": "cmpzwp8a703g8356p40mbsy4i",
+              "target": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+              "targetPort": "cmpzwss7a03iy356pkv1gb9o3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "936cce02-1a2d-466e-a8b9-44ce92a9ae3e": {
+              "points": [
+                {
+                  "id": "1b130264-f97e-4450-b9b7-c1ad64f432dd",
+                  "type": "point",
+                  "x": 1014,
+                  "y": 574.33
+                },
+                {
+                  "id": "85630844-e190-469c-bb6b-a2042e2ecf66",
+                  "type": "point",
+                  "x": 1049.2,
+                  "y": 574.33
+                }
+              ],
+              "id": "936cce02-1a2d-466e-a8b9-44ce92a9ae3e",
+              "type": "default",
+              "selected": false,
+              "source": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+              "sourcePort": "cmpzwoo8703f7356pjrxicd17",
+              "target": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+              "targetPort": "cmpzwss2j03im356p1tz3zq9n",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "a2a68f54-7188-4620-bb60-b71a8361ad50": {
+              "points": [
+                {
+                  "id": "0ece5856-93ea-444b-a66e-e7517216c1a0",
+                  "type": "point",
+                  "x": 1221.85,
+                  "y": 504.33
+                },
+                {
+                  "id": "aca0ce6b-4553-4287-87db-a4c31c0f9f78",
+                  "type": "point",
+                  "x": 1324.2,
+                  "y": 549.33
+                }
+              ],
+              "id": "a2a68f54-7188-4620-bb60-b71a8361ad50",
+              "type": "default",
+              "selected": false,
+              "source": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+              "sourcePort": "cmpzwqf0003hr356p5vfoqhop",
+              "target": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "targetPort": "cmpzsb3ej00i8356pqyq2ief0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e1892bcc-0711-4b55-8694-e5a1861036b3": {
+              "points": [
+                {
+                  "id": "dd4186fc-0d98-4c8c-ba84-2f529de62d80",
+                  "type": "point",
+                  "x": 1214.67,
+                  "y": 574.33
+                },
+                {
+                  "id": "2cd687c5-9d39-46c5-8e9b-86c2687a8be4",
+                  "type": "point",
+                  "x": 1324.2,
+                  "y": 549.33
+                }
+              ],
+              "id": "e1892bcc-0711-4b55-8694-e5a1861036b3",
+              "type": "default",
+              "selected": false,
+              "source": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+              "sourcePort": "cmpzwss2k03io356ptud7xb9e",
+              "target": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "targetPort": "cmpzsb3ej00i8356pqyq2ief0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "c14b460b-56f3-4608-950f-fb765637d8c9": {
+              "points": [
+                {
+                  "id": "5884902e-d41f-47ae-a595-77caf7d09ed1",
+                  "type": "point",
+                  "x": 1210.7,
+                  "y": 639.33
+                },
+                {
+                  "id": "9ee01bee-7296-4286-8a89-69cf5c96d67e",
+                  "type": "point",
+                  "x": 1324.2,
+                  "y": 549.33
+                }
+              ],
+              "id": "c14b460b-56f3-4608-950f-fb765637d8c9",
+              "type": "default",
+              "selected": false,
+              "source": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+              "sourcePort": "cmpzwss7a03j0356ptsanbu7h",
+              "target": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "targetPort": "cmpzsb3ej00i8356pqyq2ief0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "88a90364-2453-4ae8-87a3-966ad1e2f0b3": {
+              "points": [
+                {
+                  "id": "4dfda243-cd01-46c8-94b3-0518f119f1c4",
+                  "type": "point",
+                  "x": 4,
+                  "y": 399.33
+                },
+                {
+                  "id": "86e76f08-ed5f-437c-913f-bd88d35bb773",
+                  "type": "point",
+                  "x": 44.2,
+                  "y": 449.33
+                }
+              ],
+              "id": "88a90364-2453-4ae8-87a3-966ad1e2f0b3",
+              "type": "default",
+              "selected": false,
+              "source": "37459214-4197-4986-978f-0eb32525f41d",
+              "sourcePort": "cmpzxpe3g03mi356psig9c1z9",
+              "target": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "targetPort": "cmpzs4bx30089356pe4xdx7gv",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "a2226047-c1ed-4c47-accf-fca8eae11828": {
+              "points": [
+                {
+                  "id": "63d85d92-4470-4915-8821-eb370c62b135",
+                  "type": "point",
+                  "x": -16,
+                  "y": 334.33
+                },
+                {
+                  "id": "9027f05f-8784-49da-a146-debe966e367d",
+                  "type": "point",
+                  "x": 44.2,
+                  "y": 449.33
+                }
+              ],
+              "id": "a2226047-c1ed-4c47-accf-fca8eae11828",
+              "type": "default",
+              "selected": false,
+              "source": "9c820a62-b945-4428-ac67-a940f277b669",
+              "sourcePort": "cmpzyqsf804f3356pt0ceuaxm",
+              "target": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "targetPort": "cmpzs4bx30089356pe4xdx7gv",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "973edfe1-27b3-4fe0-9b23-d5f2ca922eba": {
+              "points": [
+                {
+                  "id": "57e87531-9157-48bc-8c77-8417754010fc",
+                  "type": "point",
+                  "x": 394,
+                  "y": 575.13
+                },
+                {
+                  "id": "c1aac8de-da72-43a3-93a4-cb74f0dc29db",
+                  "type": "point",
+                  "x": 439.2,
+                  "y": 739.33
+                }
+              ],
+              "id": "973edfe1-27b3-4fe0-9b23-d5f2ca922eba",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmpzs5v7g00a7356pl7cla8ek",
+              "target": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+              "targetPort": "cmpzs554a0090356p69lmzxlj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "3050f5ab-3fae-4f26-8fce-6dd76b1d5c4e": {
+              "points": [
+                {
+                  "id": "4c77c28d-6b43-41be-a2c2-0061a42cd382",
+                  "type": "point",
+                  "x": 619,
+                  "y": 444.33
+                },
+                {
+                  "id": "cad6bbb5-ca86-4283-acf0-484db7756de9",
+                  "type": "point",
+                  "x": 659.2,
+                  "y": 444.33
+                }
+              ],
+              "id": "3050f5ab-3fae-4f26-8fce-6dd76b1d5c4e",
+              "type": "default",
+              "selected": false,
+              "source": "92435866-77ec-4109-8c74-73012e339f02",
+              "sourcePort": "cmpzs76f700c9356peojfvbva",
+              "target": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+              "targetPort": "cmpzuda4r01us356pmylujcuq",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "57862ca7-2336-4edd-a52d-b6f9df1a60aa": {
+              "points": [
+                {
+                  "id": "a0d48578-983b-4eea-8ad7-8aa22d00bd45",
+                  "type": "point",
+                  "x": 814,
+                  "y": 444.33
+                },
+                {
+                  "id": "d98289e2-dec3-4958-a036-cd68bf641433",
+                  "type": "point",
+                  "x": 859.2,
+                  "y": 444.33
+                }
+              ],
+              "id": "57862ca7-2336-4edd-a52d-b6f9df1a60aa",
+              "type": "default",
+              "selected": false,
+              "source": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+              "sourcePort": "cmpzuda4r01uu356p6y3knz53",
+              "target": "98c8f9ef-debd-46d8-951f-cc201994d664",
+              "targetPort": "cmpzss2zz01en356pbwanjlki",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4da23103-bfe3-4fe1-b8d5-8708f07f9ceb": {
+              "points": [
+                {
+                  "id": "092712a0-3aad-49d8-a68f-53808d9d6fbc",
+                  "type": "point",
+                  "x": 1014,
+                  "y": 444.33
+                },
+                {
+                  "id": "4ce4bcdb-e7f7-4e26-ae02-0a47a7bda86b",
+                  "type": "point",
+                  "x": 1049.2,
+                  "y": 444.33
+                }
+              ],
+              "id": "4da23103-bfe3-4fe1-b8d5-8708f07f9ceb",
+              "type": "default",
+              "selected": false,
+              "source": "98c8f9ef-debd-46d8-951f-cc201994d664",
+              "sourcePort": "cmpzss2zz01ep356pxj80pvo7",
+              "target": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+              "targetPort": "cmpzsaijv00hl356pn7uyalk0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "66ab073a-fef3-4910-8858-d9616af59b8c": {
+              "points": [
+                {
+                  "id": "985a0f36-b977-4d96-8f71-ae9a174f0e44",
+                  "type": "point",
+                  "x": 619,
+                  "y": 504.33
+                },
+                {
+                  "id": "8ab49f98-0b28-4536-b4e0-a053a0293b40",
+                  "type": "point",
+                  "x": 659.2,
+                  "y": 504.33
+                }
+              ],
+              "id": "66ab073a-fef3-4910-8858-d9616af59b8c",
+              "type": "default",
+              "selected": false,
+              "source": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+              "sourcePort": "cmpzwjp0d031j356piwrawfqr",
+              "target": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+              "targetPort": "cmpzwl87v033d356ponsq2bx2",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9541124c-9ce1-4fdc-b7ee-5773c9d00d73": {
+              "points": [
+                {
+                  "id": "c5d09e65-4593-49c8-9dbf-ab4284ca62a8",
+                  "type": "point",
+                  "x": 619,
+                  "y": 574.33
+                },
+                {
+                  "id": "e48371a2-901f-4edf-b518-da2b318f8515",
+                  "type": "point",
+                  "x": 659.2,
+                  "y": 574.33
+                }
+              ],
+              "id": "9541124c-9ce1-4fdc-b7ee-5773c9d00d73",
+              "type": "default",
+              "selected": false,
+              "source": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+              "sourcePort": "cmpzwle4c033v356pw78n4hkk",
+              "target": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+              "targetPort": "cmpzwmll0035n356pmhmieo3i",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "37930e8a-0ecc-4828-b5e2-dc8a86ef80ce": {
+              "points": [
+                {
+                  "id": "5972624e-df7d-4fd6-b90d-74db7dd682a1",
+                  "type": "point",
+                  "x": 619,
+                  "y": 639.33
+                },
+                {
+                  "id": "2094cb4a-64be-407e-9916-31aa6d99368c",
+                  "type": "point",
+                  "x": 659.2,
+                  "y": 639.33
+                }
+              ],
+              "id": "37930e8a-0ecc-4828-b5e2-dc8a86ef80ce",
+              "type": "default",
+              "selected": false,
+              "source": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+              "sourcePort": "cmpzwleap0347356ps7dnzlyk",
+              "target": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+              "targetPort": "cmpzwmlzu035z356pjzi2flw0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "5785fbda-3b5e-448b-8b14-854df0c0251d": {
+              "points": [
+                {
+                  "id": "09155e61-d77f-4b4d-b3fe-aed250773a0d",
+                  "type": "point",
+                  "x": 394,
+                  "y": 449.33
+                },
+                {
+                  "id": "cb0e8c40-8566-43af-ae70-7194be77c263",
+                  "type": "point",
+                  "x": 464.2,
+                  "y": 379.33
+                }
+              ],
+              "id": "5785fbda-3b5e-448b-8b14-854df0c0251d",
+              "type": "default",
+              "selected": false,
+              "source": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "sourcePort": "cmq9u56rx03hd356p1qsaygli",
+              "target": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+              "targetPort": "cmq9u65mj03i8356p5d47adac",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e41d52ff-12a0-4701-9cd2-e84d06e34684": {
+              "points": [
+                {
+                  "id": "db5085c7-3055-47c0-9d5f-1101aa841d7f",
+                  "type": "point",
+                  "x": 632.92,
+                  "y": 379.33
+                },
+                {
+                  "id": "b4a29285-e3b4-4946-bbfb-444eefd86073",
+                  "type": "point",
+                  "x": 659.2,
+                  "y": 379.33
+                }
+              ],
+              "id": "e41d52ff-12a0-4701-9cd2-e84d06e34684",
+              "type": "default",
+              "selected": false,
+              "source": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+              "sourcePort": "cmq9u65mk03ia356p9grpv3zg",
+              "target": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+              "targetPort": "cmq9ue8r000v3356pvplhgshp",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "ae124c8e-3219-450f-befc-9972434becf8": {
+              "points": [
+                {
+                  "id": "c267398c-4309-4974-988b-8d5e92be2669",
+                  "type": "point",
+                  "x": 814,
+                  "y": 379.33
+                },
+                {
+                  "id": "5d0f5b56-945a-4862-9aaa-0497a761bb02",
+                  "type": "point",
+                  "x": 859.2,
+                  "y": 379.33
+                }
+              ],
+              "id": "ae124c8e-3219-450f-befc-9972434becf8",
+              "type": "default",
+              "selected": false,
+              "source": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+              "sourcePort": "cmq9ue8r000v5356pauvx4m32",
+              "target": "9b078f09-afe8-4077-847a-164421c256f4",
+              "targetPort": "cmq9uf3h800xd356p8d0bg1bf",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "ac10d1a3-8e31-4507-8376-ffd22e190f76": {
+              "points": [
+                {
+                  "id": "77814514-7e7c-429c-9686-b71b6414ca02",
+                  "type": "point",
+                  "x": 1014,
+                  "y": 379.33
+                },
+                {
+                  "id": "00ea327f-9e0f-4825-99e2-1dd316fbfa85",
+                  "type": "point",
+                  "x": 1049.2,
+                  "y": 379.33
+                }
+              ],
+              "id": "ac10d1a3-8e31-4507-8376-ffd22e190f76",
+              "type": "default",
+              "selected": false,
+              "source": "9b078f09-afe8-4077-847a-164421c256f4",
+              "sourcePort": "cmq9uf3h800xf356pep70qkmr",
+              "target": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+              "targetPort": "cmq9ufr0p00yk356pstc06qr7",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "84c909fc-e71a-4594-94eb-2881f64b11b4": {
+              "points": [
+                {
+                  "id": "817c5655-b246-43c0-a84c-350034c9ebdd",
+                  "type": "point",
+                  "x": 1241.38,
+                  "y": 379.33
+                },
+                {
+                  "id": "08b49fb2-c658-4980-9467-ab841d323b85",
+                  "type": "point",
+                  "x": 1324.2,
+                  "y": 549.33
+                }
+              ],
+              "id": "84c909fc-e71a-4594-94eb-2881f64b11b4",
+              "type": "default",
+              "selected": false,
+              "source": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+              "sourcePort": "cmq9ufr0p00ym356p13x6uqge",
+              "target": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "targetPort": "cmpzsb3ej00i8356pqyq2ief0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "86992aad-158e-4a79-b095-e44a8e4b4cca": {
+              "points": [
+                {
+                  "id": "87b60a20-e1aa-4103-95fb-906f1808b6e5",
+                  "type": "point",
+                  "x": 29,
+                  "y": 254.33
+                },
+                {
+                  "id": "1ec6147c-5fd4-4475-b58e-739939f14391",
+                  "type": "point",
+                  "x": 44.2,
+                  "y": 449.33
+                }
+              ],
+              "id": "86992aad-158e-4a79-b095-e44a8e4b4cca",
+              "type": "default",
+              "source": "a6cf01c6-bd78-4760-9623-d06b21e2840d",
+              "sourcePort": "cmq9uuhof016c356pg0mep1kb",
+              "target": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "targetPort": "cmpzs4bx30089356pe4xdx7gv",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "d7479b4c-fad6-4056-ba20-1080f9330680",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "66a3347a-1469-4809-a790-f44f70b31964": {
+              "id": "66a3347a-1469-4809-a790-f44f70b31964",
+              "type": "request",
+              "selected": false,
+              "x": -150,
+              "y": 410,
+              "ports": [
+                {
+                  "id": "cmpzs48fj0083356pwh6wmw6q",
+                  "type": "default",
+                  "x": -3.6,
+                  "y": 441.73,
+                  "name": "cmpzs48fk0084356pegs7uqzg",
+                  "parentNode": "66a3347a-1469-4809-a790-f44f70b31964",
+                  "links": [
+                    "5721bae9-6efa-4965-90b5-5643dd5b5f9c",
+                    "5d297c27-d3a3-4a09-974a-5ef7e5a1c49e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "f677f5aa-4678-4581-b12c-acae4970c095",
+                  "f8567603-eb70-4681-8192-df0182585f7d"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "f677f5aa-4678-4581-b12c-acae4970c095": {
+              "id": "f677f5aa-4678-4581-b12c-acae4970c095",
+              "type": "tryCatch",
+              "selected": false,
+              "x": 45,
+              "y": 410,
+              "ports": [
+                {
+                  "id": "cmpzs4bx30089356pe4xdx7gv",
+                  "type": "default",
+                  "x": 36.6,
+                  "y": 441.73,
+                  "name": "cmpzs4bx3008a356pnxvrsepj",
+                  "parentNode": "f677f5aa-4678-4581-b12c-acae4970c095",
+                  "links": [
+                    "5721bae9-6efa-4965-90b5-5643dd5b5f9c",
+                    "88a90364-2453-4ae8-87a3-966ad1e2f0b3",
+                    "a2226047-c1ed-4c47-accf-fca8eae11828",
+                    "86992aad-158e-4a79-b095-e44a8e4b4cca"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzs4bx3008b356plv4pk3bo",
+                  "type": "default",
+                  "x": 191.4,
+                  "y": 441.73,
+                  "name": "cmpzs4bx3008c356phtw1vva2",
+                  "parentNode": "f677f5aa-4678-4581-b12c-acae4970c095",
+                  "links": [
+                    "819124e9-a0f4-44b5-b38b-2d11fe8ae69e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Try",
+                  "fieldPath": "data.tryNextNodes"
+                },
+                {
+                  "id": "cmpzs4bx3008d356ph73hzonu",
+                  "type": "default",
+                  "x": 191.4,
+                  "y": 466.89,
+                  "name": "cmpzs4bx3008e356psa7troe7",
+                  "parentNode": "f677f5aa-4678-4581-b12c-acae4970c095",
+                  "links": [
+                    "32355967-ea6f-4265-a70f-f2d0218986fa"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Catch",
+                  "fieldPath": "data.catchNextNodes"
+                }
+              ],
+              "data": {
+                "catchNextNodes": [
+                  "35684bed-adf1-4d69-87d2-22d6ff81e595"
+                ],
+                "tryNextNodes": [
+                  "627445fc-8329-44c1-a1ff-7fe4571d1c6d"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Try Catch"
+            },
+            "f8567603-eb70-4681-8192-df0182585f7d": {
+              "id": "f8567603-eb70-4681-8192-df0182585f7d",
+              "type": "log",
+              "selected": false,
+              "x": 40,
+              "y": 355,
+              "ports": [
+                {
+                  "id": "cmpzs4s8u008p356pelo825gr",
+                  "type": "default",
+                  "x": 31.6,
+                  "y": 388.24,
+                  "name": "cmpzs4s8u008q356p5nzlj8m0",
+                  "parentNode": "f8567603-eb70-4681-8192-df0182585f7d",
+                  "links": [
+                    "5d297c27-d3a3-4a09-974a-5ef7e5a1c49e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzs4s8u008r356pva1f45yt",
+                  "type": "default",
+                  "x": 186.4,
+                  "y": 388.24,
+                  "name": "cmpzs4s8u008s356p03s59q3k",
+                  "parentNode": "f8567603-eb70-4681-8192-df0182585f7d",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "messageTransform": "$",
+                "level": "Info",
+                "includeContext": false,
+                "includePayload": true,
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Log"
+            },
+            "35684bed-adf1-4d69-87d2-22d6ff81e595": {
+              "id": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+              "type": "response",
+              "selected": false,
+              "x": 440,
+              "y": 700,
+              "ports": [
+                {
+                  "id": "cmpzs554a0090356p69lmzxlj",
+                  "type": "default",
+                  "x": 431.6,
+                  "y": 731.73,
+                  "name": "cmpzs554a0091356p2akna3jb",
+                  "parentNode": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+                  "links": [
+                    "32355967-ea6f-4265-a70f-f2d0218986fa",
+                    "973edfe1-27b3-4fe0-9b23-d5f2ca922eba"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmpzs554a0092356p1oyuam3j",
+                  "type": "default",
+                  "x": 586.4,
+                  "y": 731.73,
+                  "name": "cmpzs554a0093356pl8r6877g",
+                  "parentNode": "35684bed-adf1-4d69-87d2-22d6ff81e595",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "627445fc-8329-44c1-a1ff-7fe4571d1c6d": {
+              "id": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+              "type": "switch",
+              "selected": false,
+              "x": 240,
+              "y": 410,
+              "ports": [
+                {
+                  "id": "cmpzs5ju3009i356p742y39ig",
+                  "type": "default",
+                  "x": 231.6,
+                  "y": 441.73,
+                  "name": "cmpzs5ju3009j356pk31zvi8p",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "819124e9-a0f4-44b5-b38b-2d11fe8ae69e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzs5tfr009v356p7snnl0i7",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 466.89,
+                  "name": "cmpzs5tfr009w356pmm9hcoay",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "2a45a6cd-7674-4542-b67d-dfed80da04eb"
+                  ],
+                  "in": false,
+                  "groupName": "Receiving",
+                  "groupIndex": 1,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmpzs5tki009y356pmtfpk3uj",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 492.05,
+                  "name": "cmpzs5tki009z356prxyvy6iq",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "e7f5a002-473b-4027-a3cc-727fd65a6295"
+                  ],
+                  "in": false,
+                  "groupName": "Shipping",
+                  "groupIndex": 2,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmpzs5uki00a1356pedn2d06r",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 517.21,
+                  "name": "cmpzs5uki00a2356pfljzrope",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "6a08056a-61b8-49ce-b49e-e771a7734ef7"
+                  ],
+                  "in": false,
+                  "groupName": "Inventory",
+                  "groupIndex": 3,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmpzs5uwh00a4356pmw8fxtpn",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 542.37,
+                  "name": "cmpzs5uwh00a5356p12boqzc7",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "e6ea306f-d643-4f09-9200-4fecb08ee077"
+                  ],
+                  "in": false,
+                  "groupName": "Cycle Count",
+                  "groupIndex": 4,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmpzs5v7g00a7356pl7cla8ek",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 567.53,
+                  "name": "cmpzs5v7g00a8356pkuedtb6v",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "973edfe1-27b3-4fe0-9b23-d5f2ca922eba"
+                  ],
+                  "in": false,
+                  "groupName": "Error",
+                  "groupIndex": 5,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmq9u56rx03hd356p1qsaygli",
+                  "type": "default",
+                  "x": 386.4,
+                  "y": 441.73,
+                  "name": "cmq9u56rx03he356p7uhuoc8k",
+                  "parentNode": "627445fc-8329-44c1-a1ff-7fe4571d1c6d",
+                  "links": [
+                    "5785fbda-3b5e-448b-8b14-854df0c0251d"
+                  ],
+                  "in": false,
+                  "groupName": "Overview",
+                  "groupIndex": 0,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                }
+              ],
+              "data": {
+                "branches": [
+                  {
+                    "name": "Overview",
+                    "transform": "$.tab = \"overview\"",
+                    "nextNodes": [
+                      "15cbda77-b7f4-441a-b4f0-63e3abd4f35d"
+                    ]
+                  },
+                  {
+                    "name": "Receiving",
+                    "transform": "$.tab = \"receiving\"",
+                    "nextNodes": [
+                      "92435866-77ec-4109-8c74-73012e339f02"
+                    ]
+                  },
+                  {
+                    "name": "Shipping",
+                    "transform": "$.tab = \"shipping\"",
+                    "nextNodes": [
+                      "6566e41a-c9d5-4456-8792-f4466dc72a48"
+                    ]
+                  },
+                  {
+                    "name": "Inventory",
+                    "transform": "$.tab = \"inventory\"",
+                    "nextNodes": [
+                      "73c8210c-7fbc-423f-b38a-1d1a7c7466ef"
+                    ]
+                  },
+                  {
+                    "name": "Cycle Count",
+                    "transform": "$.tab = \"cyclecount\"",
+                    "nextNodes": [
+                      "6e2a2bb8-9985-444b-9b81-6ebb599f4b60"
+                    ]
+                  },
+                  {
+                    "name": "Error",
+                    "transform": "true",
+                    "nextNodes": [
+                      "35684bed-adf1-4d69-87d2-22d6ff81e595"
+                    ]
+                  }
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Route"
+            },
+            "92435866-77ec-4109-8c74-73012e339f02": {
+              "id": "92435866-77ec-4109-8c74-73012e339f02",
+              "type": "transform",
+              "selected": false,
+              "x": 465,
+              "y": 405,
+              "ports": [
+                {
+                  "id": "cmpzs76f600c7356ptzw2mrd1",
+                  "type": "default",
+                  "x": 456.6,
+                  "y": 436.73,
+                  "name": "cmpzs76f600c8356pz0nukk0u",
+                  "parentNode": "92435866-77ec-4109-8c74-73012e339f02",
+                  "links": [
+                    "2a45a6cd-7674-4542-b67d-dfed80da04eb"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzs76f700c9356peojfvbva",
+                  "type": "default",
+                  "x": 611.4,
+                  "y": 436.73,
+                  "name": "cmpzs76f700ca356pbnnz6mh4",
+                  "parentNode": "92435866-77ec-4109-8c74-73012e339f02",
+                  "links": [
+                    "3050f5ab-3fae-4f26-8fce-6dd76b1d5c4e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $startOfDay := $tz = \"UTC\" ? $moment().utc().startOf('day').format() : $moment().tz($tz).startOf('day').format();\n  $endOfDay := $tz = \"UTC\" ? $moment().utc().endOf('day').format() : $moment().tz($tz).endOf('day').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"startOfDay\": $startOfDay, \"endOfDay\": $endOfDay\n  }\n)",
+                "nextNodes": [
+                  "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "RCV — Read Filters"
+            },
+            "49fbb6c6-b6f1-432a-bbc1-52c125069686": {
+              "id": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+              "type": "transform",
+              "selected": false,
+              "x": 1050,
+              "y": 405,
+              "ports": [
+                {
+                  "id": "cmpzsaijv00hl356pn7uyalk0",
+                  "type": "default",
+                  "x": 1041.6,
+                  "y": 436.73,
+                  "name": "cmpzsaijv00hm356pls2ynsfe",
+                  "parentNode": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+                  "links": [
+                    "4da23103-bfe3-4fe1-b8d5-8708f07f9ceb"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzsaijv00hn356ptc7b3voj",
+                  "type": "default",
+                  "x": 1210.45,
+                  "y": 436.73,
+                  "name": "cmpzsaijv00ho356p9bpvsgsr",
+                  "parentNode": "49fbb6c6-b6f1-432a-bbc1-52c125069686",
+                  "links": [
+                    "9a56d3a6-daeb-4eb9-90ea-f14bac4e8f81"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $linesReceivedToday := $.linesReceivedToday.total;\n  $linesReceivedMonth := $.linesReceivedMonth.total;\n  $pendingReceipts    := $.pendingReceipts.total;\n  $pendingLines       := $.pendingLines.total;\n\n  $supplierNames := $.topSupplierLines.edges.node.receipt.order.businessPartner.name;\n  $supplierCounts := $supplierNames ~> $reduce(function($acc, $name) {\n    $name ? $merge([$acc, {$name: ($lookup($acc, $name) ? $lookup($acc, $name) : 0) + 1}]) : $acc\n  }, {});\n  $topSupplier := $count($keys($supplierCounts)) > 0 ?\n    ($keys($supplierCounts) ~> $reduce(function($best, $name) {\n      $lookup($supplierCounts, $name) > $lookup($supplierCounts, $best) ? $name : $best\n    })) : \"—\";\n\n  $pendingColor := $pendingReceipts = 0 ? \"#1D9E7555\" : ($pendingReceipts <= 10 ? \"#F5C51855\" : \"#E5393555\");\n  $pendingLinesColor := $pendingLines = 0 ? \"#1D9E7555\" : ($pendingLines <= 20 ? \"#F5C51855\" : \"#E5393555\");\n\n  {\n    \"rcv\": {\n      \"linesReceivedToday\":      $string($linesReceivedToday),\n      \"linesReceivedMonth\":      $string($linesReceivedMonth),\n      \"pendingReceipts\":         $string($pendingReceipts),\n      \"pendingLines\":            $string($pendingLines),\n      \"topSupplier\":             $topSupplier,\n      \"linesReceivedTodayColor\": $linesReceivedToday > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"linesReceivedMonthColor\": $linesReceivedMonth > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"pendingReceiptsColor\":    $pendingColor,\n      \"pendingLinesColor\":       $pendingLinesColor,\n      \"topSupplierColor\":        \"#534AB755\"\n    }\n  }\n)",
+                "nextNodes": [
+                  "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "RCV — Set KPI Context"
+            },
+            "a8bab8c4-6d1b-4b13-b4ad-054080b140e6": {
+              "id": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+              "type": "response",
+              "selected": false,
+              "x": 1325,
+              "y": 510,
+              "ports": [
+                {
+                  "id": "cmpzsb3ej00i8356pqyq2ief0",
+                  "type": "default",
+                  "x": 1316.6,
+                  "y": 541.73,
+                  "name": "cmpzsb3ej00i9356pn066pwz2",
+                  "parentNode": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+                  "links": [
+                    "9a56d3a6-daeb-4eb9-90ea-f14bac4e8f81",
+                    "a2a68f54-7188-4620-bb60-b71a8361ad50",
+                    "e1892bcc-0711-4b55-8694-e5a1861036b3",
+                    "c14b460b-56f3-4608-950f-fb765637d8c9",
+                    "84c909fc-e71a-4594-94eb-2881f64b11b4"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmpzsb3ej00ia356pymxo9hxs",
+                  "type": "default",
+                  "x": 1471.4,
+                  "y": 541.73,
+                  "name": "cmpzsb3ej00ib356pepculj88",
+                  "parentNode": "a8bab8c4-6d1b-4b13-b4ad-054080b140e6",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "98c8f9ef-debd-46d8-951f-cc201994d664": {
+              "id": "98c8f9ef-debd-46d8-951f-cc201994d664",
+              "type": "query",
+              "selected": false,
+              "x": 860,
+              "y": 405,
+              "ports": [
+                {
+                  "id": "cmpzss2zz01en356pbwanjlki",
+                  "type": "default",
+                  "x": 851.6,
+                  "y": 436.73,
+                  "name": "cmpzss2zz01eo356p30d1qr1m",
+                  "parentNode": "98c8f9ef-debd-46d8-951f-cc201994d664",
+                  "links": [
+                    "57862ca7-2336-4edd-a52d-b6f9df1a60aa"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzss2zz01ep356pxj80pvo7",
+                  "type": "default",
+                  "x": 1006.4,
+                  "y": 436.73,
+                  "name": "cmpzss2zz01eq356pefvxz0m7",
+                  "parentNode": "98c8f9ef-debd-46d8-951f-cc201994d664",
+                  "links": [
+                    "4da23103-bfe3-4fe1-b8d5-8708f07f9ceb"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"sd\":$.startOfDay,\"ed\":$.endOfDay}",
+                "query": "query RCVKPIs(\n  $df: DateTime $dt: DateTime\n  $sd: DateTime $ed: DateTime\n) {\n  linesReceivedToday: receiptLine(where: {_and: [{createdAt:{_gte:$sd}}, {createdAt:{_lte:$ed}}]}) { total }\n  linesReceivedMonth: receiptLine(where: {_and: [{createdAt:{_gte:$df}}, {createdAt:{_lte:$dt}}]}) { total }\n  pendingReceipts: receipt(where: {receiptStatus:{id:{_eq:\"pendingConfirmation\"}}}) { total }\n  pendingLines: receiptLine(where: {receiptStatus:{id:{_eq:\"pendingConfirmation\"}}}) { total }\n  topSupplierLines: receiptLine(\n    where: {\n      _and: [\n        { createdAt: { _gte: $df } }\n        { createdAt: { _lte: $dt } }\n      ]\n    }\n    first: 1000\n    orderBy: [{ field: createdAt, direction: desc }]\n  ) {\n    edges {\n      node {\n        receipt {\n          order {\n            businessPartner {\n              name\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "49fbb6c6-b6f1-432a-bbc1-52c125069686"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "RCV — All KPIs"
+            },
+            "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f": {
+              "id": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 660,
+              "y": 405,
+              "ports": [
+                {
+                  "id": "cmpzuda4r01us356pmylujcuq",
+                  "type": "default",
+                  "x": 651.6,
+                  "y": 436.73,
+                  "name": "cmpzuda4r01ut356prpnjh57h",
+                  "parentNode": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+                  "links": [
+                    "3050f5ab-3fae-4f26-8fce-6dd76b1d5c4e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzuda4r01uu356p6y3knz53",
+                  "type": "default",
+                  "x": 806.4,
+                  "y": 436.73,
+                  "name": "cmpzuda4r01uv356pl65wk18f",
+                  "parentNode": "02ff6c96-9a14-4fe0-9eef-5a88e6749f4f",
+                  "links": [
+                    "57862ca7-2336-4edd-a52d-b6f9df1a60aa"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "98c8f9ef-debd-46d8-951f-cc201994d664"
+                ],
+                "transform": "$"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "RCV - Context"
+            },
+            "6566e41a-c9d5-4456-8792-f4466dc72a48": {
+              "id": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+              "type": "transform",
+              "selected": false,
+              "x": 465,
+              "y": 465,
+              "ports": [
+                {
+                  "id": "cmpzwjp0d031h356pld65z43b",
+                  "type": "default",
+                  "x": 456.6,
+                  "y": 496.73,
+                  "name": "cmpzwjp0d031i356p7ccxf8sw",
+                  "parentNode": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+                  "links": [
+                    "e7f5a002-473b-4027-a3cc-727fd65a6295"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwjp0d031j356piwrawfqr",
+                  "type": "default",
+                  "x": 611.4,
+                  "y": 496.73,
+                  "name": "cmpzwjp0d031k356pi2bzmf6m",
+                  "parentNode": "6566e41a-c9d5-4456-8792-f4466dc72a48",
+                  "links": [
+                    "66ab073a-fef3-4910-8858-d9616af59b8c"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  $startOfDay := $tz = \"UTC\" ? $moment().utc().startOf('day').format() : $moment().tz($tz).startOf('day').format();\n  $endOfDay := $tz = \"UTC\" ? $moment().utc().endOf('day').format() : $moment().tz($tz).endOf('day').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"startOfDay\": $startOfDay, \"endOfDay\": $endOfDay\n  }\n)",
+                "nextNodes": [
+                  "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "SHIP — Read Filters"
+            },
+            "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd": {
+              "id": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 660,
+              "y": 465,
+              "ports": [
+                {
+                  "id": "cmpzwl87v033d356ponsq2bx2",
+                  "type": "default",
+                  "x": 651.6,
+                  "y": 496.73,
+                  "name": "cmpzwl87v033e356pr74n56it",
+                  "parentNode": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+                  "links": [
+                    "66ab073a-fef3-4910-8858-d9616af59b8c"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwl87v033f356pokz6z0wp",
+                  "type": "default",
+                  "x": 806.4,
+                  "y": 496.73,
+                  "name": "cmpzwl87v033g356pj8cdl7hd",
+                  "parentNode": "7d03ee09-1f7c-4eb8-a1f7-2328525a57cd",
+                  "links": [
+                    "a6364fb7-1223-434a-b16b-ba24c67d9666"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "542f7681-f1da-4b99-b16b-58fe45d2cc8b"
+                ],
+                "transform": "$"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "SHIP - Context"
+            },
+            "73c8210c-7fbc-423f-b38a-1d1a7c7466ef": {
+              "id": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+              "type": "transform",
+              "selected": false,
+              "x": 465,
+              "y": 535,
+              "ports": [
+                {
+                  "id": "cmpzwle4c033t356pgmjn15ch",
+                  "type": "default",
+                  "x": 456.6,
+                  "y": 566.73,
+                  "name": "cmpzwle4c033u356p9h6bvrhp",
+                  "parentNode": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+                  "links": [
+                    "6a08056a-61b8-49ce-b49e-e771a7734ef7"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwle4c033v356pw78n4hkk",
+                  "type": "default",
+                  "x": 611.4,
+                  "y": 566.73,
+                  "name": "cmpzwle4c033w356pad4oy37b",
+                  "parentNode": "73c8210c-7fbc-423f-b38a-1d1a7c7466ef",
+                  "links": [
+                    "9541124c-9ce1-4fdc-b7ee-5773c9d00d73"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $exp7 := $tz = \"UTC\" ? $moment().utc().add(7,'days').endOf('day').format() : $moment().tz($tz).add(7,'days').endOf('day').format();\n  $exp30 := $tz = \"UTC\" ? $moment().utc().add(30,'days').endOf('day').format() : $moment().tz($tz).add(30,'days').endOf('day').format();\n  { \"now\": $now, \"exp7\": $exp7, \"exp30\": $exp30 }\n)",
+                "nextNodes": [
+                  "b1e32dae-398c-4325-aedb-8dc3f8961e01"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "INV — Read Filters"
+            },
+            "6e2a2bb8-9985-444b-9b81-6ebb599f4b60": {
+              "id": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+              "type": "transform",
+              "selected": false,
+              "x": 465,
+              "y": 600,
+              "ports": [
+                {
+                  "id": "cmpzwleap0345356phmthwujq",
+                  "type": "default",
+                  "x": 456.6,
+                  "y": 631.73,
+                  "name": "cmpzwleap0346356p411dw3wc",
+                  "parentNode": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+                  "links": [
+                    "e6ea306f-d643-4f09-9200-4fecb08ee077"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwleap0347356ps7dnzlyk",
+                  "type": "default",
+                  "x": 611.4,
+                  "y": 631.73,
+                  "name": "cmpzwleap0348356p3okk5jjg",
+                  "parentNode": "6e2a2bb8-9985-444b-9b81-6ebb599f4b60",
+                  "links": [
+                    "37930e8a-0ecc-4828-b5e2-dc8a86ef80ce"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $endOfMonth := $tz = \"UTC\" ? $moment().utc().endOf('month').format() : $moment().tz($tz).endOf('month').format();\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"now\": $now, \"endOfMonth\": $endOfMonth\n  }\n)",
+                "nextNodes": [
+                  "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "CC — Read Filters"
+            },
+            "b1e32dae-398c-4325-aedb-8dc3f8961e01": {
+              "id": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 660,
+              "y": 535,
+              "ports": [
+                {
+                  "id": "cmpzwmll0035n356pmhmieo3i",
+                  "type": "default",
+                  "x": 651.6,
+                  "y": 566.73,
+                  "name": "cmpzwmll0035o356pcwvwk7np",
+                  "parentNode": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+                  "links": [
+                    "9541124c-9ce1-4fdc-b7ee-5773c9d00d73"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwmll0035p356pvd7b62ap",
+                  "type": "default",
+                  "x": 806.4,
+                  "y": 566.73,
+                  "name": "cmpzwmll0035q356pjqvzz2hp",
+                  "parentNode": "b1e32dae-398c-4325-aedb-8dc3f8961e01",
+                  "links": [
+                    "a1da0818-a988-40a1-aa8a-dbdd3feb42e3"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "ff7dadac-1a94-47e4-ad52-30fbc49e0609"
+                ],
+                "transform": "$"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "INV - Context"
+            },
+            "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd": {
+              "id": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 660,
+              "y": 600,
+              "ports": [
+                {
+                  "id": "cmpzwmlzu035z356pjzi2flw0",
+                  "type": "default",
+                  "x": 651.6,
+                  "y": 631.73,
+                  "name": "cmpzwmlzu0360356pu9s3wfmd",
+                  "parentNode": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+                  "links": [
+                    "37930e8a-0ecc-4828-b5e2-dc8a86ef80ce"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwmlzu0361356pvlyp5fvh",
+                  "type": "default",
+                  "x": 806.4,
+                  "y": 631.73,
+                  "name": "cmpzwmlzu0362356p8hqs8bgl",
+                  "parentNode": "06ed39f9-2aff-4e6f-93c0-d3547f0a57bd",
+                  "links": [
+                    "59f4fdca-59de-4d17-bc53-a72bf4fc1e20"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "3153fc30-65b1-44da-ae9c-1ecc5d453f8f"
+                ],
+                "transform": "$"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "CC - Context"
+            },
+            "542f7681-f1da-4b99-b16b-58fe45d2cc8b": {
+              "id": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+              "type": "query",
+              "selected": true,
+              "x": 860,
+              "y": 465,
+              "ports": [
+                {
+                  "id": "cmpzwnoi403dr356p7m730bev",
+                  "type": "default",
+                  "x": 851.6,
+                  "y": 496.73,
+                  "name": "cmpzwnoi403ds356ppoc2vmgt",
+                  "parentNode": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+                  "links": [
+                    "a6364fb7-1223-434a-b16b-ba24c67d9666"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwnoi403dt356pxxc5o8mj",
+                  "type": "default",
+                  "x": 1006.4,
+                  "y": 496.73,
+                  "name": "cmpzwnoi403du356pzqypj0vi",
+                  "parentNode": "542f7681-f1da-4b99-b16b-58fe45d2cc8b",
+                  "links": [
+                    "9f204dda-f188-4b26-8f0c-f13ef8aa0376"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"sd\":$.startOfDay,\"ed\":$.endOfDay}",
+                "query": "query SHIPKPIs(\n  $df: DateTime $dt: DateTime $dfp: DateTime $dtp: DateTime\n  $sd: DateTime $ed: DateTime\n) {\n  shippedCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shippedPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  shortCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shortPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  activeLoads: load(where: {_and:[{active:{_eq:true}},{loadStatus:{id:{_in:[\"new\",\"packed\",\"picked\"]}}}]}) { total }\n  departingToday: load(where: {_and: [{loadStatus:{id:{_in:[\"new\",\"packed\",\"picked\"]}}},{scheduledDepartAt:{_gte:$sd}},{scheduledDepartAt:{_lte:$ed}}]}) { total }\n  shippedToday: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$sd}},{departAt:{_lte:$ed}}]}) { total }\n}",
+                "nextNodes": [
+                  "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "SHIP - All KPIs"
+            },
+            "ff7dadac-1a94-47e4-ad52-30fbc49e0609": {
+              "id": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+              "type": "query",
+              "selected": false,
+              "x": 860,
+              "y": 535,
+              "ports": [
+                {
+                  "id": "cmpzwoo8703f5356p1xeev7nx",
+                  "type": "default",
+                  "x": 851.6,
+                  "y": 566.73,
+                  "name": "cmpzwoo8703f6356pzstof25q",
+                  "parentNode": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+                  "links": [
+                    "a1da0818-a988-40a1-aa8a-dbdd3feb42e3"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwoo8703f7356pjrxicd17",
+                  "type": "default",
+                  "x": 1006.4,
+                  "y": 566.73,
+                  "name": "cmpzwoo8703f8356prjcx7dvx",
+                  "parentNode": "ff7dadac-1a94-47e4-ad52-30fbc49e0609",
+                  "links": [
+                    "936cce02-1a2d-466e-a8b9-44ce92a9ae3e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\"now\":$.now,\"exp7\":$.exp7,\"exp30\":$.exp30}",
+                "query": "query INVKPIs($now: DateTime, $exp7: DateTime, $exp30: DateTime) {\n  totalLots: lot { total }\n  expiring7: lot(where: {_and:[{expiresAt:{_gte:$now}},{expiresAt:{_lte:$exp7}},{expiresAt:{_isNull:false}}]}) { total }\n  expiring30: lot(where: {_and:[{expiresAt:{_gte:$now}},{expiresAt:{_lte:$exp30}},{expiresAt:{_isNull:false}}]}) { total }\n  onHold: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_in:[\"hold\",\"qcHold\",\"qcInspect\",\"damaged\",\"mrb\"]}}}]}) { total }\n  activeInventory: inventory(where: {active:{_eq:true}}) { total }\n  damagedMrb: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_in:[\"damaged\",\"mrb\"]}}}]}) { total }\n  lostInventory: inventory(where: {_and:[{active:{_eq:true}},{inventoryStatus:{id:{_eq:\"lost\"}}}]}) { total }\n}",
+                "nextNodes": [
+                  "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "INV - All KPIs"
+            },
+            "3153fc30-65b1-44da-ae9c-1ecc5d453f8f": {
+              "id": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+              "type": "query",
+              "selected": false,
+              "x": 860,
+              "y": 600,
+              "ports": [
+                {
+                  "id": "cmpzwp8a703g6356p5lgixuwj",
+                  "type": "default",
+                  "x": 851.6,
+                  "y": 631.73,
+                  "name": "cmpzwp8a703g7356ptwhtu9a9",
+                  "parentNode": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+                  "links": [
+                    "59f4fdca-59de-4d17-bc53-a72bf4fc1e20"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwp8a703g8356p40mbsy4i",
+                  "type": "default",
+                  "x": 1006.4,
+                  "y": 631.73,
+                  "name": "cmpzwp8a703g9356pocc12c1q",
+                  "parentNode": "3153fc30-65b1-44da-ae9c-1ecc5d453f8f",
+                  "links": [
+                    "de06b4ba-2dbd-47d1-9cad-d92a65e30a5a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"now\":$.now}",
+                "query": "query CCKPIs(\n  $df: DateTime\n  $dfp: DateTime\n  $dtp: DateTime\n  $now: DateTime\n  $endOfMonth: DateTime\n) {\n  totalCurr: count(where: {\n    _and: [\n      { scheduledStartAt: { _gte: $df } }\n      { scheduledStartAt: { _lte: $endOfMonth } }\n    ]\n  }) { total }\n  totalPrev: count(where: {\n    _and: [\n      { scheduledStartAt: { _gte: $dfp } }\n      { scheduledStartAt: { _lte: $dtp } }\n    ]\n  }) { total }\n  completedCurr: count(where: {\n    _and: [\n      { completedAt: { _isNull: false } }\n      { completedAt: { _gte: $df } }\n      { completedAt: { _lte: $endOfMonth } }\n    ]\n  }) { total }\n  completedPrev: count(where: {\n    _and: [\n      { completedAt: { _isNull: false } }\n      { completedAt: { _gte: $dfp } }\n      { completedAt: { _lte: $dtp } }\n    ]\n  }) { total }\n  inProgress: count(where: {\n    _and: [\n      { actualStartAt: { _isNull: false } }\n      { completedAt: { _isNull: true } },\n      { countStatusId: { _in: [\"started\"]}}\n    ]\n  }) { total }\n  overdue: count(where: {\n    _and: [\n      { scheduledStartAt: { _lte: $now } }\n      { completedAt: { _isNull: true } }\n      { countStatus: { id: { _in: [\"new\", \"started\", \"countCompleted\"] } } }\n    ]\n  }) { total }\n  financeApproval: count(where: {\n    countStatus: { id: { _eq: \"pendingFinanceApproval\" } }\n  }\n  first: 1) { total }\n}",
+                "nextNodes": [
+                  "4959305c-afc5-44df-b78d-3fa05a0f4278"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "CC - All KPIs"
+            },
+            "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3": {
+              "id": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+              "type": "transform",
+              "selected": false,
+              "x": 1050,
+              "y": 465,
+              "ports": [
+                {
+                  "id": "cmpzwqf0003hp356p4geeej1n",
+                  "type": "default",
+                  "x": 1041.6,
+                  "y": 496.73,
+                  "name": "cmpzwqf0003hq356pbq9hle5z",
+                  "parentNode": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+                  "links": [
+                    "9f204dda-f188-4b26-8f0c-f13ef8aa0376"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwqf0003hr356p5vfoqhop",
+                  "type": "default",
+                  "x": 1214.25,
+                  "y": 496.73,
+                  "name": "cmpzwqf0003hs356pvydmvvz7",
+                  "parentNode": "8fcdebd5-6bb2-4c1f-8ada-55e3ee1841d3",
+                  "links": [
+                    "a2a68f54-7188-4620-bb60-b71a8361ad50"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $shippedCurr  := $.shippedCurr.total;\n  $shortCurr    := $.shortCurr.total;\n  $activeLoads  := $.activeLoads.total;\n  $activeShips  := $.activeShipments.total;\n  $departToday  := $.departingToday.total;\n  $shippedToday := $.shippedToday.total;\n  {\n    \"ship\": {\n      \"shippedMd\":         $string($shippedCurr),\n      \"shortMd\":           $string($shortCurr),\n      \"activeLoadsMd\":     $string($activeLoads),\n      \"activeShipmentsMd\": $string($activeShips),\n      \"departingTodayMd\":  $string($departToday),\n      \"shippedTodayMd\":    $string($shippedToday),\n      \"shippedColor\":      $shippedCurr > 0 ? \"#1D9E7555\" : \"#534AB755\",\n      \"shortColor\":        $shortCurr = 0 ? \"#1D9E7555\" : ($shortCurr <= 3 ? \"#F5C51855\" : \"#E5393555\"),\n      \"activeLoadsColor\":  $activeLoads > 0 ? \"#2196F355\" : \"#534AB755\",\n      \"activeShipmentsColor\": $activeShips > 0 ? \"#2196F355\" : \"#534AB755\",\n      \"departingTodayColor\":  $departToday > 0 ? \"#F5C51855\" : \"#1D9E7555\",\n      \"shippedTodayColor\":    $shippedToday > 0 ? \"#1D9E7555\" : \"#534AB755\"\n    }\n  }\n)",
+                "nextNodes": [
+                  "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "SHIP — Set KPI Context"
+            },
+            "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c": {
+              "id": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+              "type": "transform",
+              "selected": false,
+              "x": 1050,
+              "y": 535,
+              "ports": [
+                {
+                  "id": "cmpzwss2j03im356p1tz3zq9n",
+                  "type": "default",
+                  "x": 1041.6,
+                  "y": 566.73,
+                  "name": "cmpzwss2j03in356p3uy06x1b",
+                  "parentNode": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+                  "links": [
+                    "936cce02-1a2d-466e-a8b9-44ce92a9ae3e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwss2k03io356ptud7xb9e",
+                  "type": "default",
+                  "x": 1207.07,
+                  "y": 566.73,
+                  "name": "cmpzwss2k03ip356pjgf0rv06",
+                  "parentNode": "e26e80b0-72de-4f2a-a6c5-9e1a3c85383c",
+                  "links": [
+                    "e1892bcc-0711-4b55-8694-e5a1861036b3"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $totalLots := $.totalLots.total;\n  $exp7      := $.expiring7.total;\n  $exp30     := $.expiring30.total;\n  $onHold    := $.onHold.total;\n  $activeInv := $.activeInventory.total;\n  $damaged   := $.damagedMrb.total;\n  $lost := $.lostInventory.total;\n  {\n    \"inv\": {\n      \"totalMd\":     $string($totalLots),\n      \"exp7Md\":      $string($exp7),\n      \"exp30Md\":     $string($exp30),\n      \"holdMd\":      $string($onHold),\n      \"lostMd\": $string($lost),\n      \"damagedMd\":   $string($damaged),\n      \"totalColor\":  \"#534AB755\",\n      \"exp7Color\":   $exp7 = 0 ? \"#1D9E7555\" : ($exp7 <= 5 ? \"#F5C51855\" : \"#E5393555\"),\n      \"exp30Color\":  $exp30 = 0 ? \"#1D9E7555\" : ($exp30 <= 20 ? \"#F5C51855\" : \"#E5393555\"),\n      \"holdColor\":   $onHold = 0 ? \"#1D9E7555\" : ($onHold <= 10 ? \"#F5C51855\" : \"#E5393555\"),\n      \"lostColor\": $lost = 0 ? \"#1D9E7555\" : ($lost <= 5 ? \"#F5C51855\" : \"#E5393555\"),\n      \"damagedColor\":   $damaged = 0 ? \"#1D9E7555\" : ($damaged <= 5 ? \"#F5C51855\" : \"#E5393555\")\n    }\n  }\n)",
+                "nextNodes": [
+                  "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "INV — Set KPI Context"
+            },
+            "4959305c-afc5-44df-b78d-3fa05a0f4278": {
+              "id": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+              "type": "transform",
+              "selected": false,
+              "x": 1050,
+              "y": 600,
+              "ports": [
+                {
+                  "id": "cmpzwss7a03iy356pkv1gb9o3",
+                  "type": "default",
+                  "x": 1041.6,
+                  "y": 631.73,
+                  "name": "cmpzwss7a03iz356p8343wv5c",
+                  "parentNode": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+                  "links": [
+                    "de06b4ba-2dbd-47d1-9cad-d92a65e30a5a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmpzwss7a03j0356ptsanbu7h",
+                  "type": "default",
+                  "x": 1203.1,
+                  "y": 631.73,
+                  "name": "cmpzwss7a03j1356purx019qk",
+                  "parentNode": "4959305c-afc5-44df-b78d-3fa05a0f4278",
+                  "links": [
+                    "c14b460b-56f3-4608-950f-fb765637d8c9"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $totalCurr := $.totalCurr.total;\n  $totalPrev := $.totalPrev.total;\n  $compCurr  := $.completedCurr.total;\n  $inProg    := $.inProgress.total;\n  $overdue   := $.overdue.total;\n  $finance   := $.financeApproval.total;\n  $pending   := $totalCurr - $compCurr - $inProg;\n  $compRate  := $totalCurr > 0 ? $round($compCurr / $totalCurr * 100) : 0;\n  {\n    \"cc\": {\n      \"totalMd\":        $string($totalCurr),\n      \"completedMd\":    $string($compCurr),\n      \"inProgressMd\":   $string($inProg),\n      \"pendingMd\":      $string($finance),\n      \"overdueMd\":      $string($overdue),\n      \"totalColor\":     \"#534AB755\",\n      \"completedColor\": $compRate >= 80 ? \"#1D9E7555\" : ($compRate >= 50 ? \"#F5C51855\" : \"#E5393555\"),\n      \"inProgressColor\":\"#2196F355\",\n      \"pendingColor\":   $finance = 0 ? \"#1D9E7555\" : ($finance <= 3 ? \"#F5C51855\" : \"#E5393555\"),\n      \"overdueColor\":   $overdue = 0 ? \"#1D9E7555\" : ($overdue <= 3 ? \"#F5C51855\" : \"#E5393555\")\n    }\n  }\n)",
+                "nextNodes": [
+                  "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "CC — Set KPI Context"
+            },
+            "37459214-4197-4986-978f-0eb32525f41d": {
+              "id": "37459214-4197-4986-978f-0eb32525f41d",
+              "type": "debugSource",
+              "selected": false,
+              "x": -150,
+              "y": 360,
+              "ports": [
+                {
+                  "id": "cmpzxpe3g03mi356psig9c1z9",
+                  "type": "default",
+                  "x": -3.6,
+                  "y": 391.73,
+                  "name": "cmpzxpe3g03mj356p86alk0ka",
+                  "parentNode": "37459214-4197-4986-978f-0eb32525f41d",
+                  "links": [
+                    "88a90364-2453-4ae8-87a3-966ad1e2f0b3"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "tab": "receiving",
+                  "tz": "UTC"
+                },
+                "nextNodes": [
+                  "f677f5aa-4678-4581-b12c-acae4970c095"
+                ],
+                "context": "EXCLUDED"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Run Here",
+              "note": "Connect this node to the node that errored. Please verify that no destructive actions are ran in the node that errored prior to retrying."
+            },
+            "9c820a62-b945-4428-ac67-a940f277b669": {
+              "id": "9c820a62-b945-4428-ac67-a940f277b669",
+              "type": "debugSource",
+              "selected": false,
+              "x": -170,
+              "y": 295,
+              "ports": [
+                {
+                  "id": "cmpzyqsf804f3356pt0ceuaxm",
+                  "type": "default",
+                  "x": -23.6,
+                  "y": 326.73,
+                  "name": "cmpzyqsf804f4356px1uh1262",
+                  "parentNode": "9c820a62-b945-4428-ac67-a940f277b669",
+                  "links": [
+                    "a2226047-c1ed-4c47-accf-fca8eae11828"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "tab": "cyclecount",
+                  "tz": "UTC"
+                },
+                "nextNodes": [
+                  "f677f5aa-4678-4581-b12c-acae4970c095"
+                ],
+                "context": {}
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Run Here",
+              "note": "Connect this node to the node that errored. Please verify that no destructive actions are ran in the node that errored prior to retrying."
+            },
+            "15cbda77-b7f4-441a-b4f0-63e3abd4f35d": {
+              "id": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+              "type": "transform",
+              "selected": false,
+              "x": 465,
+              "y": 340,
+              "ports": [
+                {
+                  "id": "cmq9u65mj03i8356p5d47adac",
+                  "type": "default",
+                  "x": 456.6,
+                  "y": 371.73,
+                  "name": "cmq9u65mk03i9356py5qdgmvx",
+                  "parentNode": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+                  "links": [
+                    "5785fbda-3b5e-448b-8b14-854df0c0251d"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmq9u65mk03ia356p9grpv3zg",
+                  "type": "default",
+                  "x": 625.32,
+                  "y": 371.73,
+                  "name": "cmq9u65mk03ib356pwa6e6nss",
+                  "parentNode": "15cbda77-b7f4-441a-b4f0-63e3abd4f35d",
+                  "links": [
+                    "e41d52ff-12a0-4701-9cd2-e84d06e34684"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "29fbcb0e-5db9-42be-afa6-7496b1dbead4"
+                ],
+                "transform": "(\n  $tz := ($.tz != null) ? $.tz : \"UTC\";\n  $now := $tz = \"UTC\" ? $moment().utc().format() : $moment().tz($tz).format();\n  $month := $number($substring($now, 5, 2));\n  $year := $number($substring($now, 0, 4));\n  $monthNames := [\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\n                  \"July\",\"August\",\"September\",\"October\",\"November\",\"December\"];\n  $periodLabel := $monthNames[$month - 1] & \" \" & $string($year);\n  $dfCurr := $tz = \"UTC\" ? $moment().utc().startOf('month').format() : $moment().tz($tz).startOf('month').format();\n  $dtCurr := $now;\n  $dfPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').startOf('month').format() : $moment().tz($tz).subtract(1,'month').startOf('month').format();\n  $dtPrev := $tz = \"UTC\" ? $moment().utc().subtract(1,'month').endOf('month').format() : $moment().tz($tz).subtract(1,'month').endOf('month').format();\n  $exp7 := $tz = \"UTC\" ? $moment().utc().add(7,'days').format() : $moment().tz($tz).add(7,'days').format();\n  $exp30 := $tz = \"UTC\" ? $moment().utc().add(30,'days').format() : $moment().tz($tz).add(30,'days').format();\n  {\n    \"dfCurr\": $dfCurr, \"dtCurr\": $dtCurr,\n    \"dfPrev\": $dfPrev, \"dtPrev\": $dtPrev,\n    \"exp7\": $exp7, \"exp30\": $exp30,\n    \"periodLabel\": $periodLabel\n  }\n)"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Overview - Read Filters"
+            },
+            "29fbcb0e-5db9-42be-afa6-7496b1dbead4": {
+              "id": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+              "type": "setContext",
+              "selected": false,
+              "x": 660,
+              "y": 340,
+              "ports": [
+                {
+                  "id": "cmq9ue8r000v3356pvplhgshp",
+                  "type": "default",
+                  "x": 651.6,
+                  "y": 371.73,
+                  "name": "cmq9ue8r000v4356p3ow8cemo",
+                  "parentNode": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+                  "links": [
+                    "e41d52ff-12a0-4701-9cd2-e84d06e34684"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmq9ue8r000v5356pauvx4m32",
+                  "type": "default",
+                  "x": 806.4,
+                  "y": 371.73,
+                  "name": "cmq9ue8r000v6356p5jvlcop5",
+                  "parentNode": "29fbcb0e-5db9-42be-afa6-7496b1dbead4",
+                  "links": [
+                    "ae124c8e-3219-450f-befc-9972434becf8"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "9b078f09-afe8-4077-847a-164421c256f4"
+                ],
+                "transform": "$"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Overview - Context"
+            },
+            "9b078f09-afe8-4077-847a-164421c256f4": {
+              "id": "9b078f09-afe8-4077-847a-164421c256f4",
+              "type": "query",
+              "selected": false,
+              "x": 860,
+              "y": 340,
+              "ports": [
+                {
+                  "id": "cmq9uf3h800xd356p8d0bg1bf",
+                  "type": "default",
+                  "x": 851.6,
+                  "y": 371.73,
+                  "name": "cmq9uf3h800xe356psm4f4fpa",
+                  "parentNode": "9b078f09-afe8-4077-847a-164421c256f4",
+                  "links": [
+                    "ae124c8e-3219-450f-befc-9972434becf8"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmq9uf3h800xf356pep70qkmr",
+                  "type": "default",
+                  "x": 1006.4,
+                  "y": 371.73,
+                  "name": "cmq9uf3h800xg356p3jrv7w4f",
+                  "parentNode": "9b078f09-afe8-4077-847a-164421c256f4",
+                  "links": [
+                    "ac10d1a3-8e31-4507-8376-ffd22e190f76"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\"df\":$.dfCurr,\"dt\":$.dtCurr,\"dfp\":$.dfPrev,\"dtp\":$.dtPrev,\"exp7\":$.exp7,\"exp30\":$.exp30}",
+                "query": "query OVERVIEWKPIs(\n  $df: DateTime $dt: DateTime\n  $dfp: DateTime $dtp: DateTime\n  $exp7: DateTime $exp30: DateTime\n) {\n  ordFulCurr: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{orderStatus:{id:{_eq:\"fulfilled\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  ordTotCurr: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  ordFulPrev: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{orderStatus:{id:{_eq:\"fulfilled\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  ordTotPrev: order(where: {_and: [{active:{_eq:true}},{orderType:{id:{_eq:\"purchase\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  relFulCurr: orderLineRelease(where: {_and: [{active:{_eq:true}},{quantityLeft:{value:{_lte:0}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  relTotCurr: orderLineRelease(where: {_and: [{active:{_eq:true}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  relFulPrev: orderLineRelease(where: {_and: [{active:{_eq:true}},{quantityLeft:{value:{_lte:0}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  relTotPrev: orderLineRelease(where: {_and: [{active:{_eq:true}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  shippedCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shippedPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  shortCurr: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$df}},{departAt:{_lte:$dt}}]}) { total }\n  shortPrev: load(where: {_and: [{loadStatus:{id:{_eq:\"shortShipped\"}}},{departAt:{_gte:$dfp}},{departAt:{_lte:$dtp}}]}) { total }\n  rcvPendCurr: receipt(where: {_and: [{receiptStatus:{id:{_eq:\"pendingConfirmation\"}}},{createdAt:{_gte:$df}},{createdAt:{_lte:$dt}}]}) { total }\n  rcvPendPrev: receipt(where: {_and: [{receiptStatus:{id:{_eq:\"pendingConfirmation\"}}},{createdAt:{_gte:$dfp}},{createdAt:{_lte:$dtp}}]}) { total }\n  expLots7: lot(where: {_and: [{expiresAt:{_gte:$df}},{expiresAt:{_lte:$exp7}},{expiresAt:{_isNull:false}}]}) { total }\n  expLots30: lot(where: {_and: [{expiresAt:{_gte:$df}},{expiresAt:{_lte:$exp30}},{expiresAt:{_isNull:false}}]}) { total }\n}",
+                "nextNodes": [
+                  "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Overview— All KPIs"
+            },
+            "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e": {
+              "id": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+              "type": "transform",
+              "selected": false,
+              "x": 1050,
+              "y": 340,
+              "ports": [
+                {
+                  "id": "cmq9ufr0p00yk356pstc06qr7",
+                  "type": "default",
+                  "x": 1041.6,
+                  "y": 371.73,
+                  "name": "cmq9ufr0p00yl356palzwguak",
+                  "parentNode": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+                  "links": [
+                    "ac10d1a3-8e31-4507-8376-ffd22e190f76"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmq9ufr0p00ym356p13x6uqge",
+                  "type": "default",
+                  "x": 1233.78,
+                  "y": 371.73,
+                  "name": "cmq9ufr0p00yn356pjriw0kvu",
+                  "parentNode": "e8bb286e-64a0-4355-a0fa-d1dbfb8bb56e",
+                  "links": [
+                    "84c909fc-e71a-4594-94eb-2881f64b11b4"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $ordFulCurr  := $.ordFulCurr.total;\n  $ordTotCurr  := $.ordTotCurr.total;\n  $ordFulPrev  := $.ordFulPrev.total;\n  $ordTotPrev  := $.ordTotPrev.total;\n  $relFulCurr  := $.relFulCurr.total;\n  $relTotCurr  := $.relTotCurr.total;\n  $relFulPrev  := $.relFulPrev.total;\n  $relTotPrev  := $.relTotPrev.total;\n  $shippedCurr := $.shippedCurr.total;\n  $shippedPrev := $.shippedPrev.total;\n  $shortCurr   := $.shortCurr.total;\n  $shortPrev   := $.shortPrev.total;\n  $rcvPendCurr := $.rcvPendCurr.total;\n  $rcvPendPrev := $.rcvPendPrev.total;\n  $expLots7    := $.expLots7.total;\n  $expLots30   := $.expLots30.total;\n\n  $trendFn := function($c,$p,$h) {(\n    $d := $c - $p; $pct := $p > 0 ? $round($d/$p*100) : 0;\n    $a := $d > 0 ? \"▲\" : ($d < 0 ? \"▼\" : \"▶\");\n    $pct != 0 ? $a & \" \" & $string($pct < 0 ? -$pct : $pct) & \"%\" : \"▶ 0%\")\n  };\n\n  $fulfillRateCurr := $ordTotCurr > 0 ? $round($ordFulCurr / $ordTotCurr * 100) : 0;\n  $fulfillRatePrev := $ordTotPrev > 0 ? $round($ordFulPrev / $ordTotPrev * 100) : 0;\n  $fillRateCurr    := $relTotCurr > 0 ? $round($relFulCurr / $relTotCurr * 100) : 0;\n  $fillRatePrev    := $relTotPrev > 0 ? $round($relFulPrev / $relTotPrev * 100) : 0;\n\n  $fulfillColor := $fulfillRateCurr >= 75 ? \"#1D9E7555\" : ($fulfillRateCurr >= 50 ? \"#F5C51855\" : \"#E5393555\");\n  $fillColor    := $fillRateCurr >= 90 ? \"#1D9E7555\" : ($fillRateCurr >= 75 ? \"#F5C51855\" : \"#E5393555\");\n  $shipColor    := \"#534AB755\";\n  $shortColor   := $shortCurr = 0 ? \"#1D9E7555\" : ($shortCurr <= 3 ? \"#F5C51855\" : \"#E5393555\");\n  $rcvColor     := $rcvPendCurr = 0 ? \"#1D9E7555\" : ($rcvPendCurr <= 10 ? \"#F5C51855\" : \"#E5393555\");\n  $lotsColor    := $expLots7 = 0 ? \"#1D9E7555\" : ($expLots7 <= 10 ? \"#F5C51855\" : \"#E5393555\");\n\n  $redCount    := $count([$fulfillColor,$fillColor,$shortColor,$rcvColor,$lotsColor][$= \"#E5393555\"]);\n  $yellowCount := $count([$fulfillColor,$fillColor,$shortColor,$rcvColor,$lotsColor][$= \"#F5C51855\"]);\n  $healthStatus := $redCount > 0 ? \"⚠ Critical\" : ($yellowCount > 0 ? \"◆ Needs Attention\" : \"✓ Good\");\n\n  {\n    \"kpi\": {\n      \"fulfillMd\":    $string($fulfillRateCurr) & \"%\",\n      \"fulfillTrend\": $trendFn($fulfillRateCurr, $fulfillRatePrev, true),\n      \"fillMd\":       $string($fillRateCurr) & \"%\",\n      \"fillTrend\":    $trendFn($fillRateCurr, $fillRatePrev, true),\n      \"shipMd\":       $string($shippedCurr),\n      \"shipTrend\":    $trendFn($shippedCurr, $shippedPrev, true),\n      \"shortMd\":      $string($shortCurr),\n      \"shortTrend\":   $trendFn($shortCurr, $shortPrev, false),\n      \"rcvMd\":        $string($rcvPendCurr),\n      \"rcvTrend\":     $trendFn($rcvPendCurr, $rcvPendPrev, false),\n      \"lotsMd\":       $string($expLots7),\n      \"fulfillColor\": $fulfillColor,\n      \"fillColor\":    $fillColor,\n      \"shipColor\":    $shipColor,\n      \"shortColor\":   $shortColor,\n      \"rcvColor\":     $rcvColor,\n      \"lotsColor\":    $lotsColor,\n      \"healthStatus\": $healthStatus,\n      \"currentMonth\": $.periodLabel\n    }\n  }\n)",
+                "nextNodes": [
+                  "a8bab8c4-6d1b-4b13-b4ad-054080b140e6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Overview— Set KPI Context"
+            },
+            "a6cf01c6-bd78-4760-9623-d06b21e2840d": {
+              "id": "a6cf01c6-bd78-4760-9623-d06b21e2840d",
+              "type": "debugSource",
+              "selected": false,
+              "x": -125,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "cmq9uuhof016c356pg0mep1kb",
+                  "type": "default",
+                  "x": 21.4,
+                  "y": 246.73,
+                  "name": "cmq9uuhof016d356phyydp6zg",
+                  "parentNode": "a6cf01c6-bd78-4760-9623-d06b21e2840d",
+                  "links": [
+                    "86992aad-158e-4a79-b095-e44a8e4b4cca"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "tab": "shipping",
+                  "tz": "UTC"
+                },
+                "nextNodes": [
+                  "f677f5aa-4678-4581-b12c-acae4970c095"
+                ],
+                "context": "EXCLUDED"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Run Here",
+              "note": "Connect this node to the node that errored. Please verify that no destructive actions are ran in the node that errored prior to retrying."
+            }
+          }
+        }
+      ],
+      "name": "WMS Dashboard Search v3",
+      "type": "System",
+      "version": "0.0.8",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

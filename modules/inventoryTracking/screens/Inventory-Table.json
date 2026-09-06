@@ -1,0 +1,1669 @@
+{
+  "header": {
+    "id": "inventoryTabel",
+    "name": "Inventory Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrc11dg700ms016u36t416uc",
+    "number": "0.0.10",
+    "description": "Added storage unit filter.",
+    "screenId": "inventoryTabel",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "InventoryTable",
+          "tabTitle": "Inventory Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 9,
+                    "Action Button": 5,
+                    "Form": 1,
+                    "Table": 1,
+                    "Table Column": 19,
+                    "Text": 3,
+                    "Float": 6,
+                    "Select": 9,
+                    "Checkbox": 1,
+                    "Date Range": 2,
+                    "Button Group": 1,
+                    "Cards": 1,
+                    "JSON": 1,
+                    "Resizable Panel": 1,
+                    "Switch": 2,
+                    "Date": 2
+                  },
+                  "module": {
+                    "id": "inventoryTracking",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "Inventory",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "XCVtD-00Re",
+                  "gdhNatSpKU"
+                ],
+                "linkedNodes": {}
+              },
+              "tYcMHjQvRI": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Inventory",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "JGT67YNo3r",
+                "hidden": false,
+                "nodes": [
+                  "7o7XTW3WT0"
+                ],
+                "linkedNodes": {}
+              },
+              "7o7XTW3WT0": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "tYcMHjQvRI",
+                "hidden": false,
+                "nodes": [
+                  "EMkurZ1ySQ",
+                  "zMKn65M1Pc",
+                  "CTdLpY5b49",
+                  "4k4B5DMbus",
+                  "wsaOr8QJyW",
+                  "QfMPGb-yaj",
+                  "dQwQ3w9kch",
+                  "IvsqGqbFVk",
+                  "MlvVtfkc4f",
+                  "LEYfBa0btr",
+                  "iHkj59QabD"
+                ],
+                "linkedNodes": {}
+              },
+              "zMKn65M1Pc": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Serial Number",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "serialNumber",
+                  "field": "serialNumber",
+                  "description": "A unique number identifying this inventory - maybe a Lot or Serial. This will be used to set the Id field - using a system trigger.",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "serialNumber._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "IvsqGqbFVk": {
+                "type": {
+                  "resolvedName": "DateRangeInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "datetimeRange",
+                  "label": "Expires At",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "expiresAt",
+                  "field": "expiresAt",
+                  "description": "expiration date - determined by the shelf life days on the product in fuuz - this is based upon the receipt date typically - although, you can manually set this value in the system as well.",
+                  "element": "DateRangeInput"
+                },
+                "displayName": "Date Range",
+                "custom": {
+                  "elementName": "DateRange1"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "iHkj59QabD": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Work Order Id",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "workOrderId",
+                  "field": "workOrderId",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "workOrderId._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dQwQ3w9kch": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Inventory Status",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "inventoryStatus",
+                  "field": "inventoryStatus",
+                  "description": "",
+                  "element": "SelectInput",
+                  "dataModel": "InventoryStatus",
+                  "labelField": "code",
+                  "labelPath": "code",
+                  "additionalFields": [
+                    "code"
+                  ],
+                  "selectFields": [
+                    "code"
+                  ],
+                  "target": {
+                    "dataPath": "inventoryStatus.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/inventoryStatuses/\" & data.inventoryStatus.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "inventoryStatus.id",
+                      "inventoryStatus.code"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select5"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "LEYfBa0btr": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Process",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "process",
+                  "field": "process",
+                  "description": "",
+                  "element": "SelectInput",
+                  "dataModel": "Process",
+                  "labelField": "code",
+                  "labelPath": "code",
+                  "additionalFields": [
+                    "code"
+                  ],
+                  "selectFields": [
+                    "code"
+                  ],
+                  "target": {
+                    "dataPath": "process.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/processes/\" & data.process.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "process.id",
+                      "process.code"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select7"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wsaOr8QJyW": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Product",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "product",
+                  "field": "product",
+                  "description": "product code- optional - as there maybe times when the product is not setup in Fuuz yet - in those cases, set the extProduct field instead of this one.",
+                  "element": "SelectInput",
+                  "dataModel": "Product",
+                  "labelField": "code",
+                  "labelPath": "code",
+                  "additionalFields": [
+                    "code"
+                  ],
+                  "selectFields": [
+                    "code"
+                  ],
+                  "target": {
+                    "dataPath": "product.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/products/\" & data.product.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "product.id",
+                      "product.code"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select8"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "uaOv6nvY5l": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "EMkurZ1ySQ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5ecIq4UYba": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "createInventoryWidget",
+                      "title": "Create New Inventory",
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Create"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "EMkurZ1ySQ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "UyfK9DeOWh": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Inventory",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 400,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "Inventory Model - Data changes are tracked for 25 Years.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": true
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "gdhNatSpKU",
+                "hidden": false,
+                "nodes": [
+                  "RrAbj1OIWt",
+                  "Eny-aacY5O",
+                  "b25izMTslN",
+                  "9CkgkQ3DLo",
+                  "V1PoZAxHFW",
+                  "cYfuVMQ250",
+                  "__aMe9LI_T",
+                  "J9zRLlrKmc",
+                  "kEqD6mFc49",
+                  "cCUB_NsJlw",
+                  "QphgMG9_CI",
+                  "75zZ4PhKYB",
+                  "qbo4dHMtX6",
+                  "4oscwHgHUW"
+                ],
+                "linkedNodes": {
+                  "Table1Detail": "MDxAQvPLzE"
+                }
+              },
+              "RrAbj1OIWt": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Serial Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "serialNumber",
+                  "dataPath": "serialNumber",
+                  "description": "A unique number identifying this inventory - maybe a Lot or Serial. This will be used to set the Id field - using a system trigger.",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "serialNumber"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "__aMe9LI_T": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Shippable",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "shippable",
+                  "dataPath": "shippable",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn4"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qbo4dHMtX6": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Expires At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "field": "expiresAt",
+                  "dataPath": "expiresAt",
+                  "description": "expiration date - determined by the shelf life days on the product in fuuz - this is based upon the receipt date typically - although, you can manually set this value in the system as well."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn9"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "J9zRLlrKmc": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Work Order Id",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "workOrderId",
+                  "dataPath": "workOrderId",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn10"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "kEqD6mFc49": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Handling Unit",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "handlingUnit.serialNumber",
+                  "dataPath": "handlingUnit.serialNumber",
+                  "description": "Handling Unit number, is a combination of the assigned sequence plus a prefix value.\n\n~~The prefix value is determined by the mixed boolean.~~\n\nHandling Units typically will recieve 1 of 2 prefixes - either designating that the contents are all the same, or they are mixed.",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/handlingUnits/\" & data.handlingUnit.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "handlingUnit.id",
+                      "handlingUnit.serialNumber"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn11"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "b25izMTslN": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Status",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "inventoryStatus.code",
+                  "dataPath": "inventoryStatus.code",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "inventoryStatus.id",
+                      "inventoryStatus.code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn12"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "75zZ4PhKYB": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Lot Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "lot.number",
+                  "dataPath": "lot.number",
+                  "description": "The lot number is unique and required - user generated or from an external system.",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/lots/\" & data.lot.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "lot.id",
+                      "lot.number"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn13"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "V1PoZAxHFW": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Process",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "process.code",
+                  "dataPath": "process.code",
+                  "description": "The descriptor of the inventory process stage.",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/processes/\" & data.process.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "process.id",
+                      "process.code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn14"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9CkgkQ3DLo": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "product.code",
+                  "dataPath": "product.code",
+                  "description": "A human-readable and unique shorthand name for the product",
+                  "query": {
+                    "fields": [
+                      "product.id",
+                      "product.code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn15"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4oscwHgHUW": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "Inventory"
+                },
+                "displayName": "Custom Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "cCUB_NsJlw": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Gross Weight",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "grossWeight",
+                  "description": "gross weight of this inventory - quantity*product.weight + packaging.tareWeight",
+                  "query": {
+                    "fields": [
+                      "grossWeight.value",
+                      "grossWeight.unit.code",
+                      "grossWeight.unit.id"
+                    ]
+                  },
+                  "field": "grossWeight"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn16"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QphgMG9_CI": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Net Weight",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "netWeight",
+                  "description": "net weight should be product.weight*quantity",
+                  "query": {
+                    "fields": [
+                      "netWeight.value",
+                      "netWeight.unit.code",
+                      "netWeight.unit.id"
+                    ]
+                  },
+                  "field": "netWeight"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn17"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "cYfuVMQ250": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "quantity",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "quantity.value",
+                      "quantity.unit.code",
+                      "quantity.unit.id"
+                    ]
+                  },
+                  "field": "quantity"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn18"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gdhNatSpKU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "UyfK9DeOWh"
+                ],
+                "linkedNodes": {}
+              },
+              "EMkurZ1ySQ": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [
+                  "uaOv6nvY5l",
+                  "5ecIq4UYba",
+                  "BQAGmg31Mb"
+                ],
+                "linkedNodes": {}
+              },
+              "Eny-aacY5O": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Storage Unit",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "storageUnit.code",
+                  "description": "",
+                  "query": {},
+                  "field": "storageUnit.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn19"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "BQAGmg31Mb": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) !=  1",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "basicInventoryUpdateWidget",
+                      "title": {
+                        "__transform": "\"Serial: \"  &  $components.Table1.selectedRows.serialNumber"
+                      },
+                      "screenParams": {
+                        "__transform": "{\r\n  \"id\": $components.Table1.selectedRows.id\r\n}",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Update"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Edit button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Edit Button which open form with auto fill.",
+                    "icon": "pencil",
+                    "requiresTable": true
+                  }
+                },
+                "parent": "EMkurZ1ySQ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MDxAQvPLzE": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "overflow-y": "scroll"
+                  },
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Table1Detail"
+                },
+                "parent": "UyfK9DeOWh",
+                "hidden": false,
+                "nodes": [
+                  "8OtgxYVzsX",
+                  "dVmV-GEJcQ"
+                ],
+                "linkedNodes": {}
+              },
+              "TCYJdFtZ_Y": {
+                "type": {
+                  "resolvedName": "Cards"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"documentId\":  {\n        \"_eq\": $parent.data.id\n     }\n  },\n  \"orderBy\":{\n    \"direction\": \"desc\",\n    \"field\": \"updatedAt\"\n  }\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "model": "InventoryDataChange"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "padding": 8,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": true,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "33%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0
+                },
+                "displayName": "Cards",
+                "custom": {
+                  "elementName": "Cards1"
+                },
+                "parent": "dVmV-GEJcQ",
+                "hidden": false,
+                "nodes": [
+                  "X5LzLll9Zr"
+                ],
+                "linkedNodes": {}
+              },
+              "X5LzLll9Zr": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "TCYJdFtZ_Y",
+                "hidden": false,
+                "nodes": [
+                  "LDQYgp3WUn"
+                ],
+                "linkedNodes": {}
+              },
+              "LDQYgp3WUn": {
+                "type": {
+                  "resolvedName": "JSONInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "json",
+                  "label": "Difference",
+                  "showEditor": true,
+                  "formElement": "Cards1",
+                  "dataPath": "difference",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "The difference between the before and after values.",
+                  "field": "difference"
+                },
+                "displayName": "JSON",
+                "custom": {
+                  "elementName": "Json1"
+                },
+                "parent": "X5LzLll9Zr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dVmV-GEJcQ": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "MDxAQvPLzE",
+                "hidden": false,
+                "nodes": [
+                  "TCYJdFtZ_Y"
+                ],
+                "linkedNodes": {}
+              },
+              "aCNlNgIuf6": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "100%",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Inventory Changes",
+                        "type": "header-six",
+                        "depth": 0,
+                        "inlineStyleRanges": [
+                          {
+                            "offset": 0,
+                            "length": 17,
+                            "style": "fontsize-16"
+                          }
+                        ],
+                        "entityRanges": [],
+                        "data": {}
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "8OtgxYVzsX",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8OtgxYVzsX": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "paddingLeft": 8,
+                    "paddingRight": 8
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container7"
+                },
+                "parent": "MDxAQvPLzE",
+                "hidden": false,
+                "nodes": [
+                  "aCNlNgIuf6"
+                ],
+                "linkedNodes": {}
+              },
+              "XCVtD-00Re": {
+                "type": {
+                  "resolvedName": "ResizablePanelLayout"
+                },
+                "isCanvas": true,
+                "props": {
+                  "handle": "right",
+                  "toggleHotkey": "",
+                  "defaultSize": 300,
+                  "axis": false,
+                  "minSize": 0,
+                  "maxSize": 800
+                },
+                "displayName": "Resizable Panel",
+                "custom": {
+                  "elementName": "ResizablePanel1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "JGT67YNo3r"
+                ],
+                "linkedNodes": {}
+              },
+              "JGT67YNo3r": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "FormContainer"
+                },
+                "parent": "XCVtD-00Re",
+                "hidden": false,
+                "nodes": [
+                  "tYcMHjQvRI"
+                ],
+                "linkedNodes": {}
+              },
+              "CTdLpY5b49": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Active",
+                  "formElement": "Form1",
+                  "dataPath": "active",
+                  "description": "",
+                  "field": "active",
+                  "target": {
+                    "dataPath": "active._eq"
+                  },
+                  "defaultValue": true
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4k4B5DMbus": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Shippable",
+                  "dataPath": "shippable",
+                  "description": "",
+                  "field": "shippable",
+                  "target": {
+                    "dataPath": "shippable._eq"
+                  },
+                  "formElement": "Form1",
+                  "defaultValue": true
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch2"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QfMPGb-yaj": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Storage Unit",
+                  "dialogMode": "never",
+                  "multiselect": true,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form1",
+                  "additionalFilter": {
+                    "_and": [
+                      {
+                        "active": {
+                          "_eq": true
+                        }
+                      }
+                    ]
+                  },
+                  "dataPath": "storageUnitId",
+                  "field": "storageUnitId",
+                  "description": "",
+                  "element": "SelectInput",
+                  "dataModel": "StorageUnit",
+                  "labelField": "code",
+                  "labelPath": "code",
+                  "additionalFields": [],
+                  "selectFields": [
+                    "code",
+                    "description"
+                  ],
+                  "target": {
+                    "dataPath": "storageUnitId._in"
+                  },
+                  "predicate": "_in",
+                  "linkTarget": {
+                    "__transform": "\"\""
+                  },
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "orderByField": "id"
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select9"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MlvVtfkc4f": {
+                "type": {
+                  "resolvedName": "DateInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "date",
+                  "label": "Expires At",
+                  "timeOfDay": "now",
+                  "variant": "standard",
+                  "dataPath": "expiresAt",
+                  "description": "expiration date - determined by the shelf life days on the product in fuuz - this is based upon the receipt date typically - although, you can manually set this value in the system as well.",
+                  "field": "expiresAt",
+                  "target": {
+                    "dataPath": "expiresAt._eq"
+                  },
+                  "formElement": "Form1",
+                  "predicate": "_eq"
+                },
+                "displayName": "Date",
+                "custom": {
+                  "elementName": "Date2"
+                },
+                "parent": "7o7XTW3WT0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdroixui2yma07753y4n6m2e",
+      "title": "Inventory",
+      "path": "/inventoryManagement/inventoryTracking/inventory",
+      "moduleId": "inventoryTracking",
+      "screenId": "inventoryTabel",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "api": "application",
+  "modelName": "ModuleGroup",
+  "payload": [
+    {
+      "id": "applications",
+      "name": "Applications",
+      "icon": "sidebar",
+      "description": "Features and functionality related to Fuuz Apps in the platform.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "customerRelationshipManagement",
+      "name": "Customer Relationship Management",
+      "icon": "money-bill",
+      "description": "Functionality around managing customer relationships, such as sales.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "humanCapitalManagement",
+      "name": "Human Capital Management",
+      "icon": "users",
+      "description": "Functionality around managing human capital, such as employees, departments, and positions.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "inventoryManagement",
+      "name": "Inventory Management",
+      "icon": "boxes-stacked",
+      "description": "- **Real-time Inventory Tracking**: Monitors stock levels and item locations.\n- **Cycle Counting**: Regular inventory checks to ensure accuracy.\n- **Lot and Serial Number Tracking**: Manages batches and individual items.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "materialsManagement",
+      "name": "Materials Management",
+      "icon": "boxes",
+      "description": "Functionality around managing handling of physical materials, such as inventory and logistics.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "orderFulfillment",
+      "name": "Order Fulfillment",
+      "icon": "dollar-sign",
+      "description": "- **Order Processing**: Manages picking, packing, and shipping.\n- **Wave Picking**: Groups orders for efficient picking.\n- **Packing and Shipping**: Ensures orders are packed correctly and shipped promptly.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "productDataManagement",
+      "name": "Product Data Management",
+      "icon": "clipboard",
+      "description": "Functionality around managing product data, such as engineering, quality, and materials.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "productionManagement",
+      "name": "Production Management",
+      "icon": "industry-alt",
+      "description": "Functionality around managing production, such as planning and manufacturing.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "receiving",
+      "name": "Receiving",
+      "icon": "hands-holding-diamond",
+      "description": "- **Order Receiving**: Processes incoming shipments.\n- **Quality Control**: Inspects goods upon arrival.\n- **Putaway Management**: Directs items to their storage locations.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "siteManagement",
+      "name": "Site Management",
+      "icon": "industry-windows",
+      "description": "ISA-95 standards recommend a Site -> Area -> Line -> Cell -> Workcenter hierarchy. This module group manages the Site, Area, and Line aspects.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "supplyChainManagement",
+      "name": "Supply Chain Management",
+      "icon": "link",
+      "description": "Functionality around managing supply chains, such as procurement.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "system",
+      "name": "System",
+      "icon": "cog",
+      "description": "Funcitonality that affects behavior system-wide, such as access control, integration, and business intelligence.",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {
+    "insertEarly": true
+  }
+}

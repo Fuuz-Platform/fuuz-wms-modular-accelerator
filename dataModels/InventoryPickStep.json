@@ -1,0 +1,336 @@
+{
+  "header": {
+    "id": "inventoryPickStep",
+    "name": "InventoryPickStep",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmpzhagw300fj015m5mj048j7",
+    "number": "8",
+    "dataModelId": "inventoryPickStep",
+    "modelDefinition": {
+      "name": "InventoryPickStep",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "inventoryTracking",
+            "group": {
+              "id": "inventoryManagement"
+            }
+          },
+          "indices": [
+            {
+              "unique": true,
+              "partialFilterPredicate": {
+                "inventoryId": {
+                  "_gt": ""
+                }
+              },
+              "fields": [
+                "inventoryId",
+                "pickStepId"
+              ]
+            },
+            {
+              "unique": true,
+              "partialFilterPredicate": {
+                "handlingUnitId": {
+                  "_gt": ""
+                }
+              },
+              "fields": [
+                "handlingUnitId",
+                "pickStepId"
+              ]
+            }
+          ],
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          }
+        },
+        "mongo": {
+          "collection": "inventoryPickStep"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "picked",
+          "type": "Boolean",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "packedAt",
+          "description": "",
+          "type": "DateTime",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickedAt",
+          "description": "",
+          "type": "DateTime",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "allocatedQuantity",
+          "type": "Measure",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickStepId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickStep",
+          "description": "",
+          "type": "PickStep!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "pickStepId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "inventoryId",
+          "description": "",
+          "type": "ID",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "inventory",
+          "description": "",
+          "type": "Inventory",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "inventoryId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmpzhagw300fj015m5mj048j7",
+      "dataModelVersion": {
+        "number": "8"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmp2qq2zl016y012daqpz2w82",
+      "dataModelVersion": {
+        "number": "7"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmnrsym4m1foy07753dpb9vko",
+      "dataModelVersion": {
+        "number": "6"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

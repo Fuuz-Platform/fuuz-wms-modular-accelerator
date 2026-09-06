@@ -1,0 +1,181 @@
+{
+  "header": {
+    "id": "orderType",
+    "name": "OrderType",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmf5y2vxp0hq9077523p8glbl",
+    "number": "5",
+    "dataModelId": "orderType",
+    "modelDefinition": {
+      "name": "OrderType",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "orderProcessing",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "editor": {
+            "autosort": true
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    {\r\n      \"id\": $camelCase($after.name)\r\n    }\r\n  ]\r\n)"
+          },
+          "labelField": "name"
+        },
+        "mongo": {
+          "collection": "orderType"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "name",
+          "type": "String!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "usable",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orders",
+          "description": "",
+          "type": "[Order!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "orderTypeId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "setup"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmf5y2vxp0hq9077523p8glbl",
+      "dataModelVersion": {
+        "number": "5"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmdxgjonp3pt40775d28zh8u2",
+      "dataModelVersion": {
+        "number": "4"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

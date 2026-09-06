@@ -1,0 +1,197 @@
+{
+  "header": {
+    "id": "pickStatus",
+    "name": "PickStatus",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmmkpar2h0def077536gh4nk8",
+    "number": "2",
+    "dataModelId": "pickStatus",
+    "modelDefinition": {
+      "name": "PickStatus",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "picking",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    { \"id\": $camelCase($after.name) }\r\n  ]\r\n)"
+          },
+          "editor": {
+            "autosort": true
+          }
+        },
+        "mongo": {
+          "collection": "pickStatus"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "usable",
+          "type": "Boolean",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "picks",
+          "description": "",
+          "type": "[Pick!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "pickStatusId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "setup"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmmkpar2h0def077536gh4nk8",
+      "dataModelVersion": {
+        "number": "2"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

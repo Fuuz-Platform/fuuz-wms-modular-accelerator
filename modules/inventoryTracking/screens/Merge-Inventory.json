@@ -1,0 +1,1608 @@
+{
+  "header": {
+    "id": "mergeInventory",
+    "name": "Merge Inventory",
+    "description": "Merge inventory from a source to a destination.\n\nEither provide a quantity to merge or select \"Merge All\" to transfer the entire source quantity to the destination, soft-deleting the source inventory in the process.",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdzgim1k4k2u0775a060hdme",
+    "number": "0.0.4",
+    "description": "",
+    "screenId": "mergeInventory",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": -15,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "background": "light",
+                  "intervals": [],
+                  "screenDataFlowIds": [
+                    "mergeInventoryPostSubmitWeb"
+                  ]
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Action Button": 8,
+                    "Container": 75,
+                    "Text": 21,
+                    "Scan": 10,
+                    "Float": 3,
+                    "Switch": 11,
+                    "Form": 4,
+                    "Select": 3,
+                    "Cards": 1,
+                    "Icon": 2,
+                    "Resizable Panel": 1,
+                    "Measure": 2,
+                    "JSON": 2,
+                    "Ratio Measure": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "e8qUop7TXP",
+                  "ovQYh1T7vb"
+                ],
+                "linkedNodes": {}
+              },
+              "e8qUop7TXP": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "50",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {
+                    "borderMode": "full",
+                    "border": "0px undefined ",
+                    "borderLeft": "0px undefined ",
+                    "borderTop": "0px undefined ",
+                    "borderRight": "0px undefined ",
+                    "borderBottom": "0px undefined "
+                  },
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "accent"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeInventoryHeader"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "IQkAFiBubU"
+                ],
+                "linkedNodes": {}
+              },
+              "IQkAFiBubU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "auto",
+                  "height": "50",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "margin": "8px"
+                  },
+                  "columns": 2
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container39"
+                },
+                "parent": "e8qUop7TXP",
+                "hidden": false,
+                "nodes": [
+                  "mmvhBWXwFz"
+                ],
+                "linkedNodes": {}
+              },
+              "mmvhBWXwFz": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Merge Inventory",
+                        "type": "header-one",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextMergeInventoryTitle"
+                },
+                "parent": "IQkAFiBubU",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ovQYh1T7vb": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "max-width": "100rem",
+                    "margin-left": "auto",
+                    "margin-right": "auto"
+                  },
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeInventoryMainContent"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "dEpwhhOP9C"
+                ],
+                "linkedNodes": {}
+              },
+              "dEpwhhOP9C": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id",
+                      "sourceQtyAvailable",
+                      "destinationInventory",
+                      "currentDestinationQty",
+                      "newDestinationQty",
+                      "mergeQty",
+                      "mergeQtyUnits",
+                      "mergeAll"
+                    ],
+                    "disableDataChangeIndicator": true,
+                    "model": "Inventory",
+                    "readPreference": "primaryPreferred"
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "FormMergeInventory"
+                },
+                "parent": "ovQYh1T7vb",
+                "hidden": false,
+                "nodes": [
+                  "IpH0Xt1ghY"
+                ],
+                "linkedNodes": {}
+              },
+              "IpH0Xt1ghY": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeInventoryFormContent"
+                },
+                "parent": "dEpwhhOP9C",
+                "hidden": false,
+                "nodes": [
+                  "Md7aXnsY00",
+                  "tsFPlgVFQi",
+                  "QNsmKW7s5K",
+                  "z58oPbKGLn",
+                  "KEX9RbwkAM",
+                  "k6EauIzZuM",
+                  "tv7oV4Sbc4",
+                  "TESO8yDJ-3",
+                  "L3bl7VoRJB",
+                  "VpME2nIU2i",
+                  "Qkqo2m8L3V"
+                ],
+                "linkedNodes": {}
+              },
+              "TESO8yDJ-3": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 2,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeInventorySubmitRow"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "bWKFbp_lWO",
+                  "qtkmYa9hVT"
+                ],
+                "linkedNodes": {}
+              },
+              "bWKFbp_lWO": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": true,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "min-width": "10rem",
+                    "flex-grow": "0.2"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container52"
+                },
+                "parent": "TESO8yDJ-3",
+                "hidden": false,
+                "nodes": [
+                  "YkFv-NbtGm"
+                ],
+                "linkedNodes": {}
+              },
+              "YkFv-NbtGm": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "rotate-left",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "auto",
+                  "height": "60",
+                  "disabled": false,
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "/* $components.FormMoveInventory.fn.save() */\r\nnull",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Submit",
+                  "text": "Undo"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  },
+                  "elementName": "ActionButton7"
+                },
+                "parent": "bWKFbp_lWO",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qtkmYa9hVT": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "min-width": "10rem"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeInventorySubmitButton"
+                },
+                "parent": "TESO8yDJ-3",
+                "hidden": false,
+                "nodes": [
+                  "EnCTuUi_yO"
+                ],
+                "linkedNodes": {}
+              },
+              "EnCTuUi_yO": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": null,
+                    "color": null,
+                    "variant": null,
+                    "size": null
+                  },
+                  "width": "100%",
+                  "height": "100",
+                  "disabled": {
+                    "__transform": "$components.FormMergeInventory.(\r\n  $isNilOrEmpty(data.sourceInventoryBarcode)\r\n  or $isNilOrEmpty(data.destinationInventoryBarcode)\r\n  or formState.hasValidationErrors\r\n)",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.FormMergeInventory.data.sourceInventory",
+                        "components.FormMergeInventory.data.destinationInventory",
+                        "components.FormMergeInventory.formState.hasValidationErrors"
+                      ]
+                    },
+                    "__cacheKey": "mergeInventorySubmitButtonDisabled",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "transforms": {
+                        "pre": "/* ActionButtonMergeInventorySubmit */\r\n$components.FormMergeInventory.data.(\r\n  $mergeAll := $exists(mergeAll) ? mergeAll : false;\r\n  {\r\n    \"sourceInventoryId\": sourceInventory.id,\r\n    \"destinationInventoryId\": destinationInventory.id,\r\n    \"mergeQty\": $not($mergeAll) ? {\r\n      \"value\": mergeQty,\r\n      \"unitId\": mergeQtyUnits.id\r\n    },\r\n    \"mergeAll\": $mergeAll ? mergeAll\r\n  }\r\n)",
+                        "post": "(\r\n  $addNotificationMessage(result.title, result);\r\n  result.success ?\r\n    $executeFlow(\"mergeInventoryPostSubmitWeb\", null);\r\n)"
+                      },
+                      "flowId": "mergeInventory"
+                    }
+                  ],
+                  "title": "Submit",
+                  "text": "Submit",
+                  "customTextSize": 24
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  },
+                  "elementName": "ActionButtonSubmit"
+                },
+                "parent": "qtkmYa9hVT",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Md7aXnsY00": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "light",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container62"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "oa-FYrzPCq"
+                ],
+                "linkedNodes": {}
+              },
+              "oa-FYrzPCq": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container60"
+                },
+                "parent": "Md7aXnsY00",
+                "hidden": false,
+                "nodes": [
+                  "jm1Kkz0LeK"
+                ],
+                "linkedNodes": {}
+              },
+              "jm1Kkz0LeK": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Source Inventory",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": false,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "FormMoveInventory",
+                  "description": "Scan the barcode for the inventory you'd like to take from",
+                  "disabled": false,
+                  "data": {
+                    "__remote": false
+                  },
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "sourceInventoryBarcode",
+                  "query": {
+                    "fields": [
+                      "destinationInventoryBarcode",
+                      "sourceInventory"
+                    ]
+                  },
+                  "onChange": "\r\n$isNilOrEmpty(newValue)\r\n  ? {\"sourceInventory\": null}\r\n  : (\r\n    $sourceInventory := $query({\r\n      \"statement\":'\r\n        query Inventory($whereSource: InventoryWhereInput) {\r\n          sourceInventory: inventory(where: $whereSource) {\r\n            edges {\r\n              node {\r\n                id\r\n                active\r\n                serialNumber\r\n                quantity {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    id\r\n                    code\r\n                    unitTypeId\r\n                  }\r\n                }\r\n                shippable\r\n                barcode\r\n                trackingNumber\r\n                note\r\n                grossWeight {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    code\r\n                  }\r\n                }\r\n                netWeight {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    code\r\n                  }\r\n                }\r\n                expiresAt\r\n                lastCountAt\r\n                manufacturedAt\r\n                workOrderId\r\n                externalId\r\n                extProductId\r\n                extProcessId\r\n                customData\r\n                integrationData\r\n                handlingUnitId\r\n                inventoryStatusId\r\n                storageUnitId\r\n                lotId\r\n                processId\r\n                productId\r\n                receiptLineId\r\n\r\n              }\r\n            }\r\n          }\r\n        }\r\n      ',\r\n      \"variables\":{\r\n        \"whereSource\": {\r\n          \"_or\": [\r\n            {\"serialNumber\": {\"_eq\": newValue}},\r\n            {\"barcode\": {\"_eq\": newValue}}\r\n          ]\r\n        }\r\n      }}\r\n    ).sourceInventory.edges.node;\r\n\r\n    $components.FormMergeInventory.fn.focus(\"destinationInventoryBarcode\");\r\n\r\n    {\r\n      \"sourceInventory\": $sourceInventory\r\n    }\r\n  )\r\n"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "ScanSourceInventoryBarcode"
+                },
+                "parent": "oa-FYrzPCq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QNsmKW7s5K": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "light",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container64"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "ZPCCODvVNL"
+                ],
+                "linkedNodes": {}
+              },
+              "ZPCCODvVNL": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container63"
+                },
+                "parent": "QNsmKW7s5K",
+                "hidden": false,
+                "nodes": [
+                  "YzlrZVPCYZ"
+                ],
+                "linkedNodes": {}
+              },
+              "YzlrZVPCYZ": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Destination Inventory",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": false,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": false,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "FormMoveInventory",
+                  "description": "Scan the barcode for the inventory you'd like to merge into.",
+                  "disabled": false,
+                  "data": {
+                    "__remote": false
+                  },
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "destinationInventoryBarcode",
+                  "onChange": "\r\n$isNilOrEmpty(newValue)\r\n  ? {\"destinationInventory\": null}\r\n  : (\r\n    $destinationInventory := $query({\r\n      \"statement\":'\r\n        query Inventory($whereDestination: InventoryWhereInput) {\r\n          destinationInventory: inventory(where: $whereDestination) {\r\n            edges {\r\n              node {\r\n                id\r\n                active\r\n                serialNumber\r\n                quantity {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    id\r\n                    code\r\n                    unitTypeId\r\n                  }\r\n                }\r\n                shippable\r\n                barcode\r\n                trackingNumber\r\n                note\r\n                grossWeight {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    code\r\n                  }\r\n                }\r\n                netWeight {\r\n                  value\r\n                  unitId\r\n                  unit {\r\n                    code\r\n                  }\r\n                }\r\n                expiresAt\r\n                lastCountAt\r\n                manufacturedAt\r\n                workOrderId\r\n                externalId\r\n                extProductId\r\n                extProcessId\r\n                customData\r\n                integrationData\r\n                handlingUnitId\r\n                inventoryStatusId\r\n                storageUnitId\r\n                lotId\r\n                processId\r\n                productId\r\n                receiptLineId\r\n              }\r\n            }\r\n          }\r\n        }\r\n      ',\r\n      \"variables\":{\r\n        \"whereDestination\": {\r\n          \"_or\": [\r\n            {\"serialNumber\": {\"_eq\": newValue}},\r\n            {\"barcode\": {\"_eq\": newValue}}\r\n          ]\r\n        }\r\n      }}\r\n    ).destinationInventory.edges.node;\r\n\r\n    $components.FormMergeInventory.fn.focus(\"mergeQty\");\r\n\r\n    {\"destinationInventory\": $destinationInventory}\r\n  )\r\n"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "ScanDestinationInventoryBarcode"
+                },
+                "parent": "ZPCCODvVNL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "tv7oV4Sbc4": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "0",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSpacing"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "tsFPlgVFQi": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "margin-left": "8px",
+                    "margin-right": "8px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSourceQtyAvailable"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "gUkm7_z9V9"
+                ],
+                "linkedNodes": {}
+              },
+              "gUkm7_z9V9": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Source Qty Available: ",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "h6",
+                  "formElement": "Form16",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "sourceQtyAvailable",
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  },
+                  "formatString": "0,0.[00000000000000]",
+                  "format": "measure",
+                  "data": {
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.sourceInventory.quantity"
+                      ],
+                      "context": []
+                    },
+                    "__fallbackValue": null,
+                    "__transform": "data.sourceInventory.quantity",
+                    "__remote": false,
+                    "__cacheKey": "MergeInventorySourceInventoryQuantity"
+                  },
+                  "query": {
+                    "fields": [
+                      "sourceInventory.quantity"
+                    ]
+                  },
+                  "disabled": false,
+                  "description": "Quantity of scanned source inventory"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextSourceQtyAvailable"
+                },
+                "parent": "tsFPlgVFQi",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KEX9RbwkAM": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "light",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeQuantityInputs"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "9rleX2J2Zr",
+                  "KlEHXMcX6k",
+                  "rFcH0oTEc-"
+                ],
+                "linkedNodes": {}
+              },
+              "rFcH0oTEc-": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Merge All",
+                  "formElement": "Form4",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "mergeAll",
+                  "description": "Whether to take all source inventory and merge it into the destination inventory. This will delete the source inventory record.",
+                  "onChange": "/* SwitchMergeAll */\r\noldValue = false\r\nand newValue = true\r\n? {\r\n  \"mergeQty\": data.sourceInventory.quantity.value,\r\n  \"mergeQtyUnits\": data.sourceInventory.quantity.unit\r\n}",
+                  "query": {
+                    "fields": [
+                      "sourceInventory.quantity"
+                    ]
+                  },
+                  "defaultValue": false
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "SwitchMergeAll"
+                },
+                "parent": "KEX9RbwkAM",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "z58oPbKGLn": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "margin-left": "8px",
+                    "margin-right": "8px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerCurrentDestinationQty"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "fF_VuUffGm"
+                ],
+                "linkedNodes": {}
+              },
+              "fF_VuUffGm": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Current Destination Qty: ",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "h6",
+                  "formElement": "Form16",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "currentDestinationQty",
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  },
+                  "formatString": "0,0.[00000000000000]",
+                  "format": "measure",
+                  "data": {
+                    "__transform": "data.destinationInventory.quantity",
+                    "__fallbackValue": null,
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.destinationInventory.quantity"
+                      ],
+                      "context": []
+                    },
+                    "__remote": false,
+                    "__cacheKey": "MergeInventoryTextCurrentDestinationQtyData"
+                  },
+                  "disabled": false,
+                  "description": "Quantity of scanned destination inventory"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextCurrentDestinationQty"
+                },
+                "parent": "z58oPbKGLn",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "k6EauIzZuM": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "margin-left": "8px",
+                    "margin-right": "8px"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerNewDestinationQty"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [
+                  "fgDAtH-6nJ"
+                ],
+                "linkedNodes": {}
+              },
+              "fgDAtH-6nJ": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "New Destination Qty: ",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "h6",
+                  "formElement": "Form16",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "newDestinationQty",
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  },
+                  "formatString": "0,0.[000000000000]",
+                  "format": "measure",
+                  "data": {
+                    "__transform": "data.(\r\n  $isNilOrEmpty(currentDestinationQty.value)\r\n  or $isNilOrEmpty(mergeQty)\r\n  or (\r\n    $exists(sourceQtyAvailable.unitId)\r\n    and $exists(currentDestinationQty.unitId)\r\n    and $not(sourceQtyAvailable.unitId = currentDestinationQty.unitId)\r\n  )\r\n  ? null\r\n  : {\r\n    \"value\": currentDestinationQty.value + mergeQty,\r\n    \"unit\": $coalesce([mergeQtyUnits, currentDestinationQty.unit, sourceQtyAvailable.unit])\r\n  }\r\n)",
+                    "__cacheKey": "MergeInventoryNewDestinationQty",
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.sourceQtyAvailable",
+                        "data.currentDestinationQty",
+                        "data.mergeQty",
+                        "data.mergeQtyUnits"
+                      ],
+                      "context": []
+                    },
+                    "__remote": false,
+                    "__fallbackValue": null
+                  },
+                  "description": "Future quantity of destination inventory after merging"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextNewDestinationQty"
+                },
+                "parent": "k6EauIzZuM",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Qkqo2m8L3V": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "text",
+                  "label": "inventoryId",
+                  "formElement": "FormSplitInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "sourceInventoryId"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text20"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "L3bl7VoRJB": {
+                "type": {
+                  "resolvedName": "JSONInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "json",
+                  "label": "JSON - Source Inventory",
+                  "showEditor": true,
+                  "formElement": "FormMergeInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "sourceInventory",
+                  "showSchemaFields": false,
+                  "collapsible": false
+                },
+                "displayName": "JSON",
+                "custom": {
+                  "elementName": "JsonSourceInventory"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "VpME2nIU2i": {
+                "type": {
+                  "resolvedName": "JSONInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "json",
+                  "label": "JSON - Destination Inventory",
+                  "showEditor": true,
+                  "formElement": "FormMergeInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "destinationInventory",
+                  "showSchemaFields": false,
+                  "collapsible": false
+                },
+                "displayName": "JSON",
+                "custom": {
+                  "elementName": "JsonDestinationInventory"
+                },
+                "parent": "IpH0Xt1ghY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "arV1fiDzEE": {
+                "type": {
+                  "resolvedName": "FloatInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": true,
+                    "transform": " data.sourceInventory.quantity.value < newValue\r\n ? \"Merge quantity is larger than available source\""
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "float",
+                  "label": "Quantity to Merge",
+                  "formElement": "FormMergeInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "mergeQty",
+                  "description": "This quantity will be transferred from the source inventory to the destination inventory",
+                  "data": {
+                    "__transform": "/* FloatMergeQty.data */\r\n($exists(data.mergeAll) ? data.mergeAll : false)\r\n  ? data.sourceInventory.quantity.value",
+                    "__fallbackValue": null,
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.mergeAll",
+                        "data.mergeQtyUnits",
+                        "data.sourceInventory.quantity",
+                        "data.mergeQty"
+                      ],
+                      "context": []
+                    },
+                    "__cacheKey": "MergeInventoryFloatMergeQtyDataTransform",
+                    "__remote": false
+                  },
+                  "disabled": {
+                    "__transform": "data.mergeAll\r\n/* or $isNil(data.sourceInventory) */",
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.mergeAll",
+                        "data.sourceInventory"
+                      ],
+                      "context": []
+                    },
+                    "__cacheKey": "MergeInventoryMergeQtyDisabled",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  },
+                  "query": {
+                    "fields": [
+                      "mergeAll",
+                      "sourceInventory",
+                      "mergeQtyUnits"
+                    ]
+                  }
+                },
+                "displayName": "Float",
+                "custom": {
+                  "elementName": "FloatMergeQty"
+                },
+                "parent": "9rleX2J2Zr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KlEHXMcX6k": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "150",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Units",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": true,
+                  "tenantId": "",
+                  "formElement": "FormMergeInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "mergeQtyUnits",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "mergeQtyUnits.id",
+                      "mergeQtyUnits.code",
+                      "mergeQtyUnits.unitTypeId"
+                    ]
+                  },
+                  "dataModel": "Unit",
+                  "selectFields": [
+                    "name",
+                    "code"
+                  ],
+                  "additionalFields": [
+                    "id",
+                    "unitTypeId"
+                  ],
+                  "additionalFilter": {
+                    "__transform": "{\r\n  \"unitTypeId\": {\r\n    \"_eq\": data.sourceInventory.quantity.unit.unitTypeId\r\n  }\r\n}",
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.sourceInventory.quantity.unit.unitTypeId"
+                      ],
+                      "context": []
+                    },
+                    "__cacheKey": "MergeInventorySelectMergeQtyUnitsAdditionalFilter",
+                    "__remote": false,
+                    "__fallbackValue": {
+                      "unitTypeId": {
+                        "_eq": "Amount"
+                      }
+                    }
+                  },
+                  "onChange": "/* On Change for Unit dropdown */\r\n{}\r\n/* Here is where you might convert value of mergeQty on unit change */",
+                  "orderByDirection": "desc",
+                  "disabled": {
+                    "__transform": "true\r\n/* data.mergeAll */\r\n/* or $isNil(data.sourceInventory) */",
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.mergeAll",
+                        "data.sourceInventory"
+                      ],
+                      "context": []
+                    },
+                    "__cacheKey": "MergeInventoryMergeQtyDisabled",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  },
+                  "data": {
+                    "__transform": "/* FloatMergeQty.data */\r\n/* data.mergeAll\r\nor $not(data.sourceInventory.id = oldData.sourceInventory.id)\r\n? data.sourceInventory.quantity.unit\r\n: newValue */\r\ndata.sourceInventory.quantity.unit",
+                    "__dynamicFields": {
+                      "payload": [
+                        "data.mergeAll",
+                        "data.sourceInventory"
+                      ],
+                      "context": []
+                    },
+                    "__fallbackValue": "ea",
+                    "__cacheKey": "MergeInventorySelectMergeQtyUnitsData",
+                    "__remote": false
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "SelectMergeQtyUnits"
+                },
+                "parent": "KEX9RbwkAM",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9rleX2J2Zr": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMergeQtyNum"
+                },
+                "parent": "KEX9RbwkAM",
+                "hidden": false,
+                "nodes": [
+                  "arV1fiDzEE"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmc3vvfpf03dp018n023o6jyy",
+      "title": "Merge Inventory",
+      "path": "/inventoryManagement/inventoryTracking/mergeInventory",
+      "moduleId": "inventoryTracking",
+      "screenId": "mergeInventory",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

@@ -1,0 +1,379 @@
+{
+  "header": {
+    "id": "webFlowLog",
+    "name": "Web Flow Log",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": null,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmhnqvwlp0uln016e8tambetx",
+    "number": "0.0.2",
+    "description": "Updating to log input",
+    "dataFlowId": "webFlowLog",
+    "flow": {
+      "id": "cmhnqvwlp0uln016e8tambetx",
+      "name": "Web Flow Log",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+          "name": "Log: WEB FLOW",
+          "type": "log",
+          "data": {
+            "messageTransform": "$",
+            "level": "Info",
+            "includeContext": true,
+            "includePayload": true,
+            "nextNodes": [
+              "a2bcdf29-e9f9-45b2-830c-238ab3fedb80"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "1d95d438-439e-4de9-854b-2e0d2dec9d0a",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a2bcdf29-e9f9-45b2-830c-238ab3fedb80",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmhnqvwlp0uln016e8tambetx",
+      "offsetX": -268.13,
+      "offsetY": -30.06,
+      "zoom": 100.02,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "8818e4ed-b9d3-482d-81be-5cb676bd4145",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "4da9fe5e-afa2-4951-ae24-42bf41d31745": {
+              "points": [
+                {
+                  "id": "a8ba796f-8969-4f35-beeb-7d2bfb33f096",
+                  "type": "point",
+                  "x": 614,
+                  "y": 399.33
+                },
+                {
+                  "id": "e65778b9-872b-412d-a0c9-98bc86c11ece",
+                  "type": "point",
+                  "x": 459.2,
+                  "y": 484.33
+                }
+              ],
+              "id": "4da9fe5e-afa2-4951-ae24-42bf41d31745",
+              "type": "default",
+              "selected": false,
+              "source": "1d95d438-439e-4de9-854b-2e0d2dec9d0a",
+              "sourcePort": "clorn4897000w356kpwqd0qws",
+              "target": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+              "targetPort": "clorn45jn000s356km4mlq8fb",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "ff20076e-c4f8-4eac-a523-2b230ab36f89": {
+              "points": [
+                {
+                  "id": "546c3c74-7fb9-405a-9b31-1fab738da45b",
+                  "type": "point",
+                  "x": 613.99,
+                  "y": 484.33
+                },
+                {
+                  "id": "85d6c72d-039a-4741-9202-05dc914b5b67",
+                  "type": "point",
+                  "x": 459.2,
+                  "y": 574.33
+                }
+              ],
+              "id": "ff20076e-c4f8-4eac-a523-2b230ab36f89",
+              "type": "default",
+              "selected": false,
+              "source": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+              "sourcePort": "clorn45jn000u356k3z3gnx9b",
+              "target": "a2bcdf29-e9f9-45b2-830c-238ab3fedb80",
+              "targetPort": "clorn48wh000y356ka76s41xw",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "e84fc69d-2338-4855-b8ac-b72851ec3c7d",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "9002da97-9256-4466-94f6-3350d32bfa5d": {
+              "id": "9002da97-9256-4466-94f6-3350d32bfa5d",
+              "type": "debugSource",
+              "selected": false,
+              "x": 380,
+              "y": 145,
+              "ports": [
+                {
+                  "id": "clorn42uk000q356kg0npc0ig",
+                  "type": "default",
+                  "x": 526.39,
+                  "y": 176.73,
+                  "name": "clorn42uk000r356ko239iqa2",
+                  "parentNode": "9002da97-9256-4466-94f6-3350d32bfa5d",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {},
+                "context": {},
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9": {
+              "id": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+              "type": "log",
+              "selected": true,
+              "x": 460,
+              "y": 445,
+              "ports": [
+                {
+                  "id": "clorn45jn000s356km4mlq8fb",
+                  "type": "default",
+                  "x": 451.6,
+                  "y": 476.73,
+                  "name": "clorn45jn000t356k1yijufz6",
+                  "parentNode": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+                  "links": [
+                    "4da9fe5e-afa2-4951-ae24-42bf41d31745"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "clorn45jn000u356k3z3gnx9b",
+                  "type": "default",
+                  "x": 606.39,
+                  "y": 476.73,
+                  "name": "clorn45jn000v356kt513lgq0",
+                  "parentNode": "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9",
+                  "links": [
+                    "ff20076e-c4f8-4eac-a523-2b230ab36f89"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "messageTransform": "$",
+                "level": "Info",
+                "includeContext": true,
+                "includePayload": true,
+                "nextNodes": [
+                  "a2bcdf29-e9f9-45b2-830c-238ab3fedb80"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Log: WEB FLOW"
+            },
+            "1d95d438-439e-4de9-854b-2e0d2dec9d0a": {
+              "id": "1d95d438-439e-4de9-854b-2e0d2dec9d0a",
+              "type": "request",
+              "selected": false,
+              "x": 460,
+              "y": 360,
+              "ports": [
+                {
+                  "id": "clorn4897000w356kpwqd0qws",
+                  "type": "default",
+                  "x": 606.4,
+                  "y": 391.73,
+                  "name": "clorn4897000x356kd4je04p1",
+                  "parentNode": "1d95d438-439e-4de9-854b-2e0d2dec9d0a",
+                  "links": [
+                    "4da9fe5e-afa2-4951-ae24-42bf41d31745"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "9cfbb3f3-c0d9-447c-a0d1-ddb3b81019d9"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "a2bcdf29-e9f9-45b2-830c-238ab3fedb80": {
+              "id": "a2bcdf29-e9f9-45b2-830c-238ab3fedb80",
+              "type": "response",
+              "selected": false,
+              "x": 460,
+              "y": 535,
+              "ports": [
+                {
+                  "id": "clorn48wh000y356ka76s41xw",
+                  "type": "default",
+                  "x": 451.6,
+                  "y": 566.73,
+                  "name": "clorn48wh000z356kntotp6z4",
+                  "parentNode": "a2bcdf29-e9f9-45b2-830c-238ab3fedb80",
+                  "links": [
+                    "ff20076e-c4f8-4eac-a523-2b230ab36f89"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "clorn48wh0010356kisl3ttl0",
+                  "type": "default",
+                  "x": 606.4,
+                  "y": 566.73,
+                  "name": "clorn48wh0011356kfdnpou10",
+                  "parentNode": "a2bcdf29-e9f9-45b2-830c-238ab3fedb80",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            }
+          }
+        }
+      ],
+      "name": "Web Flow Log",
+      "type": "System",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": [],
+        "includeIntroduction": true
+      }
+    }
+  }
+}

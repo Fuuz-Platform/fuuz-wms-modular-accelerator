@@ -1,0 +1,969 @@
+{
+  "header": {
+    "id": "moveInventory",
+    "name": "Move Inventory",
+    "description": "Use this screen to change the \"location\" of an inventory record.\n\nScan or enter the location barcode or shortened name (code), then scan or enter your inventory barcode or serial number. The form will auto-submit after the inventory is scanned.\n\nFuture Feature Ideas:\n\n- **Undo Last Transaction** - An undo button allows you to \"unmove\" inventory that you already submitted a move for. Use this if you scanned or entered the wrong barcode or serial number by accident.\n- **Inventory Info Card** - Show 1 or more cards listing basic info about the inventory that was just scanned so workers can confirm at a glance that they've scanned the right part.",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdzilkk74lkx0775gj2ydo6o",
+    "number": "0.0.8",
+    "description": "",
+    "screenId": "moveInventory",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": -15,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "background": "light",
+                  "data": {},
+                  "screenDataFlowIds": [
+                    "moveInventoryWeb"
+                  ]
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 31,
+                    "Text": 13,
+                    "Form": 2,
+                    "Scan": 10,
+                    "Cards": 2,
+                    "Action Button": 7,
+                    "Switch": 8,
+                    "Options": 1,
+                    "Array Input": 1,
+                    "Checkbox": 1,
+                    "Select": 3,
+                    "Screen Widget": 1,
+                    "Icon": 3,
+                    "Flow Button": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "aoRK2qXB0u",
+                  "ccEG6q1OLJ"
+                ],
+                "linkedNodes": {}
+              },
+              "FFNNx7ZcyL": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id",
+                      "location",
+                      "locationId",
+                      "location.id",
+                      "useScanOrSelectLocation",
+                      "rememberLocation",
+                      "autoSubmit"
+                    ],
+                    "disableDataChangeIndicator": true,
+                    "model": "Inventory",
+                    "readPreference": "primaryPreferred"
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "FormMoveInventory"
+                },
+                "parent": "ccEG6q1OLJ",
+                "hidden": false,
+                "nodes": [
+                  "qX868npO7A"
+                ],
+                "linkedNodes": {}
+              },
+              "sILJRmQ2l_": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMoveInventoryInputs"
+                },
+                "parent": "qX868npO7A",
+                "hidden": false,
+                "nodes": [
+                  "8O6xbBTbbw",
+                  "rgpXo4Apr4"
+                ],
+                "linkedNodes": {}
+              },
+              "zLZ9EkEVBp": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Inventory",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": false,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "FormMoveInventory",
+                  "description": "Scan the barcode for the inventory you'd like to move.",
+                  "disabled": false,
+                  "data": {
+                    "__remote": false
+                  },
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "scannedInventoryBarcode",
+                  "onChange": "(\r\n  $isNotNilOrEmpty(newValue) and $not(oldValue = newValue)? (\r\n    $payload :=  {\r\n        \"REQUEST\": {\r\n          \"scannedBarcode\": newValue\r\n        },\r\n        \"ACTION\": \"SCAN_INVENTORY\"\r\n      };\r\n    $components.ActionButton7.fn.execute($payload);\r\n    \r\n  )\r\n)"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "ScanInventory"
+                },
+                "parent": "8O6xbBTbbw",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8O6xbBTbbw": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "light",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerScanInventory"
+                },
+                "parent": "sILJRmQ2l_",
+                "hidden": false,
+                "nodes": [
+                  "zLZ9EkEVBp"
+                ],
+                "linkedNodes": {}
+              },
+              "nehhlQNCEh": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 2,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSubmit"
+                },
+                "parent": "qX868npO7A",
+                "hidden": false,
+                "nodes": [
+                  "8rKGpbGsWO",
+                  "rZKhrE60BR"
+                ],
+                "linkedNodes": {}
+              },
+              "95_u93dHwX": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": null,
+                    "color": null,
+                    "variant": null,
+                    "size": null
+                  },
+                  "width": "100%",
+                  "height": "100",
+                  "disabled": {
+                    "__transform": "$components.FormMoveInventory.data.(\r\n  $isNilOrEmpty(scannedStorageUnit) or $isNilOrEmpty(scannedInventoryBarcode)\r\n)",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.FormMoveInventory.data.scannedStorageUnit",
+                        "components.FormMoveInventory.data.scannedInventoryBarcode"
+                      ]
+                    },
+                    "__cacheKey": "moveInventorySubmitButtonDisabled",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "moveInventoryWeb",
+                      "transforms": {
+                        "pre": "/* ActionButtonMoveInventorySubmit */\r\n{\r\n  \"REQUEST\":{\r\n    \"scannedStorageUnit\": $components.FormMoveInventory.data.scannedStorageUnit,\r\n    \"scannedBarcode\": $components.FormMoveInventory.data.scannedInventoryBarcode\r\n  },\r\n  \"ACTION\": \"SUBMIT\"\r\n\r\n}"
+                      }
+                    }
+                  ],
+                  "title": "Submit",
+                  "text": "Submit",
+                  "customTextSize": 24
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  },
+                  "elementName": "ActionButtonSubmit"
+                },
+                "parent": "rZKhrE60BR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ccEG6q1OLJ": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "max-width": "100rem",
+                    "margin-left": "auto",
+                    "margin-right": "auto"
+                  },
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMainContent"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "FFNNx7ZcyL"
+                ],
+                "linkedNodes": {}
+              },
+              "qX868npO7A": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMoveInventoryForm"
+                },
+                "parent": "FFNNx7ZcyL",
+                "hidden": false,
+                "nodes": [
+                  "sILJRmQ2l_",
+                  "nehhlQNCEh"
+                ],
+                "linkedNodes": {}
+              },
+              "8rKGpbGsWO": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": true,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "min-width": "10rem",
+                    "flex-grow": "0.2"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerUndoButton"
+                },
+                "parent": "nehhlQNCEh",
+                "hidden": false,
+                "nodes": [
+                  "6KhFnzzm_f"
+                ],
+                "linkedNodes": {}
+              },
+              "rZKhrE60BR": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "min-width": "10rem"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSubmitButton"
+                },
+                "parent": "nehhlQNCEh",
+                "hidden": false,
+                "nodes": [
+                  "95_u93dHwX"
+                ],
+                "linkedNodes": {}
+              },
+              "aoRK2qXB0u": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "50",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {
+                    "borderMode": "full",
+                    "border": "0px undefined ",
+                    "borderLeft": "0px undefined ",
+                    "borderTop": "0px undefined ",
+                    "borderRight": "0px undefined ",
+                    "borderBottom": "0px undefined "
+                  },
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "accent"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerHeader"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "ylugfszxn9"
+                ],
+                "linkedNodes": {}
+              },
+              "ylugfszxn9": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "auto",
+                  "height": "50",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "margin": "8px"
+                  },
+                  "columns": 2
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMoveInventoryTitle"
+                },
+                "parent": "aoRK2qXB0u",
+                "hidden": false,
+                "nodes": [
+                  "zkjwkr_Q7L"
+                ],
+                "linkedNodes": {}
+              },
+              "zkjwkr_Q7L": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Move Inventory",
+                        "type": "header-one",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextMoveInventoryTitle"
+                },
+                "parent": "ylugfszxn9",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rgpXo4Apr4": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": true,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "light",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container31"
+                },
+                "parent": "sILJRmQ2l_",
+                "hidden": false,
+                "nodes": [
+                  "FBDo513eO4",
+                  "x_LriT19Xx",
+                  "PTDInApDaD",
+                  "w_JxSHLf42"
+                ],
+                "linkedNodes": {}
+              },
+              "PTDInApDaD": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Storage Unit",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": false,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": false,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "FormMoveInventory",
+                  "description": "Scan the barcode for the inventory you'd like to move.",
+                  "disabled": false,
+                  "data": {
+                    "__remote": false
+                  },
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "scannedStorageUnit",
+                  "onChange": "(\r\n  $serial := $components.FormMoveInventory.data.scannedInventoryBarcode;\r\n  $isNotNilOrEmpty(newValue) and $not(oldValue = newValue)? (\r\n    $payload := {\r\n        \"REQUEST\": {\r\n          \"scannedStorageUnit\": newValue,\r\n          \"scannedBarcode\": $serial\r\n        },\r\n        \"ACTION\": \"SCAN_STORAGE_UNIT\"\r\n      };\r\n    $components.ActionButton7.fn.execute($payload);\r\n  )\r\n)",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  }
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "Scan10"
+                },
+                "parent": "rgpXo4Apr4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "FBDo513eO4": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Suggested location",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "body1",
+                  "formElement": "FormMoveInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "suggestedStorageUnits",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text12"
+                },
+                "parent": "rgpXo4Apr4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "x_LriT19Xx": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "body1",
+                  "formElement": "FormMoveInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "serialDetails",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  },
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingTop": 0,
+                  "marginTop": 0,
+                  "label": "Scanned"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text13"
+                },
+                "parent": "rgpXo4Apr4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "w_JxSHLf42": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": null,
+                    "color": null,
+                    "variant": null,
+                    "size": null
+                  },
+                  "width": "100%",
+                  "height": "100",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "moveInventoryWeb",
+                      "transforms": {
+                        "pre": "{\r\n  \"ACTION\": \"RESTART\"\r\n}"
+                      }
+                    }
+                  ],
+                  "title": "Submit",
+                  "text": "Rescan Inventory",
+                  "customTextSize": 24
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  },
+                  "elementName": "ActionButton6"
+                },
+                "parent": "rgpXo4Apr4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "6KhFnzzm_f": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": null,
+                    "color": null,
+                    "variant": null,
+                    "size": null
+                  },
+                  "width": "100%",
+                  "height": "100",
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "moveInventoryWeb",
+                      "transforms": {
+                        "pre": "/*flow button*/\r\ndata"
+                      }
+                    }
+                  ],
+                  "title": "Submit",
+                  "text": "Flow",
+                  "customTextSize": 24
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  },
+                  "elementName": "ActionButton7"
+                },
+                "parent": "8rKGpbGsWO",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmbpolk0h00oy013qbdff23ij",
+      "title": "Move Inventory",
+      "path": "/inventoryManagement/inventoryTracking/moveInventory",
+      "moduleId": "inventoryTracking",
+      "screenId": "moveInventory",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

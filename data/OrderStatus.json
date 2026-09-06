@@ -1,0 +1,133 @@
+{
+  "api": "application",
+  "modelName": "OrderStatus",
+  "payload": [
+    {
+      "id": "cancelled",
+      "code": "Cancelled",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "This Order has been cancelled and can not be operated against.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fulfilled",
+      "code": "Fulfilled",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "The Order has been completed.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "new",
+      "code": "New",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "The Order has just been created and is not ready to be operated against.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "packed",
+      "code": "Packed",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "Occurs when all items within the order are packed.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "partialFulfillment",
+      "code": "Partial Fulfillment",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "An Order has been operated against but not completed.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "partialPick",
+      "code": "Partial Pick",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "Picking is in process but not complete.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pendingFulfillment",
+      "code": "Pending Fulfillment",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "Indicates that the Order is ready to be operated against.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "picked",
+      "code": "Picked",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "Picking has been completed.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shipped",
+      "code": "Shipped",
+      "orderLineReleaseUse": false,
+      "orderUse": false,
+      "system": true,
+      "usable": true,
+      "description": "Occurs when the order has been shipped.",
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

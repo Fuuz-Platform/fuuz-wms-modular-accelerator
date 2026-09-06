@@ -1,0 +1,555 @@
+{
+  "header": {
+    "id": "selectOrderReleases",
+    "name": "Select Order Releases",
+    "description": "This is used for the create shipment wizard to select which releases to make shipment lines for,",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "logistics",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmo7mx07o0kl60775dsw57gpq",
+    "number": "0.0.9",
+    "description": "",
+    "screenId": "selectOrderReleases",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 3,
+                    "Table": 1,
+                    "Table Column": 8,
+                    "Action": 2,
+                    "Form": 1,
+                    "Select": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "ISkndxUgvV"
+                ],
+                "linkedNodes": {}
+              },
+              "ISkndxUgvV": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "minHeight": 400,
+                    "minWidth": 800
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "BrbF3DPmFy",
+                  "13wfQsGHdn"
+                ],
+                "linkedNodes": {}
+              },
+              "BrbF3DPmFy": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "[ edges.node~>| $ | \r\n  { \r\n    \"shipTo\": $coalesce([orderLine.businessPartnerAddress.code, orderLine.order.destinationBusinessPartnerAddress.code, \"No Address on order\" ]),\r\n    \"shipToId\": $coalesce([orderLine.businessPartnerAddress.id, orderLine.order.destinationBusinessPartnerAddress.id]),\r\n    \"quantityToShip\": { \r\n      \"value\": 0, \r\n      \"unitId\": quantityLeft.unitId\r\n    } \r\n  } |\r\n]",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "dueAt",
+                      "orderLineId",
+                      "orderLine.businessPartnerAddress.code",
+                      "orderLine.businessPartnerAddress.id",
+                      "orderLine.order.destinationBusinessPartnerAddress.code",
+                      "orderLine.order.destinationBusinessPartnerAddress.id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "OrderLineRelease",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"orderLine\":{\r\n      \"orderId\": {\r\n        \"_eq\": $coalesce([ $metadata.querystring.orderId, $metadata.urlParameters.orderId])\r\n      }\r\n    },\r\n    \"quantityLeft\":{\r\n      \"value\":{\r\n        \"_gt\": 0\r\n      }\r\n    },\r\n    \"_or\":[\r\n      {\r\n        \"orderLine\": {\r\n          \"businessPartnerAddressId\": {\r\n            \"_isNull\": false\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"orderLine\": {\r\n          \"order\":{\r\n            \"destinationBusinessPartnerAddressId\":{\r\n              \"_isNull\": false\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ]\r\n\r\n  }\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": true,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Order Line Releases are the individual ship/firm or plan schedules related to a single order number.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "ISkndxUgvV",
+                "hidden": false,
+                "nodes": [
+                  "mv4riR-ss0",
+                  "DZCJHYGuj7",
+                  "-C2r-ghjFv",
+                  "gSF8ii7FwM",
+                  "OIOGPnfm-K",
+                  "5pC8U5Ihcz",
+                  "e9ckgus7ku"
+                ],
+                "linkedNodes": {}
+              },
+              "DZCJHYGuj7": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-C2r-ghjFv": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderLine.product.code",
+                  "description": "A human-readable and unique shorthand name for the product",
+                  "query": {
+                    "fields": [
+                      "orderLine.product.id",
+                      "orderLine.product.code"
+                    ]
+                  },
+                  "field": "orderLine.product.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5pC8U5Ihcz": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity Left",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "quantityLeft",
+                  "description": "The quantity that remains to be fulfilled. When this value is zero, that means the release has been fulfilled completely.\n\nThis value is stored separately from the quantity because this value is used to track partial fulfillment over time, whereas the quantity represents the total amount released upon creation.",
+                  "query": {
+                    "fields": [
+                      "quantityLeft.value",
+                      "quantityLeft.unit.code",
+                      "quantityLeft.unit.id"
+                    ]
+                  },
+                  "field": "quantityLeft"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "OIOGPnfm-K": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Due At",
+                  "format": "date",
+                  "sortable": true,
+                  "dataPath": "dueAt",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "dueAt"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "e9ckgus7ku": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity to Ship",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "quantityToShip",
+                  "description": "The quantity that remains to be fulfilled. When this value is zero, that means the release has been fulfilled completely.\n\nThis value is stored separately from the quantity because this value is used to track partial fulfillment over time, whereas the quantity represents the total amount released upon creation.",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "quantityLeft"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn6"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "mv4riR-ss0": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Actions",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "actions",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "actions": [
+                    {
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "plus",
+                        "color": "success",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "title": "Add Quantity to Ship",
+                      "action": [
+                        {
+                          "type": "form",
+                          "fields": [
+                            {
+                              "label": "Quantity to Ship",
+                              "name": "quantityToShip",
+                              "dataPath": "quantityToShip",
+                              "type": "number",
+                              "validation": {
+                                "__transform": "{ 'minValue': 0, 'maxValue': data.quantityLeft.value}"
+                              }
+                            }
+                          ],
+                          "transforms": {
+                            "pre": "data"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  $newData := $components.Table1.data~> | $ | { \"quantityToShip\": {\"value\": id = $$.data.id? $$.quantityToShip : quantityToShip.value  } } |;\r\n  $components.Table1.fn.setRows($newData)\r\n)"
+                        }
+                      ]
+                    },
+                    {
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "xmark",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "action": [
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  $newData := $components.Table1.data~> | $ | { \"quantityToShip\": {\"value\": id = $$.data.id? 0 : quantityToShip.value  } } |;\r\n  $components.Table1.fn.setRows($newData)\r\n)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn7"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "13wfQsGHdn": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "ISkndxUgvV",
+                "hidden": false,
+                "nodes": [
+                  "CyriBvmPHS",
+                  "0EKA66QQnA"
+                ],
+                "linkedNodes": {}
+              },
+              "0EKA66QQnA": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "red",
+                  "icon": {
+                    "icon": "xmark",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return({\r\n  \"success\": false\r\n})"
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action1"
+                },
+                "parent": "13wfQsGHdn",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CyriBvmPHS": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "green",
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$all(\r\n  [$components.Table1.data.quantityToShip.value],\r\n  function($v){$v=0}\r\n)\r\nand \r\n$uniq( [$components.Table1.data[quantityToShip.value > 0].shipToId] )~>$count > 1",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return({\r\n  \"success\": true,\r\n  \"data\": [$components.Table1.data[quantityToShip.value > 0]]\r\n})"
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action2"
+                },
+                "parent": "13wfQsGHdn",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gSF8ii7FwM": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Ship To",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "shipTo",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "orderLine.businessPartnerAddress"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn8"
+                },
+                "parent": "BrbF3DPmFy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmo7e30ie0i5d07752ue593km",
+      "title": "Select Order Releases",
+      "path": "/materialsManagement/logistics/selectOrderReleases",
+      "moduleId": "logistics",
+      "screenId": "selectOrderReleases",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

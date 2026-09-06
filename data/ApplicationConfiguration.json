@@ -1,0 +1,206 @@
+{
+  "api": "application",
+  "modelName": "ApplicationConfiguration",
+  "payload": [
+    {
+      "id": "companyInformation",
+      "name": "Company Information",
+      "description": "",
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Address1": {
+            "type": "string"
+          },
+          "Address2": {
+            "type": "string"
+          },
+          "City": {
+            "type": "string"
+          },
+          "StateProvince": {
+            "type": "string"
+          },
+          "PostalCode": {
+            "type": "string"
+          },
+          "Country": {
+            "type": "string"
+          },
+          "Phone": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Website": {
+            "type": "string"
+          },
+          "LogoUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "configJson": {
+        "Name": "Jeremy S",
+        "Website": "www.jeremy.com",
+        "LogoUrl": "www.myLogo.com",
+        "Address1": "1234 Main Street",
+        "City": "Somewhere",
+        "StateProvince": "Ohio",
+        "PostalCode": "55555",
+        "Country": "USA",
+        "Phone": "555-231-2343",
+        "Email": "jeremy@myCompany.com",
+        "Address2": "kjdlkw"
+      },
+      "moduleId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "moveInventoryOptions",
+      "name": "Move Inventory Options",
+      "description": "This will decide if when moving inventory to a storage unit, will the serial number be moved OR will the inventory be merged with any existing inventory in the storage unit.",
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string"
+          },
+          "formTitle": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "method"
+        ]
+      },
+      "configJson": {
+        "method": "move",
+        "formTitle": "Method for Moving Inventory",
+        "options": [
+          {
+            "label": "Move",
+            "value": "move"
+          },
+          {
+            "label": "Merge",
+            "value": "merge"
+          }
+        ]
+      },
+      "moduleId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "packOptions",
+      "name": "Pack Options",
+      "description": "Options for how to peform packing.",
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string"
+          },
+          "formTitle": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "method"
+        ]
+      },
+      "configJson": {
+        "method": "order",
+        "formTitle": "Method for Packing",
+        "options": [
+          {
+            "label": "Order",
+            "value": "order"
+          },
+          {
+            "label": "Load",
+            "value": "load"
+          }
+        ]
+      },
+      "moduleId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pickOptions",
+      "name": "Pick Options",
+      "description": "Options to define how the pick method is executed.",
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string"
+          },
+          "formTitle": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "method"
+        ]
+      },
+      "configJson": {
+        "method": "fifo",
+        "formTitle": "Method for Finding Inventory",
+        "options": [
+          {
+            "label": "FEFO",
+            "value": "fefo",
+            "field": "expiresAt"
+          },
+          {
+            "label": "FIFO",
+            "value": "fifo",
+            "field": "createdAt"
+          },
+          {
+            "label": "Manufactured",
+            "value": "manufactured",
+            "field": "manufacturedAt"
+          },
+          {
+            "label": "None",
+            "value": "none",
+            "field": ""
+          }
+        ]
+      },
+      "moduleId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

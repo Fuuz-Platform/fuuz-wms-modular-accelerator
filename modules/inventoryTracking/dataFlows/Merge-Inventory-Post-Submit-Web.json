@@ -1,0 +1,662 @@
+{
+  "header": {
+    "id": "mergeInventoryPostSubmitWeb",
+    "name": "Merge Inventory Post Submit Web",
+    "description": "Only resets the form and focuses the source inventory input",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "Screen",
+    "logLevelId": "Trace",
+    "mcpToolConfiguration": null,
+    "moduleId": "inventoryTracking",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmc3x9o5m03rv018nbs720thd",
+    "number": "0.0.2",
+    "description": "Bugfix",
+    "dataFlowId": "mergeInventoryPostSubmitWeb",
+    "flow": {
+      "id": "cmc3x9o5m03rv018nbs720thd",
+      "name": "Merge Inventory Post Submit Web",
+      "type": "Screen",
+      "nodes": [
+        {
+          "id": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+          "name": "Set Source Inventory Input Null",
+          "type": "setFieldValue",
+          "data": {
+            "screenElementTransform": "\"FormMergeInventory\"",
+            "fieldTransform": "\"sourceInventoryBarcode\"",
+            "valueTransform": "null",
+            "nextNodes": [
+              "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+          "name": "Set Destination Inventory Input Null",
+          "type": "setFieldValue",
+          "data": {
+            "screenElementTransform": "\"FormMergeInventory\"",
+            "fieldTransform": "\"destinationInventoryBarcode\"",
+            "valueTransform": "null",
+            "nextNodes": [
+              "9b8c9f69-752f-428a-91b2-99cfd5e5ba77"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+          "name": "Set Merge Qty Input Null",
+          "type": "setFieldValue",
+          "data": {
+            "screenElementTransform": "\"FormMergeInventory\"",
+            "fieldTransform": "\"mergeQty\"",
+            "valueTransform": "null",
+            "nextNodes": [
+              "4a7bdd1d-2186-452e-84f1-1ebf60bc1325"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+          "name": "Focus Source Inventory Input",
+          "type": "focusBlurField",
+          "data": {
+            "action": "focus",
+            "screenElementTransform": "\"FormMergeInventory\"",
+            "fieldTransform": "\"sourceInventoryBarcode\"",
+            "nextNodes": [
+              "5376aae4-cdfd-4d81-9601-927740b414e4"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "0df441ff-437e-4722-a871-770a4a6dae62",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "4bfc072c-fd87-4367-bc55-79c9460b236e"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "5376aae4-cdfd-4d81-9601-927740b414e4",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmc3x9o5m03rv018nbs720thd",
+      "offsetX": 259.11,
+      "offsetY": 19.37,
+      "zoom": 91.67,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "95b323e0-a04e-4ad6-8e96-38cbcff10691",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "6f0934f6-809f-471d-a12c-2af34bbf166a": {
+              "points": [
+                {
+                  "id": "1c38be7a-9324-4798-83a7-e22d0c3ff18c",
+                  "type": "point",
+                  "x": 126.22,
+                  "y": 594.73
+                },
+                {
+                  "id": "6a92e45e-c691-4b38-82f3-8ccc47eb161b",
+                  "type": "point",
+                  "x": 170,
+                  "y": 594.73
+                }
+              ],
+              "id": "6f0934f6-809f-471d-a12c-2af34bbf166a",
+              "type": "default",
+              "selected": false,
+              "source": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+              "sourcePort": "cmc3wrww603tp3j6mvd41q487",
+              "target": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+              "targetPort": "cmc3wrf2h03sj3j6mxksds3wp",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "3d04d7e0-9a87-4553-8578-ceee4cc34889": {
+              "points": [
+                {
+                  "id": "682d6481-c76f-4a6e-b96f-1960fb38be3d",
+                  "type": "point",
+                  "x": 405.84,
+                  "y": 594.73
+                },
+                {
+                  "id": "edb7e085-7ab9-41c8-88a1-bd109791881c",
+                  "type": "point",
+                  "x": 450,
+                  "y": 594.73
+                }
+              ],
+              "id": "3d04d7e0-9a87-4553-8578-ceee4cc34889",
+              "type": "default",
+              "selected": false,
+              "source": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+              "sourcePort": "cmc3wrf2h03sl3j6m3gwijrz2",
+              "target": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+              "targetPort": "cmc3wnbkc03p63j6mehl92p3e",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "0b1671fb-51a0-4dec-875d-8771e9fcc80f": {
+              "points": [
+                {
+                  "id": "d507f442-2115-48f5-9cc2-17682c76ca64",
+                  "type": "point",
+                  "x": 661.66,
+                  "y": 594.73
+                },
+                {
+                  "id": "21399f4b-0ff3-4f68-ab4e-dd2e4759acfe",
+                  "type": "point",
+                  "x": 710,
+                  "y": 594.73
+                }
+              ],
+              "id": "0b1671fb-51a0-4dec-875d-8771e9fcc80f",
+              "type": "default",
+              "selected": false,
+              "source": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+              "sourcePort": "cmc3wnbkc03p83j6mt4yk7w39",
+              "target": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+              "targetPort": "cmc3ws89a03u23j6m60tyv02r",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f740840b-882d-4b84-a6bb-51d7fa84f72e": {
+              "points": [
+                {
+                  "id": "e28d1563-81f0-46c9-9146-7118bcf725d1",
+                  "type": "point",
+                  "x": -96,
+                  "y": 594.73
+                },
+                {
+                  "id": "907c0680-da58-453b-9337-b5c9743c4a7e",
+                  "type": "point",
+                  "x": -50,
+                  "y": 594.73
+                }
+              ],
+              "id": "f740840b-882d-4b84-a6bb-51d7fa84f72e",
+              "type": "default",
+              "selected": false,
+              "source": "0df441ff-437e-4722-a871-770a4a6dae62",
+              "sourcePort": "cmc3wufoy03vt3j6mpnnjv2ls",
+              "target": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+              "targetPort": "cmc3wrww603tn3j6mv8uw7rn7",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4c47fb7f-3179-4493-bcf5-82ef27d2db26": {
+              "points": [
+                {
+                  "id": "ca947689-738d-4a3b-96ab-fe049f0498cb",
+                  "type": "point",
+                  "x": 912.34,
+                  "y": 594.73
+                },
+                {
+                  "id": "59ed89b7-55aa-4366-9d2b-a9230f330bb1",
+                  "type": "point",
+                  "x": 965,
+                  "y": 594.73
+                }
+              ],
+              "id": "4c47fb7f-3179-4493-bcf5-82ef27d2db26",
+              "type": "default",
+              "selected": false,
+              "source": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+              "sourcePort": "cmc3ws89a03u43j6mco1vy85s",
+              "target": "5376aae4-cdfd-4d81-9601-927740b414e4",
+              "targetPort": "cmc3wuqsp03vz3j6mux0a0ava",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "723a863e-d805-40e4-9049-629b926abf8a",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "9b8c9f69-752f-428a-91b2-99cfd5e5ba77": {
+              "id": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+              "type": "setFieldValue",
+              "selected": false,
+              "x": 450,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3wnbkc03p63j6mehl92p3e",
+                  "type": "default",
+                  "x": 442,
+                  "y": 586.73,
+                  "name": "cmc3wnbkc03p73j6mhg9y2rl6",
+                  "parentNode": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+                  "links": [
+                    "3d04d7e0-9a87-4553-8578-ceee4cc34889"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmc3wnbkc03p83j6mt4yk7w39",
+                  "type": "default",
+                  "x": 653.66,
+                  "y": 586.73,
+                  "name": "cmc3wnbkc03p93j6mtlu8cili",
+                  "parentNode": "9b8c9f69-752f-428a-91b2-99cfd5e5ba77",
+                  "links": [
+                    "0b1671fb-51a0-4dec-875d-8771e9fcc80f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "screenElementTransform": "\"FormMergeInventory\"",
+                "fieldTransform": "\"sourceInventoryBarcode\"",
+                "valueTransform": "null",
+                "nextNodes": [
+                  "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Set Source Inventory Input Null"
+            },
+            "4a7bdd1d-2186-452e-84f1-1ebf60bc1325": {
+              "id": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+              "type": "setFieldValue",
+              "selected": false,
+              "x": 170,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3wrf2h03sj3j6mxksds3wp",
+                  "type": "default",
+                  "x": 162,
+                  "y": 586.73,
+                  "name": "cmc3wrf2h03sk3j6mms1p0mv5",
+                  "parentNode": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+                  "links": [
+                    "6f0934f6-809f-471d-a12c-2af34bbf166a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmc3wrf2h03sl3j6m3gwijrz2",
+                  "type": "default",
+                  "x": 397.84,
+                  "y": 586.73,
+                  "name": "cmc3wrf2h03sm3j6m3n2038po",
+                  "parentNode": "4a7bdd1d-2186-452e-84f1-1ebf60bc1325",
+                  "links": [
+                    "3d04d7e0-9a87-4553-8578-ceee4cc34889"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "screenElementTransform": "\"FormMergeInventory\"",
+                "fieldTransform": "\"destinationInventoryBarcode\"",
+                "valueTransform": "null",
+                "nextNodes": [
+                  "9b8c9f69-752f-428a-91b2-99cfd5e5ba77"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Set Destination Inventory Input Null"
+            },
+            "4bfc072c-fd87-4367-bc55-79c9460b236e": {
+              "id": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+              "type": "setFieldValue",
+              "selected": false,
+              "x": -50,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3wrww603tn3j6mv8uw7rn7",
+                  "type": "default",
+                  "x": -58,
+                  "y": 586.73,
+                  "name": "cmc3wrww603to3j6mxg60bwp6",
+                  "parentNode": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+                  "links": [
+                    "f740840b-882d-4b84-a6bb-51d7fa84f72e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmc3wrww603tp3j6mvd41q487",
+                  "type": "default",
+                  "x": 118.22,
+                  "y": 586.73,
+                  "name": "cmc3wrww603tq3j6m7jbs7k4q",
+                  "parentNode": "4bfc072c-fd87-4367-bc55-79c9460b236e",
+                  "links": [
+                    "6f0934f6-809f-471d-a12c-2af34bbf166a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "screenElementTransform": "\"FormMergeInventory\"",
+                "fieldTransform": "\"mergeQty\"",
+                "valueTransform": "null",
+                "nextNodes": [
+                  "4a7bdd1d-2186-452e-84f1-1ebf60bc1325"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Set Merge Qty Input Null"
+            },
+            "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f": {
+              "id": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+              "type": "focusBlurField",
+              "selected": false,
+              "x": 710,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3ws89a03u23j6m60tyv02r",
+                  "type": "default",
+                  "x": 702,
+                  "y": 586.73,
+                  "name": "cmc3ws89a03u33j6m1qrxp4oe",
+                  "parentNode": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+                  "links": [
+                    "0b1671fb-51a0-4dec-875d-8771e9fcc80f"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmc3ws89a03u43j6mco1vy85s",
+                  "type": "default",
+                  "x": 904.34,
+                  "y": 586.73,
+                  "name": "cmc3ws89a03u53j6m34fglq63",
+                  "parentNode": "a7e9ec58-d4e1-49a8-8812-73c2eca8b20f",
+                  "links": [
+                    "4c47fb7f-3179-4493-bcf5-82ef27d2db26"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "action": "focus",
+                "screenElementTransform": "\"FormMergeInventory\"",
+                "fieldTransform": "\"sourceInventoryBarcode\"",
+                "nextNodes": [
+                  "5376aae4-cdfd-4d81-9601-927740b414e4"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Focus Source Inventory Input"
+            },
+            "0df441ff-437e-4722-a871-770a4a6dae62": {
+              "id": "0df441ff-437e-4722-a871-770a4a6dae62",
+              "type": "request",
+              "selected": false,
+              "x": -250,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3wufoy03vt3j6mpnnjv2ls",
+                  "type": "default",
+                  "x": -104,
+                  "y": 586.73,
+                  "name": "cmc3wufoy03vu3j6mzvz7q09p",
+                  "parentNode": "0df441ff-437e-4722-a871-770a4a6dae62",
+                  "links": [
+                    "f740840b-882d-4b84-a6bb-51d7fa84f72e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "4bfc072c-fd87-4367-bc55-79c9460b236e"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "5376aae4-cdfd-4d81-9601-927740b414e4": {
+              "id": "5376aae4-cdfd-4d81-9601-927740b414e4",
+              "type": "response",
+              "selected": false,
+              "x": 965,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmc3wuqsp03vz3j6mux0a0ava",
+                  "type": "default",
+                  "x": 957,
+                  "y": 586.73,
+                  "name": "cmc3wuqsp03w03j6mpxpqrcta",
+                  "parentNode": "5376aae4-cdfd-4d81-9601-927740b414e4",
+                  "links": [
+                    "4c47fb7f-3179-4493-bcf5-82ef27d2db26"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmc3wuqsp03w13j6mpv93ta7y",
+                  "type": "default",
+                  "x": 1110.98,
+                  "y": 586.73,
+                  "name": "cmc3wuqsp03w23j6moqeu6wx9",
+                  "parentNode": "5376aae4-cdfd-4d81-9601-927740b414e4",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            }
+          }
+        }
+      ],
+      "name": "Merge Inventory Post Submit Web",
+      "type": "Screen",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

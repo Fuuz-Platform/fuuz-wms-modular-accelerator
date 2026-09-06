@@ -1,0 +1,3182 @@
+{
+  "header": {
+    "id": "moveInventory",
+    "name": "Move Inventory",
+    "description": "Use this flow to change the location of inventory by inventoryId.",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Trace",
+    "mcpToolConfiguration": null,
+    "moduleId": "inventoryTracking",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrxjpf3m01pe013efok1bfy3",
+    "number": "0.1.10",
+    "description": "Cleaned up the flow and removed unused nodes.",
+    "dataFlowId": "moveInventory",
+    "flow": {
+      "id": "cmrxjpf3m01pe013efok1bfy3",
+      "name": "Move Inventory",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "001d2ffd-5bce-4221-93b8-4d0e97787ede",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+          "name": "Validate Input",
+          "type": "validate",
+          "data": {
+            "nextNodes": [
+              "3b5c8935-0b40-429b-a497-819041c426ba"
+            ],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "inventoryId": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    }
+                  ]
+                },
+                "storageUnitId": {
+                  "type": "string"
+                },
+                "removeFromHandlingUnit": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "inventoryId",
+                "storageUnitId",
+                "removeFromHandlingUnit"
+              ]
+            }
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+          "name": "Query Inventory",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\r\n  \"whereInventory\": {\r\n    \"id\": {\r\n      \"_in\": [$state.context.INPUT.inventoryId]\r\n    }\r\n  },\r\n  \"whereStorageUnit\": {\r\n    \"id\": {\r\n      \"_eq\": $state.context.INPUT.storageUnitId\r\n    }\r\n  }\r\n}",
+            "query": "query Inventory($whereInventory: InventoryWhereInput!, $whereStorageUnit: StorageUnitWhereInput!) {\n  inventory: inventory(where: $whereInventory) {\n    edges {\n      node {\n        id\n        serialNumber\n        active\n        handlingUnitId\n        inventoryStatusId\n        expiresAt\n        createdAt\n        lotId\n        quantity {\n          value\n          unitId\n        }\n        inventoryPickSteps {\n          edges {\n            node {\n              id\n              allocatedQuantity {\n                value\n              }\n            }\n          }\n        }\n        productId\n        product { code }\n        storageUnitId\n        storageUnit {\n          active\n          code\n          storageUnitStatusId\n          storageUnitStatus {\n            active\n            code\n          }\n        }\n      }\n    }\n  }\n\n  storageUnit: storageUnit(where: $whereStorageUnit) {\n    edges {\n      node {\n        id\n        code\n        active\n        storageZone {\n          id\n          area {\n            code\n          }\n        }\n        defaultInventoryStatusId\n        defaultInventoryStatus {\n          code\n        }\n        storageUnitStatusId\n        storageUnitStatus {\n          active\n          code\n        }\n        inventories(where: { active: { _eq: true } }) {\n          total\n          edges {\n            node {\n              serialNumber\n              quantity {value unitId}\n              product { id code }\n              lotId\n              inventoryPickSteps {   \n                edges {\n                  node {\n                    id\n                    allocatedQuantity {\n                      value\n                    }\n                  }\n                }\n              }\n              _aggregate {\n                id {\n                  uniqueValues\n                }\n              }\n              expiresAt\n              createdAt\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "45cd1231-39b5-4ce0-9f0a-226ab2197e08"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+          "name": "Merge Current Inventory & Storage Unit",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "80cf133d-3b87-4479-bc0b-e391d123dcb6"
+            ],
+            "transform": "{\r\n  \"INFO\": {\r\n    \"inventory\": inventory.edges.node,\r\n    \"storageUnit\": storageUnit.edges.node ~> |$|{\r\n      \"inventories\": {\r\n        \"total\": inventories.total,\r\n        \"edges\": [$map($append([], inventories.edges), function($e) {(\r\n          $n := $e.node;\r\n          $allocated := $exists($n.inventoryPickSteps.edges.node.allocatedQuantity.value)\r\n            ? $sum($n.inventoryPickSteps.edges.node.allocatedQuantity.value)\r\n            : 0;\r\n          $available := $n.quantity.value - $allocated;\r\n          { \"node\": $merge([$n, { \"available\": $available }]) }\r\n        )})]\r\n      }\r\n    }|\r\n  }\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "7089c011-768f-4abe-8781-95ae1e89501a",
+          "name": "Mutate Move Inventory",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{\r\n  \"payload\": [$state.context.INFO.inventory.{\r\n    \"update\": {\r\n      \"storageUnitId\": $state.context.INPUT.storageUnitId,\r\n      \"lastTransactionTypeId\": \"inventoryMove\",\r\n      \"handlingUnitId\": $state.context.INPUT.removeFromHandlingUnit ? null\r\n    },\r\n    \"where\": {\r\n      \"id\": id\r\n    }\r\n  }]\r\n}",
+            "mutation": "mutation UpdateInventory($payload: [InventoryUpdatePayloadInput!]!) {\n  updateInventory(payload: $payload) {\n    id\n    handlingUnitId\n    inventoryStatusId\n    lastTransactionTypeId\n    storageUnitId\n  }\n}",
+            "nextNodes": [
+              "4f83611d-9cd2-4f5d-a148-97895a4b1409"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4f83611d-9cd2-4f5d-a148-97895a4b1409",
+          "name": "Response Success",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"message\": \"Inventory moved successfully\",\r\n  \"data\": {\r\n    \"Moved Inventory\": $state.context.INFO.inventory.{\r\n      \"ID\": id,\r\n      \"Serial Number\": serialNumber,\r\n      \"Previous Storage Unit\": storageUnit.code,\r\n      \"Removed From Handling Unit ID\": $state.context.INPUT.removeFromHandlingUnit ? $coalesce([handlingUnitId, \"N/A\"])\r\n    },\r\n    \"New Storage Unit\": $state.context.INPUT.storageUnit.code\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+          "name": "Route - Handling Unit Check",
+          "type": "switch",
+          "data": {
+            "branches": [
+              {
+                "name": "Inventory Inactive",
+                "transform": "$any(\r\n  [$state.context.INFO.inventory.active],\r\n  $not\r\n)\r\n",
+                "nextNodes": [
+                  "09557881-9df4-49e0-8cd4-6b8cb5aee49f"
+                ]
+              },
+              {
+                "name": "Inventory Retired",
+                "nextNodes": [
+                  "a9d0e0d1-7f34-40b9-b84a-559efc71afe2"
+                ],
+                "transform": "$any(\r\n  [$state.context.INFO.inventory.inventoryStatusId],\r\n  function($inventoryStatusId) { $inventoryStatusId = 'retired'}\r\n)"
+              },
+              {
+                "name": "Storage Unit Inactive",
+                "nextNodes": [
+                  "d9235795-6feb-4304-9cb0-77267a16e280"
+                ],
+                "transform": "false = $state.context.INFO.storageUnit.active"
+              },
+              {
+                "name": "Default Inventory Status Incorrect",
+                "transform": "(\r\n  $defaultStatus := $state.context.INFO.storageUnit.defaultInventoryStatusId;\r\n\r\n  $isNilOrEmpty($defaultStatus) ? false : $state.context.INFO.inventory.inventoryStatusId != $defaultStatus\r\n)",
+                "nextNodes": [
+                  "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd"
+                ]
+              },
+              {
+                "name": "Storage Unit is Unavailable",
+                "transform": "'unavailable' = $state.context.INFO.storageUnit.storageUnitStatusId",
+                "nextNodes": [
+                  "856be04e-5713-47f6-8c15-11a0a534c8ce"
+                ]
+              },
+              {
+                "name": "Storage Unit has other Product",
+                "nextNodes": [
+                  "0e3416c9-09ca-4ddd-971e-89d89273a44a"
+                ],
+                "transform": "storageUnit.edges.node.inventories.edges.node.product.id != $first(inventory.edges.node.productId)"
+              },
+              {
+                "name": "Inventory & Storage Unit Valid",
+                "transform": "true",
+                "nextNodes": [
+                  "0e3416c9-09ca-4ddd-971e-89d89273a44a"
+                ]
+              }
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "d9235795-6feb-4304-9cb0-77267a16e280",
+          "name": "Response Error Storage Unit Inactive",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Storage Unit Not Active\",\r\n  \"message\": \"This storage unit has been \\\"soft deleted\\\", meaning it exists only as an archive and cannot be used. If you believe this is incorrect, contact your supervisor or Fuuz admin for help.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "09557881-9df4-49e0-8cd4-6b8cb5aee49f",
+          "name": "Response Error Inventory Inactive",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory is Inactive\",\r\n  \"message\": \"Some or all of the selected inventory is inactive, which means it was \\\"soft deleted\\\" and only exists as an archive. It cannot be used. If you believe this is incorrect, contact your supervisor or Fuuz admin to fix it.\",\r\n  \"data\": {\r\n    \"Inactive Inventory IDs\": [\r\n      $state.context.INFO.inventory@$active.active.id\r\n    ][$active = false]\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "856be04e-5713-47f6-8c15-11a0a534c8ce",
+          "name": "Response Error Storage Unit Unavailable",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Invalid Status Found\",\r\n  \"message\": \"The status of the storage unit is invalid and can no longer be used. Edit the status of the storage unit to fix this issue.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId,\r\n    \"Storage Unit Status Code\": $state.context.INFO.storageUnit.storageUnitStatus.code\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a9d0e0d1-7f34-40b9-b84a-559efc71afe2",
+          "name": "Response Error Inventory Retired",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory is Retired\",\r\n  \"message\": \"Some or all of the selected inventory is retired, which means it has completed its journey and now exists as a historical record.\",\r\n  \"data\": {\r\n    \"Inactive Inventory IDs\": [\r\n      $state.context.INFO.inventory@$active.active.id\r\n    ][$active = false]\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "3b5c8935-0b40-429b-a497-819041c426ba",
+          "name": "Set Context",
+          "type": "setContext",
+          "data": {
+            "transform": "{\r\n  \"INPUT\": {\r\n    \"storageUnitId\": storageUnitId,\r\n    \"inventoryId\": [inventoryId],\r\n    \"removeFromHandlingUnit\": removeFromHandlingUnit,\r\n    \"inventoryMethod\": $appConfig.moveInventoryOptions.method\r\n  }\r\n}",
+            "nextNodes": [
+              "3cd0dea4-3dbf-460c-b154-464e7d27e05e"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+          "name": "SU Empty?",
+          "type": "ifElse",
+          "data": {
+            "transform": "/* $count($state.context.INFO.storageUnit.inventories.edges.node._aggregate.id.uniqueValues[$not($ in $state.context.INPUT.inventoryId)]) = 0 */\r\n\r\n$count($state.context.INFO.storageUnit.inventories.edges.node[\r\n  $not(_aggregate.id.uniqueValues[0] in $state.context.INPUT.inventoryId)\r\n  and available > 0\r\n]) = 0",
+            "onTrueNextNodes": [
+              "7089c011-768f-4abe-8781-95ae1e89501a"
+            ],
+            "onFalseNextNodes": [
+              "c5f65f87-071e-4305-bf51-ff801c1f49aa"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+          "name": "Route",
+          "type": "switch",
+          "data": {
+            "branches": [
+              {
+                "name": "Config = Move",
+                "transform": "$state.context.INPUT.inventoryMethod = \"move\"",
+                "nextNodes": [
+                  "7089c011-768f-4abe-8781-95ae1e89501a"
+                ]
+              },
+              {
+                "name": "Config = Merge",
+                "transform": "$state.context.INPUT.inventoryMethod = \"merge\"",
+                "nextNodes": [
+                  "1e65cc46-4805-4ecf-a582-510ce8b04b06"
+                ]
+              },
+              {
+                "name": "Pass",
+                "transform": "true",
+                "nextNodes": [
+                  "87638a63-51da-4758-aabf-31113879759d"
+                ]
+              }
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "87638a63-51da-4758-aabf-31113879759d",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+          "name": "Merge Inventory",
+          "type": "executeFlow",
+          "data": {
+            "flowId": "mergeInventory",
+            "payloadTransform": "$",
+            "nextNodes": [
+              "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+          "name": "Prepare Payload",
+          "type": "transform",
+          "data": {
+            "transform": "(\r\n  $inv := $state.context.INFO.inventory;\r\n  $suInvNode := $state.context.INFO.storageUnit.inventories.edges.node;\r\n  $suInvNodes := $type($suInvNode) = \"array\" ? $suInvNode : [$suInvNode];\r\n\r\n  /* look only at inventory where available inventory (quantity.value - allocatedQuantity.value) is greater than 0 */\r\n  $available := $filter($suInvNodes, function($n) {(\r\n    $allocated := $sum($n.inventoryPickSteps.edges.node.allocatedQuantity.value);\r\n    $allocated := $isNilOrEmpty($allocated) ? 0 : $allocated;\r\n    $qtyVal := $isNilOrEmpty($n.quantity.value) ? 0 : $n.quantity.value;\r\n    ($qtyVal - $allocated) > 0\r\n  )});\r\n\r\n  /* find the latest createdAt timestamp */\r\n  $latest := $reduce($available, function($a, $b) {(\r\n    $a.createdAt > $b.createdAt ? $a : $b\r\n  )});\r\n\r\n  {\r\n    \"sourceInventoryId\": $inv.id,\r\n    \"destinationInventoryId\": $latest._aggregate.id.uniqueValues[0],\r\n    \"mergeAll\": true\r\n  }\r\n)",
+            "nextNodes": [
+              "ada8ed6d-97e8-4822-ad96-295c9ed96cac"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+          "name": "Merge Error?",
+          "type": "ifElse",
+          "data": {
+            "onFalseNextNodes": [
+              "0530af1d-79b6-4c63-bf33-477a406200aa"
+            ],
+            "transform": "success = false",
+            "onTrueNextNodes": [
+              "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af",
+          "name": "Response Error ",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "0530af1d-79b6-4c63-bf33-477a406200aa",
+          "name": "Response Success",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"message\": \"Inventory moved successfully\",\r\n  \"data\": {\r\n    \"Moved Inventory\": $state.context.INFO.inventory.{\r\n      \"ID\": id,\r\n      \"Serial Number\": serialNumber,\r\n      \"Previous Storage Unit\": storageUnit.code,\r\n      \"Removed From Handling Unit ID\": $state.context.INPUT.removeFromHandlingUnit ? $coalesce([handlingUnitId, \"N/A\"])\r\n    },\r\n    \"New Storage Unit\": $state.context.INPUT.storageUnit.code\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd",
+          "name": "Response Error Default Inventory Status",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Status Mismatch\",\r\n  \"message\": \"The inventory status does not match the storage unit's default inventory status. Update the inventory status or choose a different storage unit to fix this issue.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId,\r\n    \"Default Inventory Status\": $state.context.INFO.storageUnit.defaultInventoryStatus.code,\r\n    \"Inventory Serial Number\": $state.context.INFO.inventory.serialNumber,\r\n    \"Inventory Status Code\": $state.context.INFO.inventory.inventoryStatusId\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.1.10"
+    },
+    "diagram": {
+      "id": "cmrxjpf3m01pe013efok1bfy3",
+      "offsetX": 2233.55,
+      "offsetY": 286,
+      "zoom": 92.83,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "b67c0953-84f7-4091-9443-1d23176732d8",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "af4ec917-bb03-44b7-bf7e-e3986cdd0758": {
+              "points": [
+                {
+                  "id": "c92da599-7b53-44b0-a9d3-818fd3a1889e",
+                  "type": "point",
+                  "x": -1996,
+                  "y": 278.81
+                },
+                {
+                  "id": "ae984753-7dc9-4a99-a4a7-c9cb7e2b122c",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "af4ec917-bb03-44b7-bf7e-e3986cdd0758",
+              "type": "default",
+              "selected": false,
+              "source": "001d2ffd-5bce-4221-93b8-4d0e97787ede",
+              "sourcePort": "cmbp8032x009d3j6mv0sch2fj",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "853ccf8c-9ffa-49a0-9553-1c31c2dd94f6": {
+              "points": [
+                {
+                  "id": "36a8d70d-ce8f-4f6d-8cc2-28b6a7b2b1bb",
+                  "type": "point",
+                  "x": -1996,
+                  "y": 208.81
+                },
+                {
+                  "id": "8a441d12-3dbb-44fd-a422-76fb4f6b3d72",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "853ccf8c-9ffa-49a0-9553-1c31c2dd94f6",
+              "type": "default",
+              "selected": false,
+              "source": "ababbec1-672c-44fb-bf5d-8422b8564425",
+              "sourcePort": "cmbp9bqvk00cl3j6mjxnbbwqz",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "17e6262b-68a5-41a9-a6a1-d7bfce701281": {
+              "points": [
+                {
+                  "id": "67ef663b-6615-418a-98f4-677b072bc9fa",
+                  "type": "point",
+                  "x": -1996,
+                  "y": 138.81
+                },
+                {
+                  "id": "15826aaf-dd17-4358-b036-b327966c2dc9",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "17e6262b-68a5-41a9-a6a1-d7bfce701281",
+              "type": "default",
+              "selected": false,
+              "source": "887988b5-5d2d-4a22-ae15-7f85a34ca998",
+              "sourcePort": "cmbpddyv301yj3j6mhfkzfmdw",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "bb09c9b8-fd99-438d-b8b5-cb1a7e944258": {
+              "points": [
+                {
+                  "id": "07de4015-abb6-4473-8414-4f9c2fd1601e",
+                  "type": "point",
+                  "x": -1996,
+                  "y": 68.81
+                },
+                {
+                  "id": "2981bb25-7211-4b14-96ec-e620346c7c68",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "bb09c9b8-fd99-438d-b8b5-cb1a7e944258",
+              "type": "default",
+              "selected": false,
+              "source": "7cdcb4a5-f17d-4870-a4ef-60f641d9d22c",
+              "sourcePort": "cmbpdfahn020d3j6mtdas1rof",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "8561a2c6-2a8b-4fe2-861e-41e1f58943f0": {
+              "points": [
+                {
+                  "id": "6ecfa05f-0aff-4c18-b5cd-6dd2d72608ef",
+                  "type": "point",
+                  "x": -1321,
+                  "y": 278.81
+                },
+                {
+                  "id": "ab3ebbea-de99-442f-8e38-0e7dd947b847",
+                  "type": "point",
+                  "x": -1291.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "8561a2c6-2a8b-4fe2-861e-41e1f58943f0",
+              "type": "default",
+              "selected": false,
+              "source": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+              "sourcePort": "cmbpelr6n021b3j6m8xztt8uv",
+              "target": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+              "targetPort": "cmbpeza87026c3j6mdwgatjxc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "436864fb-03e8-4223-83a0-59375369e6c4": {
+              "points": [
+                {
+                  "id": "5bfb7a32-adea-417f-b1d2-792863b855a2",
+                  "type": "point",
+                  "x": -1963.29,
+                  "y": -1.19
+                },
+                {
+                  "id": "31b8b476-d37a-4b23-8d33-587ad917bf70",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "436864fb-03e8-4223-83a0-59375369e6c4",
+              "type": "default",
+              "selected": false,
+              "source": "96211756-e699-4a8b-a333-36efc0988529",
+              "sourcePort": "cmbpkqy3s01473j6mhs4nvksz",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "b4ab1347-f99a-4edc-bdc1-114238c7f004": {
+              "points": [
+                {
+                  "id": "fa1852bc-15b9-44cd-9593-3959f5950372",
+                  "type": "point",
+                  "x": -1909.99,
+                  "y": -71.19
+                },
+                {
+                  "id": "6b947d6c-0b05-4efb-b217-5c9d02aab07c",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "b4ab1347-f99a-4edc-bdc1-114238c7f004",
+              "type": "default",
+              "selected": false,
+              "source": "35869451-3be1-47f2-be79-ea190f82a943",
+              "sourcePort": "cmcz95u9601ct3j6nswzq1h4x",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "ddca5ece-3c65-45d4-8dba-de38bc3e73a0": {
+              "points": [
+                {
+                  "id": "7e99ca06-8769-48d4-89db-cbefe6ce6dcd",
+                  "type": "point",
+                  "x": -1882.04,
+                  "y": -141.19
+                },
+                {
+                  "id": "6463f21f-5cf5-4c5f-9824-aa405c1233bb",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "ddca5ece-3c65-45d4-8dba-de38bc3e73a0",
+              "type": "default",
+              "selected": false,
+              "source": "b5226fd7-61f9-4992-8eb1-9721290d8e7f",
+              "sourcePort": "cmdgdc8nd01bq3j6nj8h8g5wu",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "73bc6e9c-04b5-412e-bde9-5b2a0142324b": {
+              "points": [
+                {
+                  "id": "8f3d6df3-0908-43c4-ace3-c1c8ca5eb150",
+                  "type": "point",
+                  "x": -66.22,
+                  "y": 508.81
+                },
+                {
+                  "id": "0cc5f212-e6b8-4441-bb32-f6a02b71fb88",
+                  "type": "point",
+                  "x": -41.78,
+                  "y": 508.81
+                }
+              ],
+              "id": "73bc6e9c-04b5-412e-bde9-5b2a0142324b",
+              "type": "default",
+              "selected": false,
+              "source": "7089c011-768f-4abe-8781-95ae1e89501a",
+              "sourcePort": "cmdggg99n023m3j6n7q3i3owg",
+              "target": "4f83611d-9cd2-4f5d-a148-97895a4b1409",
+              "targetPort": "cmdggg9a4024w3j6nn3xhfour",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "5d0500db-050e-4c9f-8aec-6c8a38678fc5": {
+              "points": [
+                {
+                  "id": "a69fc68b-f26a-42de-87a7-47e33f6abcab",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 278.81
+                },
+                {
+                  "id": "dfa12da6-32c3-4a3b-884a-84f488049ddb",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 228.81
+                }
+              ],
+              "id": "5d0500db-050e-4c9f-8aec-6c8a38678fc5",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmdgo2twa01gl3j6nrb8oyn42",
+              "target": "09557881-9df4-49e0-8cd4-6b8cb5aee49f",
+              "targetPort": "cmdgo2twp01hp3j6nh3wx9qbl",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "2f327696-c76f-4e03-8752-1c0a246c6065": {
+              "points": [
+                {
+                  "id": "b04a88f3-23f8-48b7-b1f4-d408633f73c6",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 329.09
+                },
+                {
+                  "id": "97b3b9dd-a8e5-4e70-b239-92d77051664d",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 338.81
+                }
+              ],
+              "id": "2f327696-c76f-4e03-8752-1c0a246c6065",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmdgo2twa01gn3j6nvx83flr6",
+              "target": "d9235795-6feb-4304-9cb0-77267a16e280",
+              "targetPort": "cmdgo2twk01hd3j6nfvarw3ty",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e68320d2-4809-4aba-949d-b560a3ad7537": {
+              "points": [
+                {
+                  "id": "7a43ee7e-0f56-4b05-ab7c-0840022b5b27",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 379.37
+                },
+                {
+                  "id": "7f9b3175-db49-4641-9482-221efd52d505",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 448.81
+                }
+              ],
+              "id": "e68320d2-4809-4aba-949d-b560a3ad7537",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmdgo2twa01gp3j6n0jy4kti4",
+              "target": "856be04e-5713-47f6-8c15-11a0a534c8ce",
+              "targetPort": "cmdgo2twt01i13j6n1g61nzdf",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "fdfdc35a-8028-4303-883c-c67fd2d2709a": {
+              "points": [
+                {
+                  "id": "0d393e06-ecb3-4b4d-8744-1acd2ab9f72d",
+                  "type": "point",
+                  "x": -1034.14,
+                  "y": 278.81
+                },
+                {
+                  "id": "fecea843-3c63-4e64-b82d-3f5779f65640",
+                  "type": "point",
+                  "x": -1001.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "fdfdc35a-8028-4303-883c-c67fd2d2709a",
+              "type": "default",
+              "selected": false,
+              "source": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+              "sourcePort": "cmbpeza87026e3j6mfu4lfhmo",
+              "target": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "targetPort": "cmdgo2twa01gh3j6nrkoxw497",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "950541e5-7433-4fb6-803e-4f912733a9ea": {
+              "points": [
+                {
+                  "id": "97b775d7-fbfa-4e33-838f-4666402807ae",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 303.95
+                },
+                {
+                  "id": "95b9123a-65e8-47b5-8bd6-0e1567830da1",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 283.81
+                }
+              ],
+              "id": "950541e5-7433-4fb6-803e-4f912733a9ea",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmdxga5480bg33j6n7g426xf3",
+              "target": "a9d0e0d1-7f34-40b9-b84a-559efc71afe2",
+              "targetPort": "cmdxix1qs0bgq3j6n7ev4amts",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "3ccc9bf0-29fb-4d8f-97e3-c507cb2df5e8": {
+              "points": [
+                {
+                  "id": "923fea1a-0f3c-4fdc-8fd1-bdda47e45038",
+                  "type": "point",
+                  "x": -1506,
+                  "y": 278.81
+                },
+                {
+                  "id": "3c130c3a-4cb9-423c-985b-db8e03aa8e0c",
+                  "type": "point",
+                  "x": -1476.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "3ccc9bf0-29fb-4d8f-97e3-c507cb2df5e8",
+              "type": "default",
+              "selected": false,
+              "source": "3b5c8935-0b40-429b-a497-819041c426ba",
+              "sourcePort": "cmr9cgwkj0c8g356phb8le42m",
+              "target": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+              "targetPort": "cmbpelr6n02193j6mpnp7d6fx",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "7f3cd908-3703-4c69-94a2-a5302eade38a": {
+              "points": [
+                {
+                  "id": "2b3cead5-27b2-4fd1-b67c-d90eea1cc34c",
+                  "type": "point",
+                  "x": -1686,
+                  "y": 278.81
+                },
+                {
+                  "id": "98e304bd-f76f-4b89-a078-48bc89bc5629",
+                  "type": "point",
+                  "x": -1661.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "7f3cd908-3703-4c69-94a2-a5302eade38a",
+              "type": "default",
+              "selected": false,
+              "source": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "sourcePort": "cmbp81kg9009v3j6mj064288i",
+              "target": "3b5c8935-0b40-429b-a497-819041c426ba",
+              "targetPort": "cmr9cgwkj0c8e356pclbojpbn",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "6bcc7b68-bd1e-43dc-ba77-c009f0169d58": {
+              "points": [
+                {
+                  "id": "1bcfad63-49bd-43f6-8c56-d2433991f805",
+                  "type": "point",
+                  "x": -1996,
+                  "y": 358.81
+                },
+                {
+                  "id": "58ad1e72-1f10-4dcf-b350-5b8973901431",
+                  "type": "point",
+                  "x": -1841.78,
+                  "y": 278.81
+                }
+              ],
+              "id": "6bcc7b68-bd1e-43dc-ba77-c009f0169d58",
+              "type": "default",
+              "selected": false,
+              "source": "6f1153bd-6b04-4b71-93cf-4d7573ec0573",
+              "sourcePort": "cmr9cymam00hj356p3zdcrf2g",
+              "target": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "targetPort": "cmbp81kg9009t3j6mk0s9s8sc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e39202e3-10a3-4102-8da0-adfde69e0b36": {
+              "points": [
+                {
+                  "id": "ea8977e6-ae04-4e0c-aba9-86414394959f",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 429.64
+                },
+                {
+                  "id": "8effd21f-04f8-4c59-b659-371c7f9a2b4d",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 508.81
+                }
+              ],
+              "id": "e39202e3-10a3-4102-8da0-adfde69e0b36",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmdgo2twa01gr3j6nk7uo3sfu",
+              "target": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "targetPort": "cmr9dbitw00zw356p3kqjcxbi",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9a8075f9-15d2-4bb5-95d6-36b04c088916": {
+              "points": [
+                {
+                  "id": "eb7f246b-5003-4e78-8d8b-9d81202b3253",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 404.51
+                },
+                {
+                  "id": "9481aef6-f11d-49bc-98ca-cc3adb87e9f6",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 508.81
+                }
+              ],
+              "id": "9a8075f9-15d2-4bb5-95d6-36b04c088916",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cme0rmr4s00a9356mdtam6j2m",
+              "target": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "targetPort": "cmr9dbitw00zw356p3kqjcxbi",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "277fe54f-29e3-484d-b116-a578fe84723f": {
+              "points": [
+                {
+                  "id": "1d09672e-06f9-424f-a1c1-57d5d7c029e0",
+                  "type": "point",
+                  "x": -498.95,
+                  "y": 533.95
+                },
+                {
+                  "id": "5bb4d8eb-f675-468f-8501-e16eb6a34fc7",
+                  "type": "point",
+                  "x": -431.78,
+                  "y": 558.81
+                }
+              ],
+              "id": "277fe54f-29e3-484d-b116-a578fe84723f",
+              "type": "default",
+              "selected": false,
+              "source": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "sourcePort": "cmr9dclrs012j356pv91spgxo",
+              "target": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+              "targetPort": "cmr9cufai00a2356psy5g6hd8",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "1e86c324-9190-4f3b-aa8d-536f8b63a640": {
+              "points": [
+                {
+                  "id": "ef2462ae-56a7-4f3e-a2a6-28cd3c0077b7",
+                  "type": "point",
+                  "x": -498.95,
+                  "y": 559.09
+                },
+                {
+                  "id": "9e7d7341-c9b6-481a-a4a4-83fc5ab768e7",
+                  "type": "point",
+                  "x": -426.78,
+                  "y": 648.81
+                }
+              ],
+              "id": "1e86c324-9190-4f3b-aa8d-536f8b63a640",
+              "type": "default",
+              "selected": false,
+              "source": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "sourcePort": "cmr9dd6ne0139356p0cazpina",
+              "target": "87638a63-51da-4758-aabf-31113879759d",
+              "targetPort": "cmr9hkzu80161356pmigqd9le",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "0e8f8227-2c1d-461c-a58a-d9ce1a8adbc9": {
+              "points": [
+                {
+                  "id": "4e096616-a6a3-4ca0-a77e-b12111514346",
+                  "type": "point",
+                  "x": -498.95,
+                  "y": 508.81
+                },
+                {
+                  "id": "6b92a8b2-e39e-4794-8e8e-bc84ac860e0f",
+                  "type": "point",
+                  "x": -236.78,
+                  "y": 508.81
+                }
+              ],
+              "id": "0e8f8227-2c1d-461c-a58a-d9ce1a8adbc9",
+              "type": "default",
+              "selected": false,
+              "source": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "sourcePort": "cmr9dbnso0101356pnpni6xqo",
+              "target": "7089c011-768f-4abe-8781-95ae1e89501a",
+              "targetPort": "cmdggg99n023k3j6n6rj2tzaz",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "12f146f6-01a3-4dba-b51d-0e0453131629": {
+              "points": [
+                {
+                  "id": "0206c742-1e8d-47b9-b001-834aa099f0ac",
+                  "type": "point",
+                  "x": -276,
+                  "y": 558.81
+                },
+                {
+                  "id": "5fcc9b59-65ef-42ec-8655-06b6a20b125d",
+                  "type": "point",
+                  "x": -236.78,
+                  "y": 508.81
+                }
+              ],
+              "id": "12f146f6-01a3-4dba-b51d-0e0453131629",
+              "type": "default",
+              "selected": false,
+              "source": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+              "sourcePort": "cmr9cufai00a4356p1ohiodfa",
+              "target": "7089c011-768f-4abe-8781-95ae1e89501a",
+              "targetPort": "cmdggg99n023k3j6n6rj2tzaz",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "d420e8a4-64cb-4b7a-bf89-6b739f79e718": {
+              "points": [
+                {
+                  "id": "68378c40-8764-4d19-b742-ae0b9566225f",
+                  "type": "point",
+                  "x": 114,
+                  "y": 583.81
+                },
+                {
+                  "id": "504a582c-a7b2-4438-b4e1-47e7168020ac",
+                  "type": "point",
+                  "x": 143.22,
+                  "y": 583.81
+                }
+              ],
+              "id": "d420e8a4-64cb-4b7a-bf89-6b739f79e718",
+              "type": "default",
+              "selected": false,
+              "source": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+              "sourcePort": "cmr9hvdms01re356pezkzfqmo",
+              "target": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+              "targetPort": "cmr9hvdmz01s4356pno6iu3p3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "39faacca-f649-4909-bbf4-c2f046b60711": {
+              "points": [
+                {
+                  "id": "f1221b67-aee9-4128-8764-bbde427f616e",
+                  "type": "point",
+                  "x": -81,
+                  "y": 583.81
+                },
+                {
+                  "id": "b0b5095f-ca21-4a06-9f2e-1113b682e79a",
+                  "type": "point",
+                  "x": -41.78,
+                  "y": 583.81
+                }
+              ],
+              "id": "39faacca-f649-4909-bbf4-c2f046b60711",
+              "type": "default",
+              "selected": false,
+              "source": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+              "sourcePort": "cmr9hvdmv01rq356pej9udtu5",
+              "target": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+              "targetPort": "cmr9hvdms01rc356pyyykkgdf",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "63f4fea5-0d5e-4738-9f93-3916cd955fe8": {
+              "points": [
+                {
+                  "id": "f5dd695d-e4e4-47f2-a578-cc937cde678e",
+                  "type": "point",
+                  "x": 299,
+                  "y": 583.81
+                },
+                {
+                  "id": "2c3078e3-0990-4929-82f3-de0920f75259",
+                  "type": "point",
+                  "x": 328.22,
+                  "y": 583.81
+                }
+              ],
+              "id": "63f4fea5-0d5e-4738-9f93-3916cd955fe8",
+              "type": "default",
+              "selected": false,
+              "source": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+              "sourcePort": "cmr9hvdmz01s6356pmah79h5j",
+              "target": "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af",
+              "targetPort": "cmr9hvdn201si356pju9azd0p",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4c45fdb8-e6c8-436b-8c3c-696a4b2462f9": {
+              "points": [
+                {
+                  "id": "a18c4aff-a9ca-4502-b5ec-319968169b0e",
+                  "type": "point",
+                  "x": 299,
+                  "y": 608.95
+                },
+                {
+                  "id": "d547ddd4-5497-4b4f-9b32-9a6d92c45424",
+                  "type": "point",
+                  "x": 328.22,
+                  "y": 643.81
+                }
+              ],
+              "id": "4c45fdb8-e6c8-436b-8c3c-696a4b2462f9",
+              "type": "default",
+              "selected": false,
+              "source": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+              "sourcePort": "cmr9hvdmz01s8356p20vhqu6f",
+              "target": "0530af1d-79b6-4c63-bf33-477a406200aa",
+              "targetPort": "cmr9hvdn501su356p35umf5e5",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9efaa8fb-4e8a-4dc4-8649-80c0c0aeb78f": {
+              "points": [
+                {
+                  "id": "a8168c73-a6be-4ac7-9826-ac5fd2b0d075",
+                  "type": "point",
+                  "x": -276,
+                  "y": 583.95
+                },
+                {
+                  "id": "619e492f-61cd-4f98-a6e3-e091fb89109b",
+                  "type": "point",
+                  "x": -236.78,
+                  "y": 583.81
+                }
+              ],
+              "id": "9efaa8fb-4e8a-4dc4-8649-80c0c0aeb78f",
+              "type": "default",
+              "selected": false,
+              "source": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+              "sourcePort": "cmr9cufai00a6356piv9ihuag",
+              "target": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+              "targetPort": "cmr9hvdmv01ro356p1ni0ttc8",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e9ac815f-0c72-46d6-9df6-82fcc061c7da": {
+              "points": [
+                {
+                  "id": "5b59f282-8a11-46fc-9dbc-bfd20976ee92",
+                  "type": "point",
+                  "x": -729.66,
+                  "y": 354.23
+                },
+                {
+                  "id": "774d1470-31c6-43d7-8fe9-c6cf3ac76aff",
+                  "type": "point",
+                  "x": -671.78,
+                  "y": 393.81
+                }
+              ],
+              "id": "e9ac815f-0c72-46d6-9df6-82fcc061c7da",
+              "type": "default",
+              "selected": false,
+              "source": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "sourcePort": "cmr9ntdoh031n356pl9j7tycz",
+              "target": "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd",
+              "targetPort": "cmr9o6own03bo356pse6fawpg",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "3e1fea75-bfa1-43b9-9790-e080d14f3529",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "001d2ffd-5bce-4221-93b8-4d0e97787ede": {
+              "id": "001d2ffd-5bce-4221-93b8-4d0e97787ede",
+              "type": "request",
+              "selected": false,
+              "x": -2150,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmbp8032x009d3j6mv0sch2fj",
+                  "type": "default",
+                  "x": -2003.11,
+                  "y": 271.7,
+                  "name": "cmbp8032y009e3j6mbc74joj9",
+                  "parentNode": "001d2ffd-5bce-4221-93b8-4d0e97787ede",
+                  "links": [
+                    "af4ec917-bb03-44b7-bf7e-e3986cdd0758"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "eb9a5b84-4231-459f-bf31-735b1fdb88f5": {
+              "id": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+              "type": "validate",
+              "selected": false,
+              "x": -1840,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmbp81kg9009t3j6mk0s9s8sc",
+                  "type": "default",
+                  "x": -1848.89,
+                  "y": 271.7,
+                  "name": "cmbp81kg9009u3j6mctbh5avn",
+                  "parentNode": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+                  "links": [
+                    "af4ec917-bb03-44b7-bf7e-e3986cdd0758",
+                    "853ccf8c-9ffa-49a0-9553-1c31c2dd94f6",
+                    "17e6262b-68a5-41a9-a6a1-d7bfce701281",
+                    "bb09c9b8-fd99-438d-b8b5-cb1a7e944258",
+                    "436864fb-03e8-4223-83a0-59375369e6c4",
+                    "b4ab1347-f99a-4edc-bdc1-114238c7f004",
+                    "ddca5ece-3c65-45d4-8dba-de38bc3e73a0",
+                    "6bcc7b68-bd1e-43dc-ba77-c009f0169d58"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmbp81kg9009v3j6mj064288i",
+                  "type": "default",
+                  "x": -1693.11,
+                  "y": 271.7,
+                  "name": "cmbp81kg9009w3j6mlzzfass6",
+                  "parentNode": "eb9a5b84-4231-459f-bf31-735b1fdb88f5",
+                  "links": [
+                    "7f3cd908-3703-4c69-94a2-a5302eade38a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "3b5c8935-0b40-429b-a497-819041c426ba"
+                ],
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inventoryId": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "minItems": 1,
+                          "uniqueItems": true
+                        }
+                      ]
+                    },
+                    "storageUnitId": {
+                      "type": "string"
+                    },
+                    "removeFromHandlingUnit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "inventoryId",
+                    "storageUnitId",
+                    "removeFromHandlingUnit"
+                  ]
+                }
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Validate Input",
+              "note": "Pass in a locationId and either an inventoryId or a handlingUnitId."
+            },
+            "ababbec1-672c-44fb-bf5d-8422b8564425": {
+              "id": "ababbec1-672c-44fb-bf5d-8422b8564425",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": 170,
+              "ports": [
+                {
+                  "id": "cmbp9bqvk00cl3j6mjxnbbwqz",
+                  "type": "default",
+                  "x": -2003.11,
+                  "y": 201.7,
+                  "name": "cmbp9bqvk00cm3j6mgj2u8sf0",
+                  "parentNode": "ababbec1-672c-44fb-bf5d-8422b8564425",
+                  "links": [
+                    "853ccf8c-9ffa-49a0-9553-1c31c2dd94f6"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [
+                    "cmnrp0p2u1eiv0775bw1jgtor",
+                    "cmnrp0p2v1eiw0775cwtj2khq",
+                    "cmnrp0p2v1eix0775ehmxdz42",
+                    "cmnrp0p2w1eiy0775afe8d3np",
+                    "cmnrp0p2w1eiz0775d3op8pf7",
+                    "cmnrp0p2x1ej0077542aff13y",
+                    "cmnrp0p2x1ej10775dk1a7zml",
+                    "cmnrp0p2x1ej2077595h4fkac",
+                    "cmnrp0p2y1ej307755l9ue9yy",
+                    "cmnrp0p2y1ej407751pqugwau"
+                  ],
+                  "storageUnitId": "cmmwiqj360gi90675alcm6jqe",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (single)"
+            },
+            "887988b5-5d2d-4a22-ae15-7f85a34ca998": {
+              "id": "887988b5-5d2d-4a22-ae15-7f85a34ca998",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": 100,
+              "ports": [
+                {
+                  "id": "cmbpddyv301yj3j6mhfkzfmdw",
+                  "type": "default",
+                  "x": -2003.11,
+                  "y": 131.7,
+                  "name": "cmbpddyv301yk3j6m2e3d0gaw",
+                  "parentNode": "887988b5-5d2d-4a22-ae15-7f85a34ca998",
+                  "links": [
+                    "17e6262b-68a5-41a9-a6a1-d7bfce701281"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [
+                    "cmbjtvr2r00bn014cfrmrdz9x",
+                    "cmbpl16bk00lb013a5jsx6j3d",
+                    "cmblcrdd700ao0132bjadfcqe"
+                  ],
+                  "storageUnitId": "ST1",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (multiple)"
+            },
+            "7cdcb4a5-f17d-4870-a4ef-60f641d9d22c": {
+              "id": "7cdcb4a5-f17d-4870-a4ef-60f641d9d22c",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": 30,
+              "ports": [
+                {
+                  "id": "cmbpdfahn020d3j6mtdas1rof",
+                  "type": "default",
+                  "x": -2003.11,
+                  "y": 61.7,
+                  "name": "cmbpdfahn020e3j6m5ok0z4el",
+                  "parentNode": "7cdcb4a5-f17d-4870-a4ef-60f641d9d22c",
+                  "links": [
+                    "bb09c9b8-fd99-438d-b8b5-cb1a7e944258"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [],
+                  "storageUnitId": "ST2",
+                  "removeFromHandlingUnit": true
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (zero)"
+            },
+            "3cd0dea4-3dbf-460c-b154-464e7d27e05e": {
+              "id": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+              "type": "query",
+              "selected": false,
+              "x": -1475,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmbpelr6n02193j6mpnp7d6fx",
+                  "type": "default",
+                  "x": -1483.89,
+                  "y": 271.7,
+                  "name": "cmbpelr6n021a3j6m2wp571ot",
+                  "parentNode": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+                  "links": [
+                    "3ccc9bf0-29fb-4d8f-97e3-c507cb2df5e8"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmbpelr6n021b3j6m8xztt8uv",
+                  "type": "default",
+                  "x": -1328.11,
+                  "y": 271.7,
+                  "name": "cmbpelr6n021c3j6mp5kikftp",
+                  "parentNode": "3cd0dea4-3dbf-460c-b154-464e7d27e05e",
+                  "links": [
+                    "8561a2c6-2a8b-4fe2-861e-41e1f58943f0"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\r\n  \"whereInventory\": {\r\n    \"id\": {\r\n      \"_in\": [$state.context.INPUT.inventoryId]\r\n    }\r\n  },\r\n  \"whereStorageUnit\": {\r\n    \"id\": {\r\n      \"_eq\": $state.context.INPUT.storageUnitId\r\n    }\r\n  }\r\n}",
+                "query": "query Inventory($whereInventory: InventoryWhereInput!, $whereStorageUnit: StorageUnitWhereInput!) {\n  inventory: inventory(where: $whereInventory) {\n    edges {\n      node {\n        id\n        serialNumber\n        active\n        handlingUnitId\n        inventoryStatusId\n        expiresAt\n        createdAt\n        lotId\n        quantity {\n          value\n          unitId\n        }\n        inventoryPickSteps {\n          edges {\n            node {\n              id\n              allocatedQuantity {\n                value\n              }\n            }\n          }\n        }\n        productId\n        product { code }\n        storageUnitId\n        storageUnit {\n          active\n          code\n          storageUnitStatusId\n          storageUnitStatus {\n            active\n            code\n          }\n        }\n      }\n    }\n  }\n\n  storageUnit: storageUnit(where: $whereStorageUnit) {\n    edges {\n      node {\n        id\n        code\n        active\n        storageZone {\n          id\n          area {\n            code\n          }\n        }\n        defaultInventoryStatusId\n        defaultInventoryStatus {\n          code\n        }\n        storageUnitStatusId\n        storageUnitStatus {\n          active\n          code\n        }\n        inventories(where: { active: { _eq: true } }) {\n          total\n          edges {\n            node {\n              serialNumber\n              quantity {value unitId}\n              product { id code }\n              lotId\n              inventoryPickSteps {   \n                edges {\n                  node {\n                    id\n                    allocatedQuantity {\n                      value\n                    }\n                  }\n                }\n              }\n              _aggregate {\n                id {\n                  uniqueValues\n                }\n              }\n              expiresAt\n              createdAt\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "45cd1231-39b5-4ce0-9f0a-226ab2197e08"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query Inventory"
+            },
+            "45cd1231-39b5-4ce0-9f0a-226ab2197e08": {
+              "id": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+              "type": "mergeContext",
+              "selected": false,
+              "x": -1290,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmbpeza87026c3j6mdwgatjxc",
+                  "type": "default",
+                  "x": -1298.89,
+                  "y": 271.7,
+                  "name": "cmbpeza87026d3j6mx0bmrkds",
+                  "parentNode": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+                  "links": [
+                    "8561a2c6-2a8b-4fe2-861e-41e1f58943f0"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmbpeza87026e3j6mfu4lfhmo",
+                  "type": "default",
+                  "x": -1041.25,
+                  "y": 271.7,
+                  "name": "cmbpeza87026f3j6m8f7oeo0e",
+                  "parentNode": "45cd1231-39b5-4ce0-9f0a-226ab2197e08",
+                  "links": [
+                    "fdfdc35a-8028-4303-883c-c67fd2d2709a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "80cf133d-3b87-4479-bc0b-e391d123dcb6"
+                ],
+                "transform": "{\r\n  \"INFO\": {\r\n    \"inventory\": inventory.edges.node,\r\n    \"storageUnit\": storageUnit.edges.node ~> |$|{\r\n      \"inventories\": {\r\n        \"total\": inventories.total,\r\n        \"edges\": [$map($append([], inventories.edges), function($e) {(\r\n          $n := $e.node;\r\n          $allocated := $exists($n.inventoryPickSteps.edges.node.allocatedQuantity.value)\r\n            ? $sum($n.inventoryPickSteps.edges.node.allocatedQuantity.value)\r\n            : 0;\r\n          $available := $n.quantity.value - $allocated;\r\n          { \"node\": $merge([$n, { \"available\": $available }]) }\r\n        )})]\r\n      }\r\n    }|\r\n  }\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Current Inventory & Storage Unit"
+            },
+            "96211756-e699-4a8b-a333-36efc0988529": {
+              "id": "96211756-e699-4a8b-a333-36efc0988529",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": -40,
+              "ports": [
+                {
+                  "id": "cmbpkqy3s01473j6mhs4nvksz",
+                  "type": "default",
+                  "x": -1970.4,
+                  "y": -8.3,
+                  "name": "cmbpkqy3s01483j6mev59t351",
+                  "parentNode": "96211756-e699-4a8b-a333-36efc0988529",
+                  "links": [
+                    "436864fb-03e8-4223-83a0-59375369e6c4"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": "cmblcrdd700ao0132bjadfcqe",
+                  "storageUnitId": "ST2",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (has handling unit)"
+            },
+            "35869451-3be1-47f2-be79-ea190f82a943": {
+              "id": "35869451-3be1-47f2-be79-ea190f82a943",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": -110,
+              "ports": [
+                {
+                  "id": "cmcz95u9601ct3j6nswzq1h4x",
+                  "type": "default",
+                  "x": -1917.1,
+                  "y": -78.3,
+                  "name": "cmcz95u9601cu3j6ntmj125po",
+                  "parentNode": "35869451-3be1-47f2-be79-ea190f82a943",
+                  "links": [
+                    "b4ab1347-f99a-4edc-bdc1-114238c7f004"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [
+                    "cmcjci9lm0hf8019tc6jwbr7t",
+                    "cmcjcmsyt0hgx019t9i574zwx",
+                    "cmcjcno3v0hh8019t168nfxez"
+                  ],
+                  "storageUnitId": "ST3",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (multiple from handling unit)"
+            },
+            "b5226fd7-61f9-4992-8eb1-9721290d8e7f": {
+              "id": "b5226fd7-61f9-4992-8eb1-9721290d8e7f",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": -180,
+              "ports": [
+                {
+                  "id": "cmdgdc8nd01bq3j6nj8h8g5wu",
+                  "type": "default",
+                  "x": -1889.15,
+                  "y": -148.3,
+                  "name": "cmdgdc8nd01br3j6n3yhkc8k6",
+                  "parentNode": "b5226fd7-61f9-4992-8eb1-9721290d8e7f",
+                  "links": [
+                    "ddca5ece-3c65-45d4-8dba-de38bc3e73a0"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [
+                    "cmct7qh0k02pr016vhtrpgslg",
+                    "cmct8l8bz037w016vfqp0ftou",
+                    "cmcta0f7i04ao016v07la54pp",
+                    "cmctap8hq055s015tcng68jlb",
+                    "cmcjcmsyt0hgx019t9i574zwx",
+                    "cmci7tgot08g0016555woc6a9"
+                  ],
+                  "storageUnitId": "ST1",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source (multiple from diff handling units)"
+            },
+            "7089c011-768f-4abe-8781-95ae1e89501a": {
+              "id": "7089c011-768f-4abe-8781-95ae1e89501a",
+              "type": "mutate",
+              "selected": false,
+              "x": -235,
+              "y": 470,
+              "ports": [
+                {
+                  "id": "cmdggg99n023k3j6n6rj2tzaz",
+                  "type": "default",
+                  "x": -243.89,
+                  "y": 501.7,
+                  "name": "cmdggg99n023l3j6nzm063pj3",
+                  "parentNode": "7089c011-768f-4abe-8781-95ae1e89501a",
+                  "links": [
+                    "0e8f8227-2c1d-461c-a58a-d9ce1a8adbc9",
+                    "12f146f6-01a3-4dba-b51d-0e0453131629"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmdggg99n023m3j6n7q3i3owg",
+                  "type": "default",
+                  "x": -73.33,
+                  "y": 501.7,
+                  "name": "cmdggg99n023n3j6nro3yj8jg",
+                  "parentNode": "7089c011-768f-4abe-8781-95ae1e89501a",
+                  "links": [
+                    "73bc6e9c-04b5-412e-bde9-5b2a0142324b"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{\r\n  \"payload\": [$state.context.INFO.inventory.{\r\n    \"update\": {\r\n      \"storageUnitId\": $state.context.INPUT.storageUnitId,\r\n      \"lastTransactionTypeId\": \"inventoryMove\",\r\n      \"handlingUnitId\": $state.context.INPUT.removeFromHandlingUnit ? null\r\n    },\r\n    \"where\": {\r\n      \"id\": id\r\n    }\r\n  }]\r\n}",
+                "mutation": "mutation UpdateInventory($payload: [InventoryUpdatePayloadInput!]!) {\n  updateInventory(payload: $payload) {\n    id\n    handlingUnitId\n    inventoryStatusId\n    lastTransactionTypeId\n    storageUnitId\n  }\n}",
+                "nextNodes": [
+                  "4f83611d-9cd2-4f5d-a148-97895a4b1409"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate Move Inventory"
+            },
+            "4f83611d-9cd2-4f5d-a148-97895a4b1409": {
+              "id": "4f83611d-9cd2-4f5d-a148-97895a4b1409",
+              "type": "response",
+              "selected": false,
+              "x": -40,
+              "y": 470,
+              "ports": [
+                {
+                  "id": "cmdggg9a4024w3j6nn3xhfour",
+                  "type": "default",
+                  "x": -48.89,
+                  "y": 501.7,
+                  "name": "cmdggg9a4024x3j6nvaefpu3x",
+                  "parentNode": "4f83611d-9cd2-4f5d-a148-97895a4b1409",
+                  "links": [
+                    "73bc6e9c-04b5-412e-bde9-5b2a0142324b"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmdggg9a4024y3j6naoketzsh",
+                  "type": "default",
+                  "x": 106.89,
+                  "y": 501.7,
+                  "name": "cmdggg9a4024z3j6nkvmbw94n",
+                  "parentNode": "4f83611d-9cd2-4f5d-a148-97895a4b1409",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"message\": \"Inventory moved successfully\",\r\n  \"data\": {\r\n    \"Moved Inventory\": $state.context.INFO.inventory.{\r\n      \"ID\": id,\r\n      \"Serial Number\": serialNumber,\r\n      \"Previous Storage Unit\": storageUnit.code,\r\n      \"Removed From Handling Unit ID\": $state.context.INPUT.removeFromHandlingUnit ? $coalesce([handlingUnitId, \"N/A\"])\r\n    },\r\n    \"New Storage Unit\": $state.context.INPUT.storageUnit.code\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Success"
+            },
+            "80cf133d-3b87-4479-bc0b-e391d123dcb6": {
+              "id": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+              "type": "switch",
+              "selected": false,
+              "x": -1000,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmdgo2twa01gh3j6nrkoxw497",
+                  "type": "default",
+                  "x": -1008.89,
+                  "y": 271.7,
+                  "name": "cmdgo2twa01gi3j6nhe246cfz",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "fdfdc35a-8028-4303-883c-c67fd2d2709a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmdgo2twa01gl3j6nrb8oyn42",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 271.7,
+                  "name": "cmdgo2twa01gm3j6nbvnzc1mu",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "5d0500db-050e-4c9f-8aec-6c8a38678fc5"
+                  ],
+                  "in": false,
+                  "groupName": "Inventory Inactive",
+                  "groupIndex": 0,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmdgo2twa01gn3j6nvx83flr6",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 321.98,
+                  "name": "cmdgo2twa01go3j6nhwgxs2cd",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "2f327696-c76f-4e03-8752-1c0a246c6065"
+                  ],
+                  "in": false,
+                  "groupName": "Storage Unit Inactive",
+                  "groupIndex": 2,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmdgo2twa01gp3j6n0jy4kti4",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 372.26,
+                  "name": "cmdgo2twa01gq3j6nvs9egjyi",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "e68320d2-4809-4aba-949d-b560a3ad7537"
+                  ],
+                  "in": false,
+                  "groupName": "Storage Unit is Unavailable",
+                  "groupIndex": 4,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmdgo2twa01gr3j6nk7uo3sfu",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 422.53,
+                  "name": "cmdgo2twa01gs3j6nx16oydzp",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "e39202e3-10a3-4102-8da0-adfde69e0b36"
+                  ],
+                  "in": false,
+                  "groupName": "Inventory & Storage Unit Valid",
+                  "groupIndex": 6,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmdxga5480bg33j6n7g426xf3",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 296.84,
+                  "name": "cmdxga5480bg43j6nhiahfgqy",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "950541e5-7433-4fb6-803e-4f912733a9ea"
+                  ],
+                  "in": false,
+                  "groupName": "Inventory Retired",
+                  "groupIndex": 1,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cme0rmr4s00a9356mdtam6j2m",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 397.4,
+                  "name": "cme0rmr4s00aa356m3wwgom89",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "9a8075f9-15d2-4bb5-95d6-36b04c088916"
+                  ],
+                  "in": false,
+                  "groupName": "Storage Unit has other Product",
+                  "groupIndex": 5,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmr9ntdoh031n356pl9j7tycz",
+                  "type": "default",
+                  "x": -736.77,
+                  "y": 347.12,
+                  "name": "cmr9ntdoh031o356pxobtptj1",
+                  "parentNode": "80cf133d-3b87-4479-bc0b-e391d123dcb6",
+                  "links": [
+                    "e9ac815f-0c72-46d6-9df6-82fcc061c7da"
+                  ],
+                  "in": false,
+                  "groupName": "Default Inventory Status Incorrect",
+                  "groupIndex": 3,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                }
+              ],
+              "data": {
+                "branches": [
+                  {
+                    "name": "Inventory Inactive",
+                    "transform": "$any(\r\n  [$state.context.INFO.inventory.active],\r\n  $not\r\n)\r\n",
+                    "nextNodes": [
+                      "09557881-9df4-49e0-8cd4-6b8cb5aee49f"
+                    ]
+                  },
+                  {
+                    "name": "Inventory Retired",
+                    "nextNodes": [
+                      "a9d0e0d1-7f34-40b9-b84a-559efc71afe2"
+                    ],
+                    "transform": "$any(\r\n  [$state.context.INFO.inventory.inventoryStatusId],\r\n  function($inventoryStatusId) { $inventoryStatusId = 'retired'}\r\n)"
+                  },
+                  {
+                    "name": "Storage Unit Inactive",
+                    "nextNodes": [
+                      "d9235795-6feb-4304-9cb0-77267a16e280"
+                    ],
+                    "transform": "false = $state.context.INFO.storageUnit.active"
+                  },
+                  {
+                    "name": "Default Inventory Status Incorrect",
+                    "transform": "(\r\n  $defaultStatus := $state.context.INFO.storageUnit.defaultInventoryStatusId;\r\n\r\n  $isNilOrEmpty($defaultStatus) ? false : $state.context.INFO.inventory.inventoryStatusId != $defaultStatus\r\n)",
+                    "nextNodes": [
+                      "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd"
+                    ]
+                  },
+                  {
+                    "name": "Storage Unit is Unavailable",
+                    "transform": "'unavailable' = $state.context.INFO.storageUnit.storageUnitStatusId",
+                    "nextNodes": [
+                      "856be04e-5713-47f6-8c15-11a0a534c8ce"
+                    ]
+                  },
+                  {
+                    "name": "Storage Unit has other Product",
+                    "nextNodes": [
+                      "0e3416c9-09ca-4ddd-971e-89d89273a44a"
+                    ],
+                    "transform": "storageUnit.edges.node.inventories.edges.node.product.id != $first(inventory.edges.node.productId)"
+                  },
+                  {
+                    "name": "Inventory & Storage Unit Valid",
+                    "transform": "true",
+                    "nextNodes": [
+                      "0e3416c9-09ca-4ddd-971e-89d89273a44a"
+                    ]
+                  }
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Route - Handling Unit Check"
+            },
+            "d9235795-6feb-4304-9cb0-77267a16e280": {
+              "id": "d9235795-6feb-4304-9cb0-77267a16e280",
+              "type": "response",
+              "selected": false,
+              "x": -670,
+              "y": 300,
+              "ports": [
+                {
+                  "id": "cmdgo2twk01hd3j6nfvarw3ty",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 331.7,
+                  "name": "cmdgo2twk01he3j6nco3in8c5",
+                  "parentNode": "d9235795-6feb-4304-9cb0-77267a16e280",
+                  "links": [
+                    "2f327696-c76f-4e03-8752-1c0a246c6065"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmdgo2twk01hf3j6nmo5dkofo",
+                  "type": "default",
+                  "x": -434.2,
+                  "y": 331.7,
+                  "name": "cmdgo2twk01hg3j6nqd5t4syb",
+                  "parentNode": "d9235795-6feb-4304-9cb0-77267a16e280",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Storage Unit Not Active\",\r\n  \"message\": \"This storage unit has been \\\"soft deleted\\\", meaning it exists only as an archive and cannot be used. If you believe this is incorrect, contact your supervisor or Fuuz admin for help.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error Storage Unit Inactive"
+            },
+            "09557881-9df4-49e0-8cd4-6b8cb5aee49f": {
+              "id": "09557881-9df4-49e0-8cd4-6b8cb5aee49f",
+              "type": "response",
+              "selected": false,
+              "x": -670,
+              "y": 190,
+              "ports": [
+                {
+                  "id": "cmdgo2twp01hp3j6nh3wx9qbl",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 221.7,
+                  "name": "cmdgo2twp01hq3j6no9r5ocsu",
+                  "parentNode": "09557881-9df4-49e0-8cd4-6b8cb5aee49f",
+                  "links": [
+                    "5d0500db-050e-4c9f-8aec-6c8a38678fc5"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmdgo2twp01hr3j6nrugyq2xh",
+                  "type": "default",
+                  "x": -450.92,
+                  "y": 221.7,
+                  "name": "cmdgo2twp01hs3j6ne38n405m",
+                  "parentNode": "09557881-9df4-49e0-8cd4-6b8cb5aee49f",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory is Inactive\",\r\n  \"message\": \"Some or all of the selected inventory is inactive, which means it was \\\"soft deleted\\\" and only exists as an archive. It cannot be used. If you believe this is incorrect, contact your supervisor or Fuuz admin to fix it.\",\r\n  \"data\": {\r\n    \"Inactive Inventory IDs\": [\r\n      $state.context.INFO.inventory@$active.active.id\r\n    ][$active = false]\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error Inventory Inactive"
+            },
+            "856be04e-5713-47f6-8c15-11a0a534c8ce": {
+              "id": "856be04e-5713-47f6-8c15-11a0a534c8ce",
+              "type": "response",
+              "selected": false,
+              "x": -670,
+              "y": 410,
+              "ports": [
+                {
+                  "id": "cmdgo2twt01i13j6n1g61nzdf",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 441.7,
+                  "name": "cmdgo2twt01i23j6nky4qhtgs",
+                  "parentNode": "856be04e-5713-47f6-8c15-11a0a534c8ce",
+                  "links": [
+                    "e68320d2-4809-4aba-949d-b560a3ad7537"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmdgo2twt01i33j6n8jod68b4",
+                  "type": "default",
+                  "x": -413.99,
+                  "y": 441.7,
+                  "name": "cmdgo2twt01i43j6n4kmx92ql",
+                  "parentNode": "856be04e-5713-47f6-8c15-11a0a534c8ce",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Invalid Status Found\",\r\n  \"message\": \"The status of the storage unit is invalid and can no longer be used. Edit the status of the storage unit to fix this issue.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId,\r\n    \"Storage Unit Status Code\": $state.context.INFO.storageUnit.storageUnitStatus.code\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error Storage Unit Unavailable"
+            },
+            "a9d0e0d1-7f34-40b9-b84a-559efc71afe2": {
+              "id": "a9d0e0d1-7f34-40b9-b84a-559efc71afe2",
+              "type": "response",
+              "selected": false,
+              "x": -670,
+              "y": 245,
+              "ports": [
+                {
+                  "id": "cmdxix1qs0bgq3j6n7ev4amts",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 276.7,
+                  "name": "cmdxix1qs0bgr3j6nqe4g48w0",
+                  "parentNode": "a9d0e0d1-7f34-40b9-b84a-559efc71afe2",
+                  "links": [
+                    "950541e5-7433-4fb6-803e-4f912733a9ea"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmdxix1qs0bgs3j6n9hfo5r32",
+                  "type": "default",
+                  "x": -455,
+                  "y": 276.7,
+                  "name": "cmdxix1qs0bgt3j6nbobberyp",
+                  "parentNode": "a9d0e0d1-7f34-40b9-b84a-559efc71afe2",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory is Retired\",\r\n  \"message\": \"Some or all of the selected inventory is retired, which means it has completed its journey and now exists as a historical record.\",\r\n  \"data\": {\r\n    \"Inactive Inventory IDs\": [\r\n      $state.context.INFO.inventory@$active.active.id\r\n    ][$active = false]\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error Inventory Retired"
+            },
+            "3b5c8935-0b40-429b-a497-819041c426ba": {
+              "id": "3b5c8935-0b40-429b-a497-819041c426ba",
+              "type": "setContext",
+              "selected": false,
+              "x": -1660,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "cmr9cgwkj0c8e356pclbojpbn",
+                  "type": "default",
+                  "x": -1668.89,
+                  "y": 271.7,
+                  "name": "cmr9cgwkj0c8f356ptyfp9flu",
+                  "parentNode": "3b5c8935-0b40-429b-a497-819041c426ba",
+                  "links": [
+                    "7f3cd908-3703-4c69-94a2-a5302eade38a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9cgwkj0c8g356phb8le42m",
+                  "type": "default",
+                  "x": -1513.11,
+                  "y": 271.7,
+                  "name": "cmr9cgwkj0c8h356p4uj90wni",
+                  "parentNode": "3b5c8935-0b40-429b-a497-819041c426ba",
+                  "links": [
+                    "3ccc9bf0-29fb-4d8f-97e3-c507cb2df5e8"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "{\r\n  \"INPUT\": {\r\n    \"storageUnitId\": storageUnitId,\r\n    \"inventoryId\": [inventoryId],\r\n    \"removeFromHandlingUnit\": removeFromHandlingUnit,\r\n    \"inventoryMethod\": $appConfig.moveInventoryOptions.method\r\n  }\r\n}",
+                "nextNodes": [
+                  "3cd0dea4-3dbf-460c-b154-464e7d27e05e"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Set Context"
+            },
+            "1e65cc46-4805-4ecf-a582-510ce8b04b06": {
+              "id": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+              "type": "ifElse",
+              "selected": false,
+              "x": -430,
+              "y": 520,
+              "ports": [
+                {
+                  "id": "cmr9cufai00a2356psy5g6hd8",
+                  "type": "default",
+                  "x": -438.89,
+                  "y": 551.7,
+                  "name": "cmr9cufai00a3356pv25rbyp9",
+                  "parentNode": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+                  "links": [
+                    "277fe54f-29e3-484d-b116-a578fe84723f"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9cufai00a4356p1ohiodfa",
+                  "type": "default",
+                  "x": -283.11,
+                  "y": 551.7,
+                  "name": "cmr9cufai00a5356pt4vksruw",
+                  "parentNode": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+                  "links": [
+                    "12f146f6-01a3-4dba-b51d-0e0453131629"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "True",
+                  "fieldPath": "data.onTrueNextNodes"
+                },
+                {
+                  "id": "cmr9cufai00a6356piv9ihuag",
+                  "type": "default",
+                  "x": -283.11,
+                  "y": 576.84,
+                  "name": "cmr9cufai00a7356pt19g6kiw",
+                  "parentNode": "1e65cc46-4805-4ecf-a582-510ce8b04b06",
+                  "links": [
+                    "9efaa8fb-4e8a-4dc4-8649-80c0c0aeb78f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "False",
+                  "fieldPath": "data.onFalseNextNodes"
+                }
+              ],
+              "data": {
+                "transform": "/* $count($state.context.INFO.storageUnit.inventories.edges.node._aggregate.id.uniqueValues[$not($ in $state.context.INPUT.inventoryId)]) = 0 */\r\n\r\n$count($state.context.INFO.storageUnit.inventories.edges.node[\r\n  $not(_aggregate.id.uniqueValues[0] in $state.context.INPUT.inventoryId)\r\n  and available > 0\r\n]) = 0",
+                "onTrueNextNodes": [
+                  "7089c011-768f-4abe-8781-95ae1e89501a"
+                ],
+                "onFalseNextNodes": [
+                  "c5f65f87-071e-4305-bf51-ff801c1f49aa"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "SU Empty?"
+            },
+            "6f1153bd-6b04-4b71-93cf-4d7573ec0573": {
+              "id": "6f1153bd-6b04-4b71-93cf-4d7573ec0573",
+              "type": "debugSource",
+              "selected": false,
+              "x": -2150,
+              "y": 320,
+              "ports": [
+                {
+                  "id": "cmr9cymam00hj356p3zdcrf2g",
+                  "type": "default",
+                  "x": -2003.11,
+                  "y": 351.7,
+                  "name": "cmr9cymam00hk356p0bqcnct2",
+                  "parentNode": "6f1153bd-6b04-4b71-93cf-4d7573ec0573",
+                  "links": [
+                    "6bcc7b68-bd1e-43dc-ba77-c009f0169d58"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "inventoryId": [
+                    "cmosnf60v00a2017mggia05ny"
+                  ],
+                  "storageUnitId": "cmralmu2w00fg016t08krgt1o",
+                  "removeFromHandlingUnit": false
+                },
+                "context": {},
+                "nextNodes": [
+                  "eb9a5b84-4231-459f-bf31-735b1fdb88f5"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Test"
+            },
+            "0e3416c9-09ca-4ddd-971e-89d89273a44a": {
+              "id": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+              "type": "switch",
+              "selected": false,
+              "x": -670,
+              "y": 470,
+              "ports": [
+                {
+                  "id": "cmr9dbitw00zw356p3kqjcxbi",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 501.7,
+                  "name": "cmr9dbitw00zx356pppho2tqy",
+                  "parentNode": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+                  "links": [
+                    "e39202e3-10a3-4102-8da0-adfde69e0b36",
+                    "9a8075f9-15d2-4bb5-95d6-36b04c088916"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9dbnso0101356pnpni6xqo",
+                  "type": "default",
+                  "x": -506.06,
+                  "y": 501.7,
+                  "name": "cmr9dbnso0102356prm61gluj",
+                  "parentNode": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+                  "links": [
+                    "0e8f8227-2c1d-461c-a58a-d9ce1a8adbc9"
+                  ],
+                  "in": false,
+                  "groupName": "Config = Move",
+                  "groupIndex": 0,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmr9dclrs012j356pv91spgxo",
+                  "type": "default",
+                  "x": -506.06,
+                  "y": 526.84,
+                  "name": "cmr9dclrs012k356ppruw78gj",
+                  "parentNode": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+                  "links": [
+                    "277fe54f-29e3-484d-b116-a578fe84723f"
+                  ],
+                  "in": false,
+                  "groupName": "Config = Merge",
+                  "groupIndex": 1,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmr9dd6ne0139356p0cazpina",
+                  "type": "default",
+                  "x": -506.06,
+                  "y": 551.98,
+                  "name": "cmr9dd6ne013a356puo8wze0z",
+                  "parentNode": "0e3416c9-09ca-4ddd-971e-89d89273a44a",
+                  "links": [
+                    "1e86c324-9190-4f3b-aa8d-536f8b63a640"
+                  ],
+                  "in": false,
+                  "groupName": "Pass",
+                  "groupIndex": 2,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                }
+              ],
+              "data": {
+                "branches": [
+                  {
+                    "name": "Config = Move",
+                    "transform": "$state.context.INPUT.inventoryMethod = \"move\"",
+                    "nextNodes": [
+                      "7089c011-768f-4abe-8781-95ae1e89501a"
+                    ]
+                  },
+                  {
+                    "name": "Config = Merge",
+                    "transform": "$state.context.INPUT.inventoryMethod = \"merge\"",
+                    "nextNodes": [
+                      "1e65cc46-4805-4ecf-a582-510ce8b04b06"
+                    ]
+                  },
+                  {
+                    "name": "Pass",
+                    "transform": "true",
+                    "nextNodes": [
+                      "87638a63-51da-4758-aabf-31113879759d"
+                    ]
+                  }
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Route"
+            },
+            "87638a63-51da-4758-aabf-31113879759d": {
+              "id": "87638a63-51da-4758-aabf-31113879759d",
+              "type": "response",
+              "selected": false,
+              "x": -425,
+              "y": 610,
+              "ports": [
+                {
+                  "id": "cmr9hkzu80161356pmigqd9le",
+                  "type": "default",
+                  "x": -433.89,
+                  "y": 641.7,
+                  "name": "cmr9hkzu80162356pkbb8n1nk",
+                  "parentNode": "87638a63-51da-4758-aabf-31113879759d",
+                  "links": [
+                    "1e86c324-9190-4f3b-aa8d-536f8b63a640"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmr9hkzu80163356pc6ft68mf",
+                  "type": "default",
+                  "x": -278.11,
+                  "y": 641.7,
+                  "name": "cmr9hkzu80164356pjj26kz6r",
+                  "parentNode": "87638a63-51da-4758-aabf-31113879759d",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "ada8ed6d-97e8-4822-ad96-295c9ed96cac": {
+              "id": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+              "type": "executeFlow",
+              "selected": false,
+              "x": -40,
+              "y": 545,
+              "ports": [
+                {
+                  "id": "cmr9hvdms01rc356pyyykkgdf",
+                  "type": "default",
+                  "x": -48.89,
+                  "y": 576.7,
+                  "name": "cmr9hvdms01rd356p98fetzh1",
+                  "parentNode": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+                  "links": [
+                    "39faacca-f649-4909-bbf4-c2f046b60711"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9hvdms01re356pezkzfqmo",
+                  "type": "default",
+                  "x": 106.89,
+                  "y": 576.7,
+                  "name": "cmr9hvdms01rf356p06bim8ra",
+                  "parentNode": "ada8ed6d-97e8-4822-ad96-295c9ed96cac",
+                  "links": [
+                    "d420e8a4-64cb-4b7a-bf89-6b739f79e718"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "flowId": "mergeInventory",
+                "payloadTransform": "$",
+                "nextNodes": [
+                  "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Inventory"
+            },
+            "c5f65f87-071e-4305-bf51-ff801c1f49aa": {
+              "id": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+              "type": "transform",
+              "selected": false,
+              "x": -235,
+              "y": 545,
+              "ports": [
+                {
+                  "id": "cmr9hvdmv01ro356p1ni0ttc8",
+                  "type": "default",
+                  "x": -243.89,
+                  "y": 576.7,
+                  "name": "cmr9hvdmv01rp356p447widjw",
+                  "parentNode": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+                  "links": [
+                    "9efaa8fb-4e8a-4dc4-8649-80c0c0aeb78f"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9hvdmv01rq356pej9udtu5",
+                  "type": "default",
+                  "x": -88.11,
+                  "y": 576.7,
+                  "name": "cmr9hvdmv01rr356pzfvrbxpd",
+                  "parentNode": "c5f65f87-071e-4305-bf51-ff801c1f49aa",
+                  "links": [
+                    "39faacca-f649-4909-bbf4-c2f046b60711"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\r\n  $inv := $state.context.INFO.inventory;\r\n  $suInvNode := $state.context.INFO.storageUnit.inventories.edges.node;\r\n  $suInvNodes := $type($suInvNode) = \"array\" ? $suInvNode : [$suInvNode];\r\n\r\n  /* look only at inventory where available inventory (quantity.value - allocatedQuantity.value) is greater than 0 */\r\n  $available := $filter($suInvNodes, function($n) {(\r\n    $allocated := $sum($n.inventoryPickSteps.edges.node.allocatedQuantity.value);\r\n    $allocated := $isNilOrEmpty($allocated) ? 0 : $allocated;\r\n    $qtyVal := $isNilOrEmpty($n.quantity.value) ? 0 : $n.quantity.value;\r\n    ($qtyVal - $allocated) > 0\r\n  )});\r\n\r\n  /* find the latest createdAt timestamp */\r\n  $latest := $reduce($available, function($a, $b) {(\r\n    $a.createdAt > $b.createdAt ? $a : $b\r\n  )});\r\n\r\n  {\r\n    \"sourceInventoryId\": $inv.id,\r\n    \"destinationInventoryId\": $latest._aggregate.id.uniqueValues[0],\r\n    \"mergeAll\": true\r\n  }\r\n)",
+                "nextNodes": [
+                  "ada8ed6d-97e8-4822-ad96-295c9ed96cac"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Prepare Payload",
+              "note": "This node goes through to find first where a serial number has an available quantity > 0 and then the following:\n\n- sourceInventoryBarcode -> the inventory serial that is being moved to a storage unit\n- destinationInventoryBarcode -> the newest created at inventory that is found at the move to location\n\nThese will then be merged together to form 1 inventory.serialNumber at the storage unit."
+            },
+            "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d": {
+              "id": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+              "type": "ifElse",
+              "selected": false,
+              "x": 145,
+              "y": 545,
+              "ports": [
+                {
+                  "id": "cmr9hvdmz01s4356pno6iu3p3",
+                  "type": "default",
+                  "x": 136.11,
+                  "y": 576.7,
+                  "name": "cmr9hvdmz01s5356pagbylqmr",
+                  "parentNode": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+                  "links": [
+                    "d420e8a4-64cb-4b7a-bf89-6b739f79e718"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmr9hvdmz01s6356pmah79h5j",
+                  "type": "default",
+                  "x": 291.89,
+                  "y": 576.7,
+                  "name": "cmr9hvdmz01s7356pmncdb0a1",
+                  "parentNode": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+                  "links": [
+                    "63f4fea5-0d5e-4738-9f93-3916cd955fe8"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "True",
+                  "fieldPath": "data.onTrueNextNodes"
+                },
+                {
+                  "id": "cmr9hvdmz01s8356p20vhqu6f",
+                  "type": "default",
+                  "x": 291.89,
+                  "y": 601.84,
+                  "name": "cmr9hvdmz01s9356ptsn48jc2",
+                  "parentNode": "4c6a8bcd-4585-42d1-8651-3acbb6e14b5d",
+                  "links": [
+                    "4c45fdb8-e6c8-436b-8c3c-696a4b2462f9"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "False",
+                  "fieldPath": "data.onFalseNextNodes"
+                }
+              ],
+              "data": {
+                "onFalseNextNodes": [
+                  "0530af1d-79b6-4c63-bf33-477a406200aa"
+                ],
+                "transform": "success = false",
+                "onTrueNextNodes": [
+                  "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Error?"
+            },
+            "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af": {
+              "id": "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af",
+              "type": "response",
+              "selected": false,
+              "x": 330,
+              "y": 545,
+              "ports": [
+                {
+                  "id": "cmr9hvdn201si356pju9azd0p",
+                  "type": "default",
+                  "x": 321.11,
+                  "y": 576.7,
+                  "name": "cmr9hvdn201sj356pm7gzthtw",
+                  "parentNode": "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af",
+                  "links": [
+                    "63f4fea5-0d5e-4738-9f93-3916cd955fe8"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmr9hvdn201sk356pk4bcsxe7",
+                  "type": "default",
+                  "x": 476.89,
+                  "y": 576.7,
+                  "name": "cmr9hvdn201sl356pfcfy587a",
+                  "parentNode": "a90c54ad-31e8-4fa0-99ec-7832ceb2f3af",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error "
+            },
+            "0530af1d-79b6-4c63-bf33-477a406200aa": {
+              "id": "0530af1d-79b6-4c63-bf33-477a406200aa",
+              "type": "response",
+              "selected": false,
+              "x": 330,
+              "y": 605,
+              "ports": [
+                {
+                  "id": "cmr9hvdn501su356p35umf5e5",
+                  "type": "default",
+                  "x": 321.11,
+                  "y": 636.7,
+                  "name": "cmr9hvdn501sv356pr25fjq7v",
+                  "parentNode": "0530af1d-79b6-4c63-bf33-477a406200aa",
+                  "links": [
+                    "4c45fdb8-e6c8-436b-8c3c-696a4b2462f9"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmr9hvdn501sw356pf52gke38",
+                  "type": "default",
+                  "x": 476.89,
+                  "y": 636.7,
+                  "name": "cmr9hvdn501sx356pswifalp1",
+                  "parentNode": "0530af1d-79b6-4c63-bf33-477a406200aa",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"message\": \"Inventory moved successfully\",\r\n  \"data\": {\r\n    \"Moved Inventory\": $state.context.INFO.inventory.{\r\n      \"ID\": id,\r\n      \"Serial Number\": serialNumber,\r\n      \"Previous Storage Unit\": storageUnit.code,\r\n      \"Removed From Handling Unit ID\": $state.context.INPUT.removeFromHandlingUnit ? $coalesce([handlingUnitId, \"N/A\"])\r\n    },\r\n    \"New Storage Unit\": $state.context.INPUT.storageUnit.code\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Success"
+            },
+            "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd": {
+              "id": "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd",
+              "type": "response",
+              "selected": false,
+              "x": -670,
+              "y": 355,
+              "ports": [
+                {
+                  "id": "cmr9o6own03bo356pse6fawpg",
+                  "type": "default",
+                  "x": -678.89,
+                  "y": 386.7,
+                  "name": "cmr9o6own03bp356plp6gel9x",
+                  "parentNode": "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd",
+                  "links": [
+                    "e9ac815f-0c72-46d6-9df6-82fcc061c7da"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmr9o6own03bq356pjb716c00",
+                  "type": "default",
+                  "x": -416.15,
+                  "y": 386.7,
+                  "name": "cmr9o6own03br356pr8lzcfij",
+                  "parentNode": "e1cf0f15-b5d4-4746-bfb6-8d6f088045dd",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Status Mismatch\",\r\n  \"message\": \"The inventory status does not match the storage unit's default inventory status. Update the inventory status or choose a different storage unit to fix this issue.\",\r\n  \"data\": {\r\n    \"Storage Unit\": $state.context.INFO.storageUnit.code,\r\n    \"Storage Unit ID\": $state.context.INPUT.storageUnitId,\r\n    \"Default Inventory Status\": $state.context.INFO.storageUnit.defaultInventoryStatus.code,\r\n    \"Inventory Serial Number\": $state.context.INFO.inventory.serialNumber,\r\n    \"Inventory Status Code\": $state.context.INFO.inventory.inventoryStatusId\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response Error Default Inventory Status"
+            }
+          }
+        }
+      ],
+      "name": "Move Inventory",
+      "type": "System",
+      "version": "0.1.10",
+      "walkthrough": {
+        "steps": [],
+        "includeIntroduction": true
+      }
+    }
+  }
+}

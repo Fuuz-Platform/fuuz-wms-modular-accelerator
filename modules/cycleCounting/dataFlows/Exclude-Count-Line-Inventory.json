@@ -1,0 +1,404 @@
+{
+  "header": {
+    "id": "excludeCountLineInventory",
+    "name": "Exclude Count Line Inventory",
+    "description": "**Use:** This is used to delete a count line inventory from a count. This will not change the expected amount for the line. But it will effect the progress % when scanning.\n\n**Used In:** The count details screen.",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "Screen",
+    "logLevelId": "Trace",
+    "mcpToolConfiguration": null,
+    "moduleId": "cycleCounting",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmcxskgry0d7307755wl27hxo",
+    "number": "0.0.2",
+    "description": "",
+    "dataFlowId": "excludeCountLineInventory",
+    "flow": {
+      "id": "cmcxskgry0d7307755wl27hxo",
+      "name": "Exclude Count Line Inventory",
+      "type": "Screen",
+      "nodes": [
+        {
+          "id": "b858b0e5-3047-4697-a90a-dc28f41a91e9",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "f1be6284-0f22-41fa-bdeb-24d0e7c47716"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "99a4d2e8-0c2a-416a-9a03-31523e438726",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+          "name": "Mutate",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{\r\n  \"payload\":[\r\n    {\r\n      \"where\": {\r\n        \"id\": data.id\r\n      }\r\n    }\r\n  ],\r\n  \"countId\": $metadata.urlParameters.id\r\n\r\n}",
+            "nextNodes": [
+              "99a4d2e8-0c2a-416a-9a03-31523e438726"
+            ],
+            "mutation": "mutation DeleteCountLineInventory(\r\n  $payload: [CountLineInventoryDeletePayloadInput!]!\r\n  $countId: String!\r\n) {\r\n  deleteCountLineInventory(payload: $payload) {\r\n    id\r\n  }\r\n\r\n  publishMessages(payload:  {\r\n     messages:  {\r\n        value: {\r\n          countId: $countId\r\n        }\r\n     }\r\n     topic:  {\r\n        name: \"update.count.progress\"\r\n     }\r\n  }){\r\n    topic{\r\n      id\r\n    }\r\n  }\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmcxskgry0d7307755wl27hxo",
+      "offsetX": -173,
+      "offsetY": 73,
+      "zoom": 100,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "07046c17-e2d6-4b8b-a34a-e63dcb8ff880",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "2988fc67-d181-4f8b-bfc8-17dde82542f9": {
+              "points": [
+                {
+                  "id": "6e16777b-bf78-4e84-884d-2a663ccb0ae9",
+                  "type": "point",
+                  "x": 335.01,
+                  "y": 214.43
+                },
+                {
+                  "id": "1c61158c-6889-4e31-8fbc-af43f9dd3aff",
+                  "type": "point",
+                  "x": 374.74,
+                  "y": 149.58
+                }
+              ],
+              "id": "2988fc67-d181-4f8b-bfc8-17dde82542f9",
+              "type": "default",
+              "source": "e71133d7-e873-4b21-b286-a287dc26522f",
+              "sourcePort": "cmcxse1yh008r356ltgaqtpfv",
+              "target": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+              "targetPort": "cmcxse1yk009j356lqw8nq06f",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "96136cbb-3f81-4355-91e7-6f46e531907b": {
+              "points": [
+                {
+                  "id": "14348b0c-2f99-46db-9d58-19e00a1b1414",
+                  "type": "point",
+                  "x": 335.01,
+                  "y": 149.43
+                },
+                {
+                  "id": "61866d2d-425e-4058-a95b-a844477662a7",
+                  "type": "point",
+                  "x": 374.74,
+                  "y": 149.58
+                }
+              ],
+              "id": "96136cbb-3f81-4355-91e7-6f46e531907b",
+              "type": "default",
+              "source": "b858b0e5-3047-4697-a90a-dc28f41a91e9",
+              "sourcePort": "cmcxse1yi008x356lxr37f41e",
+              "target": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+              "targetPort": "cmcxse1yk009j356lqw8nq06f",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "70fb9a97-f6a1-47d4-a0af-cad658e5067f": {
+              "points": [
+                {
+                  "id": "e54d92a3-82ce-4def-81d9-35ab51b15b84",
+                  "type": "point",
+                  "x": 528.99,
+                  "y": 149.58
+                },
+                {
+                  "id": "23a0e656-0e3f-4751-a146-5106fa20a5f7",
+                  "type": "point",
+                  "x": 575.75,
+                  "y": 149.43
+                }
+              ],
+              "id": "70fb9a97-f6a1-47d4-a0af-cad658e5067f",
+              "type": "default",
+              "source": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+              "sourcePort": "cmcxse1yk009l356l8gk50tvk",
+              "target": "99a4d2e8-0c2a-416a-9a03-31523e438726",
+              "targetPort": "cmcxse1yj0097356l2ph0gfsz",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "8d57b6d4-5cbf-402c-8361-86dfe8a670c5",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "e71133d7-e873-4b21-b286-a287dc26522f": {
+              "id": "e71133d7-e873-4b21-b286-a287dc26522f",
+              "type": "debugSource",
+              "selected": false,
+              "x": 181.01,
+              "y": 174.85,
+              "ports": [
+                {
+                  "id": "cmcxse1yh008r356ltgaqtpfv",
+                  "type": "default",
+                  "x": 327.14,
+                  "y": 206.56,
+                  "name": "cmcxse1yh008s356legkicoel",
+                  "parentNode": "e71133d7-e873-4b21-b286-a287dc26522f",
+                  "links": [
+                    "2988fc67-d181-4f8b-bfc8-17dde82542f9"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {},
+                "context": {},
+                "nextNodes": [
+                  "f1be6284-0f22-41fa-bdeb-24d0e7c47716"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "b858b0e5-3047-4697-a90a-dc28f41a91e9": {
+              "id": "b858b0e5-3047-4697-a90a-dc28f41a91e9",
+              "type": "request",
+              "selected": false,
+              "x": 181.01,
+              "y": 109.85,
+              "ports": [
+                {
+                  "id": "cmcxse1yi008x356lxr37f41e",
+                  "type": "default",
+                  "x": 327.14,
+                  "y": 141.56,
+                  "name": "cmcxse1yi008y356lr58yt6to",
+                  "parentNode": "b858b0e5-3047-4697-a90a-dc28f41a91e9",
+                  "links": [
+                    "96136cbb-3f81-4355-91e7-6f46e531907b"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "f1be6284-0f22-41fa-bdeb-24d0e7c47716"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "99a4d2e8-0c2a-416a-9a03-31523e438726": {
+              "id": "99a4d2e8-0c2a-416a-9a03-31523e438726",
+              "type": "response",
+              "selected": false,
+              "x": 576.01,
+              "y": 109.85,
+              "ports": [
+                {
+                  "id": "cmcxse1yj0097356l2ph0gfsz",
+                  "type": "default",
+                  "x": 567.88,
+                  "y": 141.56,
+                  "name": "cmcxse1yj0098356lx5y9juwf",
+                  "parentNode": "99a4d2e8-0c2a-416a-9a03-31523e438726",
+                  "links": [
+                    "70fb9a97-f6a1-47d4-a0af-cad658e5067f"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmcxse1yj0099356lzw6gpw8j",
+                  "type": "default",
+                  "x": 722.14,
+                  "y": 141.56,
+                  "name": "cmcxse1yj009a356lw1uvusxa",
+                  "parentNode": "99a4d2e8-0c2a-416a-9a03-31523e438726",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "f1be6284-0f22-41fa-bdeb-24d0e7c47716": {
+              "id": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+              "type": "mutate",
+              "selected": true,
+              "x": 375,
+              "y": 110,
+              "ports": [
+                {
+                  "id": "cmcxse1yk009j356lqw8nq06f",
+                  "type": "default",
+                  "x": 366.87,
+                  "y": 141.71,
+                  "name": "cmcxse1yk009k356lynyjbufe",
+                  "parentNode": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+                  "links": [
+                    "2988fc67-d181-4f8b-bfc8-17dde82542f9",
+                    "96136cbb-3f81-4355-91e7-6f46e531907b"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmcxse1yk009l356l8gk50tvk",
+                  "type": "default",
+                  "x": 521.12,
+                  "y": 141.71,
+                  "name": "cmcxse1yk009m356ldj8axi7l",
+                  "parentNode": "f1be6284-0f22-41fa-bdeb-24d0e7c47716",
+                  "links": [
+                    "70fb9a97-f6a1-47d4-a0af-cad658e5067f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{\r\n  \"payload\":[\r\n    {\r\n      \"where\": {\r\n        \"id\": data.id\r\n      }\r\n    }\r\n  ],\r\n  \"countId\": $metadata.urlParameters.id\r\n\r\n}",
+                "nextNodes": [
+                  "99a4d2e8-0c2a-416a-9a03-31523e438726"
+                ],
+                "mutation": "mutation DeleteCountLineInventory(\r\n  $payload: [CountLineInventoryDeletePayloadInput!]!\r\n  $countId: String!\r\n) {\r\n  deleteCountLineInventory(payload: $payload) {\r\n    id\r\n  }\r\n\r\n  publishMessages(payload:  {\r\n     messages:  {\r\n        value: {\r\n          countId: $countId\r\n        }\r\n     }\r\n     topic:  {\r\n        name: \"update.count.progress\"\r\n     }\r\n  }){\r\n    topic{\r\n      id\r\n    }\r\n  }\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate"
+            }
+          }
+        }
+      ],
+      "name": "Exclude Count Line Inventory",
+      "type": "Screen",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

@@ -1,0 +1,2547 @@
+{
+  "packageDefinition": {
+    "name": "WMS Accelerator - Mfg"
+  },
+  "packageDefinitionVersion": {
+    "id": "cmrxrj8g3001b356pfu97ique",
+    "version": "0.0.7",
+    "packageDefinitionId": "wmsAcceleratorMfg",
+    "exportedFileId": null
+  },
+  "packageDefinitionSelections": [
+    {
+      "id": "cmrxrj8pf001c356pjrw17zqr",
+      "api": "application",
+      "modelName": "DataFlow",
+      "selected": [
+        {
+          "id": "addEditScacWebFlow",
+          "label": "Add Edit SCAC Web Flow"
+        },
+        {
+          "id": "addNewShipmentLine",
+          "label": "Add New Shipment Line"
+        },
+        {
+          "id": "cancelCount",
+          "label": "Cancel Count"
+        },
+        {
+          "id": "changeShipmentLineQuantity",
+          "label": "Change Shipment Line Quantity"
+        },
+        {
+          "id": "completeCount",
+          "label": "Complete Count"
+        },
+        {
+          "id": "configurationWebFlow",
+          "label": "Configuration Web Flow"
+        },
+        {
+          "id": "confirmLine",
+          "label": "Confirm Line"
+        },
+        {
+          "id": "confirmLineWeb",
+          "label": "Confirm Line Web"
+        },
+        {
+          "id": "confirmReceiptLine",
+          "label": "Confirm Receipt Line"
+        },
+        {
+          "id": "countCountLineInventoryWebflow",
+          "label": "Count Count Line Inventory Webflow"
+        },
+        {
+          "id": "createCountLineInventory",
+          "label": "Create Count Line Inventory"
+        },
+        {
+          "id": "createHandlingUnitWebFlow",
+          "label": "Create Handling Unit Web Flow"
+        },
+        {
+          "id": "createInventory",
+          "label": "Create Inventory"
+        },
+        {
+          "id": "createLoadAndShipments",
+          "label": "Create Load and Shipments"
+        },
+        {
+          "id": "createPickStep",
+          "label": "Create Pick Step"
+        },
+        {
+          "id": "createPickWebFlow",
+          "label": "Create Pick Web Flow"
+        },
+        {
+          "id": "createReceiptLine",
+          "label": "Create Receipt Line"
+        },
+        {
+          "id": "cycleCountWebFlow",
+          "label": "Cycle Count Web Flow"
+        },
+        {
+          "id": "dataModelDetails",
+          "label": "DataModel Details"
+        },
+        {
+          "id": "excludeCountLineInventory",
+          "label": "Exclude Count Line Inventory"
+        },
+        {
+          "id": "executeCycleCountScan",
+          "label": "Execute Cycle Count Scan"
+        },
+        {
+          "id": "executePickWebFlow",
+          "label": "Execute Pick Web Flow "
+        },
+        {
+          "id": "getBoLNumber",
+          "label": "Get BoL Number"
+        },
+        {
+          "id": "getCommercialInvoiceNumber",
+          "label": "Get Commercial Invoice Number"
+        },
+        {
+          "id": "mergeInventory",
+          "label": "Merge Inventory"
+        },
+        {
+          "id": "mergeInventoryPostSubmitWeb",
+          "label": "Merge Inventory Post Submit Web"
+        },
+        {
+          "id": "moveInventory",
+          "label": "Move Inventory"
+        },
+        {
+          "id": "moveInventoryWeb",
+          "label": "Move Inventory Web"
+        },
+        {
+          "id": "mrbAdjustInventory",
+          "label": "MRB Adjust Inventory"
+        },
+        {
+          "id": "mrbCompleteReturn",
+          "label": "MRB Complete Return"
+        },
+        {
+          "id": "nonConformancePublichMessage",
+          "label": "NonConformancePublichMessage"
+        },
+        {
+          "id": "ordersWebFlow",
+          "label": "Orders Web Flow"
+        },
+        {
+          "id": "packingWebFlow",
+          "label": "Packing Web Flow"
+        },
+        {
+          "id": "packInventory",
+          "label": "Pack Inventory"
+        },
+        {
+          "id": "pickDetailsWebFlow",
+          "label": "Pick Details Web Flow"
+        },
+        {
+          "id": "printBoxContentLabel",
+          "label": "Print Box Content Label"
+        },
+        {
+          "id": "printShippingDocumentsWebFlow",
+          "label": "Print Shipping Documents Web Flow"
+        },
+        {
+          "id": "recountCountLineInventory",
+          "label": "Recount Count Line Inventory"
+        },
+        {
+          "id": "shipManagementWebFlow",
+          "label": "Ship Management Web Flow"
+        },
+        {
+          "id": "splitInventory",
+          "label": "Split Inventory"
+        },
+        {
+          "id": "splitInventoryWeb",
+          "label": "Split Inventory Web"
+        },
+        {
+          "id": "startCountAndCreateCountLines",
+          "label": "Start Count and Create Count Lines"
+        },
+        {
+          "id": "unpackInventory",
+          "label": "Unpack Inventory"
+        },
+        {
+          "id": "updateLoadStatus",
+          "label": "Update Load Status"
+        },
+        {
+          "id": "updateOrderStatus",
+          "label": "Update Order Status"
+        },
+        {
+          "id": "updateReceiptStatus",
+          "label": "Update Receipt Status"
+        },
+        {
+          "id": "updateReleaseStatus",
+          "label": "Update Release Status"
+        },
+        {
+          "id": "webFlowLog",
+          "label": "Web Flow Log"
+        },
+        {
+          "id": "wmsDashboardSearchV3",
+          "label": "WMS Dashboard Search v3"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "substitutesDataFlowId"
+        },
+        {
+          "name": "dataFlowTypeId"
+        },
+        {
+          "name": "logLevelId"
+        },
+        {
+          "name": "mcpToolConfiguration.enabled"
+        },
+        {
+          "name": "mcpToolConfiguration.inputSchema"
+        },
+        {
+          "name": "mcpToolConfiguration.outputSchema"
+        },
+        {
+          "name": "mcpToolConfiguration.readOnly"
+        },
+        {
+          "name": "mcpToolConfiguration.destructive"
+        },
+        {
+          "name": "mcpToolConfiguration.idempotent"
+        },
+        {
+          "name": "moduleId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001d356pqg32o34c",
+      "api": "application",
+      "modelName": "Screen",
+      "selected": [
+        {
+          "id": "adjustment",
+          "label": "Adjustment Table"
+        },
+        {
+          "id": "allocateInventoryToLines",
+          "label": "Allocate Inventory to Lines "
+        },
+        {
+          "id": "basicInventoryUpdateWidget",
+          "label": "Basic Inventory Update Widget"
+        },
+        {
+          "id": "businessPartnerAddressDetailForm",
+          "label": "Business Partner Address Detail Form"
+        },
+        {
+          "id": "businessPartnerDetailForm",
+          "label": "Business Partner Detail Form"
+        },
+        {
+          "id": "businessPartnersTable",
+          "label": "Business Partners Table"
+        },
+        {
+          "id": "configuration",
+          "label": "Configuration"
+        },
+        {
+          "id": "countDetails",
+          "label": "Count Details"
+        },
+        {
+          "id": "countLocationSelector",
+          "label": "Count Location Selector"
+        },
+        {
+          "id": "countSelector",
+          "label": "Count Selector"
+        },
+        {
+          "id": "countTable",
+          "label": "Count Table"
+        },
+        {
+          "id": "createExceptionModal",
+          "label": "Create Exception Modal"
+        },
+        {
+          "id": "createInventoryWidget",
+          "label": "Create Inventory Widget"
+        },
+        {
+          "id": "createLoadForm",
+          "label": "Create Load Form"
+        },
+        {
+          "id": "createReceiptLineWidget",
+          "label": "Create Receipt Line Widget"
+        },
+        {
+          "id": "executeCycleCount",
+          "label": "Execute Cycle Count"
+        },
+        {
+          "id": "executePick",
+          "label": "Execute Pick"
+        },
+        {
+          "id": "inventoryTabel",
+          "label": "Inventory Table"
+        },
+        {
+          "id": "loadManagement",
+          "label": "Load Management "
+        },
+        {
+          "id": "mergeInventory",
+          "label": "Merge Inventory"
+        },
+        {
+          "id": "moveInventory",
+          "label": "Move Inventory"
+        },
+        {
+          "id": "newReceiptWidget",
+          "label": "New Receipt Widget"
+        },
+        {
+          "id": "orderLineCreateWidget",
+          "label": "Order Line Create Widget"
+        },
+        {
+          "id": "orders",
+          "label": "Orders"
+        },
+        {
+          "id": "packing",
+          "label": "Packing"
+        },
+        {
+          "id": "pickDetails",
+          "label": "Pick Details"
+        },
+        {
+          "id": "pickManagement",
+          "label": "Pick Management"
+        },
+        {
+          "id": "processTable",
+          "label": "Process Table"
+        },
+        {
+          "id": "productCategoryTable",
+          "label": "Product Category Table"
+        },
+        {
+          "id": "productDetailsForm",
+          "label": "Product Details Form"
+        },
+        {
+          "id": "productTable2",
+          "label": "Product Table"
+        },
+        {
+          "id": "receiptLineConfirmation",
+          "label": "Receipt Line Confirmation"
+        },
+        {
+          "id": "receiving",
+          "label": "Receiving"
+        },
+        {
+          "id": "recievingDetailsModal",
+          "label": "Recieving Details Modal"
+        },
+        {
+          "id": "scac",
+          "label": "SCAC"
+        },
+        {
+          "id": "selectOrderReleases",
+          "label": "Select Order Releases"
+        },
+        {
+          "id": "shipManagement",
+          "label": "Ship Management"
+        },
+        {
+          "id": "shippingMobile",
+          "label": "Shipping Mobile"
+        },
+        {
+          "id": "siteManagement",
+          "label": "Site Management"
+        },
+        {
+          "id": "splitInventory",
+          "label": "Split Inventory"
+        },
+        {
+          "id": "test",
+          "label": "Test"
+        },
+        {
+          "id": "unpickModal",
+          "label": "Unpick Modal"
+        },
+        {
+          "id": "wmsDashboard",
+          "label": "WMS Dashboard"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "edgeScreen"
+        },
+        {
+          "name": "forceFullscreen"
+        },
+        {
+          "name": "moduleId"
+        },
+        {
+          "name": "substitutesScreenId"
+        },
+        {
+          "name": "isWidget"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001e356pdumh5yj0",
+      "api": "application",
+      "modelName": "DocumentDesign",
+      "selected": [
+        {
+          "id": "billOfLading",
+          "label": "Bill Of Lading"
+        },
+        {
+          "id": "boxContentLabel",
+          "label": "Box Content Label"
+        },
+        {
+          "id": "commercialInvoice",
+          "label": "Commercial Invoice"
+        },
+        {
+          "id": "packingList",
+          "label": "Packing List"
+        },
+        {
+          "id": "pickSheet",
+          "label": "Pick Sheet"
+        },
+        {
+          "id": "shippingLabel",
+          "label": "Shipping Label"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "substitutesDocumentDesignId"
+        },
+        {
+          "name": "primaryGenerationDataFlowId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001f356poy10uxyi",
+      "api": "application",
+      "modelName": "ApplicationConfiguration",
+      "selected": [
+        {
+          "id": "companyInformation",
+          "label": "Company Information"
+        },
+        {
+          "id": "moveInventoryOptions",
+          "label": "Move Inventory Options"
+        },
+        {
+          "id": "packOptions",
+          "label": "Pack Options"
+        },
+        {
+          "id": "pickOptions",
+          "label": "Pick Options"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "configSchema"
+        },
+        {
+          "name": "configJson"
+        },
+        {
+          "name": "moduleId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001g356pfqbebibv",
+      "api": "application",
+      "modelName": "InventoryStatus",
+      "selected": [
+        {
+          "id": "damaged",
+          "label": "Damaged"
+        },
+        {
+          "id": "hold",
+          "label": "Hold"
+        },
+        {
+          "id": "lost",
+          "label": "Lost"
+        },
+        {
+          "id": "ok",
+          "label": "Ok"
+        },
+        {
+          "id": "packed",
+          "label": "Packed"
+        },
+        {
+          "id": "retired",
+          "label": "Retired"
+        },
+        {
+          "id": "shipped",
+          "label": "Shipped"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "code"
+        },
+        {
+          "name": "inventoryUse"
+        },
+        {
+          "name": "locationUse"
+        },
+        {
+          "name": "lotUse"
+        },
+        {
+          "name": "system"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "externalId"
+        },
+        {
+          "name": "customData"
+        },
+        {
+          "name": "integrationData"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "code",
+            "label": "code"
+          }
+        ],
+        "labelField": "code"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001h356phv1n38tk",
+      "api": "application",
+      "modelName": "LoadStatus",
+      "selected": [
+        {
+          "id": "new",
+          "label": "new"
+        },
+        {
+          "id": "packed",
+          "label": "packed"
+        },
+        {
+          "id": "picked",
+          "label": "picked"
+        },
+        {
+          "id": "shipped",
+          "label": "shipped"
+        },
+        {
+          "id": "shortShipped",
+          "label": "shortShipped"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001i356po5c62klj",
+      "api": "application",
+      "modelName": "ModuleGroup",
+      "selected": [
+        {
+          "id": "applications",
+          "label": "Applications"
+        },
+        {
+          "id": "customerRelationshipManagement",
+          "label": "Customer Relationship Management"
+        },
+        {
+          "id": "humanCapitalManagement",
+          "label": "Human Capital Management"
+        },
+        {
+          "id": "inventoryManagement",
+          "label": "Inventory Management"
+        },
+        {
+          "id": "materialsManagement",
+          "label": "Materials Management"
+        },
+        {
+          "id": "orderFulfillment",
+          "label": "Order Fulfillment"
+        },
+        {
+          "id": "productDataManagement",
+          "label": "Product Data Management"
+        },
+        {
+          "id": "productionManagement",
+          "label": "Production Management"
+        },
+        {
+          "id": "receiving",
+          "label": "Receiving"
+        },
+        {
+          "id": "siteManagement",
+          "label": "Site Management"
+        },
+        {
+          "id": "supplyChainManagement",
+          "label": "Supply Chain Management"
+        },
+        {
+          "id": "system",
+          "label": "System"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "icon"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001j356piow9zfnj",
+      "api": "application",
+      "modelName": "Module",
+      "selected": [
+        {
+          "id": "accessControl",
+          "label": "Access Control"
+        },
+        {
+          "id": "applicationConnector",
+          "label": "Application Connector"
+        },
+        {
+          "id": "applicationLifecycleManagement",
+          "label": "Application Lifecycle Management"
+        },
+        {
+          "id": "applicationTrace",
+          "label": "Application Trace"
+        },
+        {
+          "id": "businessIntelligence",
+          "label": "Business Intelligence"
+        },
+        {
+          "id": "configuration",
+          "label": "Configuration"
+        },
+        {
+          "id": "cycleCounting",
+          "label": "Cycle Counting"
+        },
+        {
+          "id": "dashboard",
+          "label": "Dashboard"
+        },
+        {
+          "id": "dataManagement",
+          "label": "Data Management"
+        },
+        {
+          "id": "dataModeling",
+          "label": "Data Modeling"
+        },
+        {
+          "id": "employees",
+          "label": "Employees"
+        },
+        {
+          "id": "engineering",
+          "label": "Engineering"
+        },
+        {
+          "id": "files",
+          "label": "Files"
+        },
+        {
+          "id": "images",
+          "label": "Images"
+        },
+        {
+          "id": "integration",
+          "label": "Integration"
+        },
+        {
+          "id": "internetOfThings",
+          "label": "Internet of Things"
+        },
+        {
+          "id": "inventory",
+          "label": "Inventory"
+        },
+        {
+          "id": "inventoryTracking",
+          "label": "Inventory Tracking"
+        },
+        {
+          "id": "logistics",
+          "label": "Logistics"
+        },
+        {
+          "id": "maintenance",
+          "label": "Maintenance"
+        },
+        {
+          "id": "manufacturing",
+          "label": "Manufacturing"
+        },
+        {
+          "id": "materials",
+          "label": "Materials"
+        },
+        {
+          "id": "orchestration",
+          "label": "Orchestration"
+        },
+        {
+          "id": "orderProcessing",
+          "label": "Order Processing"
+        },
+        {
+          "id": "orderReceiving",
+          "label": "Order Receiving"
+        },
+        {
+          "id": "orderTracking",
+          "label": "Order Tracking"
+        },
+        {
+          "id": "packing",
+          "label": "Packing"
+        },
+        {
+          "id": "picking",
+          "label": "Picking"
+        },
+        {
+          "id": "planning",
+          "label": "Planning"
+        },
+        {
+          "id": "procurement",
+          "label": "Procurement"
+        },
+        {
+          "id": "quality",
+          "label": "Quality"
+        },
+        {
+          "id": "sales",
+          "label": "Sales"
+        },
+        {
+          "id": "scheduling",
+          "label": "Scheduling"
+        },
+        {
+          "id": "shipping",
+          "label": "Shipping"
+        },
+        {
+          "id": "siteManagement",
+          "label": "Site Management"
+        },
+        {
+          "id": "testing",
+          "label": "Testing"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "moduleGroupId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name",
+        "insertBefore": [
+          {
+            "modelName": "DataModel"
+          }
+        ]
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001k356p90296c0i",
+      "api": "application",
+      "modelName": "Sequence",
+      "selected": [
+        {
+          "id": "bol",
+          "label": "BoL Number"
+        },
+        {
+          "id": "commercialInvoice",
+          "label": "CommercialInvoice"
+        },
+        {
+          "id": "count",
+          "label": "Count"
+        },
+        {
+          "id": "countLine",
+          "label": "CountLine"
+        },
+        {
+          "id": "countParameter",
+          "label": "CountParameter"
+        },
+        {
+          "id": "countUpFromOne",
+          "label": "Count Up from One"
+        },
+        {
+          "id": "handlingUnit",
+          "label": "HandlingUnit"
+        },
+        {
+          "id": "inventory",
+          "label": "Inventory"
+        },
+        {
+          "id": "load",
+          "label": "Load"
+        },
+        {
+          "id": "order",
+          "label": "Order"
+        },
+        {
+          "id": "orderLine",
+          "label": "OrderLine"
+        },
+        {
+          "id": "orderLineRelease",
+          "label": "OrderLineRelease"
+        },
+        {
+          "id": "pick",
+          "label": "Pick"
+        },
+        {
+          "id": "preferredProductStroageUnitPriority",
+          "label": "PreferredProductStroageUnitPriority  "
+        },
+        {
+          "id": "receipt",
+          "label": "Receipt"
+        },
+        {
+          "id": "receiptException",
+          "label": "ReceiptException"
+        },
+        {
+          "id": "receiptLine",
+          "label": "ReceiptLine"
+        },
+        {
+          "id": "shipment",
+          "label": "Shipment"
+        },
+        {
+          "id": "shipmentLine",
+          "label": "ShipmentLine"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "type"
+        },
+        {
+          "name": "increment"
+        },
+        {
+          "name": "prefix"
+        },
+        {
+          "name": "suffix"
+        },
+        {
+          "name": "zeroPadding"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001l356pupok08bk",
+      "api": "application",
+      "modelName": "HandlingUnitType",
+      "selected": [
+        {
+          "id": "bag",
+          "label": "bag"
+        },
+        {
+          "id": "box",
+          "label": "box"
+        },
+        {
+          "id": "pallet",
+          "label": "pallet"
+        },
+        {
+          "id": "tote",
+          "label": "tote"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001m356pq6h3czy2",
+      "api": "application",
+      "modelName": "PickStepStatus",
+      "selected": [
+        {
+          "id": "completed",
+          "label": "completed"
+        },
+        {
+          "id": "new",
+          "label": "new"
+        },
+        {
+          "id": "picked",
+          "label": "picked"
+        },
+        {
+          "id": "ready",
+          "label": "ready"
+        },
+        {
+          "id": "started",
+          "label": "started"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "userId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001n356pg831jfdw",
+      "api": "application",
+      "modelName": "PickStatus",
+      "selected": [
+        {
+          "id": "cancelled",
+          "label": "cancelled"
+        },
+        {
+          "id": "completed",
+          "label": "completed"
+        },
+        {
+          "id": "new",
+          "label": "new"
+        },
+        {
+          "id": "ready",
+          "label": "ready"
+        },
+        {
+          "id": "started",
+          "label": "started"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001o356pdvmae0mg",
+      "api": "application",
+      "modelName": "TransactionType",
+      "selected": [
+        {
+          "id": "inventoryMerge",
+          "label": "Inventory Merge"
+        },
+        {
+          "id": "inventoryMove",
+          "label": "Inventory Move"
+        },
+        {
+          "id": "inventorySplit",
+          "label": "Inventory Split"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "externalId"
+        },
+        {
+          "name": "customData"
+        },
+        {
+          "name": "integrationData"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001p356pkix7r8n5",
+      "api": "application",
+      "modelName": "OrderLineReleaseStatus",
+      "selected": [
+        {
+          "id": "canceled",
+          "label": "Canceled "
+        },
+        {
+          "id": "fulfilled",
+          "label": "Fulfilled"
+        },
+        {
+          "id": "partiallyFulfilled",
+          "label": "Partially Fulfilled"
+        },
+        {
+          "id": "pendingFulfillment",
+          "label": "Pending Fulfillment"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "code"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "system"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "customData"
+        },
+        {
+          "name": "integrationData"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "code",
+            "label": "code"
+          }
+        ],
+        "labelField": "code"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001q356pdmcm1m1a",
+      "api": "application",
+      "modelName": "OrderLineReleaseType",
+      "selected": [
+        {
+          "id": "firm",
+          "label": "Firm"
+        },
+        {
+          "id": "forecasted",
+          "label": "Forecasted"
+        },
+        {
+          "id": "planned",
+          "label": "Planned"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001r356pmoib5l8z",
+      "api": "application",
+      "modelName": "OrderStatus",
+      "selected": [
+        {
+          "id": "cancelled",
+          "label": "Cancelled"
+        },
+        {
+          "id": "fulfilled",
+          "label": "Fulfilled"
+        },
+        {
+          "id": "new",
+          "label": "New"
+        },
+        {
+          "id": "packed",
+          "label": "Packed"
+        },
+        {
+          "id": "partialFulfillment",
+          "label": "Partial Fulfillment"
+        },
+        {
+          "id": "partialPick",
+          "label": "Partial Pick"
+        },
+        {
+          "id": "pendingFulfillment",
+          "label": "Pending Fulfillment"
+        },
+        {
+          "id": "picked",
+          "label": "Picked"
+        },
+        {
+          "id": "shipped",
+          "label": "Shipped"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "code"
+        },
+        {
+          "name": "orderLineReleaseUse"
+        },
+        {
+          "name": "orderUse"
+        },
+        {
+          "name": "system"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "customData"
+        },
+        {
+          "name": "integrationData"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "code",
+            "label": "code"
+          }
+        ],
+        "labelField": "code"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001s356p4i0zx9q3",
+      "api": "application",
+      "modelName": "OrderType",
+      "selected": [
+        {
+          "id": "purchase",
+          "label": "Purchase"
+        },
+        {
+          "id": "sale",
+          "label": "Sale"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "usable"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001t356pwk5lv7yl",
+      "api": "application",
+      "modelName": "StandardCarrierAlphaCode",
+      "selected": [
+        {
+          "id": "aact",
+          "label": "aact"
+        },
+        {
+          "id": "abfs",
+          "label": "abfs"
+        },
+        {
+          "id": "aci ",
+          "label": "aci "
+        },
+        {
+          "id": "aduie",
+          "label": "aduie"
+        },
+        {
+          "id": "agce",
+          "label": "agce"
+        },
+        {
+          "id": "amxl",
+          "label": "amxl"
+        },
+        {
+          "id": "avrt",
+          "label": "avrt"
+        },
+        {
+          "id": "cenf",
+          "label": "cenf"
+        },
+        {
+          "id": "ceva",
+          "label": "ceva"
+        },
+        {
+          "id": "chrw",
+          "label": "chrw"
+        },
+        {
+          "id": "cllq",
+          "label": "cllq"
+        },
+        {
+          "id": "cnwy",
+          "label": "cnwy"
+        },
+        {
+          "id": "cofs",
+          "label": "cofs"
+        },
+        {
+          "id": "crst",
+          "label": "crst"
+        },
+        {
+          "id": "ctii",
+          "label": "ctii"
+        },
+        {
+          "id": "dafg",
+          "label": "dafg"
+        },
+        {
+          "id": "dhl",
+          "label": "dhl"
+        },
+        {
+          "id": "dylt",
+          "label": "dylt"
+        },
+        {
+          "id": "echo",
+          "label": "echo"
+        },
+        {
+          "id": "engb",
+          "label": "engb"
+        },
+        {
+          "id": "exla",
+          "label": "exla"
+        },
+        {
+          "id": "fd2d",
+          "label": "fd2d"
+        },
+        {
+          "id": "fdcc",
+          "label": "fdcc"
+        },
+        {
+          "id": "fdeg",
+          "label": "fdeg"
+        },
+        {
+          "id": "fdxg",
+          "label": "fdxg"
+        },
+        {
+          "id": "fe2a",
+          "label": "fe2a"
+        },
+        {
+          "id": "fed2",
+          "label": "fed2"
+        },
+        {
+          "id": "fed3",
+          "label": "fed3"
+        },
+        {
+          "id": "fedex",
+          "label": "fedex"
+        },
+        {
+          "id": "fedg",
+          "label": "fedg"
+        },
+        {
+          "id": "fedp",
+          "label": "fedp"
+        },
+        {
+          "id": "feds",
+          "label": "feds"
+        },
+        {
+          "id": "fedx",
+          "label": "fedx"
+        },
+        {
+          "id": "feie",
+          "label": "feie"
+        },
+        {
+          "id": "feip",
+          "label": "feip"
+        },
+        {
+          "id": "fepo",
+          "label": "fepo"
+        },
+        {
+          "id": "forw",
+          "label": "forw"
+        },
+        {
+          "id": "fxfe",
+          "label": "fxfe"
+        },
+        {
+          "id": "fxg2",
+          "label": "fxg2"
+        },
+        {
+          "id": "fxgd",
+          "label": "fxgd"
+        },
+        {
+          "id": "fxnl",
+          "label": "fxnl"
+        },
+        {
+          "id": "glbl",
+          "label": "glbl"
+        },
+        {
+          "id": "gsol",
+          "label": "gsol"
+        },
+        {
+          "id": "hmes",
+          "label": "hmes"
+        },
+        {
+          "id": "hsfw",
+          "label": "hsfw"
+        },
+        {
+          "id": "htld",
+          "label": "htld"
+        },
+        {
+          "id": "jbht",
+          "label": "jbht"
+        },
+        {
+          "id": "knig",
+          "label": "knig"
+        },
+        {
+          "id": "land",
+          "label": "land"
+        },
+        {
+          "id": "lsso",
+          "label": "lsso"
+        },
+        {
+          "id": "lstr",
+          "label": "lstr"
+        },
+        {
+          "id": "melh",
+          "label": "melh"
+        },
+        {
+          "id": "midw",
+          "label": "midw"
+        },
+        {
+          "id": "mrtn",
+          "label": "mrtn"
+        },
+        {
+          "id": "nemf",
+          "label": "nemf"
+        },
+        {
+          "id": "newp",
+          "label": "newp"
+        },
+        {
+          "id": "nflo",
+          "label": "nflo"
+        },
+        {
+          "id": "nwot",
+          "label": "nwot"
+        },
+        {
+          "id": "nxtl",
+          "label": "nxtl"
+        },
+        {
+          "id": "oakl",
+          "label": "oakl"
+        },
+        {
+          "id": "odfl",
+          "label": "odfl"
+        },
+        {
+          "id": "pens",
+          "label": "pens"
+        },
+        {
+          "id": "pitd",
+          "label": "pitd"
+        },
+        {
+          "id": "prim",
+          "label": "prim"
+        },
+        {
+          "id": "ptlc",
+          "label": "ptlc"
+        },
+        {
+          "id": "ptsi",
+          "label": "ptsi"
+        },
+        {
+          "id": "pyle",
+          "label": "pyle"
+        },
+        {
+          "id": "rdwy",
+          "label": "rdwy"
+        },
+        {
+          "id": "retl",
+          "label": "retl"
+        },
+        {
+          "id": "rlcs",
+          "label": "rlcs"
+        },
+        {
+          "id": "saia",
+          "label": "saia"
+        },
+        {
+          "id": "scnn",
+          "label": "scnn"
+        },
+        {
+          "id": "sefl",
+          "label": "sefl"
+        },
+        {
+          "id": "smtl",
+          "label": "smtl"
+        },
+        {
+          "id": "sndr",
+          "label": "sndr"
+        },
+        {
+          "id": "spde",
+          "label": "spde"
+        },
+        {
+          "id": "spnv",
+          "label": "spnv"
+        },
+        {
+          "id": "swft",
+          "label": "swft"
+        },
+        {
+          "id": "tfin",
+          "label": "tfin"
+        },
+        {
+          "id": "tfor",
+          "label": "tfor"
+        },
+        {
+          "id": "tfox",
+          "label": "tfox"
+        },
+        {
+          "id": "tfrt",
+          "label": "tfrt"
+        },
+        {
+          "id": "tval",
+          "label": "tval"
+        },
+        {
+          "id": "tvam",
+          "label": "tvam"
+        },
+        {
+          "id": "u1dp",
+          "label": "u1dp"
+        },
+        {
+          "id": "u2cs",
+          "label": "u2cs"
+        },
+        {
+          "id": "u3cs",
+          "label": "u3cs"
+        },
+        {
+          "id": "un1s",
+          "label": "un1s"
+        },
+        {
+          "id": "uncs",
+          "label": "uncs"
+        },
+        {
+          "id": "unfi",
+          "label": "unfi"
+        },
+        {
+          "id": "unsc",
+          "label": "unsc"
+        },
+        {
+          "id": "unvl",
+          "label": "unvl"
+        },
+        {
+          "id": "up1a",
+          "label": "up1a"
+        },
+        {
+          "id": "up1s",
+          "label": "up1s"
+        },
+        {
+          "id": "up2a",
+          "label": "up2a"
+        },
+        {
+          "id": "up2c",
+          "label": "up2c"
+        },
+        {
+          "id": "up2s",
+          "label": "up2s"
+        },
+        {
+          "id": "up3c",
+          "label": "up3c"
+        },
+        {
+          "id": "up3s",
+          "label": "up3s"
+        },
+        {
+          "id": "upbp",
+          "label": "upbp"
+        },
+        {
+          "id": "upcs",
+          "label": "upcs"
+        },
+        {
+          "id": "upg1",
+          "label": "upg1"
+        },
+        {
+          "id": "upgc",
+          "label": "upgc"
+        },
+        {
+          "id": "upgf",
+          "label": "upgf"
+        },
+        {
+          "id": "upgs",
+          "label": "upgs"
+        },
+        {
+          "id": "upl1",
+          "label": "upl1"
+        },
+        {
+          "id": "upnc",
+          "label": "upnc"
+        },
+        {
+          "id": "ups",
+          "label": "ups"
+        },
+        {
+          "id": "ups1",
+          "label": "ups1"
+        },
+        {
+          "id": "ups2",
+          "label": "ups2"
+        },
+        {
+          "id": "ups3",
+          "label": "ups3"
+        },
+        {
+          "id": "upsa",
+          "label": "upsa"
+        },
+        {
+          "id": "upsd",
+          "label": "upsd"
+        },
+        {
+          "id": "upsf",
+          "label": "upsf"
+        },
+        {
+          "id": "upsn",
+          "label": "upsn"
+        },
+        {
+          "id": "upss",
+          "label": "upss"
+        },
+        {
+          "id": "upwe",
+          "label": "upwe"
+        },
+        {
+          "id": "upws",
+          "label": "upws"
+        },
+        {
+          "id": "upwx",
+          "label": "upwx"
+        },
+        {
+          "id": "uscc",
+          "label": "uscc"
+        },
+        {
+          "id": "usg",
+          "label": "usg"
+        },
+        {
+          "id": "usld",
+          "label": "usld"
+        },
+        {
+          "id": "usxp",
+          "label": "usxp"
+        },
+        {
+          "id": "ward",
+          "label": "ward"
+        },
+        {
+          "id": "wern",
+          "label": "wern"
+        },
+        {
+          "id": "xjlw",
+          "label": "xjlw"
+        },
+        {
+          "id": "xpof",
+          "label": "xpof"
+        },
+        {
+          "id": "xpol",
+          "label": "xpol"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "isParcel"
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "code"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "serviceType"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001u356p0pl41wf6",
+      "api": "application",
+      "modelName": "ShipmentType",
+      "selected": [
+        {
+          "id": "return",
+          "label": "Return"
+        },
+        {
+          "id": "sale",
+          "label": "Sale"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001v356p25ipscs2",
+      "api": "application",
+      "modelName": "UnpickReason",
+      "selected": [
+        {
+          "id": "damaged",
+          "label": "damaged"
+        },
+        {
+          "id": "error",
+          "label": "error"
+        },
+        {
+          "id": "other",
+          "label": "other"
+        },
+        {
+          "id": "quantity",
+          "label": "quantity"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "holdOnReturn"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          }
+        ],
+        "labelField": "id"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    },
+    {
+      "id": "cmrxrj8pf001w356pdv3ua6t6",
+      "api": "application",
+      "modelName": "DataModel",
+      "selected": [
+        {
+          "id": "adjustment",
+          "label": "Adjustment"
+        },
+        {
+          "id": "area",
+          "label": "Area"
+        },
+        {
+          "id": "businessPartner",
+          "label": "BusinessPartner"
+        },
+        {
+          "id": "businessPartnerAddress",
+          "label": "BusinessPartnerAddress"
+        },
+        {
+          "id": "count",
+          "label": "Count"
+        },
+        {
+          "id": "countLine",
+          "label": "CountLine"
+        },
+        {
+          "id": "countLineInventory",
+          "label": "CountLineInventory"
+        },
+        {
+          "id": "countParameters",
+          "label": "CountParameters"
+        },
+        {
+          "id": "countStatus",
+          "label": "CountStatus"
+        },
+        {
+          "id": "handlingUnit",
+          "label": "HandlingUnit"
+        },
+        {
+          "id": "handlingUnitType",
+          "label": "HandlingUnitType"
+        },
+        {
+          "id": "inventory",
+          "label": "Inventory"
+        },
+        {
+          "id": "inventoryPickStep",
+          "label": "InventoryPickStep"
+        },
+        {
+          "id": "inventoryStatus",
+          "label": "InventoryStatus"
+        },
+        {
+          "id": "inventoryTrace",
+          "label": "InventoryTrace"
+        },
+        {
+          "id": "labelDesign",
+          "label": "LabelDesign"
+        },
+        {
+          "id": "load",
+          "label": "Load"
+        },
+        {
+          "id": "loadStatus",
+          "label": "LoadStatus"
+        },
+        {
+          "id": "lot",
+          "label": "Lot"
+        },
+        {
+          "id": "nonConformance",
+          "label": "NonConformance"
+        },
+        {
+          "id": "order",
+          "label": "Order"
+        },
+        {
+          "id": "orderLine",
+          "label": "OrderLine"
+        },
+        {
+          "id": "orderLineRelease",
+          "label": "OrderLineRelease"
+        },
+        {
+          "id": "orderLineReleaseStatus",
+          "label": "OrderLineReleaseStatus"
+        },
+        {
+          "id": "orderLineReleaseType",
+          "label": "OrderLineReleaseType"
+        },
+        {
+          "id": "orderStatus",
+          "label": "OrderStatus"
+        },
+        {
+          "id": "orderType",
+          "label": "OrderType"
+        },
+        {
+          "id": "pick",
+          "label": "Pick"
+        },
+        {
+          "id": "pickStatus",
+          "label": "PickStatus"
+        },
+        {
+          "id": "pickStep",
+          "label": "PickStep"
+        },
+        {
+          "id": "pickStepStatus",
+          "label": "PickStepStatus"
+        },
+        {
+          "id": "process",
+          "label": "Process"
+        },
+        {
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "id": "productCategory",
+          "label": "ProductCategory"
+        },
+        {
+          "id": "productPreferredStorageUnit",
+          "label": "ProductPreferredStorageUnit"
+        },
+        {
+          "id": "receipt",
+          "label": "Receipt"
+        },
+        {
+          "id": "receiptException",
+          "label": "ReceiptException"
+        },
+        {
+          "id": "receiptExceptionReason",
+          "label": "ReceiptExceptionReason"
+        },
+        {
+          "id": "receiptLine",
+          "label": "ReceiptLine"
+        },
+        {
+          "id": "receiptLineOrderLineRelease",
+          "label": "ReceiptLineOrderLineRelease"
+        },
+        {
+          "id": "receiptStatus",
+          "label": "ReceiptStatus"
+        },
+        {
+          "id": "shipment",
+          "label": "Shipment"
+        },
+        {
+          "id": "shipmentLine",
+          "label": "ShipmentLine"
+        },
+        {
+          "id": "shipmentLineOrderLineRelease",
+          "label": "ShipmentLineOrderLineRelease"
+        },
+        {
+          "id": "shipmentType",
+          "label": "ShipmentType"
+        },
+        {
+          "id": "standardCarrierAlphaCode",
+          "label": "StandardCarrierAlphaCode"
+        },
+        {
+          "id": "storageUnit",
+          "label": "StorageUnit"
+        },
+        {
+          "id": "storageUnitStatus",
+          "label": "StorageUnitStatus"
+        },
+        {
+          "id": "storageZone",
+          "label": "StorageZone"
+        },
+        {
+          "id": "transactionType",
+          "label": "TransactionType"
+        },
+        {
+          "id": "unpick",
+          "label": "Unpick"
+        },
+        {
+          "id": "unpickReason",
+          "label": "UnpickReason"
+        }
+      ],
+      "fields": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "dataModelKindId"
+        },
+        {
+          "name": "_customFields._externalId"
+        }
+      ],
+      "metadata": {
+        "dataTransform": "$",
+        "viewFields": [
+          {
+            "id": "id",
+            "label": "id"
+          },
+          {
+            "id": "name",
+            "label": "name"
+          }
+        ],
+        "labelField": "name"
+      },
+      "packageDefinitionVersionId": "cmrxrj8g3001b356pfu97ique"
+    }
+  ]
+}

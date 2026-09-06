@@ -1,0 +1,901 @@
+{
+  "header": {
+    "id": "productCategoryTable",
+    "name": "Product Category Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmfyftpeb0qc70775a3wjcnlk",
+    "number": "0.0.1",
+    "description": "",
+    "screenId": "productCategoryTable",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "ProductCategoryTable",
+          "tabTitle": "Product Category Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 4,
+                    "Action Button": 4,
+                    "Form": 1,
+                    "Table": 1,
+                    "Table Column": 3,
+                    "Text": 2,
+                    "Checkbox": 1,
+                    "Button Group": 1
+                  },
+                  "module": {
+                    "id": "inventoryTracking",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "ProductCategory",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "1lS2Ewa9eU",
+                  "v5Dfkz3Ecb"
+                ],
+                "linkedNodes": {}
+              },
+              "1lS2Ewa9eU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 8,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "Xg9PWweXXy",
+                  "FXyvUoq_Hq"
+                ],
+                "linkedNodes": {}
+              },
+              "FXyvUoq_Hq": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "ProductCategory",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "1lS2Ewa9eU",
+                "hidden": false,
+                "nodes": [
+                  "xQ7mMnK-j0"
+                ],
+                "linkedNodes": {}
+              },
+              "xQ7mMnK-j0": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "FXyvUoq_Hq",
+                "hidden": false,
+                "nodes": [
+                  "F8-rXFWYaW",
+                  "liCqfTuJT_",
+                  "m8cOCIN6z1",
+                  "ir4cFKHyDZ"
+                ],
+                "linkedNodes": {}
+              },
+              "liCqfTuJT_": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "code",
+                  "field": "code",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "code._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "xQ7mMnK-j0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "F8-rXFWYaW": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Usable",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "usable",
+                  "field": "usable",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "usable._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox1"
+                },
+                "parent": "xQ7mMnK-j0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "m8cOCIN6z1": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Description",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "description",
+                  "field": "description",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "description._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "xQ7mMnK-j0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ir4cFKHyDZ": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "xQ7mMnK-j0",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "y2QS-N6_Pa": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "Xg9PWweXXy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "hU9fiBiOAj": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "plus",
+                      "title": "Create a new Product Category",
+                      "fields": [
+                        {
+                          "label": "Code",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "ProductCategory",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "code",
+                                  "dataPath": "code"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "code",
+                          "field": "code",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        },
+                        {
+                          "label": "Description",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "description",
+                          "field": "description",
+                          "description": "",
+                          "element": "MarkdownInput",
+                          "type": "markdown"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateProductCategory($payload: [ProductCategoryCreatePayloadInput!]!) {\n  mutation: createProductCategory(payload: $payload) { \n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": {\n    \"create\": data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "\"Product Category \" & data.mutation[0].code & \" created successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "Xg9PWweXXy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9f62GQTHYv": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "save",
+                      "title": {
+                        "__transform": "\"Update Product Category \" & $components.Table1.selectedRows[0].code"
+                      },
+                      "fields": [
+                        {
+                          "label": "Code",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "ProductCategory",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "code",
+                                  "dataPath": "code"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "code",
+                          "field": "code",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        },
+                        {
+                          "label": "Description",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "description",
+                          "field": "description",
+                          "description": "",
+                          "element": "MarkdownInput",
+                          "type": "markdown"
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "$components.Table1.selectedRows[0]"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateProductCategory($payload: [ProductCategoryUpdatePayloadInput!]!) {\n  mutation: updateProductCategory(payload: $payload) { \n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    },\n    \"update\": $$.data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Product Category \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \" updated successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Update"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "Xg9PWweXXy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MM-rjXhmlX": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Product Category \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteProductCategory($payload: [ProductCategoryDeletePayloadInput!]!) {\n  mutation: deleteProductCategory(payload: $payload) { \n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Product Category \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Delete"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "Xg9PWweXXy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CrJ-rsatwY": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "ProductCategory",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "v5Dfkz3Ecb",
+                "hidden": false,
+                "nodes": [
+                  "rBNdopXqvY",
+                  "GJOBxNRfvr",
+                  "6ySpS833eC",
+                  "V9pDcw2Mz1"
+                ],
+                "linkedNodes": {}
+              },
+              "rBNdopXqvY": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "code",
+                  "dataPath": "code",
+                  "description": "",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/productCategories/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "CrJ-rsatwY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GJOBxNRfvr": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Usable",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "usable",
+                  "dataPath": "usable",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "CrJ-rsatwY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "6ySpS833eC": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Description",
+                  "format": "markdown",
+                  "sortable": true,
+                  "field": "description",
+                  "dataPath": "description",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "CrJ-rsatwY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "V9pDcw2Mz1": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "ProductCategory"
+                },
+                "displayName": "Custom Fields Table Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "CrJ-rsatwY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "v5Dfkz3Ecb": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "CrJ-rsatwY"
+                ],
+                "linkedNodes": {}
+              },
+              "Xg9PWweXXy": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "1lS2Ewa9eU",
+                "hidden": false,
+                "nodes": [
+                  "y2QS-N6_Pa",
+                  "hU9fiBiOAj",
+                  "9f62GQTHYv",
+                  "MM-rjXhmlX"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmfyfxoi50qhh07757oytax6b",
+      "title": "Product Categories",
+      "path": "/inventoryManagement/inventoryTracking/productCategories",
+      "moduleId": "inventoryTracking",
+      "screenId": "productCategoryTable",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

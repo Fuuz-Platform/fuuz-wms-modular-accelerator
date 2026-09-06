@@ -1,0 +1,2188 @@
+{
+  "header": {
+    "id": "dataModelDetails",
+    "name": "DataModel Details",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "testing",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmp2yaoq201rv012ievkrcycy",
+    "number": "0.0.1",
+    "description": "",
+    "dataFlowId": "dataModelDetails",
+    "flow": {
+      "id": "cmp2yaoq201rv012ievkrcycy",
+      "name": "DataModel Details",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "node-request",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "node-trycatch"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-response",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-errorresponse",
+          "name": "Error Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\n  \"error\": true,\n  \"errorType\": \"EXECUTION_ERROR\",\n  \"errorMessage\": $state.lastError.message ? $state.lastError.message : \"DataModel Details execution failed\",\n  \"errorDetails\": $state.lastError\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-trycatch",
+          "name": "Try Catch",
+          "type": "tryCatch",
+          "data": {
+            "tryNextNodes": [
+              "node-validate"
+            ],
+            "catchNextNodes": [
+              "node-errorresponse"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-validate",
+          "name": "Validate Input",
+          "type": "validate",
+          "data": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "modelName"
+              ],
+              "properties": {
+                "modelName": {
+                  "type": "string",
+                  "writeOnly": false,
+                  "readOnly": false,
+                  "deprecated": false,
+                  "examples": [
+                    "Product",
+                    "StorageUnit",
+                    "Inventory"
+                  ],
+                  "minLength": 1,
+                  "description": "The exact name of the model to get details for."
+                },
+                "responseFormat": {
+                  "type": "string",
+                  "enum": [
+                    "json",
+                    "markdown"
+                  ],
+                  "default": "json",
+                  "description": "Response format. 'json' returns structured object, 'markdown' returns compressed markdown for LLM consumption."
+                }
+              }
+            },
+            "nextNodes": [
+              "node-setcontext"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-query",
+          "name": "Fetch Model Details",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "query": "query DataModelDetails($where: DataModelWhereInput) {\n  dataModel(where: $where, first: 1) {\n    edges {\n      node {\n        id\n        name\n        description\n        dataModelKindId\n        dataModelTypeId\n        estimatedRecordCount\n        estimatedDataBytes\n        module {\n          id\n          name\n          description\n          system\n        }\n        elements(first: 500) {\n          edges {\n            node {\n              id\n              name\n              type\n              description\n              unique\n              labelField\n              relation\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+            "variablesTransform": "{\n  \"where\": {\n    \"name\": { \"_eq\": modelName }\n  }\n}",
+            "nextNodes": [
+              "node-transform"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-transform",
+          "name": "Format Response",
+          "type": "transform",
+          "data": {
+            "nextNodes": [
+              "node-ifelse"
+            ],
+            "transform": "(\n  $modelData := dataModel.edges[0].node;\n  $modelData ? {\n    \"model\": {\n      \"id\": $modelData.id,\n      \"name\": $modelData.name,\n      \"description\": $modelData.description,\n      \"module\": $modelData.module,\n      \"dataModelKindId\": $modelData.dataModelKindId,\n      \"dataModelTypeId\": $modelData.dataModelTypeId,\n      \"estimatedRecordCount\": $modelData.estimatedRecordCount,\n      \"estimatedDataBytes\": $modelData.estimatedDataBytes\n    },\n    \"elements\": $map($modelData.elements.edges.node, function($el) {\n      {\n        \"id\": $el.id,\n        \"name\": $el.name,\n        \"type\": $el.type,\n        \"description\": $el.description,\n        \"unique\": $el.unique,\n        \"labelField\": $el.labelField,\n        \"relation\": $el.relation,\n        \"complexType\": $not($el.type in [\"String\", \"String!\", \"Int\", \"Int!\", \"Float\", \"Float!\", \"Boolean\", \"Boolean!\", \"ID\", \"ID!\", \"DateTime\", \"DateTime!\", \"Date\", \"Date!\", \"JSON\", \"JSON!\", \"BigInt\", \"BigInt!\", \"Decimal\", \"Decimal!\"]) and $not($contains($el.type, \"[\")) and $el.relation = false,\n        \"subfields\": $lookup({\"Measure\": {\"value\": {\"type\": \"Float\", \"nullable\": false}, \"unit\": {\"type\": \"Unit\", \"relation\": true, \"subfields\": {\"id\": {\"type\": \"ID\"}, \"code\": {\"type\": \"String\"}}}}, \"Measure!\": {\"value\": {\"type\": \"Float\", \"nullable\": false}, \"unit\": {\"type\": \"Unit\", \"relation\": true, \"subfields\": {\"id\": {\"type\": \"ID\"}, \"code\": {\"type\": \"String\"}}}}, \"Address\": {\"line1\": {\"type\": \"String\", \"nullable\": true}, \"line2\": {\"type\": \"String\", \"nullable\": true}, \"city\": {\"type\": \"String\", \"nullable\": true}, \"state\": {\"type\": \"String\", \"nullable\": true}, \"postalCode\": {\"type\": \"String\", \"nullable\": true}, \"country\": {\"type\": \"String\", \"nullable\": true}}, \"Address!\": {\"line1\": {\"type\": \"String\", \"nullable\": true}, \"line2\": {\"type\": \"String\", \"nullable\": true}, \"city\": {\"type\": \"String\", \"nullable\": true}, \"state\": {\"type\": \"String\", \"nullable\": true}, \"postalCode\": {\"type\": \"String\", \"nullable\": true}, \"country\": {\"type\": \"String\", \"nullable\": true}}, \"Money\": {\"amount\": {\"type\": \"Decimal\", \"nullable\": false}, \"currency\": {\"type\": \"String\", \"nullable\": false}}, \"Money!\": {\"amount\": {\"type\": \"Decimal\", \"nullable\": false}, \"currency\": {\"type\": \"String\", \"nullable\": false}}}, $el.type)\n      }\n    }),\n    \"summary\": {\n      \"totalElements\": $count($modelData.elements.edges),\n      \"relationFields\": $count($modelData.elements.edges.node[relation = true]),\n      \"uniqueFields\": $count($modelData.elements.edges.node[unique = true])\n    }\n  } : {\n    \"error\": \"Model not found\"\n  }\n)"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-setcontext",
+          "name": "Store Request",
+          "type": "setContext",
+          "data": {
+            "transform": "$",
+            "nextNodes": [
+              "node-query"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-ifelse",
+          "name": "If Markdown?",
+          "type": "ifElse",
+          "data": {
+            "transform": "$state.context.responseFormat = \"markdown\"",
+            "onTrueNextNodes": [
+              "node-markdown"
+            ],
+            "onFalseNextNodes": [
+              "node-response"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "node-markdown",
+          "name": "Format as Markdown",
+          "type": "javascriptTransform",
+          "data": {
+            "transform": "/*\n * Format as Markdown — DataModel Details\n * Input: JSON from Format Response { model, elements, summary }\n * Output: Markdown string via $jsonToMarkdown()\n */\n\nvar d = $;\nif (!d.model) {\n  return $jsonToMarkdown([\n    { \"h2\": \"DataModel Details\" },\n    { \"p\": d.error || \"Model not found.\" }\n  ]);\n}\n\nvar md = [];\n\n/* Header */\nmd.push({ \"h2\": \"Data Model: \" + d.model.name });\nif (d.model.description) md.push({ \"p\": d.model.description });\n\nvar meta = [];\nif (d.model.module) meta.push(\"**Module:** \" + d.model.module.name);\nmeta.push(\"**Kind:** \" + (d.model.dataModelKindId || \"?\"));\nmeta.push(\"**Type:** \" + (d.model.dataModelTypeId || \"?\"));\nif (d.model.estimatedRecordCount != null) meta.push(\"**Records:** ~\" + d.model.estimatedRecordCount);\nmd.push({ \"p\": meta.join(\" | \") });\n\n/* Elements table */\nvar elements = d.elements || [];\nif (elements.length > 0) {\n  var rows = [];\n  var relationList = [];\n\n  for (var i = 0; i < elements.length; i++) {\n    var el = elements[i];\n    var flags = [];\n    if (el.unique) flags.push(\"UQ\");\n    if (el.labelField) flags.push(\"LBL\");\n\n    var typeDisplay = el.type || \"?\";\n    if (el.relation) {\n      relationList.push(el.name + \" -> \" + el.type);\n      typeDisplay = \"-> \" + el.type;\n    } else if (el.complexType && el.subfields) {\n      var subs = Object.keys(el.subfields).join(\", \");\n      typeDisplay = el.type + \" {\" + subs + \"}\";\n    }\n\n    rows.push([\n      el.name,\n      typeDisplay,\n      flags.join(\", \"),\n      (el.description || \"\").replace(/\\|/g, \"/\").substring(0, 60)\n    ]);\n  }\n\n  md.push({ \"h3\": \"Fields (\" + elements.length + \")\" });\n  md.push({ \"table\": {\n    \"headers\": [\"Field\", \"Type\", \"Flags\", \"Description\"],\n    \"rows\": rows\n  }});\n\n  if (relationList.length > 0) {\n    md.push({ \"h3\": \"Relations (\" + relationList.length + \")\" });\n    md.push({ \"ul\": relationList });\n  }\n}\n\n/* Summary */\nmd.push({ \"p\": \"**Summary:** \" + d.summary.totalElements + \" fields, \"\n  + d.summary.relationFields + \" relations, \"\n  + d.summary.uniqueFields + \" unique\" });\n\nreturn $jsonToMarkdown(md);",
+            "nextNodes": [
+              "node-response"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+          "name": "Query - All System Models",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{}",
+            "query": "{\n  modelDefinitions(where: {\n    metadata: {\n      mfgx: {\n        dataModel: {\n          dataModelDeploymentId: {\n            _isNull: true\n          }\n        }\n      }\n    }\n    _not: {\n      _or: [\n        {\n          metadata: {\n            mfgx: {\n              isDataChangeModel: {\n                _eq: true\n              }\n            }\n          }\n        },\n        {\n          name: {\n            _endsWith: \"_CustomFields\"\n          }\n        }\n      ]\n    }\n  }) {\n    name\n    description\n    fields {\n      name\n      type\n      description\n    }\n  }\n}",
+            "nextNodes": [
+              "7c251786-7a73-4357-ae77-01769c506ba6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+          "name": "Query - All Custom Models",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{}",
+            "query": "{\n  modelDefinitions(where: {\n    metadata: {\n      mfgx: {\n        dataModel: {\n          dataModelDeploymentId: {\n            _isNull: false\n          }\n        }\n      }\n    }\n    _not: {\n      name: {\n        _endsWith: \"_CustomFields\"\n      }\n    }\n  }) {\n    name\n    description\n    fields {\n      name\n      type\n      description\n    }\n    metadata {\n      mfgx {\n        isDataChangeModel\n        dataModel {\n          dataModelDeploymentId\n        }\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "7c251786-7a73-4357-ae77-01769c506ba6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+          "name": "Query - All Setup Custom Models",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{}",
+            "query": "{\n  setupDataModels: dataModel(where: { dataModelTypeId: { _eq: \"setup\" } }, first: 1000) {\n    edges { node { id name } }\n  }\n}\n    \n  \n",
+            "nextNodes": [
+              "7c251786-7a73-4357-ae77-01769c506ba6"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "7c251786-7a73-4357-ae77-01769c506ba6",
+          "name": "Collect",
+          "type": "collect",
+          "data": {
+            "payloadCombinationStrategy": "merge",
+            "contextCombinationStrategy": "first",
+            "batchCount": 3,
+            "batchTimeMs": 300000,
+            "nextNodes": [
+              "d24efe48-c7ab-4927-842d-44e444053806"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "d24efe48-c7ab-4927-842d-44e444053806",
+          "name": "Set Context",
+          "type": "setContext",
+          "data": {
+            "transform": "(\r\n  $setupNames := setupModels.setupDataModels.edges.node.name;\r\n\r\n  $systemModels := systemModels.modelDefinitions.{\r\n    \"name\": name, \"description\": description, \"fields\": fields, \"source\": \"system\"\r\n  };\r\n\r\n  $allDeployed := customModels.modelDefinitions.{\r\n    \"name\": name, \"description\": description, \"fields\": fields\r\n  };\r\n\r\n  $setupModels := $allDeployed[name in $setupNames].$merge([$, {\"source\": \"setup\"}]);\r\n  $customModels := $allDeployed[$not(name in $setupNames)].$merge([$, {\"source\": \"custom\"}]);\r\n\r\n  {\r\n    \"_models\": [$systemModels, $customModels, $setupModels],\r\n    \"_bySource\": {\r\n      \"system\": $systemModels,\r\n      \"custom\": $customModels,\r\n      \"setup\": $setupModels\r\n    }\r\n  }\r\n)",
+            "nextNodes": [
+              "742b100a-fe6e-4e75-a574-a6f1329f7b5f"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "814601b5-baf4-4e62-9d7a-fac06b580478",
+          "name": "JSONata - Execute Query",
+          "type": "transform",
+          "data": {
+            "transform": "$merge([$, { \"_result\": $query({ \"api\": ($state.context.api ? $state.context.api : \"application\"), \"statement\": $._query, \"variables\": $._variables }) }])",
+            "nextNodes": [
+              "4eeffd76-ecfb-441e-af53-a29477a52ea4"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4eeffd76-ecfb-441e-af53-a29477a52ea4",
+          "name": "JSONata - Reshape Results",
+          "type": "transform",
+          "data": {
+            "transform": "(\n  $models := $._models;\n  {\n    \"seedData\": $map($models, function($model) { (\n      $modelLower := $lowercase($substring($model, 0, 1)) & $substring($model, 1);\n      $alias := $modelLower & \"_seed\";\n      $bucket := $lookup($._result, $alias);\n      {\n        \"modelName\": $model,\n        \"data\": $bucket.edges.node,\n        \"total\": $bucket.total,\n        \"returnedCount\": $count($bucket.edges),\n        \"hasNextPage\": $bucket.pageInfo.hasNextPage,\n        \"endCursor\": $bucket.pageInfo.endCursor\n      }\n    ) }),\n    \"summary\": {\n      \"modelCount\": $count($models),\n      \"totalRecords\": $sum($map($models, function($model) {\n        $lookup($._result, $lowercase($substring($model, 0, 1)) & $substring($model, 1) & \"_seed\").total\n      }))\n    }\n  }\n)",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "742b100a-fe6e-4e75-a574-a6f1329f7b5f",
+          "name": "JavaScript",
+          "type": "javascriptTransform",
+          "data": {
+            "transform": "// Input: payload._models = [{name, fields, source}, ...]\r\nconst models = $$.payload._models || [];\r\n\r\n// Scalar GraphQL types we know we can request directly\r\nconst SCALAR_TYPES = {\r\n  \"String\": true, \"Int\": true, \"Float\": true, \"Boolean\": true,\r\n  \"ID\": true, \"DateTime\": true, \"Date\": true, \"JSON\": true,\r\n  \"BigInt\": true, \"Decimal\": true\r\n};\r\n\r\n// Build field selection per model\r\nconst buildFields = (fields) => {\r\n  const parts = [\"id\"];\r\n  for (const f of (fields || [])) {\r\n    if (!f || !f.name) continue;\r\n    if (f.name === \"id\") continue;\r\n    // skip arrays and unknown complex types — extend if you have type metadata\r\n    if (f.type && SCALAR_TYPES[f.type]) {\r\n      parts.push(f.name);\r\n    } else if (f.type === \"relation\" || (f.type && f.type.endsWith(\"Relation\"))) {\r\n      parts.push(f.name + \" { id }\");\r\n    }\r\n    // arrays / embeddables: skip for now, log if needed\r\n  }\r\n  // dedupe\r\n  const seen = {};\r\n  const out = [];\r\n  for (const p of parts) {\r\n    if (!seen[p]) { seen[p] = true; out.push(p); }\r\n  }\r\n  return out.join(\" \");\r\n};\r\n\r\n// Build aliased query blocks\r\nconst blocks = [];\r\nconst modelMap = {}; // alias -> model meta\r\nfor (const m of models) {\r\n  if (!m.name) continue;\r\n  const lower = m.name.charAt(0).toLowerCase() + m.name.slice(1);\r\n  const alias = lower + \"_seed\";\r\n  const fieldsStr = buildFields(m.fields);\r\n  blocks.push(\r\n    `${alias}: ${lower}(first: 1000) { ` +\r\n    `total edges { node { ${fieldsStr} } } ` +\r\n    `pageInfo { hasNextPage endCursor } }`\r\n  );\r\n  modelMap[alias] = { name: m.name, source: m.source, description: m.description };\r\n}\r\n\r\nconst statement = `query AllSeedData { ${blocks.join(\" \")} }`;\r\n\r\n// Execute — $graphql is the Script-node entry point for runtime queries\r\nlet result;\r\ntry {\r\n  result = await $graphql(\"application\", statement, {});\r\n} catch (e) {\r\n  return {\r\n    error: e.message,\r\n    statement: statement,\r\n    models: models.map(m => m.name)\r\n  };\r\n}\r\n\r\n// Reshape into seedData[]\r\nconst seedData = [];\r\nlet totalRecords = 0;\r\nfor (const alias of Object.keys(modelMap)) {\r\n  const bucket = result[alias] || {};\r\n  const meta = modelMap[alias];\r\n  const count = (bucket.edges || []).length;\r\n  totalRecords += (bucket.total || 0);\r\n  seedData.push({\r\n    modelName: meta.name,\r\n    source: meta.source,\r\n    description: meta.description,\r\n    data: (bucket.edges || []).map(e => e.node),\r\n    total: bucket.total || 0,\r\n    returnedCount: count,\r\n    hasNextPage: bucket.pageInfo && bucket.pageInfo.hasNextPage,\r\n    endCursor: bucket.pageInfo && bucket.pageInfo.endCursor\r\n  });\r\n}\r\n\r\nreturn {\r\n  seedData: seedData,\r\n  summary: {\r\n    modelCount: models.length,\r\n    totalRecords: totalRecords,\r\n    bySource: {\r\n      system: seedData.filter(s => s.source === \"system\").length,\r\n      custom: seedData.filter(s => s.source === \"custom\").length,\r\n      setup: seedData.filter(s => s.source === \"setup\").length\r\n    }\r\n  },\r\n  _models: models,\r\n  _generatedQuery: statement\r\n};",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmp2yaoq201rv012ievkrcycy",
+      "offsetX": -238.32,
+      "offsetY": -64.22,
+      "zoom": 90.11,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "links-layer",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "link-request-trycatch": {
+              "points": [
+                {
+                  "id": "p1a",
+                  "type": "point",
+                  "x": 334.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "p1b",
+                  "type": "point",
+                  "x": 394.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "link-request-trycatch",
+              "type": "default",
+              "selected": false,
+              "source": "node-request",
+              "sourcePort": "port-request-out",
+              "target": "node-trycatch",
+              "targetPort": "port-trycatch-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-debug-trycatch": {
+              "points": [
+                {
+                  "id": "p2a",
+                  "type": "point",
+                  "x": 334.01,
+                  "y": 194.53
+                },
+                {
+                  "id": "p2b",
+                  "type": "point",
+                  "x": 394.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "link-debug-trycatch",
+              "type": "default",
+              "selected": false,
+              "source": "node-debug",
+              "sourcePort": "port-debug-out",
+              "target": "node-trycatch",
+              "targetPort": "port-trycatch-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-trycatch-validate": {
+              "points": [
+                {
+                  "id": "p2c",
+                  "type": "point",
+                  "x": 549.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "p2d",
+                  "type": "point",
+                  "x": 599.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "link-trycatch-validate",
+              "type": "default",
+              "selected": false,
+              "source": "node-trycatch",
+              "sourcePort": "port-trycatch-try",
+              "target": "node-validate",
+              "targetPort": "port-validate-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-trycatch-errorresponse": {
+              "points": [
+                {
+                  "id": "p2e",
+                  "type": "point",
+                  "x": 549.01,
+                  "y": 279.67
+                },
+                {
+                  "id": "p2f",
+                  "type": "point",
+                  "x": 599.63,
+                  "y": 314.53
+                }
+              ],
+              "id": "link-trycatch-errorresponse",
+              "type": "default",
+              "selected": false,
+              "source": "node-trycatch",
+              "sourcePort": "port-trycatch-catch",
+              "target": "node-errorresponse",
+              "targetPort": "port-errorresponse-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-validate-query": {
+              "points": [
+                {
+                  "id": "p3a",
+                  "type": "point",
+                  "x": 754.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "p3b",
+                  "type": "point",
+                  "x": 804.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "link-validate-query",
+              "type": "default",
+              "selected": false,
+              "source": "node-validate",
+              "sourcePort": "port-validate-out",
+              "target": "node-setcontext",
+              "targetPort": "ce53e27df49e941f18edc638c",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-transform-response": {
+              "points": [
+                {
+                  "id": "p5a",
+                  "type": "point",
+                  "x": 1364.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "p5b",
+                  "type": "point",
+                  "x": 1419.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "link-transform-response",
+              "type": "default",
+              "selected": false,
+              "source": "node-transform",
+              "sourcePort": "port-transform-out",
+              "target": "node-ifelse",
+              "targetPort": "cc36a3dbaddc44249ae558b09",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-ifelse-response": {
+              "points": [
+                {
+                  "id": "0dff6a18-a1f5-4e2d-9567-062410d0bbab",
+                  "type": "point",
+                  "x": 1574.01,
+                  "y": 279.67
+                },
+                {
+                  "id": "f7819f13-79fc-47a8-9df2-31c061739ebf",
+                  "type": "point",
+                  "x": 1864.63,
+                  "y": 279.53
+                }
+              ],
+              "id": "link-ifelse-response",
+              "type": "default",
+              "selected": false,
+              "source": "node-ifelse",
+              "sourcePort": "c717a13562b2b4cd7bf09516f",
+              "target": "node-response",
+              "targetPort": "port-response-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-ifelse-markdown": {
+              "points": [
+                {
+                  "id": "38bc54a9-0241-4431-b7de-2688f394c358",
+                  "type": "point",
+                  "x": 1574.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "21d0df3a-605c-4704-8afa-fe5e4d5da791",
+                  "type": "point",
+                  "x": 1629.63,
+                  "y": 194.53
+                }
+              ],
+              "id": "link-ifelse-markdown",
+              "type": "default",
+              "selected": false,
+              "source": "node-ifelse",
+              "sourcePort": "c7caefe639a214eb5ad9cd034",
+              "target": "node-markdown",
+              "targetPort": "c6d3a72bc910c438884cb88b1",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "link-markdown-response": {
+              "points": [
+                {
+                  "id": "aa9927a0-5b5a-400e-afff-27dcaf2dd322",
+                  "type": "point",
+                  "x": 1789.64,
+                  "y": 194.53
+                },
+                {
+                  "id": "dbefbb83-b796-45b8-87d8-5c9d31004b28",
+                  "type": "point",
+                  "x": 1864.63,
+                  "y": 279.53
+                }
+              ],
+              "id": "link-markdown-response",
+              "type": "default",
+              "selected": false,
+              "source": "node-markdown",
+              "sourcePort": "c3fa8948b59fb448dba3afd63",
+              "target": "node-response",
+              "targetPort": "port-response-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "3b5094f4-8b3c-4333-a547-bfbfc2612fd7": {
+              "points": [
+                {
+                  "id": "086fde54-42a4-4ac0-bad9-b4826facc1ec",
+                  "type": "point",
+                  "x": 959.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "5b3a43b1-6f2c-493a-85bd-3c02dd567393",
+                  "type": "point",
+                  "x": 1004.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "3b5094f4-8b3c-4333-a547-bfbfc2612fd7",
+              "type": "default",
+              "selected": false,
+              "source": "node-setcontext",
+              "sourcePort": "ca7f4d7b2ef2743ed9b69a65a",
+              "target": "node-query",
+              "targetPort": "port-query-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "3aa6f8a5-dead-4992-9b3b-f2c7a4179458": {
+              "points": [
+                {
+                  "id": "5c4238c5-1a4d-4156-95c0-fe6322a3fd59",
+                  "type": "point",
+                  "x": 1159.01,
+                  "y": 254.53
+                },
+                {
+                  "id": "86e6db41-879b-47de-bfaf-e84dd2d16dcc",
+                  "type": "point",
+                  "x": 1209.63,
+                  "y": 254.53
+                }
+              ],
+              "id": "3aa6f8a5-dead-4992-9b3b-f2c7a4179458",
+              "type": "default",
+              "selected": false,
+              "source": "node-query",
+              "sourcePort": "port-query-out",
+              "target": "node-transform",
+              "targetPort": "port-transform-in",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "d06b1239-4c4a-4af6-9a8d-2cf34b12245b": {
+              "points": [
+                {
+                  "id": "50649dcd-4135-41dd-8876-2d9eef29fddc",
+                  "type": "point",
+                  "x": 459.01,
+                  "y": 519.53
+                },
+                {
+                  "id": "0cb1ca00-0aef-4874-b703-1d577ccb7d15",
+                  "type": "point",
+                  "x": 559.63,
+                  "y": 449.53
+                }
+              ],
+              "id": "d06b1239-4c4a-4af6-9a8d-2cf34b12245b",
+              "type": "default",
+              "selected": false,
+              "source": "a9819272-e9e8-495b-a6e2-537b5d629f16",
+              "sourcePort": "cmp18ivi2017j3b6u6r8s3aps",
+              "target": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+              "targetPort": "cmp18ibki015w3b6ugah4mk0f",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e9bee03a-4c2c-4639-8413-280cbf35b2ef": {
+              "points": [
+                {
+                  "id": "a668e1b6-12ab-4b96-b31d-0558a8b0bd77",
+                  "type": "point",
+                  "x": 459.01,
+                  "y": 519.53
+                },
+                {
+                  "id": "9d610d1c-32f0-43e3-bdd9-d042edb93ba7",
+                  "type": "point",
+                  "x": 559.63,
+                  "y": 524.53
+                }
+              ],
+              "id": "e9bee03a-4c2c-4639-8413-280cbf35b2ef",
+              "type": "default",
+              "selected": false,
+              "source": "a9819272-e9e8-495b-a6e2-537b5d629f16",
+              "sourcePort": "cmp18ivi2017j3b6u6r8s3aps",
+              "target": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+              "targetPort": "cmp18inm8016q3b6ux1ni56aj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e40a0eee-ab62-4089-932f-7c9200244a19": {
+              "points": [
+                {
+                  "id": "ecdd779b-ba19-4d0a-99b2-58f5de448c73",
+                  "type": "point",
+                  "x": 459.01,
+                  "y": 519.53
+                },
+                {
+                  "id": "4b77869c-38ea-45d8-84e0-49ccb013fbff",
+                  "type": "point",
+                  "x": 559.63,
+                  "y": 594.53
+                }
+              ],
+              "id": "e40a0eee-ab62-4089-932f-7c9200244a19",
+              "type": "default",
+              "selected": false,
+              "source": "a9819272-e9e8-495b-a6e2-537b5d629f16",
+              "sourcePort": "cmp18ivi2017j3b6u6r8s3aps",
+              "target": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+              "targetPort": "cmp18k4ou01873b6u1kiphpkv",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f9cc383c-162d-4060-90b7-9c4d9d9c3e38": {
+              "points": [
+                {
+                  "id": "b3975e5b-47f4-4129-b5be-27e78a619455",
+                  "type": "point",
+                  "x": 746.52,
+                  "y": 449.53
+                },
+                {
+                  "id": "2558ac3c-d702-42a8-8f03-32a4154cafae",
+                  "type": "point",
+                  "x": 864.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "f9cc383c-162d-4060-90b7-9c4d9d9c3e38",
+              "type": "default",
+              "selected": false,
+              "source": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+              "sourcePort": "cmp18ibki015y3b6uwvp9smwj",
+              "target": "7c251786-7a73-4357-ae77-01769c506ba6",
+              "targetPort": "cmp18orqs01a53b6ub52xvaj3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4922e350-ce6b-4abe-a032-76dc1870256e": {
+              "points": [
+                {
+                  "id": "91e137bf-129a-48b8-b5da-22bda9952858",
+                  "type": "point",
+                  "x": 748.51,
+                  "y": 524.53
+                },
+                {
+                  "id": "791f17b0-f7ee-4ce0-8995-210e197e4979",
+                  "type": "point",
+                  "x": 864.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "4922e350-ce6b-4abe-a032-76dc1870256e",
+              "type": "default",
+              "selected": false,
+              "source": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+              "sourcePort": "cmp18inm8016s3b6umthcxp4t",
+              "target": "7c251786-7a73-4357-ae77-01769c506ba6",
+              "targetPort": "cmp18orqs01a53b6ub52xvaj3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4a54dbe1-b918-4e9b-8193-2dcd73699ab3": {
+              "points": [
+                {
+                  "id": "48725321-97dd-47bc-bab8-d6060f645857",
+                  "type": "point",
+                  "x": 783.03,
+                  "y": 594.53
+                },
+                {
+                  "id": "6f8eca87-8670-4658-a4d9-8c250c0b8043",
+                  "type": "point",
+                  "x": 864.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "4a54dbe1-b918-4e9b-8193-2dcd73699ab3",
+              "type": "default",
+              "selected": false,
+              "source": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+              "sourcePort": "cmp18k4ou01893b6uc6om830f",
+              "target": "7c251786-7a73-4357-ae77-01769c506ba6",
+              "targetPort": "cmp18orqs01a53b6ub52xvaj3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9957b11e-40ac-4498-a55e-432fc739df75": {
+              "points": [
+                {
+                  "id": "e1406e7e-4540-4ed8-804e-4d982bde9a52",
+                  "type": "point",
+                  "x": 1019.01,
+                  "y": 519.53
+                },
+                {
+                  "id": "ce4a9d69-5c1c-4f21-8a4c-59dae77be529",
+                  "type": "point",
+                  "x": 1069.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "9957b11e-40ac-4498-a55e-432fc739df75",
+              "type": "default",
+              "selected": false,
+              "source": "7c251786-7a73-4357-ae77-01769c506ba6",
+              "sourcePort": "cmp18orqs01a73b6unz6x9o0m",
+              "target": "d24efe48-c7ab-4927-842d-44e444053806",
+              "targetPort": "cmp18p2ec01ap3b6udecioreu",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e04f577c-f6f4-4382-bf9f-9d1998134bba": {
+              "points": [
+                {
+                  "id": "10daa913-d16b-4232-927a-1bdf96a75d4f",
+                  "type": "point",
+                  "selected": true,
+                  "x": 2035,
+                  "y": 519.53
+                },
+                {
+                  "id": "fe7fe8e4-2d06-4c02-9bcf-4628a8db7d58",
+                  "type": "point",
+                  "selected": true,
+                  "x": 2094.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "e04f577c-f6f4-4382-bf9f-9d1998134bba",
+              "type": "default",
+              "selected": false,
+              "source": "814601b5-baf4-4e62-9d7a-fac06b580478",
+              "sourcePort": "cmp18w2yc01ne3b6ujbkicrpb",
+              "target": "4eeffd76-ecfb-441e-af53-a29477a52ea4",
+              "targetPort": "cmp18wf8r01o63b6uqdyjvp5r",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "6dfab49a-513f-4522-bb91-8c6d2124f8e4": {
+              "points": [
+                {
+                  "id": "8dc03f51-65b0-4056-b7db-4679a5534896",
+                  "type": "point",
+                  "x": 1224.01,
+                  "y": 519.53
+                },
+                {
+                  "id": "6ead1fd4-e023-423d-a71e-8eb0755cb7c5",
+                  "type": "point",
+                  "x": 1259.63,
+                  "y": 519.53
+                }
+              ],
+              "id": "6dfab49a-513f-4522-bb91-8c6d2124f8e4",
+              "type": "default",
+              "selected": false,
+              "source": "d24efe48-c7ab-4927-842d-44e444053806",
+              "sourcePort": "cmp18p2ec01ar3b6uaux05w4m",
+              "target": "742b100a-fe6e-4e75-a574-a6f1329f7b5f",
+              "targetPort": "cmp2s7j4e0069356upfxjjje6",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "nodes-layer",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "node-request": {
+              "id": "node-request",
+              "type": "request",
+              "selected": false,
+              "x": 180,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "port-request-out",
+                  "type": "default",
+                  "x": 326.19,
+                  "y": 246.72,
+                  "name": "request-output",
+                  "parentNode": "node-request",
+                  "links": [
+                    "link-request-trycatch"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "node-trycatch"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "node-response": {
+              "id": "node-response",
+              "type": "response",
+              "selected": false,
+              "x": 1865,
+              "y": 240,
+              "ports": [
+                {
+                  "id": "port-response-in",
+                  "type": "default",
+                  "x": 1856.82,
+                  "y": 271.72,
+                  "name": "response-input",
+                  "parentNode": "node-response",
+                  "links": [
+                    "link-ifelse-response",
+                    "link-markdown-response"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "port-response-out",
+                  "type": "default",
+                  "x": 2011.19,
+                  "y": 271.72,
+                  "name": "response-output",
+                  "parentNode": "node-response",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "node-errorresponse": {
+              "id": "node-errorresponse",
+              "type": "response",
+              "selected": false,
+              "x": 600,
+              "y": 275,
+              "ports": [
+                {
+                  "id": "port-errorresponse-in",
+                  "type": "default",
+                  "x": 591.82,
+                  "y": 306.72,
+                  "name": "errorresponse-input",
+                  "parentNode": "node-errorresponse",
+                  "links": [
+                    "link-trycatch-errorresponse"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Error Input"
+                },
+                {
+                  "id": "port-errorresponse-out",
+                  "type": "default",
+                  "x": 746.32,
+                  "y": 306.72,
+                  "name": "errorresponse-output",
+                  "parentNode": "node-errorresponse",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\n  \"error\": true,\n  \"errorType\": \"EXECUTION_ERROR\",\n  \"errorMessage\": $state.lastError.message ? $state.lastError.message : \"DataModel Details execution failed\",\n  \"errorDetails\": $state.lastError\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Error Response"
+            },
+            "node-trycatch": {
+              "id": "node-trycatch",
+              "type": "tryCatch",
+              "selected": false,
+              "x": 395,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "port-trycatch-in",
+                  "type": "default",
+                  "x": 386.82,
+                  "y": 246.72,
+                  "name": "trycatch-input",
+                  "parentNode": "node-trycatch",
+                  "links": [
+                    "link-request-trycatch",
+                    "link-debug-trycatch"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "port-trycatch-try",
+                  "type": "default",
+                  "x": 541.19,
+                  "y": 246.72,
+                  "name": "trycatch-try",
+                  "parentNode": "node-trycatch",
+                  "links": [
+                    "link-trycatch-validate"
+                  ],
+                  "in": false,
+                  "fieldLabel": "Try",
+                  "fieldPath": "data.tryNextNodes"
+                },
+                {
+                  "id": "port-trycatch-catch",
+                  "type": "default",
+                  "x": 541.19,
+                  "y": 271.86,
+                  "name": "trycatch-catch",
+                  "parentNode": "node-trycatch",
+                  "links": [
+                    "link-trycatch-errorresponse"
+                  ],
+                  "in": false,
+                  "fieldLabel": "Catch",
+                  "fieldPath": "data.catchNextNodes"
+                }
+              ],
+              "data": {
+                "tryNextNodes": [
+                  "node-validate"
+                ],
+                "catchNextNodes": [
+                  "node-errorresponse"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Try Catch"
+            },
+            "node-validate": {
+              "id": "node-validate",
+              "type": "validate",
+              "selected": false,
+              "x": 600,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "port-validate-in",
+                  "type": "default",
+                  "x": 591.82,
+                  "y": 246.72,
+                  "name": "validate-input",
+                  "parentNode": "node-validate",
+                  "links": [
+                    "link-trycatch-validate"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "port-validate-out",
+                  "type": "default",
+                  "x": 746.19,
+                  "y": 246.72,
+                  "name": "validate-output",
+                  "parentNode": "node-validate",
+                  "links": [
+                    "link-validate-query"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "modelName"
+                  ],
+                  "properties": {
+                    "modelName": {
+                      "type": "string",
+                      "writeOnly": false,
+                      "readOnly": false,
+                      "deprecated": false,
+                      "examples": [
+                        "Product",
+                        "StorageUnit",
+                        "Inventory"
+                      ],
+                      "minLength": 1,
+                      "description": "The exact name of the model to get details for."
+                    },
+                    "responseFormat": {
+                      "type": "string",
+                      "enum": [
+                        "json",
+                        "markdown"
+                      ],
+                      "default": "json",
+                      "description": "Response format. 'json' returns structured object, 'markdown' returns compressed markdown for LLM consumption."
+                    }
+                  }
+                },
+                "nextNodes": [
+                  "node-setcontext"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Validate Input"
+            },
+            "node-debug": {
+              "id": "node-debug",
+              "type": "debugSource",
+              "selected": false,
+              "x": 180,
+              "y": 155,
+              "ports": [
+                {
+                  "id": "port-debug-out",
+                  "type": "default",
+                  "x": 326.19,
+                  "y": 186.72,
+                  "name": "debug-output",
+                  "parentNode": "node-debug",
+                  "links": [
+                    "link-debug-trycatch"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "modelName": "productProductStrategy",
+                  "responseFormat": "markdown"
+                },
+                "context": {},
+                "nextNodes": [
+                  "node-trycatch"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "node-query": {
+              "id": "node-query",
+              "type": "query",
+              "selected": false,
+              "x": 1005,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "port-query-in",
+                  "type": "default",
+                  "x": 996.82,
+                  "y": 246.72,
+                  "name": "query-input",
+                  "parentNode": "node-query",
+                  "links": [
+                    "3b5094f4-8b3c-4333-a547-bfbfc2612fd7"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "port-query-out",
+                  "type": "default",
+                  "x": 1151.19,
+                  "y": 246.72,
+                  "name": "query-output",
+                  "parentNode": "node-query",
+                  "links": [
+                    "3aa6f8a5-dead-4992-9b3b-f2c7a4179458"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "query": "query DataModelDetails($where: DataModelWhereInput) {\n  dataModel(where: $where, first: 1) {\n    edges {\n      node {\n        id\n        name\n        description\n        dataModelKindId\n        dataModelTypeId\n        estimatedRecordCount\n        estimatedDataBytes\n        module {\n          id\n          name\n          description\n          system\n        }\n        elements(first: 500) {\n          edges {\n            node {\n              id\n              name\n              type\n              description\n              unique\n              labelField\n              relation\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                "variablesTransform": "{\n  \"where\": {\n    \"name\": { \"_eq\": modelName }\n  }\n}",
+                "nextNodes": [
+                  "node-transform"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Fetch Model Details"
+            },
+            "node-transform": {
+              "id": "node-transform",
+              "type": "transform",
+              "selected": false,
+              "x": 1210,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "port-transform-in",
+                  "type": "default",
+                  "x": 1201.82,
+                  "y": 246.72,
+                  "name": "transform-input",
+                  "parentNode": "node-transform",
+                  "links": [
+                    "3aa6f8a5-dead-4992-9b3b-f2c7a4179458"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "port-transform-out",
+                  "type": "default",
+                  "x": 1356.19,
+                  "y": 246.72,
+                  "name": "transform-output",
+                  "parentNode": "node-transform",
+                  "links": [
+                    "link-transform-response"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "node-ifelse"
+                ],
+                "transform": "(\n  $modelData := dataModel.edges[0].node;\n  $modelData ? {\n    \"model\": {\n      \"id\": $modelData.id,\n      \"name\": $modelData.name,\n      \"description\": $modelData.description,\n      \"module\": $modelData.module,\n      \"dataModelKindId\": $modelData.dataModelKindId,\n      \"dataModelTypeId\": $modelData.dataModelTypeId,\n      \"estimatedRecordCount\": $modelData.estimatedRecordCount,\n      \"estimatedDataBytes\": $modelData.estimatedDataBytes\n    },\n    \"elements\": $map($modelData.elements.edges.node, function($el) {\n      {\n        \"id\": $el.id,\n        \"name\": $el.name,\n        \"type\": $el.type,\n        \"description\": $el.description,\n        \"unique\": $el.unique,\n        \"labelField\": $el.labelField,\n        \"relation\": $el.relation,\n        \"complexType\": $not($el.type in [\"String\", \"String!\", \"Int\", \"Int!\", \"Float\", \"Float!\", \"Boolean\", \"Boolean!\", \"ID\", \"ID!\", \"DateTime\", \"DateTime!\", \"Date\", \"Date!\", \"JSON\", \"JSON!\", \"BigInt\", \"BigInt!\", \"Decimal\", \"Decimal!\"]) and $not($contains($el.type, \"[\")) and $el.relation = false,\n        \"subfields\": $lookup({\"Measure\": {\"value\": {\"type\": \"Float\", \"nullable\": false}, \"unit\": {\"type\": \"Unit\", \"relation\": true, \"subfields\": {\"id\": {\"type\": \"ID\"}, \"code\": {\"type\": \"String\"}}}}, \"Measure!\": {\"value\": {\"type\": \"Float\", \"nullable\": false}, \"unit\": {\"type\": \"Unit\", \"relation\": true, \"subfields\": {\"id\": {\"type\": \"ID\"}, \"code\": {\"type\": \"String\"}}}}, \"Address\": {\"line1\": {\"type\": \"String\", \"nullable\": true}, \"line2\": {\"type\": \"String\", \"nullable\": true}, \"city\": {\"type\": \"String\", \"nullable\": true}, \"state\": {\"type\": \"String\", \"nullable\": true}, \"postalCode\": {\"type\": \"String\", \"nullable\": true}, \"country\": {\"type\": \"String\", \"nullable\": true}}, \"Address!\": {\"line1\": {\"type\": \"String\", \"nullable\": true}, \"line2\": {\"type\": \"String\", \"nullable\": true}, \"city\": {\"type\": \"String\", \"nullable\": true}, \"state\": {\"type\": \"String\", \"nullable\": true}, \"postalCode\": {\"type\": \"String\", \"nullable\": true}, \"country\": {\"type\": \"String\", \"nullable\": true}}, \"Money\": {\"amount\": {\"type\": \"Decimal\", \"nullable\": false}, \"currency\": {\"type\": \"String\", \"nullable\": false}}, \"Money!\": {\"amount\": {\"type\": \"Decimal\", \"nullable\": false}, \"currency\": {\"type\": \"String\", \"nullable\": false}}}, $el.type)\n      }\n    }),\n    \"summary\": {\n      \"totalElements\": $count($modelData.elements.edges),\n      \"relationFields\": $count($modelData.elements.edges.node[relation = true]),\n      \"uniqueFields\": $count($modelData.elements.edges.node[unique = true])\n    }\n  } : {\n    \"error\": \"Model not found\"\n  }\n)"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Format Response"
+            },
+            "node-setcontext": {
+              "id": "node-setcontext",
+              "type": "setContext",
+              "selected": false,
+              "x": 805,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "ce53e27df49e941f18edc638c",
+                  "type": "default",
+                  "x": 796.82,
+                  "y": 246.72,
+                  "name": "c3999b4b979624e3f95073d76",
+                  "parentNode": "node-setcontext",
+                  "links": [
+                    "link-validate-query"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "ca7f4d7b2ef2743ed9b69a65a",
+                  "type": "default",
+                  "x": 951.19,
+                  "y": 246.72,
+                  "name": "ced77bb8f8f12484dacb3dd40",
+                  "parentNode": "node-setcontext",
+                  "links": [
+                    "3b5094f4-8b3c-4333-a547-bfbfc2612fd7"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "$",
+                "nextNodes": [
+                  "node-query"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Store Request"
+            },
+            "node-ifelse": {
+              "id": "node-ifelse",
+              "type": "ifElse",
+              "selected": false,
+              "x": 1420,
+              "y": 215,
+              "ports": [
+                {
+                  "id": "cc36a3dbaddc44249ae558b09",
+                  "type": "default",
+                  "x": 1411.82,
+                  "y": 246.72,
+                  "name": "cd11d1d2565f34f71b2e7a9af",
+                  "parentNode": "node-ifelse",
+                  "links": [
+                    "link-transform-response"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "c7caefe639a214eb5ad9cd034",
+                  "type": "default",
+                  "x": 1566.19,
+                  "y": 246.72,
+                  "name": "cd913621aa9b34b6d9036a44e",
+                  "parentNode": "node-ifelse",
+                  "links": [
+                    "link-ifelse-markdown"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "True",
+                  "fieldPath": "data.onTrueNextNodes"
+                },
+                {
+                  "id": "c717a13562b2b4cd7bf09516f",
+                  "type": "default",
+                  "x": 1566.19,
+                  "y": 271.86,
+                  "name": "c92c9b0e28a15419b84b9c0e1",
+                  "parentNode": "node-ifelse",
+                  "links": [
+                    "link-ifelse-response"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "False",
+                  "fieldPath": "data.onFalseNextNodes"
+                }
+              ],
+              "data": {
+                "transform": "$state.context.responseFormat = \"markdown\"",
+                "onTrueNextNodes": [
+                  "node-markdown"
+                ],
+                "onFalseNextNodes": [
+                  "node-response"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "If Markdown?"
+            },
+            "node-markdown": {
+              "id": "node-markdown",
+              "type": "javascriptTransform",
+              "selected": false,
+              "x": 1630,
+              "y": 155,
+              "ports": [
+                {
+                  "id": "c6d3a72bc910c438884cb88b1",
+                  "type": "default",
+                  "x": 1621.82,
+                  "y": 186.72,
+                  "name": "c778be1e2638749c99bb46b8c",
+                  "parentNode": "node-markdown",
+                  "links": [
+                    "link-ifelse-markdown"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "c3fa8948b59fb448dba3afd63",
+                  "type": "default",
+                  "x": 1781.83,
+                  "y": 186.72,
+                  "name": "ccecb29122b34468288860332",
+                  "parentNode": "node-markdown",
+                  "links": [
+                    "link-markdown-response"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "/*\n * Format as Markdown — DataModel Details\n * Input: JSON from Format Response { model, elements, summary }\n * Output: Markdown string via $jsonToMarkdown()\n */\n\nvar d = $;\nif (!d.model) {\n  return $jsonToMarkdown([\n    { \"h2\": \"DataModel Details\" },\n    { \"p\": d.error || \"Model not found.\" }\n  ]);\n}\n\nvar md = [];\n\n/* Header */\nmd.push({ \"h2\": \"Data Model: \" + d.model.name });\nif (d.model.description) md.push({ \"p\": d.model.description });\n\nvar meta = [];\nif (d.model.module) meta.push(\"**Module:** \" + d.model.module.name);\nmeta.push(\"**Kind:** \" + (d.model.dataModelKindId || \"?\"));\nmeta.push(\"**Type:** \" + (d.model.dataModelTypeId || \"?\"));\nif (d.model.estimatedRecordCount != null) meta.push(\"**Records:** ~\" + d.model.estimatedRecordCount);\nmd.push({ \"p\": meta.join(\" | \") });\n\n/* Elements table */\nvar elements = d.elements || [];\nif (elements.length > 0) {\n  var rows = [];\n  var relationList = [];\n\n  for (var i = 0; i < elements.length; i++) {\n    var el = elements[i];\n    var flags = [];\n    if (el.unique) flags.push(\"UQ\");\n    if (el.labelField) flags.push(\"LBL\");\n\n    var typeDisplay = el.type || \"?\";\n    if (el.relation) {\n      relationList.push(el.name + \" -> \" + el.type);\n      typeDisplay = \"-> \" + el.type;\n    } else if (el.complexType && el.subfields) {\n      var subs = Object.keys(el.subfields).join(\", \");\n      typeDisplay = el.type + \" {\" + subs + \"}\";\n    }\n\n    rows.push([\n      el.name,\n      typeDisplay,\n      flags.join(\", \"),\n      (el.description || \"\").replace(/\\|/g, \"/\").substring(0, 60)\n    ]);\n  }\n\n  md.push({ \"h3\": \"Fields (\" + elements.length + \")\" });\n  md.push({ \"table\": {\n    \"headers\": [\"Field\", \"Type\", \"Flags\", \"Description\"],\n    \"rows\": rows\n  }});\n\n  if (relationList.length > 0) {\n    md.push({ \"h3\": \"Relations (\" + relationList.length + \")\" });\n    md.push({ \"ul\": relationList });\n  }\n}\n\n/* Summary */\nmd.push({ \"p\": \"**Summary:** \" + d.summary.totalElements + \" fields, \"\n  + d.summary.relationFields + \" relations, \"\n  + d.summary.uniqueFields + \" unique\" });\n\nreturn $jsonToMarkdown(md);",
+                "nextNodes": [
+                  "node-response"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Format as Markdown"
+            },
+            "5f67cb8d-33c7-4c3a-b963-199a67ece5c9": {
+              "id": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+              "type": "query",
+              "selected": false,
+              "x": 560,
+              "y": 410,
+              "ports": [
+                {
+                  "id": "cmp18ibki015w3b6ugah4mk0f",
+                  "type": "default",
+                  "x": 551.82,
+                  "y": 441.72,
+                  "name": "cmp18ibki015x3b6uth65d8o6",
+                  "parentNode": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+                  "links": [
+                    "d06b1239-4c4a-4af6-9a8d-2cf34b12245b"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18ibki015y3b6uwvp9smwj",
+                  "type": "default",
+                  "x": 738.71,
+                  "y": 441.72,
+                  "name": "cmp18ibki015z3b6undgwjuxn",
+                  "parentNode": "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+                  "links": [
+                    "f9cc383c-162d-4060-90b7-9c4d9d9c3e38"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{}",
+                "query": "{\n  modelDefinitions(where: {\n    metadata: {\n      mfgx: {\n        dataModel: {\n          dataModelDeploymentId: {\n            _isNull: true\n          }\n        }\n      }\n    }\n    _not: {\n      _or: [\n        {\n          metadata: {\n            mfgx: {\n              isDataChangeModel: {\n                _eq: true\n              }\n            }\n          }\n        },\n        {\n          name: {\n            _endsWith: \"_CustomFields\"\n          }\n        }\n      ]\n    }\n  }) {\n    name\n    description\n    fields {\n      name\n      type\n      description\n    }\n  }\n}",
+                "nextNodes": [
+                  "7c251786-7a73-4357-ae77-01769c506ba6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query - All System Models"
+            },
+            "5d9be4d0-58e5-4469-8d71-4feb6b89948b": {
+              "id": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+              "type": "query",
+              "selected": false,
+              "x": 560,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmp18inm8016q3b6ux1ni56aj",
+                  "type": "default",
+                  "x": 551.82,
+                  "y": 516.72,
+                  "name": "cmp18inm8016r3b6uectlgdu7",
+                  "parentNode": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+                  "links": [
+                    "e9bee03a-4c2c-4639-8413-280cbf35b2ef"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18inm8016s3b6umthcxp4t",
+                  "type": "default",
+                  "x": 740.7,
+                  "y": 516.72,
+                  "name": "cmp18inm8016t3b6u72foy49b",
+                  "parentNode": "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+                  "links": [
+                    "4922e350-ce6b-4abe-a032-76dc1870256e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{}",
+                "query": "{\n  modelDefinitions(where: {\n    metadata: {\n      mfgx: {\n        dataModel: {\n          dataModelDeploymentId: {\n            _isNull: false\n          }\n        }\n      }\n    }\n    _not: {\n      name: {\n        _endsWith: \"_CustomFields\"\n      }\n    }\n  }) {\n    name\n    description\n    fields {\n      name\n      type\n      description\n    }\n    metadata {\n      mfgx {\n        isDataChangeModel\n        dataModel {\n          dataModelDeploymentId\n        }\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "7c251786-7a73-4357-ae77-01769c506ba6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query - All Custom Models"
+            },
+            "a9819272-e9e8-495b-a6e2-537b5d629f16": {
+              "id": "a9819272-e9e8-495b-a6e2-537b5d629f16",
+              "type": "debugSource",
+              "selected": false,
+              "x": 305,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp18ivi2017j3b6u6r8s3aps",
+                  "type": "default",
+                  "x": 451.19,
+                  "y": 511.72,
+                  "name": "cmp18ivi2017k3b6u00g2mh2p",
+                  "parentNode": "a9819272-e9e8-495b-a6e2-537b5d629f16",
+                  "links": [
+                    "d06b1239-4c4a-4af6-9a8d-2cf34b12245b",
+                    "e9bee03a-4c2c-4639-8413-280cbf35b2ef",
+                    "e40a0eee-ab62-4089-932f-7c9200244a19"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {},
+                "context": {},
+                "nextNodes": [
+                  "5f67cb8d-33c7-4c3a-b963-199a67ece5c9",
+                  "5d9be4d0-58e5-4469-8d71-4feb6b89948b",
+                  "7645f3d5-a94b-42fd-baea-d1400f4a155b"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "7645f3d5-a94b-42fd-baea-d1400f4a155b": {
+              "id": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+              "type": "query",
+              "selected": false,
+              "x": 560,
+              "y": 555,
+              "ports": [
+                {
+                  "id": "cmp18k4ou01873b6u1kiphpkv",
+                  "type": "default",
+                  "x": 551.82,
+                  "y": 586.72,
+                  "name": "cmp18k4ou01883b6u49bcwinh",
+                  "parentNode": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+                  "links": [
+                    "e40a0eee-ab62-4089-932f-7c9200244a19"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18k4ou01893b6uc6om830f",
+                  "type": "default",
+                  "x": 775.21,
+                  "y": 586.72,
+                  "name": "cmp18k4ou018a3b6ug1kgrgfj",
+                  "parentNode": "7645f3d5-a94b-42fd-baea-d1400f4a155b",
+                  "links": [
+                    "4a54dbe1-b918-4e9b-8193-2dcd73699ab3"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{}",
+                "query": "{\n  setupDataModels: dataModel(where: { dataModelTypeId: { _eq: \"setup\" } }, first: 1000) {\n    edges { node { id name } }\n  }\n}\n    \n  \n",
+                "nextNodes": [
+                  "7c251786-7a73-4357-ae77-01769c506ba6"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query - All Setup Custom Models"
+            },
+            "7c251786-7a73-4357-ae77-01769c506ba6": {
+              "id": "7c251786-7a73-4357-ae77-01769c506ba6",
+              "type": "collect",
+              "selected": false,
+              "x": 865,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp18orqs01a53b6ub52xvaj3",
+                  "type": "default",
+                  "x": 856.82,
+                  "y": 511.72,
+                  "name": "cmp18orqs01a63b6ufdguj1fm",
+                  "parentNode": "7c251786-7a73-4357-ae77-01769c506ba6",
+                  "links": [
+                    "f9cc383c-162d-4060-90b7-9c4d9d9c3e38",
+                    "4922e350-ce6b-4abe-a032-76dc1870256e",
+                    "4a54dbe1-b918-4e9b-8193-2dcd73699ab3"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18orqs01a73b6unz6x9o0m",
+                  "type": "default",
+                  "x": 1011.19,
+                  "y": 511.72,
+                  "name": "cmp18orqs01a83b6utvuezlls",
+                  "parentNode": "7c251786-7a73-4357-ae77-01769c506ba6",
+                  "links": [
+                    "9957b11e-40ac-4498-a55e-432fc739df75"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payloadCombinationStrategy": "merge",
+                "contextCombinationStrategy": "first",
+                "batchCount": 3,
+                "batchTimeMs": 300000,
+                "nextNodes": [
+                  "d24efe48-c7ab-4927-842d-44e444053806"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Collect"
+            },
+            "d24efe48-c7ab-4927-842d-44e444053806": {
+              "id": "d24efe48-c7ab-4927-842d-44e444053806",
+              "type": "setContext",
+              "selected": false,
+              "x": 1070,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp18p2ec01ap3b6udecioreu",
+                  "type": "default",
+                  "x": 1061.82,
+                  "y": 511.72,
+                  "name": "cmp18p2ec01aq3b6upzfvzctq",
+                  "parentNode": "d24efe48-c7ab-4927-842d-44e444053806",
+                  "links": [
+                    "9957b11e-40ac-4498-a55e-432fc739df75"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18p2ec01ar3b6uaux05w4m",
+                  "type": "default",
+                  "x": 1216.19,
+                  "y": 511.72,
+                  "name": "cmp18p2ec01as3b6u4znqxhs2",
+                  "parentNode": "d24efe48-c7ab-4927-842d-44e444053806",
+                  "links": [
+                    "6dfab49a-513f-4522-bb91-8c6d2124f8e4"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\r\n  $setupNames := setupModels.setupDataModels.edges.node.name;\r\n\r\n  $systemModels := systemModels.modelDefinitions.{\r\n    \"name\": name, \"description\": description, \"fields\": fields, \"source\": \"system\"\r\n  };\r\n\r\n  $allDeployed := customModels.modelDefinitions.{\r\n    \"name\": name, \"description\": description, \"fields\": fields\r\n  };\r\n\r\n  $setupModels := $allDeployed[name in $setupNames].$merge([$, {\"source\": \"setup\"}]);\r\n  $customModels := $allDeployed[$not(name in $setupNames)].$merge([$, {\"source\": \"custom\"}]);\r\n\r\n  {\r\n    \"_models\": [$systemModels, $customModels, $setupModels],\r\n    \"_bySource\": {\r\n      \"system\": $systemModels,\r\n      \"custom\": $customModels,\r\n      \"setup\": $setupModels\r\n    }\r\n  }\r\n)",
+                "nextNodes": [
+                  "742b100a-fe6e-4e75-a574-a6f1329f7b5f"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Set Context"
+            },
+            "814601b5-baf4-4e62-9d7a-fac06b580478": {
+              "id": "814601b5-baf4-4e62-9d7a-fac06b580478",
+              "type": "transform",
+              "selected": false,
+              "x": 1855,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp18w2yc01nc3b6ubdlzmeem",
+                  "type": "default",
+                  "x": 1846.82,
+                  "y": 511.72,
+                  "name": "cmp18w2yc01nd3b6u5l4djcsc",
+                  "parentNode": "814601b5-baf4-4e62-9d7a-fac06b580478",
+                  "links": [],
+                  "in": true
+                },
+                {
+                  "id": "cmp18w2yc01ne3b6ujbkicrpb",
+                  "type": "default",
+                  "x": 2027.19,
+                  "y": 511.72,
+                  "name": "cmp18w2yc01nf3b6uu1bw9g06",
+                  "parentNode": "814601b5-baf4-4e62-9d7a-fac06b580478",
+                  "links": [
+                    "e04f577c-f6f4-4382-bf9f-9d1998134bba"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "$merge([$, { \"_result\": $query({ \"api\": ($state.context.api ? $state.context.api : \"application\"), \"statement\": $._query, \"variables\": $._variables }) }])",
+                "nextNodes": [
+                  "4eeffd76-ecfb-441e-af53-a29477a52ea4"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "JSONata - Execute Query"
+            },
+            "4eeffd76-ecfb-441e-af53-a29477a52ea4": {
+              "id": "4eeffd76-ecfb-441e-af53-a29477a52ea4",
+              "type": "transform",
+              "selected": false,
+              "x": 2095,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp18wf8r01o63b6uqdyjvp5r",
+                  "type": "default",
+                  "x": 2086.82,
+                  "y": 511.72,
+                  "name": "cmp18wf8r01o73b6u2njgok7b",
+                  "parentNode": "4eeffd76-ecfb-441e-af53-a29477a52ea4",
+                  "links": [
+                    "e04f577c-f6f4-4382-bf9f-9d1998134bba"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp18wf8s01o83b6uwo9k2yo8",
+                  "type": "default",
+                  "x": 2279.96,
+                  "y": 511.72,
+                  "name": "cmp18wf8s01o93b6ubhpt6ym2",
+                  "parentNode": "4eeffd76-ecfb-441e-af53-a29477a52ea4",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\n  $models := $._models;\n  {\n    \"seedData\": $map($models, function($model) { (\n      $modelLower := $lowercase($substring($model, 0, 1)) & $substring($model, 1);\n      $alias := $modelLower & \"_seed\";\n      $bucket := $lookup($._result, $alias);\n      {\n        \"modelName\": $model,\n        \"data\": $bucket.edges.node,\n        \"total\": $bucket.total,\n        \"returnedCount\": $count($bucket.edges),\n        \"hasNextPage\": $bucket.pageInfo.hasNextPage,\n        \"endCursor\": $bucket.pageInfo.endCursor\n      }\n    ) }),\n    \"summary\": {\n      \"modelCount\": $count($models),\n      \"totalRecords\": $sum($map($models, function($model) {\n        $lookup($._result, $lowercase($substring($model, 0, 1)) & $substring($model, 1) & \"_seed\").total\n      }))\n    }\n  }\n)",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "JSONata - Reshape Results"
+            },
+            "742b100a-fe6e-4e75-a574-a6f1329f7b5f": {
+              "id": "742b100a-fe6e-4e75-a574-a6f1329f7b5f",
+              "type": "javascriptTransform",
+              "selected": false,
+              "x": 1260,
+              "y": 480,
+              "ports": [
+                {
+                  "id": "cmp2s7j4e0069356upfxjjje6",
+                  "type": "default",
+                  "x": 1251.82,
+                  "y": 511.72,
+                  "name": "cmp2s7j4e006a356un0jazgfc",
+                  "parentNode": "742b100a-fe6e-4e75-a574-a6f1329f7b5f",
+                  "links": [
+                    "6dfab49a-513f-4522-bb91-8c6d2124f8e4"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmp2s7j4e006b356uioz9t1lu",
+                  "type": "default",
+                  "x": 1406.19,
+                  "y": 511.72,
+                  "name": "cmp2s7j4e006c356uruu5kr79",
+                  "parentNode": "742b100a-fe6e-4e75-a574-a6f1329f7b5f",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "// Input: payload._models = [{name, fields, source}, ...]\r\nconst models = $$.payload._models || [];\r\n\r\n// Scalar GraphQL types we know we can request directly\r\nconst SCALAR_TYPES = {\r\n  \"String\": true, \"Int\": true, \"Float\": true, \"Boolean\": true,\r\n  \"ID\": true, \"DateTime\": true, \"Date\": true, \"JSON\": true,\r\n  \"BigInt\": true, \"Decimal\": true\r\n};\r\n\r\n// Build field selection per model\r\nconst buildFields = (fields) => {\r\n  const parts = [\"id\"];\r\n  for (const f of (fields || [])) {\r\n    if (!f || !f.name) continue;\r\n    if (f.name === \"id\") continue;\r\n    // skip arrays and unknown complex types — extend if you have type metadata\r\n    if (f.type && SCALAR_TYPES[f.type]) {\r\n      parts.push(f.name);\r\n    } else if (f.type === \"relation\" || (f.type && f.type.endsWith(\"Relation\"))) {\r\n      parts.push(f.name + \" { id }\");\r\n    }\r\n    // arrays / embeddables: skip for now, log if needed\r\n  }\r\n  // dedupe\r\n  const seen = {};\r\n  const out = [];\r\n  for (const p of parts) {\r\n    if (!seen[p]) { seen[p] = true; out.push(p); }\r\n  }\r\n  return out.join(\" \");\r\n};\r\n\r\n// Build aliased query blocks\r\nconst blocks = [];\r\nconst modelMap = {}; // alias -> model meta\r\nfor (const m of models) {\r\n  if (!m.name) continue;\r\n  const lower = m.name.charAt(0).toLowerCase() + m.name.slice(1);\r\n  const alias = lower + \"_seed\";\r\n  const fieldsStr = buildFields(m.fields);\r\n  blocks.push(\r\n    `${alias}: ${lower}(first: 1000) { ` +\r\n    `total edges { node { ${fieldsStr} } } ` +\r\n    `pageInfo { hasNextPage endCursor } }`\r\n  );\r\n  modelMap[alias] = { name: m.name, source: m.source, description: m.description };\r\n}\r\n\r\nconst statement = `query AllSeedData { ${blocks.join(\" \")} }`;\r\n\r\n// Execute — $graphql is the Script-node entry point for runtime queries\r\nlet result;\r\ntry {\r\n  result = await $graphql(\"application\", statement, {});\r\n} catch (e) {\r\n  return {\r\n    error: e.message,\r\n    statement: statement,\r\n    models: models.map(m => m.name)\r\n  };\r\n}\r\n\r\n// Reshape into seedData[]\r\nconst seedData = [];\r\nlet totalRecords = 0;\r\nfor (const alias of Object.keys(modelMap)) {\r\n  const bucket = result[alias] || {};\r\n  const meta = modelMap[alias];\r\n  const count = (bucket.edges || []).length;\r\n  totalRecords += (bucket.total || 0);\r\n  seedData.push({\r\n    modelName: meta.name,\r\n    source: meta.source,\r\n    description: meta.description,\r\n    data: (bucket.edges || []).map(e => e.node),\r\n    total: bucket.total || 0,\r\n    returnedCount: count,\r\n    hasNextPage: bucket.pageInfo && bucket.pageInfo.hasNextPage,\r\n    endCursor: bucket.pageInfo && bucket.pageInfo.endCursor\r\n  });\r\n}\r\n\r\nreturn {\r\n  seedData: seedData,\r\n  summary: {\r\n    modelCount: models.length,\r\n    totalRecords: totalRecords,\r\n    bySource: {\r\n      system: seedData.filter(s => s.source === \"system\").length,\r\n      custom: seedData.filter(s => s.source === \"custom\").length,\r\n      setup: seedData.filter(s => s.source === \"setup\").length\r\n    }\r\n  },\r\n  _models: models,\r\n  _generatedQuery: statement\r\n};",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "JavaScript"
+            }
+          }
+        }
+      ],
+      "name": "DataModel Details",
+      "type": "System",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

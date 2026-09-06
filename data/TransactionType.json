@@ -1,0 +1,43 @@
+{
+  "api": "application",
+  "modelName": "TransactionType",
+  "payload": [
+    {
+      "id": "inventoryMerge",
+      "name": "Inventory Merge",
+      "usable": true,
+      "description": "Indicates that the a qty from one inventory record has been moved to an already exsisting inventory record.",
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "inventoryMove",
+      "name": "Inventory Move",
+      "usable": true,
+      "description": "Indcates that the inventory was move from one storage unit to another.",
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "inventorySplit",
+      "name": "Inventory Split",
+      "usable": true,
+      "description": "Indicates that an inventory has had quantity split of from it and a new inventory record created. ",
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

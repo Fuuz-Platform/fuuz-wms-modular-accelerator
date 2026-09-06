@@ -1,0 +1,34 @@
+{
+  "api": "application",
+  "modelName": "OrderLineReleaseType",
+  "payload": [
+    {
+      "id": "firm",
+      "name": "Firm",
+      "usable": true,
+      "description": "This one’s not just committed — it’s already picking out furniture. Locked, loaded, and ready to ship. You can bet your forklift on it.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "forecasted",
+      "name": "Forecasted",
+      "usable": true,
+      "description": "It says it’s coming... probably. Like a weather report for your warehouse — not guaranteed, but worth keeping an eye on.",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "planned",
+      "name": "Planned",
+      "usable": true,
+      "description": "It’s penciled in — there’s a date on the calendar, but don’t carve it in stone just yet. Think of it as a strong ‘maybe’ with a time attached.",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

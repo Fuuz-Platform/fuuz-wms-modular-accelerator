@@ -1,0 +1,1059 @@
+{
+  "header": {
+    "id": "countLocationSelector",
+    "name": "Count Location Selector",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "cycleCounting",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmfvyrza5046f077589ar7dan",
+    "number": "0.0.8",
+    "description": "",
+    "screenId": "countLocationSelector",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": -15,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 11,
+                    "Form": 2,
+                    "Text": 9,
+                    "Cards": 2,
+                    "Progress Bar": 2,
+                    "Scan": 1,
+                    "Menu Button": 3
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "5iVa2R_yaJ"
+                ],
+                "linkedNodes": {}
+              },
+              "5iVa2R_yaJ": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "gdJ8rTK3pT",
+                  "RGXzAKUTFD",
+                  "-bUU0FMF25",
+                  "LGWYuqqs95"
+                ],
+                "linkedNodes": {}
+              },
+              "RGXzAKUTFD": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "5iVa2R_yaJ",
+                "hidden": false,
+                "nodes": [
+                  "QMxxPdxGWg"
+                ],
+                "linkedNodes": {}
+              },
+              "-bUU0FMF25": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "5iVa2R_yaJ",
+                "hidden": false,
+                "nodes": [
+                  "eUZKseApYL",
+                  "FlpJ2yDumB"
+                ],
+                "linkedNodes": {}
+              },
+              "QMxxPdxGWg": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id",
+                      "number"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "model": "Count"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "description": "Cycle counts for optimizing inventory movements. Cycle parameters are the filters used to query the system for inventory that should be counted - all parameters are \"OR\" statements. Any inventory matching any of the parameters will be included in the count."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "RGXzAKUTFD",
+                "hidden": false,
+                "nodes": [
+                  "H96FpWXzBc"
+                ],
+                "linkedNodes": {}
+              },
+              "H96FpWXzBc": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 2,
+                  "margin": 2,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "QMxxPdxGWg",
+                "hidden": false,
+                "nodes": [
+                  "izf-cDyxMi",
+                  "e1hcIsQzKs",
+                  "kIfivOCXcU"
+                ],
+                "linkedNodes": {}
+              },
+              "izf-cDyxMi": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Locations for Count ",
+                        "type": "header-one",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text4"
+                },
+                "parent": "H96FpWXzBc",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "e1hcIsQzKs": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "h3",
+                  "formElement": "Form1",
+                  "dataPath": "number",
+                  "description": "",
+                  "field": "number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "labelPosition": {
+                    "id": "null",
+                    "label": "None"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text5"
+                },
+                "parent": "H96FpWXzBc",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "FlpJ2yDumB": {
+                "type": {
+                  "resolvedName": "Cards"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": "query (\n  $countId: String!,\n  $storageUnitCode: String\n  $first: Int\n){\n  countLine(\n    first: $first\n    where:{\n      countId: {\n        _eq: $countId \n      }\n      expectedStorageUnit:  {\n         code:  {\n            _contains: $storageUnitCode\n         }\n      }\n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        expectedStorageUnit{\n          id\n          code\n        }\n        _aggregate{\n          expectedStorageUnitId{\n            uniqueValues\n          }\n        }\n      }\n    }\n  }\n\n  countLineInventory(\n    first: $first\n    where:{\n      countLine:  {\n        countId: {\n          _eq: $countId \n        }\n        expectedStorageUnit:  {\n         code:  {\n            _contains: $storageUnitCode\n         }\n        }   \n      }\n      \n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        countLine{\n          expectedStorageUnitId\n        }\n        quantity{\n          _aggregate{\n            value{\n              sum\n            }\n          }\n        }\n\n      }\n    }\n  }\n\n  counted: countLineInventory(\n    first: $first\n    where:{\n      counterUserId:  {\n         _isNull: false\n      }\n      countLine:  {\n        countId: {\n          _eq: $countId \n        }\n        expectedStorageUnit:  {\n          code:  {\n              _contains: $storageUnitCode\n          }\n        }   \n      }\n      \n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        countLine{\n          expectedStorageUnitId\n        }\n        quantity{\n          _aggregate{\n            value{\n              sum\n            }\n          }\n        }\n\n      }\n    }\n  }\n\n  storageUnit(\n    first: $first\n    where:  {\n       code:  {\n          _contains: $storageUnitCode\n       }\n    }\n  ){\n    edges{\n      node{\n        code id\n      }\n    }\n  }\n}",
+                    "dataPath": "",
+                    "dataTransform": {
+                      "transform": "(\r\n  $expectedLocations := [$leftOuterJoin( \r\n    [countLine.edges.node], \r\n    [countLineInventory.edges.node], \r\n    'expectedStorageUnit.id', \r\n    'countLine.expectedStorageUnitId', \r\n    'total'\r\n  )\r\n  ~>$leftOuterJoin( \r\n    [counted.edges.node], \r\n    'expectedStorageUnit.id', \r\n    'countLine.expectedStorageUnitId', \r\n    'counted'\r\n  )\r\n  ~>| $ | { \r\n    \"totalQuantity\": total.quantity._aggregate.value.sum, \r\n    \"countedQuantity\": $coalesce([ counted.quantity._aggregate.value.sum, 0])  \r\n  } |];\r\n  \r\n\r\n)",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "/*\n* These Cards use a custom Query\n*/\n{\n  \"countId\": id,\n  \"storageUnitCode\": $coalesce([$components.Form1.data.storageUnitCode, \"\"]),\n  \"first\": 10\n}",
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "padding": 2,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": true,
+                  "alignItems": "stretch",
+                  "justifyContent": "center",
+                  "width": "200px",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0
+                },
+                "displayName": "Cards",
+                "custom": {
+                  "elementName": "Cards1"
+                },
+                "parent": "-bUU0FMF25",
+                "hidden": false,
+                "nodes": [
+                  "ct9427j4pR"
+                ],
+                "linkedNodes": {}
+              },
+              "ct9427j4pR": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": true,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "onClickActions": {
+                    "__transform": "$navigateTo('/inventoryManagement/cycleCounting/executeCycleCount?countId=' & $metadata.urlParameters.id & \"&storageUnitId=\" & $card.data.expectedStorageUnit.id ,{'newWindow': false, 'replace': false })"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "FlpJ2yDumB",
+                "hidden": false,
+                "nodes": [
+                  "XQXRVzVzvJ",
+                  "wcnMghpDgJ"
+                ],
+                "linkedNodes": {}
+              },
+              "wcnMghpDgJ": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Text",
+                  "justifyContent": "center",
+                  "alignTextItems": "center",
+                  "labelFontSize": "body1",
+                  "fontSize": "h1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "expectedStorageUnit.code",
+                  "formElement": "Cards1",
+                  "labelPosition": {
+                    "id": "null",
+                    "label": "None"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text6"
+                },
+                "parent": "ct9427j4pR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "XQXRVzVzvJ": {
+                "type": {
+                  "resolvedName": "ProgressBar"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "progressBar",
+                  "label": "Counted",
+                  "barHeight": 8,
+                  "borderRadius": 0,
+                  "minNumber": 0,
+                  "maxNumber": 100,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "completetionPercent",
+                  "formElement": "Cards1",
+                  "data": {
+                    "__transform": "(data.countedQuantity / data.totalQuantity) * 100"
+                  }
+                },
+                "displayName": "Progress Bar",
+                "custom": {
+                  "elementName": "ProgressBar1"
+                },
+                "parent": "ct9427j4pR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gdJ8rTK3pT": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": true,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "5iVa2R_yaJ",
+                "hidden": false,
+                "nodes": [
+                  "T4wpxpp1Ze"
+                ],
+                "linkedNodes": {}
+              },
+              "T4wpxpp1Ze": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": true,
+                      "topics": [
+                        {
+                          "topic": "update.count.progress"
+                        }
+                      ],
+                      "filterTransform": "event.body.countId = $metadata.urlParameters.id",
+                      "valueTransform": "(\r\n  $components.Cards1.fn.loadData(\r\n    {\r\n      \"countId\": $metadata.urlParameters.id,\r\n      \"storageUnitCode\": $coalesce([$components.Form1.data.storageUnitCode, \"\"]),\r\n      \"first\": 10\r\n    }\r\n  );\r\n  $components.Cards2.fn.loadData(\r\n    {\r\n      \"countId\": $metadata.urlParameters.id,\r\n      \"storageUnitCode\": $coalesce([$components.Form1.data.storageUnitCode, \"\"]),\r\n      \"first\": 10\r\n    }\r\n  )\r\n)"
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false
+                  },
+                  "blockNavigationWhenDirty": true
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form2"
+                },
+                "parent": "gdJ8rTK3pT",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "kIfivOCXcU": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 2,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Storage Unit",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": true,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "Form1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "storageUnitCode",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "onChange": "$not($$.newValue = $$.oldValue)? (\r\n  $components.Cards1.fn.loadData({\r\n    \"countId\": $metadata.urlParameters.id,\r\n    \"storageUnitCode\": $coalesce([$$.newValue, \"\"]),\r\n    \"first\": 10\r\n  });\r\n\r\n  $components.Cards2.fn.loadData({\r\n    \"countId\": $metadata.urlParameters.id,\r\n    \"storageUnitCode\": $coalesce([$$.newValue, \"\"]),\r\n    \"first\": 10\r\n  })\r\n)"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "Scan1"
+                },
+                "parent": "H96FpWXzBc",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "LGWYuqqs95": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "5iVa2R_yaJ",
+                "hidden": false,
+                "nodes": [
+                  "5byQO2DAjb",
+                  "734aukabdZ"
+                ],
+                "linkedNodes": {}
+              },
+              "734aukabdZ": {
+                "type": {
+                  "resolvedName": "Cards"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": "query (\n  $countId: String!,\n  $storageUnitCode: String\n  $first: Int\n){\n  countLine(\n    first: $first\n    where:{\n      countId: {\n        _eq: $countId \n      }\n      expectedStorageUnit:  {\n         code:  {\n            _contains: $storageUnitCode\n         }\n      }\n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        expectedStorageUnit{\n          id\n          code\n        }\n        _aggregate{\n          expectedStorageUnitId{\n            uniqueValues\n          }\n        }\n      }\n    }\n  }\n\n  countLineInventory(\n    first: $first\n    where:{\n      countLine:  {\n        countId: {\n          _eq: $countId \n        }\n        expectedStorageUnit:  {\n         code:  {\n            _contains: $storageUnitCode\n         }\n        }   \n      }\n      \n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        countLine{\n          expectedStorageUnitId\n        }\n        quantity{\n          _aggregate{\n            value{\n              sum\n            }\n          }\n        }\n\n      }\n    }\n  }\n\n  counted: countLineInventory(\n    first: $first\n    where:{\n      counterUserId:  {\n         _isNull: false\n      }\n      countLine:  {\n        countId: {\n          _eq: $countId \n        }\n        expectedStorageUnit:  {\n          code:  {\n              _contains: $storageUnitCode\n          }\n        }   \n      }\n      \n    }\n  ){\n    total\n    edges{\n      node{\n        id\n        countLine{\n          expectedStorageUnitId\n        }\n        quantity{\n          _aggregate{\n            value{\n              sum\n            }\n          }\n        }\n\n      }\n    }\n  }\n\n  storageUnit(\n    first: $first\n    where:  {\n       code:  {\n          _contains: $storageUnitCode\n       }\n    }\n  ){\n    edges{\n      node{\n        code id\n      }\n    }\n  }\n}",
+                    "dataPath": "",
+                    "dataTransform": {
+                      "transform": "(\r\n  $expectedLocations := [$leftOuterJoin( \r\n    [countLine.edges.node], \r\n    [countLineInventory.edges.node], \r\n    'expectedStorageUnit.id', \r\n    'countLine.expectedStorageUnitId', \r\n    'total'\r\n  )\r\n  ~>$leftOuterJoin( \r\n    [counted.edges.node], \r\n    'expectedStorageUnit.id', \r\n    'countLine.expectedStorageUnitId', \r\n    'counted'\r\n  )\r\n  ~>| $ | { \r\n    \"totalQuantity\": total.quantity._aggregate.value.sum, \r\n    \"countedQuantity\": $coalesce([ counted.quantity._aggregate.value.sum, 0])  \r\n  } |];\r\n\r\n  \r\n  $otherLocations := $leftAntiJoin( \r\n    [storageUnit.edges.node.{ \"id\": $cuid(), \"expectedStorageUnit\": $ }], \r\n    $expectedLocations, \r\n    'expectedStorageUnit.id', \r\n    'expectedStorageUnit.id'\r\n  )~>$takeFirst(?, 10)\r\n  \r\n\r\n)",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "/*\n* These Cards use a custom Query\n*/\n{\n  \"countId\": id,\n  \"storageUnitCode\": $coalesce([$components.Form1.data.storageUnitCode, \"\"]),\n  \"first\": 10\n}",
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "padding": 2,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": true,
+                  "alignItems": "stretch",
+                  "justifyContent": "center",
+                  "width": "200px",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0
+                },
+                "displayName": "Cards",
+                "custom": {
+                  "elementName": "Cards2"
+                },
+                "parent": "LGWYuqqs95",
+                "hidden": false,
+                "nodes": [
+                  "AbkELHD2V1"
+                ],
+                "linkedNodes": {}
+              },
+              "AbkELHD2V1": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": true,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "onClickActions": {
+                    "__transform": "$navigateTo('/inventoryManagement/cycleCounting/executeCycleCount?countId=' & $metadata.urlParameters.id & \"&storageUnitId=\" & $card.data.expectedStorageUnit.id ,{'newWindow': false, 'replace': false })"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container8"
+                },
+                "parent": "734aukabdZ",
+                "hidden": false,
+                "nodes": [
+                  "cD65tz76YF",
+                  "qst4BkvlnG"
+                ],
+                "linkedNodes": {}
+              },
+              "cD65tz76YF": {
+                "type": {
+                  "resolvedName": "ProgressBar"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "progressBar",
+                  "label": "Counted",
+                  "barHeight": 8,
+                  "borderRadius": 0,
+                  "minNumber": 0,
+                  "maxNumber": 100,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "completetionPercent",
+                  "formElement": "Cards1",
+                  "data": {
+                    "__transform": "(data.countedQuantity / data.totalQuantity) * 100"
+                  }
+                },
+                "displayName": "Progress Bar",
+                "custom": {
+                  "elementName": "ProgressBar2"
+                },
+                "parent": "AbkELHD2V1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qst4BkvlnG": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Text",
+                  "justifyContent": "center",
+                  "alignTextItems": "center",
+                  "labelFontSize": "body1",
+                  "fontSize": "h1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "expectedStorageUnit.code",
+                  "formElement": "Cards1",
+                  "labelPosition": {
+                    "id": "null",
+                    "label": "None"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text7"
+                },
+                "parent": "AbkELHD2V1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ukcYIaow2J": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Expected locations",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [
+                          {
+                            "offset": 0,
+                            "length": 18,
+                            "style": "fontfamily-Roboto"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 18,
+                            "style": "fontsize-12"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 18,
+                            "style": "BOLD"
+                          }
+                        ],
+                        "entityRanges": [],
+                        "data": {}
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "eUZKseApYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "eXeixysk9E": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Other Locations",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [
+                          {
+                            "offset": 0,
+                            "length": 15,
+                            "style": "fontfamily-Roboto"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 15,
+                            "style": "fontsize-12"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 15,
+                            "style": "BOLD"
+                          }
+                        ],
+                        "entityRanges": [],
+                        "data": {}
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text9"
+                },
+                "parent": "5byQO2DAjb",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "eUZKseApYL": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "paddingLeft": 8
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container10"
+                },
+                "parent": "-bUU0FMF25",
+                "hidden": false,
+                "nodes": [
+                  "ukcYIaow2J"
+                ],
+                "linkedNodes": {}
+              },
+              "5byQO2DAjb": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "paddingLeft": 8
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container11"
+                },
+                "parent": "LGWYuqqs95",
+                "hidden": false,
+                "nodes": [
+                  "eXeixysk9E"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmcnvjbno06td07751k8276s6",
+      "title": "Count Location Selector",
+      "path": "/inventoryManagement/cycleCounting/countLocationSelector/:id",
+      "moduleId": "cycleCounting",
+      "screenId": "countLocationSelector",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

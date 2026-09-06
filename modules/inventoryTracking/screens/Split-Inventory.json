@@ -1,0 +1,888 @@
+{
+  "header": {
+    "id": "splitInventory",
+    "name": "Split Inventory",
+    "description": "Use this screen to scan inventory you wish to physically split into multiple inventory records, each with their own unique label and inventory quantity.",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdzgeo254jq20775716paikh",
+    "number": "0.0.3",
+    "description": "",
+    "screenId": "splitInventory",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": -15,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "background": "light",
+                  "intervals": []
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "ScreenSplitInventory",
+                  "elementCounts": {
+                    "Action Button": 6,
+                    "Container": 40,
+                    "Text": 13,
+                    "Scan": 3,
+                    "Float": 1,
+                    "Switch": 5,
+                    "Form": 3,
+                    "Select": 1,
+                    "Cards": 1,
+                    "Icon": 1,
+                    "Resizable Panel": 1,
+                    "Flow Button": 2,
+                    "Measure": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "ttb3q85SDm",
+                  "c6U7pZcTs7"
+                ],
+                "linkedNodes": {}
+              },
+              "mRWBfPrno1": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": true,
+                    "model": "Inventory"
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "description": "This table is the list of inventory and it's attributes\nLinks out to production history and production depletion"
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "FormSplitInventory"
+                },
+                "parent": "c6U7pZcTs7",
+                "hidden": false,
+                "nodes": [
+                  "QRx1rSSkPA"
+                ],
+                "linkedNodes": {}
+              },
+              "0-pNwTnMQx": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 2,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSubmitButton"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [
+                  "wk19mGYqLa"
+                ],
+                "linkedNodes": {}
+              },
+              "QRx1rSSkPA": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 4,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitInventoryFormContent"
+                },
+                "parent": "mRWBfPrno1",
+                "hidden": false,
+                "nodes": [
+                  "XgarrqUjep",
+                  "JmfDLPiBaY",
+                  "M-THKov-2M",
+                  "ua9r54tSsk",
+                  "jiRTN_E0Kk",
+                  "0-pNwTnMQx"
+                ],
+                "linkedNodes": {}
+              },
+              "XgarrqUjep": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 8,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {
+                    "borderMode": "full",
+                    "border": "0px solid "
+                  },
+                  "justifyItems": "start",
+                  "style": {
+                    "padding-top": "8px",
+                    "padding-bottom": "8px"
+                  },
+                  "background": "light"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerInventoryNumber"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [
+                  "d-rOYBg1cK"
+                ],
+                "linkedNodes": {}
+              },
+              "d-rOYBg1cK": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 500,
+                    "transform": "(\n  $queriedInventoryData := $query({\n    \"statement\":\n      'query Query($where: InventoryWhereInput, $orderBy: [InventoryOrderByInput!], $first: Int, $after: String) {\n        inventory(where: $where, orderBy: $orderBy, first: $first, after: $after) {\n          edges {\n            node {\n              id\n            }\n          }\n        }\n      }',\n    \"variables\": {\n      \"where\": {\n        \"_or\": [\n          {\"serialNumber\": { \"_eq\": $$.data.invNumber }},\n          {\"barcode\": { \"_eq\": $$.data.invNumber }}\n        ]\n      }\n    }\n  }).inventory.edges.node;\n\n  $isNilOrEmpty($queriedInventoryData.id) ?\n    \"Inventory not found\"\n)"
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Serial Number",
+                  "allowManualInput": true,
+                  "terminatorCharacters": [
+                    "enter",
+                    "tab"
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": true,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "formElement": "Form3",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "invNumber",
+                  "description": "This is the inventory number - Label field",
+                  "disabled": false,
+                  "onChange": "$isNil(data.invNumber) ?\n  {\n    'maxQtyAllowed': null,\n    'inventoryId': null\n  }\n:\n  (\n    $queriedInventoryData := $query({\n      \"statement\":\n        'query Query($where: InventoryWhereInput, $orderBy: [InventoryOrderByInput!], $first: Int, $after: String) {\n          inventory(where: $where, orderBy: $orderBy, first: $first, after: $after) {\n            edges {\n              node {\n                id\n                quantity {\n                  value\n                  unit {\n                    code\n                  }\n                }\n              }\n            }\n          }\n        }',\n      \"variables\": {\n        \"where\": {\n          \"_or\": [\n            {\"serialNumber\": { \"_eq\": data.invNumber }},\n            {\"barcode\": { \"_eq\": data.invNumber }}\n          ]\n        }\n      }\n    }).inventory.edges.node;\n\n    $components.FormSplitInventory.fn.focus('splitQty');\n\n    $count($queriedInventoryData) != 1 ?\n      {\n        'maxQtyAllowed': null,\n        'inventoryId': null\n      } :\n      $queriedInventoryData.{\n        'maxQtyAllowed': quantity,\n        'inventoryId': id\n      }\n  )",
+                  "query": {},
+                  "field": "number"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "ScanInventoryNumber"
+                },
+                "parent": "XgarrqUjep",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "JmfDLPiBaY": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 8,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMaxQtyAvailable"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [
+                  "6B8zm91ywe"
+                ],
+                "linkedNodes": {}
+              },
+              "6B8zm91ywe": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Max Qty Available: ",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "button",
+                  "fontSize": "h6",
+                  "formElement": "Form16",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "maxQtyAllowed",
+                  "labelPosition": {
+                    "id": "row",
+                    "label": "Left"
+                  },
+                  "formatString": "0,0.[00000000000000]",
+                  "format": "measure"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextMaxQtyAvailable"
+                },
+                "parent": "JmfDLPiBaY",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "M-THKov-2M": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "space-evenly",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {
+                    "borderMode": "full",
+                    "border": "1px solid #d0d0d0"
+                  },
+                  "justifyItems": "start",
+                  "style": {
+                    "padding-top": "8px",
+                    "padding-bottom": "8px"
+                  },
+                  "background": "light"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerInputQtyRow"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [
+                  "sA09YoFPFU",
+                  "ykyxH7W6bf",
+                  "T-z1WkHHcq"
+                ],
+                "linkedNodes": {}
+              },
+              "qvu-dVsRDE": {
+                "type": {
+                  "resolvedName": "FloatInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false,
+                    "transform": "$not($isNil(newValue)) ? (\r\n  newValue = 0 ?\r\n    \"Quantity to Split cannot be zero\"\r\n\r\n  : newValue < 0 ?\r\n    \"Quantity to Split cannot be negative\"\r\n\r\n  : (\r\n    $exists(data.maxQtyAllowed.value)\r\n    and newValue > data.maxQtyAllowed.value\r\n  ) ? \r\n    \"Quantity to Split cannot be larger than the maximum quantity available\"\r\n)"
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "float",
+                  "label": "Quantity to Split",
+                  "formElement": "Form15",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "splitQty",
+                  "description": "Quantity to be removed from source & added to a new Serial",
+                  "query": {
+                    "fields": [
+                      "quantity.value"
+                    ]
+                  },
+                  "disabled": {
+                    "__transform": "$components.FormSplitInventory.data.splitAllQty = true",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.FormSplitInventory.data.splitAllQty"
+                      ]
+                    },
+                    "__cacheKey": "splitAllQty",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  }
+                },
+                "displayName": "Float",
+                "custom": {
+                  "elementName": "FloatSplitQty"
+                },
+                "parent": "sA09YoFPFU",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ykyxH7W6bf": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "switch",
+                  "label": "Split All",
+                  "formElement": "Form15",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "splitAllQty",
+                  "description": "If True - then Merge the full quantity from source, into the destination inventory\nThis will retire the source inventory record (inactive, qty=0) and create a new inventory record which will receive the full qty. All other attributes of the source inventory are inherited to the new inventory.\nIf True - ALL will be removed regardless of the value in Quantity to Split.",
+                  "defaultValue": false,
+                  "disabled": false,
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "SwitchSplitAll"
+                },
+                "parent": "M-THKov-2M",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "T-z1WkHHcq": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "auto",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "switch",
+                  "label": "Print Label",
+                  "formElement": "Form15",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "printLabel",
+                  "description": "If True print a label for the Source if remaining Balance is >0 & active = true; and print for Destination.\n*Gateway must be configured",
+                  "defaultValue": true,
+                  "disabled": false,
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "SwitchPrintLabel"
+                },
+                "parent": "M-THKov-2M",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ttb3q85SDm": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "50",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "accent"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitInventoryHeader"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "AJ1PqDwDnO"
+                ],
+                "linkedNodes": {}
+              },
+              "WyYoaKooyS": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Split Inventory",
+                        "type": "header-one",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextSplitInventoryTitle"
+                },
+                "parent": "AJ1PqDwDnO",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "c6U7pZcTs7": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "max-width": "100rem",
+                    "margin": "auto",
+                    "height": "100%"
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitInventoryBody"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "mRWBfPrno1"
+                ],
+                "linkedNodes": {}
+              },
+              "AJ1PqDwDnO": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": true,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "columns": 2
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitInventoryTitleText"
+                },
+                "parent": "ttb3q85SDm",
+                "hidden": false,
+                "nodes": [
+                  "WyYoaKooyS"
+                ],
+                "linkedNodes": {}
+              },
+              "sA09YoFPFU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitQty"
+                },
+                "parent": "M-THKov-2M",
+                "hidden": false,
+                "nodes": [
+                  "qvu-dVsRDE"
+                ],
+                "linkedNodes": {}
+              },
+              "ua9r54tSsk": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": false,
+                  "type": "text",
+                  "label": "inventoryId",
+                  "formElement": "FormSplitInventory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "inventoryId"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextInventoryId"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wk19mGYqLa": {
+                "type": {
+                  "resolvedName": "FlowButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": null,
+                    "color": null,
+                    "variant": null,
+                    "size": null
+                  },
+                  "width": "100%",
+                  "height": "100",
+                  "disabled": {
+                    "__transform": "$components.FormSplitInventory.(\r\n  data.(\r\n    $not($exists(invNumber)) or \r\n    $not($exists(splitQty)) or\r\n    $isNil(invNumber) or\r\n    $isNil(splitQty)\r\n  )\r\n  or formState.hasValidationErrors\r\n)",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.FormSplitInventory.data.invNumber",
+                        "components.FormSplitInventory.data.splitQty",
+                        "components.FormSplitInventory.formState.hasValidationErrors"
+                      ]
+                    },
+                    "__cacheKey": "submitSplitInventoryDisabled",
+                    "__remote": false,
+                    "__fallbackValue": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "payload": {},
+                  "text": "Submit",
+                  "dataFlowId": "splitInventoryWeb",
+                  "title": "Submit",
+                  "customTextSize": 28
+                },
+                "displayName": "Flow Button",
+                "custom": {
+                  "elementName": "FlowButtonSubmitSplitInventory"
+                },
+                "parent": "0-pNwTnMQx",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "jiRTN_E0Kk": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "auto",
+                  "height": "0",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSplitInventorySpacing"
+                },
+                "parent": "QRx1rSSkPA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdyvw7zl06y301650m3w3e3y",
+      "title": "Split Inventory",
+      "path": "/inventoryManagement/inventoryTracking/splitInventory",
+      "moduleId": "inventoryTracking",
+      "screenId": "splitInventory",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

@@ -1,0 +1,690 @@
+{
+  "header": {
+    "id": "orderLineRelease",
+    "name": "OrderLineRelease",
+    "description": "Order Line Releases are the individual ship/firm or plan schedules related to a single order number.",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmp2y55op01b4012d5orm0mdi",
+    "number": "22",
+    "dataModelId": "orderLineRelease",
+    "modelDefinition": {
+      "name": "OrderLineRelease",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "orderProcessing",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "triggers": {
+            "create": "$exists($after.quantity.unitId)\r\nand $exists($after.quantityLeft.unitId)\r\nand $not($after.quantity.unitId = $after.quantityLeft.unitId) ?\r\n  $throw(\"Error, cannot set quantity unit and quantityLeft unit to different values. Unit conversion is not currently supported.\", { \"quantity.unitId\": $after.quantity.unitId, \"quantityLeft.unitId\": $after.quantityLeft.unitId })\r\n  :\r\n  $ ~> |$| {\r\n    \"id\": $not($exists($after.id)) ? $after.orderLineId & \"_\" & $after.number,\r\n    \"quantityLeft\": $not($exists($after.quantityLeft)) ? $after.quantity\r\n  } |\r\n",
+            "update": "$exists($after.quantity.unitId)\r\nand $exists($after.quantityLeft.unitId)\r\nand $not($after.quantity.unitId = $after.quantityLeft.unitId) ?\r\n  $throw(\"Error, cannot set quantity unit and quantityLeft unit to different values. Unit conversion is not currently supported.\", { \"quantity.unitId\": $after.quantity.unitId, \"quantityLeft.unitId\": $after.quantityLeft.unitId })\r\n  :\r\n  $after"
+          },
+          "editor": {
+            "autosort": false
+          },
+          "labelField": "number",
+          "indices": [],
+          "customFields": {
+            "exposed": true
+          },
+          "queries": {
+            "defaultReadPreference": "primaryPreferred"
+          }
+        },
+        "mongo": {
+          "collection": "orderLineRelease"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "number",
+          "type": "String!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "sequence": {
+                "id": "orderLineRelease"
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "quantity",
+          "type": "Measure!",
+          "description": "Represents a quantity of a single product for a single order",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "quantityLeft",
+          "type": "Measure!",
+          "description": "The quantity that remains to be fulfilled. When this value is zero, that means the release has been fulfilled completely.\n\nThis value is stored separately from the quantity because this value is used to track partial fulfillment over time, whereas the quantity represents the total amount released upon creation.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "dataChangeCapture": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "active",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "allowPartial",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "allowOverage",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLine",
+          "description": "",
+          "type": "OrderLine!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "cascade",
+                "fields": {
+                  "from": "orderLineId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseTypeId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseType",
+          "description": "",
+          "type": "OrderLineReleaseType!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "orderLineReleaseTypeId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseStatusId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseStatus",
+          "description": "",
+          "type": "OrderLineReleaseStatus!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "orderLineReleaseStatusId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "dueAt",
+          "type": "Date!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "shipAt",
+          "type": "Date!",
+          "description": "Ship At date is generally determined by the Due At minus any transit time, this Ship At data is helpful in planning for shipping/picking activities.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "actualFulfilmentAt",
+          "type": "Date",
+          "description": "The actual date, of the shipment or receipt based on order type. Should be compared to the shipAt for sales orders, or dueAt for purchase orders.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "associatedBarcode",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "customData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "integrationData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "receiptLineOrderLineReleases",
+          "description": "",
+          "type": "[ReceiptLineOrderLineRelease!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "orderLineReleaseId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "shipmentLines",
+          "description": "",
+          "type": "[ShipmentLine!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "orderLineReleaseId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "pickSteps",
+          "description": "",
+          "type": "[PickStep!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "orderLineReleaseId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "Order Line Releases are the individual ship/firm or plan schedules related to a single order number."
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmp2y55op01b4012d5orm0mdi",
+      "dataModelVersion": {
+        "number": "22"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmgqvop1f0rfe016bh4pg5cbw",
+      "dataModelVersion": {
+        "number": "21"
+      },
+      "mappingExpression": " { \n  \"orderLineReleaseTypeId\": orderLineReleaseTypeId? orderLineReleaseTypeId : \" firm\"\n}"
+    },
+    {
+      "dataModelVersionId": "cmdzbit314fg20775bvehhkqc",
+      "dataModelVersion": {
+        "number": "19"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

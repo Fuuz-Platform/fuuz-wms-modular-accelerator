@@ -1,0 +1,863 @@
+{
+  "header": {
+    "id": "adjustment",
+    "name": "Adjustment Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdxiyzi73s9b0775fsxhezxe",
+    "number": "0.0.1",
+    "description": "",
+    "screenId": "adjustment",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "AdjustmentTable",
+          "tabTitle": "Adjustment Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 4,
+                    "Action Button": 4,
+                    "Form": 1,
+                    "Table": 1,
+                    "Table Column": 3,
+                    "Text": 1,
+                    "Float": 2,
+                    "Checkbox": 1,
+                    "Button Group": 1
+                  },
+                  "module": {
+                    "id": "inventoryTracking",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "Adjustment",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "7d9c14Mqbe",
+                  "6CnXd0bzbH"
+                ],
+                "linkedNodes": {}
+              },
+              "7d9c14Mqbe": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "kC-6cw4Dbi"
+                ],
+                "linkedNodes": {}
+              },
+              "kC-6cw4Dbi": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Adjustment",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "7d9c14Mqbe",
+                "hidden": false,
+                "nodes": [
+                  "5clD9ZTrsq"
+                ],
+                "linkedNodes": {}
+              },
+              "5clD9ZTrsq": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "kC-6cw4Dbi",
+                "hidden": false,
+                "nodes": [
+                  "GciON_XiHK",
+                  "xv82gG0a4n",
+                  "MkkT8NgTlz",
+                  "8GJ9rD6ebH"
+                ],
+                "linkedNodes": {}
+              },
+              "xv82gG0a4n": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Name",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "name",
+                  "field": "name",
+                  "description": "Unique identifier for this adjustment type",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "name._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "5clD9ZTrsq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MkkT8NgTlz": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Usable",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "usable",
+                  "field": "usable",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "usable._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox1"
+                },
+                "parent": "5clD9ZTrsq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8GJ9rD6ebH": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "5clD9ZTrsq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "AvaQT5ClFH": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "GciON_XiHK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CR8u_hwG42": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "plus",
+                      "title": "Create a new Adjustment",
+                      "fields": [
+                        {
+                          "label": "Name",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Adjustment",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "name",
+                                  "dataPath": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "name",
+                          "field": "name",
+                          "description": "Unique identifier for this adjustment type",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Tolerance",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "tolerance",
+                          "field": "tolerance",
+                          "description": "Tolerance is the % - of the initial quantity that can be adjusted either up or down by the user during the process. Default value is 1.0, which equals 100%.",
+                          "element": "FloatInput",
+                          "type": "float"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateAdjustment($payload: [AdjustmentCreatePayloadInput!]!) {\n  mutation: createAdjustment(payload: $payload) { \n    id\n    name\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": {\n    \"create\": data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "\"Adjustment \" & data.mutation[0].name & \" created successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "GciON_XiHK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4nRA0IVLyq": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "save",
+                      "title": {
+                        "__transform": "\"Update Adjustment \" & $components.Table1.selectedRows[0].name"
+                      },
+                      "fields": [
+                        {
+                          "label": "Name",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Adjustment",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "name",
+                                  "dataPath": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "name",
+                          "field": "name",
+                          "description": "Unique identifier for this adjustment type",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Tolerance",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "tolerance",
+                          "field": "tolerance",
+                          "description": "Tolerance is the % - of the initial quantity that can be adjusted either up or down by the user during the process. Default value is 1.0, which equals 100%.",
+                          "element": "FloatInput",
+                          "type": "float"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "$components.Table1.selectedRows[0]"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateAdjustment($payload: [AdjustmentUpdatePayloadInput!]!) {\n  mutation: updateAdjustment(payload: $payload) { \n    id\n    name\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    },\n    \"update\": $$.data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Adjustment \" & $components.Table1.selectedRows.name) : $count($components.Table1.selectedRows) & \" records\") & \" updated successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Update"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "GciON_XiHK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "i6Kj7Tb225": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Adjustment \" & $components.Table1.selectedRows.name) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteAdjustment($payload: [AdjustmentDeletePayloadInput!]!) {\n  mutation: deleteAdjustment(payload: $payload) { \n    id\n    name\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Adjustment \" & $components.Table1.selectedRows.name) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Delete"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "GciON_XiHK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CF-HHHVtn1": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Adjustment",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "The type of / reason for adjustment of an inventory's quantity value.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "6CnXd0bzbH",
+                "hidden": false,
+                "nodes": [
+                  "O62Ib6C6da",
+                  "eB3PiVUhga",
+                  "3LphNZnVX1",
+                  "hzKjtBM8rq"
+                ],
+                "linkedNodes": {}
+              },
+              "O62Ib6C6da": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Name",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "name",
+                  "dataPath": "name",
+                  "description": "Unique identifier for this adjustment type",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/adjustments/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "name"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "CF-HHHVtn1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "eB3PiVUhga": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Tolerance",
+                  "format": "float",
+                  "sortable": true,
+                  "field": "tolerance",
+                  "dataPath": "tolerance",
+                  "description": "Tolerance is the % - of the initial quantity that can be adjusted either up or down by the user during the process. Default value is 1.0, which equals 100%."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "CF-HHHVtn1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "3LphNZnVX1": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Usable",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "usable",
+                  "dataPath": "usable",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "CF-HHHVtn1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "hzKjtBM8rq": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "Adjustment"
+                },
+                "displayName": "Custom Fields Table Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "CF-HHHVtn1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "6CnXd0bzbH": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "CF-HHHVtn1"
+                ],
+                "linkedNodes": {}
+              },
+              "GciON_XiHK": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "5clD9ZTrsq",
+                "hidden": false,
+                "nodes": [
+                  "AvaQT5ClFH",
+                  "CR8u_hwG42",
+                  "4nRA0IVLyq",
+                  "i6Kj7Tb225"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdxj8ih93st107759k826bds",
+      "title": "Adjustment",
+      "path": "/inventoryManagement/inventoryTracking/adjustments",
+      "moduleId": "inventoryTracking",
+      "screenId": "adjustment",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

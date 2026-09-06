@@ -1,0 +1,1611 @@
+{
+  "header": {
+    "id": "packingList",
+    "name": "Packing List",
+    "description": "",
+    "active": true,
+    "substitutesDocumentDesignId": null,
+    "primaryGenerationDataFlowId": null,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmr3v75k1005y016hg4rreqp1",
+    "number": "1.2.0",
+    "description": "",
+    "documentDesignId": "packingList",
+    "design": {
+      "ReportVersion": "2024.2.6",
+      "ReportGuid": "29e26b7e80ec07f5644787b14dc18f08",
+      "ReportName": "Report",
+      "ReportAlias": "Report",
+      "ReportFile": "Packing List.mrt",
+      "ReportCreated": "/Date(1782847206000-0400)/",
+      "ReportChanged": "/Date(1783018522000-0400)/",
+      "EngineVersion": "EngineV2",
+      "CalculationMode": "Interpretation",
+      "ReportUnit": "Inches",
+      "Dictionary": {
+        "Resources": {
+          "0": {
+            "Name": "Payload",
+            "Alias": "Payload",
+            "Type": "Json",
+            "Image": "b9oy3+PYw/5j3h74P6y02NVVWfZ686PFiBqB5gOG/ozk52L+7bqXw4sfAi6ikkgQAEnvhZuIuWi0rUcSbF4h6PFGZdzA3ZX1417nTYvMi3SkEksJ9V4aKJqWTCjxB/pZU+Kf4uaDotX9Cs3STTyuTjjcUbc8MEy7yYLG/Al0WdPjOHx46PVn9lYKFj6vr/c2kgu71Nqf9I5CprsBcfG5gVEgaC6dD8DBs9SBf414/A5oFSS/lTtZu0my+nihuSL5zu+8Oossu8CnFGxhrZDEGnSF+N2BNPuEsgpbfm2xueqPxU1j9oWLm6AhaojdSTsRy9iiZw58nhukV6CYNTTDFvw6ZU5tgYU5zhZOSR3cjiZpxT3MufpZADAcegyne/KlF/ktzSZO6hDhV49Hc0nWXf7YGOBkFiqKTubzQJ1yP2D71asNf2MbVwVI6KgEcZ+CK1DRHEb9cukUefj9kTV03moJ6NkJdWCnASae8DUwwBh3QSJIt7qlyqQtVEyJ4O/Dy4jaVe7KE3HjL7bQ6FLek27AoAAs/2L3n9pJenCMVO8WsvFATVQv5597WGofmF6jftxHkXfv4kM4N0S5C3pKOjMxD4U1Lg8WAOeD+bvetetH7+kNFy23v2Gdtg=="
+          }
+        },
+        "DataSources": {
+          "0": {
+            "Ident": "StiDataTableSource",
+            "Name": "header",
+            "Alias": "header",
+            "Columns": {
+              "0": {
+                "Name": "loadNumber",
+                "NameInSource": "loadNumber",
+                "Alias": "loadNumber",
+                "Type": "System.String"
+              },
+              "1": {
+                "Name": "bolNumber",
+                "NameInSource": "bolNumber",
+                "Alias": "bolNumber",
+                "Type": "System.String"
+              },
+              "2": {
+                "Name": "sealNumber",
+                "NameInSource": "sealNumber",
+                "Alias": "sealNumber",
+                "Type": "System.String"
+              },
+              "3": {
+                "Name": "proNumber",
+                "NameInSource": "proNumber",
+                "Alias": "proNumber",
+                "Type": "System.String"
+              },
+              "4": {
+                "Name": "scac",
+                "NameInSource": "scac",
+                "Alias": "scac",
+                "Type": "System.String"
+              },
+              "5": {
+                "Name": "carrierName",
+                "NameInSource": "carrierName",
+                "Alias": "carrierName",
+                "Type": "System.String"
+              },
+              "6": {
+                "Name": "shipFromName",
+                "NameInSource": "shipFromName",
+                "Alias": "shipFromName",
+                "Type": "System.String"
+              },
+              "7": {
+                "Name": "shipFromAddress",
+                "NameInSource": "shipFromAddress",
+                "Alias": "shipFromAddress",
+                "Type": "System.String"
+              },
+              "8": {
+                "Name": "shipFromCity",
+                "NameInSource": "shipFromCity",
+                "Alias": "shipFromCity",
+                "Type": "System.String"
+              },
+              "9": {
+                "Name": "shipFromState",
+                "NameInSource": "shipFromState",
+                "Alias": "shipFromState",
+                "Type": "System.String"
+              },
+              "10": {
+                "Name": "shipFromPostalCode",
+                "NameInSource": "shipFromPostalCode",
+                "Alias": "shipFromPostalCode",
+                "Type": "System.String"
+              },
+              "11": {
+                "Name": "shipToName",
+                "NameInSource": "shipToName",
+                "Alias": "shipToName",
+                "Type": "System.String"
+              },
+              "12": {
+                "Name": "shipToAddress",
+                "NameInSource": "shipToAddress",
+                "Alias": "shipToAddress",
+                "Type": "System.String"
+              },
+              "13": {
+                "Name": "shipToCity",
+                "NameInSource": "shipToCity",
+                "Alias": "shipToCity",
+                "Type": "System.String"
+              },
+              "14": {
+                "Name": "shipToState",
+                "NameInSource": "shipToState",
+                "Alias": "shipToState",
+                "Type": "System.String"
+              },
+              "15": {
+                "Name": "shipToCountry",
+                "NameInSource": "shipToCountry",
+                "Alias": "shipToCountry",
+                "Type": "System.String"
+              },
+              "16": {
+                "Name": "shipToZip",
+                "NameInSource": "shipToZip",
+                "Alias": "shipToZip",
+                "Type": "System.String"
+              },
+              "17": {
+                "Name": "orderNumber",
+                "NameInSource": "orderNumber",
+                "Alias": "orderNumber",
+                "Type": "System.String"
+              },
+              "18": {
+                "Name": "carrier",
+                "NameInSource": "carrier",
+                "Alias": "carrier",
+                "Type": "System.String"
+              },
+              "19": {
+                "Name": "shipFromPhone",
+                "NameInSource": "shipFromPhone",
+                "Alias": "shipFromPhone",
+                "Type": "System.String"
+              },
+              "20": {
+                "Name": "shipDate",
+                "NameInSource": "shipDate",
+                "Alias": "shipDate",
+                "Type": "System.String"
+              },
+              "21": {
+                "Name": "numberType",
+                "NameInSource": "numberType",
+                "Alias": "numberType",
+                "Type": "System.String"
+              },
+              "22": {
+                "Name": "number",
+                "NameInSource": "number",
+                "Alias": "number",
+                "Type": "System.String"
+              }
+            },
+            "NameInSource": "Payload.header"
+          },
+          "1": {
+            "Ident": "StiDataTableSource",
+            "Name": "packingLines",
+            "Alias": "packingLines",
+            "Columns": {
+              "0": {
+                "Name": "line",
+                "NameInSource": "line",
+                "Alias": "line",
+                "Type": "System.Decimal"
+              },
+              "1": {
+                "Name": "item",
+                "NameInSource": "item",
+                "Alias": "item",
+                "Type": "System.String"
+              },
+              "2": {
+                "Name": "description",
+                "NameInSource": "description",
+                "Alias": "description",
+                "Type": "System.String"
+              },
+              "3": {
+                "Name": "pieces",
+                "NameInSource": "pieces",
+                "Alias": "pieces",
+                "Type": "System.Decimal"
+              },
+              "4": {
+                "Name": "unitWgt",
+                "NameInSource": "unitWgt",
+                "Alias": "unitWgt",
+                "Type": "System.String"
+              },
+              "5": {
+                "Name": "weight",
+                "NameInSource": "weight",
+                "Alias": "weight",
+                "Type": "System.String"
+              },
+              "6": {
+                "Name": "baseUOM",
+                "NameInSource": "baseUOM",
+                "Alias": "baseUOM",
+                "Type": "System.String"
+              },
+              "7": {
+                "Name": "expirationDate",
+                "NameInSource": "expirationDate",
+                "Alias": "expirationDate",
+                "Type": "System.String"
+              },
+              "8": {
+                "Name": "quantity",
+                "NameInSource": "quantity",
+                "Alias": "quantity",
+                "Type": "System.String"
+              },
+              "9": {
+                "Name": "cube",
+                "NameInSource": "cube",
+                "Alias": "cube",
+                "Type": "System.String"
+              },
+              "10": {
+                "Name": "lotNumber",
+                "NameInSource": "lotNumber",
+                "Alias": "lotNumber",
+                "Type": "System.String"
+              }
+            },
+            "NameInSource": "Payload.packingLines"
+          },
+          "2": {
+            "Ident": "StiDataTableSource",
+            "Name": "footer",
+            "Alias": "footer",
+            "Columns": {
+              "0": {
+                "Name": "totalLines",
+                "NameInSource": "totalLines",
+                "Alias": "totalLines",
+                "Type": "System.Decimal"
+              },
+              "1": {
+                "Name": "totalCases",
+                "NameInSource": "totalCases",
+                "Alias": "totalCases",
+                "Type": "System.Decimal"
+              },
+              "2": {
+                "Name": "totalWeight",
+                "NameInSource": "totalWeight",
+                "Alias": "totalWeight",
+                "Type": "System.String"
+              },
+              "3": {
+                "Name": "totalCube",
+                "NameInSource": "totalCube",
+                "Alias": "totalCube",
+                "Type": "System.String"
+              },
+              "4": {
+                "Name": "specialInstructions",
+                "NameInSource": "specialInstructions",
+                "Alias": "specialInstructions",
+                "Type": "System.String"
+              },
+              "5": {
+                "Name": "totalQuantity",
+                "NameInSource": "totalQuantity",
+                "Alias": "totalQuantity",
+                "Type": "System.Decimal"
+              }
+            },
+            "NameInSource": "Payload.footer"
+          }
+        },
+        "Databases": {
+          "0": {
+            "Ident": "StiJsonDatabase",
+            "Name": "Payload",
+            "Alias": "Payload",
+            "PathData": "resource://Payload",
+            "HeadersString": "YyoQVHvZXeyY3LY5ASN05g=="
+          }
+        }
+      },
+      "Pages": {
+        "0": {
+          "Ident": "StiPage",
+          "Name": "Page1",
+          "Guid": "529adc31c1b0b9dcb8744044fbad0c49",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;2;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiPageHeaderBand",
+              "Name": "PageHeaderBand1",
+              "Guid": "d23d630d5c0d3e45a12a9f48d106b603",
+              "CanGrow": true,
+              "ClientRectangle": "0,0.2,7.72,1.3",
+              "ComponentPlacement": "ph.Page1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text36",
+                  "Guid": "ff35eb2ce80fecea99ec4d801449934d",
+                  "ClientRectangle": "2.7,0,1.9,0.3",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "<div style=\"text-align: center;\"><b>Packing List</b></div>"
+                  },
+                  "HorAlignment": "Center",
+                  "Font": ";18;;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "1": {
+                  "Ident": "StiText",
+                  "Name": "Text38",
+                  "Guid": "3d8fed25d45602e12ae0f167aa330cc3",
+                  "ClientRectangle": "6.68,0.04,1.04,0.25",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{PageNofM}"
+                  },
+                  "HorAlignment": "Right",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "Type": "SystemVariables"
+                },
+                "2": {
+                  "Ident": "StiText",
+                  "Name": "Text41",
+                  "Guid": "339cc4ccc5c49e4cd3124aecd932f4ed",
+                  "ClientRectangle": "1.35,0.6,2.64,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.carrier}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";12;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "DataColumn"
+                },
+                "3": {
+                  "Ident": "StiText",
+                  "Name": "Text88",
+                  "Guid": "ce6b5f8b0e523f28dab048d6be0d05af",
+                  "ClientRectangle": "0.28,1.05,0.86,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Ship Date:"
+                  },
+                  "Font": ";12;Bold;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "4": {
+                  "Ident": "StiText",
+                  "Name": "Text1",
+                  "Guid": "a9a6cbb105c94951b1f812ea224f0e65",
+                  "ClientRectangle": "1.2,1.05,1.64,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.shipDate}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";12;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "DataColumn"
+                },
+                "5": {
+                  "Ident": "StiText",
+                  "Name": "Text89",
+                  "Guid": "0ed6ea37d308ed18f02a6df6ca39e265",
+                  "ClientRectangle": "5.51,0.44,1.96,0.26",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.numberType}"
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Bottom",
+                  "Font": ";14;;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "DataColumn"
+                },
+                "6": {
+                  "Ident": "StiBarCode",
+                  "Name": "BarCode2",
+                  "Guid": "02f8fe2908d3f2cf550b5a08c5294afd",
+                  "ClientRectangle": "5.48,0.74,1.95,0.65",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "BackColor": "Transparent",
+                  "AutoScale": true,
+                  "Font": ";14;;Point",
+                  "HorAlignment": "Center",
+                  "BarCodeType": {
+                    "Ident": "StiEAN128AutoBarCodeType"
+                  },
+                  "Code": {
+                    "Value": "{header.number}"
+                  }
+                },
+                "7": {
+                  "Ident": "StiText",
+                  "Name": "Text2",
+                  "Guid": "26ac51f236a0da53bb7f14f6abd38fd3",
+                  "ClientRectangle": "0.28,0.6,1,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Carrier:"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";12;Bold;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "8": {
+                  "Ident": "StiText",
+                  "Name": "Text3",
+                  "Guid": "f83c19d2e7c07eb114f5aaf4757e9f5c",
+                  "ClientRectangle": "1.58,0.8,6,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.orderNumber}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";12;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "DataColumn"
+                },
+                "9": {
+                  "Ident": "StiText",
+                  "Name": "Text7",
+                  "Guid": "d5dacce545060d053335b09332665298",
+                  "ClientRectangle": "0.28,0.8,1.2,0.2",
+                  "ComponentPlacement": "ph.PageHeaderBand1",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Order Number:"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";12;Bold;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                }
+              }
+            },
+            "1": {
+              "Ident": "StiHeaderBand",
+              "Name": "Header2",
+              "Guid": "69b82dd8f5eb6d85c8a5b9a936b9580f",
+              "PrintOn": "OnlyFirstPage",
+              "CanGrow": true,
+              "ClientRectangle": "0,1.9,7.72,1.21",
+              "ComponentPlacement": "h.Page1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "empty",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text85",
+                  "Guid": "0eecc86653a837e87f780e6ebd180d95",
+                  "ClientRectangle": "0.28,0.1,0.55,0.16",
+                  "ComponentPlacement": "h.Header2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "<div style=\"text-align: left;\"><b>Ship To:</b></div>"
+                  },
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "1": {
+                  "Ident": "StiText",
+                  "Name": "Text86",
+                  "Guid": "e4921f55536e89b69ef9a6ab2b4c17f3",
+                  "ClientRectangle": "3.85,0.1,0.61,0.16",
+                  "ComponentPlacement": "h.Header2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Sold By:"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:Black",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "2": {
+                  "Ident": "StiText",
+                  "Name": "Text100",
+                  "Guid": "3946c32ec3602f2137cf3e7e6f3d9b0b",
+                  "ClientRectangle": "0.27,0.31,3.5,0.79",
+                  "ComponentPlacement": "h.Header2",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.shipToName}\n{header.shipToAddress}\n{header.shipToCity}, {header.shipToState} {header.shipToZip}"
+                  },
+                  "Font": ";12;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "Type": "Expression"
+                },
+                "3": {
+                  "Ident": "StiText",
+                  "Name": "Text101",
+                  "Guid": "4fb249aeba0e000acfffe0bbd01050b2",
+                  "ClientRectangle": "3.85,0.31,3.5,0.79",
+                  "ComponentPlacement": "h.Header2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{header.shipFromName}\n{header.shipFromAddress}\n{header.shipFromCity}, {header.shipFromState} {header.shipFromPostalCode}\n{header.shipFromPhone}"
+                  },
+                  "Font": ";12;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "Type": "Expression"
+                }
+              },
+              "PrintIfEmpty": true,
+              "PrintOnAllPages": false
+            },
+            "2": {
+              "Ident": "StiHeaderBand",
+              "Name": "TableHeader",
+              "Guid": "fe4a8cc7e730e6b149dd6ad8d9aa4651",
+              "CanGrow": true,
+              "ClientRectangle": "0,3.51,7.72,0.44",
+              "ComponentPlacement": "h.ap.Page1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "empty",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text34",
+                  "Guid": "3fc61cfea0ab5eac5e60940487506a6d",
+                  "ClientRectangle": "0.42,0.19,0.51,0.16",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Item"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "1": {
+                  "Ident": "StiText",
+                  "Name": "Text35",
+                  "Guid": "e3343db87123e14c49ba2e530421d9f4",
+                  "ClientRectangle": "0.03,0.19,0.31,0.16",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Line"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "2": {
+                  "Ident": "StiShape",
+                  "Name": "Shape6",
+                  "Guid": "74ba5248e00cc92bc38ebdf403f270c2",
+                  "ClientRectangle": "0,0.38,7.72,0.03",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Brush": "empty",
+                  "Size": 2,
+                  "ShapeType": {
+                    "Ident": "StiHorizontalLineShapeType"
+                  }
+                },
+                "3": {
+                  "Ident": "StiText",
+                  "Name": "Text32",
+                  "Guid": "dd0fb7f3272cc37deafc170d5a17a711",
+                  "ClientRectangle": "1.45,0.19,0.82,0.15",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Description"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "solid:",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "4": {
+                  "Ident": "StiText",
+                  "Name": "Text26",
+                  "Guid": "78b5ddb9e0504a973ce4d9cf80e40b00",
+                  "ClientRectangle": "6.94,0.18,0.75,0.2",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Quantity"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "5": {
+                  "Ident": "StiText",
+                  "Name": "Text27",
+                  "Guid": "5eb4c17a8d67806f75de519a0517cd39",
+                  "ClientRectangle": "6.15,0.18,0.75,0.2",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Weight"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "6": {
+                  "Ident": "StiText",
+                  "Name": "Text28",
+                  "Guid": "2e3b966c6524b067bf337ddc32af839d",
+                  "ClientRectangle": "5.5,0.18,0.6,0.2",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Unit Wgt"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "7": {
+                  "Ident": "StiText",
+                  "Name": "Text29",
+                  "Guid": "31791afd8e10993eb31cfcfe136fed5f",
+                  "ClientRectangle": "4.7,0.18,0.75,0.2",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Exp Date"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "8": {
+                  "Ident": "StiText",
+                  "Name": "Text30",
+                  "Guid": "15fa9a79ebc15b14abdab08224c2dd4f",
+                  "ClientRectangle": "3.9,0.18,0.75,0.2",
+                  "ComponentPlacement": "h.ap.TableHeader",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Lot No."
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                }
+              },
+              "PrintIfEmpty": true
+            },
+            "3": {
+              "Ident": "StiDataBand",
+              "Name": "DataBand1",
+              "Guid": "e75459a6e8f26ee3d2a110705bcd79f6",
+              "CanGrow": true,
+              "ClientRectangle": "0,4.35,7.72,0.42",
+              "ComponentPlacement": "d.Page1",
+              "Expressions": {
+                "0": {
+                  "Name": "CountData"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiBandInteraction"
+              },
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "empty",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text126",
+                  "Guid": "21d5530f088aa801285583edea7556bc",
+                  "ClientRectangle": "0.06,0.05,0.24,0.3",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.line}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "1": {
+                  "Ident": "StiText",
+                  "Name": "Text129",
+                  "Guid": "bfa8969bf9ff6018fc8749e1465394ea",
+                  "ClientRectangle": "0.31,0.05,1.05,0.3",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.item}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "Type": "DataColumn"
+                },
+                "2": {
+                  "Ident": "StiText",
+                  "Name": "Text134",
+                  "Guid": "e19375c18e748087987ebe456e451edf",
+                  "ClientRectangle": "1.46,0.05,2.31,0.3",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.description}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "Type": "DataColumn"
+                },
+                "3": {
+                  "Ident": "StiText",
+                  "Name": "Text137",
+                  "Guid": "a5efeb9a73bb14a649a01f849d8ff11f",
+                  "ClientRectangle": "3.9,0.1,0.75,0.2",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.lotNumber}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "4": {
+                  "Ident": "StiText",
+                  "Name": "Text140",
+                  "Guid": "ef38de62a6924390fb938bf2f486d002",
+                  "ClientRectangle": "4.7,0.1,0.75,0.2",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.expirationDate}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextFormat": {
+                    "Ident": "StiDateFormatService"
+                  },
+                  "Type": "DataColumn"
+                },
+                "5": {
+                  "Ident": "StiText",
+                  "Name": "Text143",
+                  "Guid": "cc58d09121970a3f5188db32cf48eded",
+                  "ClientRectangle": "5.5,0.1,0.6,0.2",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.unitWgt}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "6": {
+                  "Ident": "StiText",
+                  "Name": "Text146",
+                  "Guid": "5e4a5e6cb2b8ba692b3c0753c7d8a5f6",
+                  "ClientRectangle": "6.15,0.1,0.75,0.2",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.weight}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "7": {
+                  "Ident": "StiText",
+                  "Name": "Text149",
+                  "Guid": "74d94bbce65885478610e083c86544ce",
+                  "ClientRectangle": "6.94,0.1,0.75,0.2",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{packingLines.quantity}"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "8": {
+                  "Ident": "StiShape",
+                  "Name": "Shape2",
+                  "Guid": "e5eae8fb8f45e12c832ed933ca2441bc",
+                  "ClientRectangle": "0,0.37,7.72,0.03",
+                  "ComponentPlacement": "d.DataBand1",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Brush": "empty",
+                  "Size": 2,
+                  "ShapeType": {
+                    "Ident": "StiHorizontalLineShapeType"
+                  }
+                }
+              },
+              "DataSourceName": "packingLines",
+              "OddStyle": "Style1"
+            },
+            "4": {
+              "Ident": "StiFooterBand",
+              "Name": "Footer1",
+              "Guid": "9823789e0fae4584112cc4ed82fca6f4",
+              "PrintOn": "OnlyLastPage",
+              "CanGrow": true,
+              "ClientRectangle": "0,5.17,7.72,1.61",
+              "ComponentPlacement": "f.Page1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "empty",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text5",
+                  "Guid": "31b79b72160072bf3b7aaab3372f97b9",
+                  "ClientRectangle": "0.19,0.14,1.6,0.2",
+                  "ComponentPlacement": "f.Footer1",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Special Instructions:"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "1": {
+                  "Ident": "StiText",
+                  "Name": "Text6",
+                  "Guid": "d13bba35b5cbc6c83959f278ef8dbe5e",
+                  "ClientRectangle": "0.16,0.33,7.41,1.24",
+                  "ComponentPlacement": "f.Footer1",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{footer.specialInstructions}"
+                  },
+                  "Font": ";9;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "AllowHtmlTags": true,
+                  "Type": "DataColumn"
+                }
+              },
+              "PrintIfEmpty": true
+            },
+            "5": {
+              "Ident": "StiFooterBand",
+              "Name": "Footer2",
+              "Guid": "f09cd687b05696b28b70563f7a98c4f6",
+              "PrintOn": "OnlyLastPage",
+              "CanGrow": true,
+              "ClientRectangle": "0,7.18,7.72,2.4",
+              "ComponentPlacement": "f.Page1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "empty",
+              "Components": {
+                "0": {
+                  "Ident": "StiShape",
+                  "Name": "Shape5",
+                  "Guid": "647f8b99ecc925f747aa8d00f4cfda9e",
+                  "ClientRectangle": "5.54,1.15,1.85,0.05",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Brush": "empty",
+                  "ShapeType": {
+                    "Ident": "StiHorizontalLineShapeType"
+                  },
+                  "HorAlignment": "Left",
+                  "VertAlignment": "Top"
+                },
+                "1": {
+                  "Ident": "StiShape",
+                  "Name": "Shape12",
+                  "Guid": "43deb2e39188f3d93906c96781fcd059",
+                  "ClientRectangle": "0.24,0.16,7.03,0.05",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Brush": "empty",
+                  "ShapeType": {
+                    "Ident": "StiHorizontalLineShapeType"
+                  },
+                  "HorAlignment": "Left",
+                  "VertAlignment": "Top"
+                },
+                "2": {
+                  "Ident": "StiShape",
+                  "Name": "Shape13",
+                  "Guid": "a27c15601b885109288b2df41fa3ef3d",
+                  "ClientRectangle": "1.4,1.15,3.6,0.05",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Brush": "empty",
+                  "ShapeType": {
+                    "Ident": "StiHorizontalLineShapeType"
+                  },
+                  "HorAlignment": "Left",
+                  "VertAlignment": "Top"
+                },
+                "3": {
+                  "Ident": "StiText",
+                  "Name": "Text104",
+                  "Guid": "67ca505cd6b0e821067748973e6d1e5f",
+                  "ClientRectangle": "1.4,0.26,0.77,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Total Lines:"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "4": {
+                  "Ident": "StiText",
+                  "Name": "Text105",
+                  "Guid": "6efa63f90aaf3ab0a2873c6ccd8e9bca",
+                  "ClientRectangle": "2.71,0.26,0.85,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Total Weight:"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "5": {
+                  "Ident": "StiText",
+                  "Name": "Text106",
+                  "Guid": "6d5244a07f488ce02f5e23d7304ec7d7",
+                  "ClientRectangle": "4.1,0.26,0.75,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Total Cube:"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "6": {
+                  "Ident": "StiText",
+                  "Name": "Text107",
+                  "Guid": "5cb75dc9100a451a35b9f13315956820",
+                  "ClientRectangle": "5.4,0.26,1,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Total Quantity:"
+                  },
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "ShrinkFontToFit": true,
+                  "Type": "Expression"
+                },
+                "7": {
+                  "Ident": "StiText",
+                  "Name": "Text108",
+                  "Guid": "ae01b3ce7f884c15c7ccf7bc071adc20",
+                  "ClientRectangle": "0.27,0.75,3,0.25",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "<b>Sign below for receipt of shipment</b>"
+                  },
+                  "Font": ";12;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "8": {
+                  "Ident": "StiText",
+                  "Name": "Text109",
+                  "Guid": "b53dd56a184fc20dd074c5859bd22f96",
+                  "ClientRectangle": "0.29,1,1.1,0.25",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Carrier's Agent:"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "9": {
+                  "Ident": "StiText",
+                  "Name": "Text110",
+                  "Guid": "297abc2aaae716a96fb6425a05a8fe73",
+                  "ClientRectangle": "5.1,1,0.34,0.25",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Date:"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "10": {
+                  "Ident": "StiText",
+                  "Name": "Text111",
+                  "Guid": "a980b18ef0e4a0d0f8ed11814632742e",
+                  "ClientRectangle": "1.44,0.46,0.75,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{footer.totalLines}"
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "11": {
+                  "Ident": "StiText",
+                  "Name": "Text112",
+                  "Guid": "154001313d254517aff5cb301dbf0e5b",
+                  "ClientRectangle": "2.58,0.46,1.15,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{footer.totalWeight}"
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "DataColumn"
+                },
+                "12": {
+                  "Ident": "StiText",
+                  "Name": "Text113",
+                  "Guid": "f67cf8463f8af0c0ba079669e2ea93d4",
+                  "ClientRectangle": "3.85,0.46,1.25,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Expressions": {
+                    "0": {
+                      "Name": "Font"
+                    }
+                  },
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{footer.totalCube}"
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextFormat": {
+                    "Ident": "StiNumberFormatService",
+                    "GroupSeparator": ","
+                  },
+                  "Type": "DataColumn"
+                },
+                "13": {
+                  "Ident": "StiText",
+                  "Name": "Text114",
+                  "Guid": "d1001cab98626d3ff9d8db896ba8fcc7",
+                  "ClientRectangle": "5.4,0.46,1,0.2",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "{footer.totalQuantity}"
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "Expression"
+                },
+                "14": {
+                  "Ident": "StiText",
+                  "Name": "Text115",
+                  "Guid": "ac0a5cef4872dc3ab4886a2dffff96dc",
+                  "ClientRectangle": "0.2,1.45,7.31,0.75",
+                  "ComponentPlacement": "f.Footer2",
+                  "Locked": true,
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "This packing list is provided for informational purposes only. Please verify all quantities and items upon receipt. Any discrepancies should be reported within 48 hours of delivery."
+                  },
+                  "HorAlignment": "Center",
+                  "VertAlignment": "Center",
+                  "Font": ";14;Bold;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:0,0,0",
+                  "TextOptions": {
+                    "WordWrap": true
+                  },
+                  "AllowHtmlTags": true,
+                  "Type": "Expression"
+                },
+                "15": {
+                  "Ident": "StiText",
+                  "Name": "Text4",
+                  "Guid": "0f4d0f3e3e29c25a1fd6f189a6dfd505",
+                  "ClientRectangle": "4.92,2.27,2.62,0.13",
+                  "ComponentPlacement": "f.Footer2",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Created: {Time}"
+                  },
+                  "HorAlignment": "Right",
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "empty",
+                  "TextBrush": "solid:Black",
+                  "Type": "Expression"
+                }
+              },
+              "PrintAtBottom": true,
+              "PrintIfEmpty": true
+            }
+          },
+          "PageWidth": 8.5,
+          "PageHeight": 11,
+          "Watermark": {
+            "TextBrush": "solid:50,0,0,0"
+          }
+        }
+      }
+    }
+  }
+}

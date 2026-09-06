@@ -1,0 +1,2367 @@
+{
+  "header": {
+    "id": "confirmReceiptLine",
+    "name": "Confirm Receipt Line",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "orderReceiving",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmehox1c90chh077565o13ngj",
+    "number": "0.0.12",
+    "description": "",
+    "dataFlowId": "confirmReceiptLine",
+    "flow": {
+      "id": "cmehox1c90chh077565o13ngj",
+      "name": "Confirm Receipt Line",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "6c76ce90-4c19-4c3e-8ecf-5ee09abc7168",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "2768d464-6e28-47d2-8c05-9f1abdab5da7"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "425e33fd-e48e-445c-9103-72e9d7036596",
+          "name": "Merge Context",
+          "type": "mergeContext",
+          "data": {
+            "transform": "{ \"INPUT\": $}",
+            "nextNodes": [
+              "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "14e13696-3576-4f4f-a532-be1bdf868689",
+          "name": "Query Receipt Line",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\r\n  \"where\":{\r\n    \"id\": {\r\n      \"_in\": receiptLineIds\r\n    },\r\n    \"receiptStatusId\":  {\r\n          \"_eq\": \"pendingConfirmation\" \r\n       }\r\n  }\r\n}",
+            "query": "query ReceiptLine($where: ReceiptLineWhereInput, $orderBy: [ReceiptLineOrderByInput!], $first: Int, $after: String) {\n  receiptLine(where: $where, orderBy: $orderBy, first: $first, after: $after) {\n    total\n    edges {\n      node {\n        id\n        numberOfInventory\n        addToHandlingUnit\n        quantity { value unitId }\n        lotId\n        productId\n        product{ forceHold }\n        receiptId\n        receipt { dockStorageUnitId }\n        receiptException{ id }\n        receiptLineOrderLineReleases{\n          edges{\n            node{\n              orderLineReleaseId\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "78a28cbf-ab3a-4193-835d-a06b28d4716e"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+          "name": "Validate",
+          "type": "validate",
+          "data": {
+            "nextNodes": [
+              "425e33fd-e48e-445c-9103-72e9d7036596"
+            ],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "receiptLineIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "receiptLineIds"
+              ]
+            }
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+          "name": "Mutex Lock",
+          "type": "mutexLock",
+          "data": {
+            "lockTTLms": 30000,
+            "lockRetries": -1,
+            "throwErrorWhenLockNotAcquired": false,
+            "nextNodes": [
+              "1044d60c-10fd-435c-a207-09b01bd7d54c"
+            ],
+            "resourceIdTransform": "\"RECEIPT_LINE_CONFIRM_\" & receiptLineId"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "face4374-5b9c-485e-a476-211a5bb9fa27",
+          "name": "Mutex Unlock",
+          "type": "mutexUnlock",
+          "data": {
+            "nextNodes": [
+              "444b6987-843c-4959-a971-045f5abe7cde"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+          "name": "Prepare Payloads",
+          "type": "transform",
+          "data": {
+            "transform": "(\r\n \r\n  $payloads := receiptLine.edges.node.(\r\n    $receiptLine := $;\r\n    $inventoryQuantity := quantity.value / numberOfInventory;\r\n    $newHandlingUnitId := $cuid();\r\n\r\n    {\r\n      \"receiptLinePayload\":{\r\n        \"where\":{ \"id\": id },\r\n        \"update\": { \"receiptStatusId\": \"confirmed\" }\r\n      },\r\n\r\n      \"inventoryPayload\":[1..numberOfInventory].{\r\n        \"productId\":  $receiptLine.productId,\r\n        \"inventoryStatusId\": $receiptLine.receiptException? \"damaged\" : $receiptLine.product.forceHold? \"hold\" : \"ok\" ,\r\n        \"storageUnitId\":  $receiptLine.receipt.dockStorageUnitId,\r\n        \"quantity\":  $inventoryQuantity,\r\n        \"shippable\": true,\r\n        \"receiptLineId\":  $receiptLine.id,\r\n        \"handlingUnitId\": $receiptLine.addToHandlingUnit? $newHandlingUnitId,\r\n        \"lotId\": $coalesce([$receiptLine.lotId]),\r\n        \"processId\": \"receive\"\r\n      },\r\n\r\n      \"handlingUnitPayload\": addToHandlingUnit? {\r\n        \"create\":{\r\n          \"id\": $newHandlingUnitId\r\n        }\r\n      } : []\r\n  });\r\n\r\n  {\r\n    \"receiptLinePayload\": [$payloads.receiptLinePayload],\r\n    \"inventoryPayload\": [$payloads.inventoryPayload],\r\n    \"handlingUnitPayload\": [$payloads.handlingUnitPayload] \r\n  }\r\n\r\n)",
+            "nextNodes": [
+              "942f6e7f-3c99-4961-8524-3676e005af2c"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+          "name": "If Else",
+          "type": "ifElse",
+          "data": {
+            "transform": "receiptLine.total = $count($state.context.INPUT.receiptLineIds)",
+            "onTrueNextNodes": [
+              "051bc1a9-2275-4d22-85f8-88c8aca7d25a"
+            ],
+            "onFalseNextNodes": [
+              "e61e46ca-df87-4e48-881c-82b9f6aa2677"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "942f6e7f-3c99-4961-8524-3676e005af2c",
+          "name": "Merge Context",
+          "type": "mergeContext",
+          "data": {
+            "transform": "{ \"payloads\": $}",
+            "nextNodes": [
+              "cd9ba05d-74ca-402f-a88a-26538f54fc1e"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+          "name": "Mutate Create Handling Units",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{ \"payload\": $state.context.payloads.handlingUnitPayload }",
+            "mutation": "mutation CreateHandlingUnit($payload: [HandlingUnitCreatePayloadInput!]!) {\n  createHandlingUnit(payload: $payload) {\n    id\n  }\n}",
+            "nextNodes": [
+              "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+          "name": "Execute Flow Create Invenotry",
+          "type": "executeFlow",
+          "data": {
+            "flowId": "createInventory",
+            "payloadTransform": "{ \"inventory\": $state.context.payloads.inventoryPayload }",
+            "nextNodes": [
+              "85d59771-efac-49ff-b4df-2336d29422f8"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "85d59771-efac-49ff-b4df-2336d29422f8",
+          "name": "Mutate Receipt Lines",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{ \"payload\": $state.context.payloads.receiptLinePayload }",
+            "mutation": "mutation UpdateReceiptLine($payload: [ReceiptLineUpdatePayloadInput!]!) {\n  updateReceiptLine(payload: $payload) {\n    id\n  }\n}",
+            "nextNodes": [
+              "cf98615a-ec8c-4374-ad22-46c91b010ffd"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"message\": \"Receipt lines confirmed.\"\r\n}",
+            "nextNodes": [
+              "20bf4531-edbd-422d-b44b-185ff2abfd81",
+              "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+              "f57d9192-9b05-46ee-955b-ea96517f0839"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "20bf4531-edbd-422d-b44b-185ff2abfd81",
+          "name": "Mutex Unlock",
+          "type": "mutexUnlock",
+          "data": {
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"message\": \"Not all receipt lines can be confirmed.\"\r\n}",
+            "nextNodes": [
+              "2298ef78-f150-41a0-ba8f-40b55ecb20ab"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "2298ef78-f150-41a0-ba8f-40b55ecb20ab",
+          "name": "Mutex Unlock",
+          "type": "mutexUnlock",
+          "data": {
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+          "name": "Try Catch",
+          "type": "tryCatch",
+          "data": {
+            "tryNextNodes": [
+              "14e13696-3576-4f4f-a532-be1bdf868689"
+            ],
+            "catchNextNodes": [
+              "face4374-5b9c-485e-a476-211a5bb9fa27"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "444b6987-843c-4959-a971-045f5abe7cde",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"message\": $state.lastError.info.errors.message\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+          "name": "Merge Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "fd47288f-8a16-41d3-b36e-9fc6202635a8"
+            ],
+            "transform": "{\r\n  \"orderLineReleaseIds\": $uniq(receiptLine.edges.node.receiptLineOrderLineReleases.edges.node.orderLineReleaseId),\r\n  \"receiptIds\": $uniq(receiptLine.edges.node.receiptId)\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "f57d9192-9b05-46ee-955b-ea96517f0839",
+          "name": "Execute Flow Update Releases",
+          "type": "executeFlow",
+          "data": {
+            "flowId": "updateReleaseStatus",
+            "payloadTransform": "{ \"orderLineReleaseIds\": $state.context.orderLineReleaseIds }",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+          "name": "Execute Flow Update Receipts",
+          "type": "executeFlow",
+          "data": {
+            "nextNodes": [],
+            "payloadTransform": "{ \"receiptIds\": $state.context.receiptIds}",
+            "flowId": "updateReceiptStatus"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.11"
+    },
+    "diagram": {
+      "id": "cmehox1c90chh077565o13ngj",
+      "offsetX": -1111.74,
+      "offsetY": 182.81,
+      "zoom": 79.17,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "dce85786-5120-422e-a504-bfa5cb1ac7b3",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "53e93364-3abe-4d03-82ba-787e6b2adaeb": {
+              "points": [
+                {
+                  "id": "a91aa759-19e8-4d48-8ed9-89a91677e03f",
+                  "type": "point",
+                  "x": 359,
+                  "y": 244.59
+                },
+                {
+                  "id": "938ddf3c-707b-4dbb-96c4-046668f0a484",
+                  "type": "point",
+                  "x": 389.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "53e93364-3abe-4d03-82ba-787e6b2adaeb",
+              "type": "default",
+              "selected": false,
+              "source": "6c76ce90-4c19-4c3e-8ecf-5ee09abc7168",
+              "sourcePort": "cmeddua9d001y356m9wcg9nnh",
+              "target": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+              "targetPort": "cmeeydikj005j356mdz8sapn6",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "2cfd7ec3-ee7f-4925-b2ee-4b22def8c8c5": {
+              "points": [
+                {
+                  "id": "96aacbb8-d284-43bf-aed0-d6f7aa99bdfa",
+                  "type": "point",
+                  "x": 543.99,
+                  "y": 244.59
+                },
+                {
+                  "id": "46afa86e-ed2e-42fd-8b1d-2f3edff1eb4a",
+                  "type": "point",
+                  "x": 574.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "2cfd7ec3-ee7f-4925-b2ee-4b22def8c8c5",
+              "type": "default",
+              "selected": false,
+              "source": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+              "sourcePort": "cmeeydikj005l356mnmylsuah",
+              "target": "425e33fd-e48e-445c-9103-72e9d7036596",
+              "targetPort": "cmeddug990022356mq2wcml42",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f0c404ff-7466-4418-8981-00a038da449f": {
+              "points": [
+                {
+                  "id": "871fb339-5fb0-4554-95a3-72291efbddaf",
+                  "type": "point",
+                  "x": 728.99,
+                  "y": 244.59
+                },
+                {
+                  "id": "9dd9306b-bcb7-45be-8493-11cd9fbd2c19",
+                  "type": "point",
+                  "x": 764.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "f0c404ff-7466-4418-8981-00a038da449f",
+              "type": "default",
+              "selected": false,
+              "source": "425e33fd-e48e-445c-9103-72e9d7036596",
+              "sourcePort": "cmeddug990024356mfumjsubt",
+              "target": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+              "targetPort": "cmeeyetqh007y356m13zkfy8r",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4468d7d7-e234-4d59-8f94-8d77ed7dd128": {
+              "points": [
+                {
+                  "id": "84a95a7f-f1e5-4e90-a3a1-a461ad43fd6a",
+                  "type": "point",
+                  "x": 364,
+                  "y": 179.59
+                },
+                {
+                  "id": "9bf47b9a-836a-434a-a5d9-700bdb09047b",
+                  "type": "point",
+                  "x": 389.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "4468d7d7-e234-4d59-8f94-8d77ed7dd128",
+              "type": "default",
+              "selected": false,
+              "source": "7a9a5748-8d33-438a-87b2-303735bdef25",
+              "sourcePort": "cmeddu7nm001w356m3w6btizu",
+              "target": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+              "targetPort": "cmeeydikj005j356mdz8sapn6",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "b9f2d313-f8ac-4f7e-bd4f-01ac80758f8f": {
+              "points": [
+                {
+                  "id": "83039f02-60be-4757-88cb-74983e56cc0d",
+                  "type": "point",
+                  "x": 1689,
+                  "y": 244.59
+                },
+                {
+                  "id": "912f5f8d-5c47-4c06-9086-7d6cbd34c6a1",
+                  "type": "point",
+                  "x": 1739.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "b9f2d313-f8ac-4f7e-bd4f-01ac80758f8f",
+              "type": "default",
+              "selected": false,
+              "source": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+              "sourcePort": "cmeeype2r00iw356m84jjoq96",
+              "target": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+              "targetPort": "cmeeyj4p300b7356m6x3z1y2h",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e6b2eacc-adb3-434d-a2cf-791428f6559a": {
+              "points": [
+                {
+                  "id": "9624acd4-d5a0-4cd4-878d-2d078f3c33c3",
+                  "type": "point",
+                  "x": 1893.99,
+                  "y": 204.59
+                },
+                {
+                  "id": "232c383c-0bef-4015-a5f8-084cc2bf8a3c",
+                  "type": "point",
+                  "x": 1924.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "e6b2eacc-adb3-434d-a2cf-791428f6559a",
+              "type": "default",
+              "selected": false,
+              "source": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+              "sourcePort": "cmeeyj4p300b9356miadp69sj",
+              "target": "942f6e7f-3c99-4961-8524-3676e005af2c",
+              "targetPort": "cmef53w4y01dt356m5608kzjq",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "8abdbfda-3d7b-4146-aab2-dde669a5946e": {
+              "points": [
+                {
+                  "id": "9c43f056-783f-406a-bc58-867332490195",
+                  "type": "point",
+                  "x": 2078.99,
+                  "y": 204.59
+                },
+                {
+                  "id": "026bb8fa-164a-4123-bd2a-27fe8698b059",
+                  "type": "point",
+                  "x": 2109.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "8abdbfda-3d7b-4146-aab2-dde669a5946e",
+              "type": "default",
+              "selected": false,
+              "source": "942f6e7f-3c99-4961-8524-3676e005af2c",
+              "sourcePort": "cmef53w4y01dv356m0asyyk01",
+              "target": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+              "targetPort": "cmef54rn401eu356myc46ck4x",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "af2f731d-ec92-466b-b8c4-0b46ad6cdb01": {
+              "points": [
+                {
+                  "id": "aa273d5c-21de-4ef5-90da-e896a4b13f34",
+                  "type": "point",
+                  "x": 2314.29,
+                  "y": 204.59
+                },
+                {
+                  "id": "df042d8b-307f-48b8-a63f-e23e802ae24e",
+                  "type": "point",
+                  "x": 2344.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "af2f731d-ec92-466b-b8c4-0b46ad6cdb01",
+              "type": "default",
+              "selected": false,
+              "source": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+              "sourcePort": "cmef54rn501ew356m54hfcvvp",
+              "target": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+              "targetPort": "cmef59pvi01hx356md5o3jzpd",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "c8a48dc4-9aef-4c13-8094-6a1da57324dc": {
+              "points": [
+                {
+                  "id": "4d4aa253-2d3c-4834-b021-0f322d8fb817",
+                  "type": "point",
+                  "x": 2553.33,
+                  "y": 204.59
+                },
+                {
+                  "id": "b6316c90-c6f2-43a4-9593-3d1ec91bb02c",
+                  "type": "point",
+                  "x": 2589.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "c8a48dc4-9aef-4c13-8094-6a1da57324dc",
+              "type": "default",
+              "selected": false,
+              "source": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+              "sourcePort": "cmef59pvi01hz356mn9ypfrim",
+              "target": "85d59771-efac-49ff-b4df-2336d29422f8",
+              "targetPort": "cmef5d5ee01ks356m1i1bo6jt",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "912aeb44-e7fa-4dfe-a0b2-d07cbc96e971": {
+              "points": [
+                {
+                  "id": "16d86170-0cf4-4fbd-9347-ecffc13865ec",
+                  "type": "point",
+                  "x": 2748.78,
+                  "y": 204.59
+                },
+                {
+                  "id": "d41201af-767e-4e90-8a7a-4ee910245cad",
+                  "type": "point",
+                  "x": 2779.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "912aeb44-e7fa-4dfe-a0b2-d07cbc96e971",
+              "type": "default",
+              "selected": false,
+              "source": "85d59771-efac-49ff-b4df-2336d29422f8",
+              "sourcePort": "cmef5d5ee01ku356mb2d0zfq3",
+              "target": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+              "targetPort": "cmef5eo1a01n4356mgqennrah",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "03bb8dad-7f8c-4bb0-963e-6e50f50a4eb2": {
+              "points": [
+                {
+                  "id": "e08489b1-3466-4ffd-98c1-24cf6e7b0046",
+                  "type": "point",
+                  "x": 2934,
+                  "y": 204.59
+                },
+                {
+                  "id": "db03f19c-d9f0-431e-8c07-9b0e19c82543",
+                  "type": "point",
+                  "x": 2989.75,
+                  "y": 204.59
+                }
+              ],
+              "id": "03bb8dad-7f8c-4bb0-963e-6e50f50a4eb2",
+              "type": "default",
+              "selected": false,
+              "source": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+              "sourcePort": "cmef5eo1a01n6356mkolnnhxh",
+              "target": "20bf4531-edbd-422d-b44b-185ff2abfd81",
+              "targetPort": "cmef5fri801pe356m9j1o6tgz",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e8532e91-40de-4e63-a6b6-d8078a010f54": {
+              "points": [
+                {
+                  "id": "4b289768-6dff-418c-b514-356a0ec3ebaf",
+                  "type": "point",
+                  "x": 1689,
+                  "y": 269.74
+                },
+                {
+                  "id": "c66dc313-2ab3-48be-b9e2-2523cb784b9f",
+                  "type": "point",
+                  "x": 1739.75,
+                  "y": 299.59
+                }
+              ],
+              "id": "e8532e91-40de-4e63-a6b6-d8078a010f54",
+              "type": "default",
+              "selected": false,
+              "source": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+              "sourcePort": "cmeeype2r00iy356mq1lyvjs8",
+              "target": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+              "targetPort": "cmef5fz0k01pu356mlgxw9sv8",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "74b898f1-b1e0-4156-b896-d7e63b112587": {
+              "points": [
+                {
+                  "id": "29e04278-e2f2-4c1a-9ecb-f5308e228b65",
+                  "type": "point",
+                  "x": 1894,
+                  "y": 299.59
+                },
+                {
+                  "id": "327a664c-6118-47c9-844b-45d9a1f7f6e5",
+                  "type": "point",
+                  "x": 1929.75,
+                  "y": 299.59
+                }
+              ],
+              "id": "74b898f1-b1e0-4156-b896-d7e63b112587",
+              "type": "default",
+              "selected": false,
+              "source": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+              "sourcePort": "cmef5fz0k01pw356m5yk3yxkk",
+              "target": "2298ef78-f150-41a0-ba8f-40b55ecb20ab",
+              "targetPort": "cmef5gyr201rc356mzqcwpyui",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "897225a9-fe15-425d-80d3-cbb31baa0c07": {
+              "points": [
+                {
+                  "id": "f32203ee-0130-4638-9593-1ba50de9b742",
+                  "type": "point",
+                  "x": 918.99,
+                  "y": 244.59
+                },
+                {
+                  "id": "b098974e-55b1-48bb-a747-d5541da359e1",
+                  "type": "point",
+                  "x": 954.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "897225a9-fe15-425d-80d3-cbb31baa0c07",
+              "type": "default",
+              "selected": false,
+              "source": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+              "sourcePort": "cmeeyetqh0080356m14mn84mg",
+              "target": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+              "targetPort": "cmef5hld801ro356mceqry26k",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "b3828647-01cf-4830-b553-25fcd4510d7b": {
+              "points": [
+                {
+                  "id": "236322c4-330b-4d16-9460-9a4090e0ace3",
+                  "type": "point",
+                  "x": 1109,
+                  "y": 244.59
+                },
+                {
+                  "id": "6a5b5375-6bbd-442c-86a9-d3326afdc827",
+                  "type": "point",
+                  "x": 1154.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "b3828647-01cf-4830-b553-25fcd4510d7b",
+              "type": "default",
+              "selected": false,
+              "source": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+              "sourcePort": "cmef5hld801rq356mhsu8omvt",
+              "target": "14e13696-3576-4f4f-a532-be1bdf868689",
+              "targetPort": "cmeddv8jy002r356mnhx09jyx",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "bf474a30-55aa-4cac-8e2d-5c0344ad0b0d": {
+              "points": [
+                {
+                  "id": "89452788-4d6f-46b1-a38b-1661c40bfa5f",
+                  "type": "point",
+                  "x": 1109,
+                  "y": 269.74
+                },
+                {
+                  "id": "86a0b71e-18f5-4d03-bc98-a53c74498197",
+                  "type": "point",
+                  "x": 1164.75,
+                  "y": 404.59
+                }
+              ],
+              "id": "bf474a30-55aa-4cac-8e2d-5c0344ad0b0d",
+              "type": "default",
+              "selected": false,
+              "source": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+              "sourcePort": "cmef5hld801rs356m0xs840g0",
+              "target": "face4374-5b9c-485e-a476-211a5bb9fa27",
+              "targetPort": "cmeeyeuh10082356mtenw91sz",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "1ff91831-6269-4387-ab5c-bc9fd8fffbb1": {
+              "points": [
+                {
+                  "id": "0c1e0421-0e9b-488c-8e4f-025d570aef07",
+                  "type": "point",
+                  "x": 1318.99,
+                  "y": 404.59
+                },
+                {
+                  "id": "68dfe87e-3482-4c29-adf6-c51c4e35c257",
+                  "type": "point",
+                  "x": 1354.75,
+                  "y": 404.59
+                }
+              ],
+              "id": "1ff91831-6269-4387-ab5c-bc9fd8fffbb1",
+              "type": "default",
+              "selected": false,
+              "source": "face4374-5b9c-485e-a476-211a5bb9fa27",
+              "sourcePort": "cmeeyeuh10084356mwm3tsdwl",
+              "target": "444b6987-843c-4959-a971-045f5abe7cde",
+              "targetPort": "cmef5iqng01sa356mfq5hv7k4",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e94d5dd8-60d7-4cdd-9aae-cdfb77eb3254": {
+              "points": [
+                {
+                  "id": "4c8b499f-df4f-4699-9c06-0d76e60c052d",
+                  "type": "point",
+                  "x": 1498.99,
+                  "y": 244.59
+                },
+                {
+                  "id": "8237140f-1de3-4e12-b464-019874b1bc56",
+                  "type": "point",
+                  "x": 1534.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "e94d5dd8-60d7-4cdd-9aae-cdfb77eb3254",
+              "type": "default",
+              "selected": false,
+              "source": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+              "sourcePort": "cmegi8rqu007i356mw3f7xyiv",
+              "target": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+              "targetPort": "cmeeype2q00iu356muu0x1pm5",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "4b37f95c-1ef1-4a45-8770-67cced392626": {
+              "points": [
+                {
+                  "id": "910b8098-1c8d-4fb5-a327-0d5e01af4459",
+                  "type": "point",
+                  "x": 1308.99,
+                  "y": 244.59
+                },
+                {
+                  "id": "163faa69-945d-46e8-a48d-5385bb915bed",
+                  "type": "point",
+                  "x": 1344.75,
+                  "y": 244.59
+                }
+              ],
+              "id": "4b37f95c-1ef1-4a45-8770-67cced392626",
+              "type": "default",
+              "selected": false,
+              "source": "14e13696-3576-4f4f-a532-be1bdf868689",
+              "sourcePort": "cmeddv8jy002t356mhv9yja9q",
+              "target": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+              "targetPort": "cmegi8rqu007g356mhxw4aiet",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "d00385b8-e19c-4c76-b467-7810b2ed493b": {
+              "points": [
+                {
+                  "id": "ae5799b8-62e2-47c8-836b-9288d95b1adf",
+                  "type": "point",
+                  "x": 2934,
+                  "y": 204.59
+                },
+                {
+                  "id": "87db7f18-61e1-499b-b5ed-0bfd65f64154",
+                  "type": "point",
+                  "x": 2989.75,
+                  "y": 134.59
+                }
+              ],
+              "id": "d00385b8-e19c-4c76-b467-7810b2ed493b",
+              "type": "default",
+              "selected": false,
+              "source": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+              "sourcePort": "cmef5eo1a01n6356mkolnnhxh",
+              "target": "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+              "targetPort": "cmegicg8q00co356ma28a8gn1",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f4174fd1-2997-4a19-aeef-c5b5d32f1df6": {
+              "points": [
+                {
+                  "id": "b7f5fdb0-54cd-494e-b2ae-d12430e08a3f",
+                  "type": "point",
+                  "x": 2934,
+                  "y": 204.59
+                },
+                {
+                  "id": "1f3c5d89-41fc-4d27-ae5a-dd8d820bf190",
+                  "type": "point",
+                  "x": 2989.75,
+                  "y": 69.59
+                }
+              ],
+              "id": "f4174fd1-2997-4a19-aeef-c5b5d32f1df6",
+              "type": "default",
+              "selected": false,
+              "source": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+              "sourcePort": "cmef5eo1a01n6356mkolnnhxh",
+              "target": "f57d9192-9b05-46ee-955b-ea96517f0839",
+              "targetPort": "cmegicf9w00ca356mvj0fp2x4",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "635fcb8a-1b03-44f7-bf45-f293f110cf50",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "7a9a5748-8d33-438a-87b2-303735bdef25": {
+              "id": "7a9a5748-8d33-438a-87b2-303735bdef25",
+              "type": "debugSource",
+              "selected": false,
+              "x": 210,
+              "y": 140,
+              "ports": [
+                {
+                  "id": "cmeddu7nm001w356m3w6btizu",
+                  "type": "default",
+                  "x": 356.13,
+                  "y": 171.72,
+                  "name": "cmeddu7nm001x356mtmd6tjwb",
+                  "parentNode": "7a9a5748-8d33-438a-87b2-303735bdef25",
+                  "links": [
+                    "4468d7d7-e234-4d59-8f94-8d77ed7dd128"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "receiptLineIds": [
+                    "cmehotpqb00fm07h30xgi2dak"
+                  ]
+                },
+                "context": {},
+                "nextNodes": [
+                  "2768d464-6e28-47d2-8c05-9f1abdab5da7"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "6c76ce90-4c19-4c3e-8ecf-5ee09abc7168": {
+              "id": "6c76ce90-4c19-4c3e-8ecf-5ee09abc7168",
+              "type": "request",
+              "selected": false,
+              "x": 205,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeddua9d001y356m9wcg9nnh",
+                  "type": "default",
+                  "x": 351.13,
+                  "y": 236.72,
+                  "name": "cmeddua9d001z356m0xnits0x",
+                  "parentNode": "6c76ce90-4c19-4c3e-8ecf-5ee09abc7168",
+                  "links": [
+                    "53e93364-3abe-4d03-82ba-787e6b2adaeb"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "2768d464-6e28-47d2-8c05-9f1abdab5da7"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "425e33fd-e48e-445c-9103-72e9d7036596": {
+              "id": "425e33fd-e48e-445c-9103-72e9d7036596",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 575,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeddug990022356mq2wcml42",
+                  "type": "default",
+                  "x": 566.87,
+                  "y": 236.72,
+                  "name": "cmeddug990023356m4zy33xs0",
+                  "parentNode": "425e33fd-e48e-445c-9103-72e9d7036596",
+                  "links": [
+                    "2cfd7ec3-ee7f-4925-b2ee-4b22def8c8c5"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeddug990024356mfumjsubt",
+                  "type": "default",
+                  "x": 721.12,
+                  "y": 236.72,
+                  "name": "cmeddug990025356moythk5h0",
+                  "parentNode": "425e33fd-e48e-445c-9103-72e9d7036596",
+                  "links": [
+                    "f0c404ff-7466-4418-8981-00a038da449f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "{ \"INPUT\": $}",
+                "nextNodes": [
+                  "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Context"
+            },
+            "14e13696-3576-4f4f-a532-be1bdf868689": {
+              "id": "14e13696-3576-4f4f-a532-be1bdf868689",
+              "type": "query",
+              "selected": false,
+              "x": 1155,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeddv8jy002r356mnhx09jyx",
+                  "type": "default",
+                  "x": 1146.87,
+                  "y": 236.72,
+                  "name": "cmeddv8jy002s356muwypwuex",
+                  "parentNode": "14e13696-3576-4f4f-a532-be1bdf868689",
+                  "links": [
+                    "b3828647-01cf-4830-b553-25fcd4510d7b"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeddv8jy002t356mhv9yja9q",
+                  "type": "default",
+                  "x": 1301.12,
+                  "y": 236.72,
+                  "name": "cmeddv8jy002u356m3ibqdn4y",
+                  "parentNode": "14e13696-3576-4f4f-a532-be1bdf868689",
+                  "links": [
+                    "4b37f95c-1ef1-4a45-8770-67cced392626"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\r\n  \"where\":{\r\n    \"id\": {\r\n      \"_in\": receiptLineIds\r\n    },\r\n    \"receiptStatusId\":  {\r\n          \"_eq\": \"pendingConfirmation\" \r\n       }\r\n  }\r\n}",
+                "query": "query ReceiptLine($where: ReceiptLineWhereInput, $orderBy: [ReceiptLineOrderByInput!], $first: Int, $after: String) {\n  receiptLine(where: $where, orderBy: $orderBy, first: $first, after: $after) {\n    total\n    edges {\n      node {\n        id\n        numberOfInventory\n        addToHandlingUnit\n        quantity { value unitId }\n        lotId\n        productId\n        product{ forceHold }\n        receiptId\n        receipt { dockStorageUnitId }\n        receiptException{ id }\n        receiptLineOrderLineReleases{\n          edges{\n            node{\n              orderLineReleaseId\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "78a28cbf-ab3a-4193-835d-a06b28d4716e"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query Receipt Line"
+            },
+            "2768d464-6e28-47d2-8c05-9f1abdab5da7": {
+              "id": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+              "type": "validate",
+              "selected": false,
+              "x": 390,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeeydikj005j356mdz8sapn6",
+                  "type": "default",
+                  "x": 381.88,
+                  "y": 236.72,
+                  "name": "cmeeydikj005k356m44d17yei",
+                  "parentNode": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+                  "links": [
+                    "53e93364-3abe-4d03-82ba-787e6b2adaeb",
+                    "4468d7d7-e234-4d59-8f94-8d77ed7dd128"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeeydikj005l356mnmylsuah",
+                  "type": "default",
+                  "x": 536.12,
+                  "y": 236.72,
+                  "name": "cmeeydikj005m356mc364j547",
+                  "parentNode": "2768d464-6e28-47d2-8c05-9f1abdab5da7",
+                  "links": [
+                    "2cfd7ec3-ee7f-4925-b2ee-4b22def8c8c5"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "425e33fd-e48e-445c-9103-72e9d7036596"
+                ],
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "receiptLineIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "receiptLineIds"
+                  ]
+                }
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Validate"
+            },
+            "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf": {
+              "id": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+              "type": "mutexLock",
+              "selected": false,
+              "x": 765,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeeyetqh007y356m13zkfy8r",
+                  "type": "default",
+                  "x": 756.87,
+                  "y": 236.72,
+                  "name": "cmeeyetqh007z356ms5vbkal8",
+                  "parentNode": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+                  "links": [
+                    "f0c404ff-7466-4418-8981-00a038da449f"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeeyetqh0080356m14mn84mg",
+                  "type": "default",
+                  "x": 911.12,
+                  "y": 236.72,
+                  "name": "cmeeyetqh0081356mdku73ecs",
+                  "parentNode": "ea3b95b0-ac4a-4e04-bd5c-4be23b6303cf",
+                  "links": [
+                    "897225a9-fe15-425d-80d3-cbb31baa0c07"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "lockTTLms": 30000,
+                "lockRetries": -1,
+                "throwErrorWhenLockNotAcquired": false,
+                "nextNodes": [
+                  "1044d60c-10fd-435c-a207-09b01bd7d54c"
+                ],
+                "resourceIdTransform": "\"RECEIPT_LINE_CONFIRM_\" & receiptLineId"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutex Lock"
+            },
+            "face4374-5b9c-485e-a476-211a5bb9fa27": {
+              "id": "face4374-5b9c-485e-a476-211a5bb9fa27",
+              "type": "mutexUnlock",
+              "selected": false,
+              "x": 1165,
+              "y": 365,
+              "ports": [
+                {
+                  "id": "cmeeyeuh10082356mtenw91sz",
+                  "type": "default",
+                  "x": 1156.88,
+                  "y": 396.72,
+                  "name": "cmeeyeuh10083356mqcxknclx",
+                  "parentNode": "face4374-5b9c-485e-a476-211a5bb9fa27",
+                  "links": [
+                    "bf474a30-55aa-4cac-8e2d-5c0344ad0b0d"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeeyeuh10084356mwm3tsdwl",
+                  "type": "default",
+                  "x": 1311.12,
+                  "y": 396.72,
+                  "name": "cmeeyeuh10085356m5bmgp3jn",
+                  "parentNode": "face4374-5b9c-485e-a476-211a5bb9fa27",
+                  "links": [
+                    "1ff91831-6269-4387-ab5c-bc9fd8fffbb1"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "444b6987-843c-4959-a971-045f5abe7cde"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutex Unlock"
+            },
+            "051bc1a9-2275-4d22-85f8-88c8aca7d25a": {
+              "id": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+              "type": "transform",
+              "selected": true,
+              "x": 1740,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmeeyj4p300b7356m6x3z1y2h",
+                  "type": "default",
+                  "x": 1731.88,
+                  "y": 196.72,
+                  "name": "cmeeyj4p300b8356m1cwzhd64",
+                  "parentNode": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+                  "links": [
+                    "b9f2d313-f8ac-4f7e-bd4f-01ac80758f8f"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeeyj4p300b9356miadp69sj",
+                  "type": "default",
+                  "x": 1886.12,
+                  "y": 196.72,
+                  "name": "cmeeyj4p300ba356mkkbiuyjg",
+                  "parentNode": "051bc1a9-2275-4d22-85f8-88c8aca7d25a",
+                  "links": [
+                    "e6b2eacc-adb3-434d-a2cf-791428f6559a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "(\r\n \r\n  $payloads := receiptLine.edges.node.(\r\n    $receiptLine := $;\r\n    $inventoryQuantity := quantity.value / numberOfInventory;\r\n    $newHandlingUnitId := $cuid();\r\n\r\n    {\r\n      \"receiptLinePayload\":{\r\n        \"where\":{ \"id\": id },\r\n        \"update\": { \"receiptStatusId\": \"confirmed\" }\r\n      },\r\n\r\n      \"inventoryPayload\":[1..numberOfInventory].{\r\n        \"productId\":  $receiptLine.productId,\r\n        \"inventoryStatusId\": $receiptLine.receiptException? \"damaged\" : $receiptLine.product.forceHold? \"hold\" : \"ok\" ,\r\n        \"storageUnitId\":  $receiptLine.receipt.dockStorageUnitId,\r\n        \"quantity\":  $inventoryQuantity,\r\n        \"shippable\": true,\r\n        \"receiptLineId\":  $receiptLine.id,\r\n        \"handlingUnitId\": $receiptLine.addToHandlingUnit? $newHandlingUnitId,\r\n        \"lotId\": $coalesce([$receiptLine.lotId]),\r\n        \"processId\": \"receive\"\r\n      },\r\n\r\n      \"handlingUnitPayload\": addToHandlingUnit? {\r\n        \"create\":{\r\n          \"id\": $newHandlingUnitId\r\n        }\r\n      } : []\r\n  });\r\n\r\n  {\r\n    \"receiptLinePayload\": [$payloads.receiptLinePayload],\r\n    \"inventoryPayload\": [$payloads.inventoryPayload],\r\n    \"handlingUnitPayload\": [$payloads.handlingUnitPayload] \r\n  }\r\n\r\n)",
+                "nextNodes": [
+                  "942f6e7f-3c99-4961-8524-3676e005af2c"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Prepare Payloads"
+            },
+            "fd47288f-8a16-41d3-b36e-9fc6202635a8": {
+              "id": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+              "type": "ifElse",
+              "selected": false,
+              "x": 1535,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmeeype2q00iu356muu0x1pm5",
+                  "type": "default",
+                  "x": 1526.88,
+                  "y": 236.72,
+                  "name": "cmeeype2r00iv356mkomerngc",
+                  "parentNode": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+                  "links": [
+                    "e94d5dd8-60d7-4cdd-9aae-cdfb77eb3254"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeeype2r00iw356m84jjoq96",
+                  "type": "default",
+                  "x": 1681.13,
+                  "y": 236.72,
+                  "name": "cmeeype2r00ix356m1xwnzmx6",
+                  "parentNode": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+                  "links": [
+                    "b9f2d313-f8ac-4f7e-bd4f-01ac80758f8f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "True",
+                  "fieldPath": "data.onTrueNextNodes"
+                },
+                {
+                  "id": "cmeeype2r00iy356mq1lyvjs8",
+                  "type": "default",
+                  "x": 1681.13,
+                  "y": 261.87,
+                  "name": "cmeeype2r00iz356mk11xq4jw",
+                  "parentNode": "fd47288f-8a16-41d3-b36e-9fc6202635a8",
+                  "links": [
+                    "e8532e91-40de-4e63-a6b6-d8078a010f54"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "False",
+                  "fieldPath": "data.onFalseNextNodes"
+                }
+              ],
+              "data": {
+                "transform": "receiptLine.total = $count($state.context.INPUT.receiptLineIds)",
+                "onTrueNextNodes": [
+                  "051bc1a9-2275-4d22-85f8-88c8aca7d25a"
+                ],
+                "onFalseNextNodes": [
+                  "e61e46ca-df87-4e48-881c-82b9f6aa2677"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "If Else"
+            },
+            "942f6e7f-3c99-4961-8524-3676e005af2c": {
+              "id": "942f6e7f-3c99-4961-8524-3676e005af2c",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 1925,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef53w4y01dt356m5608kzjq",
+                  "type": "default",
+                  "x": 1916.87,
+                  "y": 196.72,
+                  "name": "cmef53w4y01du356mr204snis",
+                  "parentNode": "942f6e7f-3c99-4961-8524-3676e005af2c",
+                  "links": [
+                    "e6b2eacc-adb3-434d-a2cf-791428f6559a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef53w4y01dv356m0asyyk01",
+                  "type": "default",
+                  "x": 2071.12,
+                  "y": 196.72,
+                  "name": "cmef53w4y01dw356mig9l0um9",
+                  "parentNode": "942f6e7f-3c99-4961-8524-3676e005af2c",
+                  "links": [
+                    "8abdbfda-3d7b-4146-aab2-dde669a5946e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "{ \"payloads\": $}",
+                "nextNodes": [
+                  "cd9ba05d-74ca-402f-a88a-26538f54fc1e"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Context"
+            },
+            "cd9ba05d-74ca-402f-a88a-26538f54fc1e": {
+              "id": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+              "type": "mutate",
+              "selected": false,
+              "x": 2110,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef54rn401eu356myc46ck4x",
+                  "type": "default",
+                  "x": 2101.87,
+                  "y": 196.72,
+                  "name": "cmef54rn401ev356mma6ifj8a",
+                  "parentNode": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+                  "links": [
+                    "8abdbfda-3d7b-4146-aab2-dde669a5946e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef54rn501ew356m54hfcvvp",
+                  "type": "default",
+                  "x": 2306.42,
+                  "y": 196.72,
+                  "name": "cmef54rn501ex356mku5ohn88",
+                  "parentNode": "cd9ba05d-74ca-402f-a88a-26538f54fc1e",
+                  "links": [
+                    "af2f731d-ec92-466b-b8c4-0b46ad6cdb01"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{ \"payload\": $state.context.payloads.handlingUnitPayload }",
+                "mutation": "mutation CreateHandlingUnit($payload: [HandlingUnitCreatePayloadInput!]!) {\n  createHandlingUnit(payload: $payload) {\n    id\n  }\n}",
+                "nextNodes": [
+                  "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate Create Handling Units"
+            },
+            "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27": {
+              "id": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+              "type": "executeFlow",
+              "selected": false,
+              "x": 2345,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef59pvi01hx356md5o3jzpd",
+                  "type": "default",
+                  "x": 2336.87,
+                  "y": 196.72,
+                  "name": "cmef59pvi01hy356mmpanh5xg",
+                  "parentNode": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+                  "links": [
+                    "af2f731d-ec92-466b-b8c4-0b46ad6cdb01"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef59pvi01hz356mn9ypfrim",
+                  "type": "default",
+                  "x": 2545.46,
+                  "y": 196.72,
+                  "name": "cmef59pvi01i0356mfcou6z4v",
+                  "parentNode": "cab0d511-9b2f-4d33-bc2e-63e6b8c74d27",
+                  "links": [
+                    "c8a48dc4-9aef-4c13-8094-6a1da57324dc"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "flowId": "createInventory",
+                "payloadTransform": "{ \"inventory\": $state.context.payloads.inventoryPayload }",
+                "nextNodes": [
+                  "85d59771-efac-49ff-b4df-2336d29422f8"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Execute Flow Create Invenotry"
+            },
+            "85d59771-efac-49ff-b4df-2336d29422f8": {
+              "id": "85d59771-efac-49ff-b4df-2336d29422f8",
+              "type": "mutate",
+              "selected": false,
+              "x": 2590,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef5d5ee01ks356m1i1bo6jt",
+                  "type": "default",
+                  "x": 2581.88,
+                  "y": 196.72,
+                  "name": "cmef5d5ee01kt356m9lyav02c",
+                  "parentNode": "85d59771-efac-49ff-b4df-2336d29422f8",
+                  "links": [
+                    "c8a48dc4-9aef-4c13-8094-6a1da57324dc"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef5d5ee01ku356mb2d0zfq3",
+                  "type": "default",
+                  "x": 2740.91,
+                  "y": 196.72,
+                  "name": "cmef5d5ee01kv356m860ev38p",
+                  "parentNode": "85d59771-efac-49ff-b4df-2336d29422f8",
+                  "links": [
+                    "912aeb44-e7fa-4dfe-a0b2-d07cbc96e971"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{ \"payload\": $state.context.payloads.receiptLinePayload }",
+                "mutation": "mutation UpdateReceiptLine($payload: [ReceiptLineUpdatePayloadInput!]!) {\n  updateReceiptLine(payload: $payload) {\n    id\n  }\n}",
+                "nextNodes": [
+                  "cf98615a-ec8c-4374-ad22-46c91b010ffd"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate Receipt Lines"
+            },
+            "cf98615a-ec8c-4374-ad22-46c91b010ffd": {
+              "id": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+              "type": "response",
+              "selected": false,
+              "x": 2780,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef5eo1a01n4356mgqennrah",
+                  "type": "default",
+                  "x": 2771.87,
+                  "y": 196.72,
+                  "name": "cmef5eo1a01n5356m094zsfal",
+                  "parentNode": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+                  "links": [
+                    "912aeb44-e7fa-4dfe-a0b2-d07cbc96e971"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmef5eo1a01n6356mkolnnhxh",
+                  "type": "default",
+                  "x": 2926.13,
+                  "y": 196.72,
+                  "name": "cmef5eo1a01n7356mjz9e37r4",
+                  "parentNode": "cf98615a-ec8c-4374-ad22-46c91b010ffd",
+                  "links": [
+                    "03bb8dad-7f8c-4bb0-963e-6e50f50a4eb2",
+                    "d00385b8-e19c-4c76-b467-7810b2ed493b",
+                    "f4174fd1-2997-4a19-aeef-c5b5d32f1df6"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"message\": \"Receipt lines confirmed.\"\r\n}",
+                "nextNodes": [
+                  "20bf4531-edbd-422d-b44b-185ff2abfd81",
+                  "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+                  "f57d9192-9b05-46ee-955b-ea96517f0839"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "20bf4531-edbd-422d-b44b-185ff2abfd81": {
+              "id": "20bf4531-edbd-422d-b44b-185ff2abfd81",
+              "type": "mutexUnlock",
+              "selected": false,
+              "x": 2990,
+              "y": 165,
+              "ports": [
+                {
+                  "id": "cmef5fri801pe356m9j1o6tgz",
+                  "type": "default",
+                  "x": 2981.87,
+                  "y": 196.72,
+                  "name": "cmef5fri801pf356m4w724o5t",
+                  "parentNode": "20bf4531-edbd-422d-b44b-185ff2abfd81",
+                  "links": [
+                    "03bb8dad-7f8c-4bb0-963e-6e50f50a4eb2"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef5fri801pg356mm1m0zkgp",
+                  "type": "default",
+                  "x": 3136.12,
+                  "y": 196.72,
+                  "name": "cmef5fri801ph356mxko81t65",
+                  "parentNode": "20bf4531-edbd-422d-b44b-185ff2abfd81",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutex Unlock"
+            },
+            "e61e46ca-df87-4e48-881c-82b9f6aa2677": {
+              "id": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+              "type": "response",
+              "selected": false,
+              "x": 1740,
+              "y": 260,
+              "ports": [
+                {
+                  "id": "cmef5fz0k01pu356mlgxw9sv8",
+                  "type": "default",
+                  "x": 1731.88,
+                  "y": 291.72,
+                  "name": "cmef5fz0k01pv356mt2qkfb4e",
+                  "parentNode": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+                  "links": [
+                    "e8532e91-40de-4e63-a6b6-d8078a010f54"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmef5fz0k01pw356m5yk3yxkk",
+                  "type": "default",
+                  "x": 1886.13,
+                  "y": 291.72,
+                  "name": "cmef5fz0k01px356mnksgxyti",
+                  "parentNode": "e61e46ca-df87-4e48-881c-82b9f6aa2677",
+                  "links": [
+                    "74b898f1-b1e0-4156-b896-d7e63b112587"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"message\": \"Not all receipt lines can be confirmed.\"\r\n}",
+                "nextNodes": [
+                  "2298ef78-f150-41a0-ba8f-40b55ecb20ab"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "2298ef78-f150-41a0-ba8f-40b55ecb20ab": {
+              "id": "2298ef78-f150-41a0-ba8f-40b55ecb20ab",
+              "type": "mutexUnlock",
+              "selected": false,
+              "x": 1930,
+              "y": 260,
+              "ports": [
+                {
+                  "id": "cmef5gyr201rc356mzqcwpyui",
+                  "type": "default",
+                  "x": 1921.88,
+                  "y": 291.72,
+                  "name": "cmef5gyr201rd356mca1vkmg8",
+                  "parentNode": "2298ef78-f150-41a0-ba8f-40b55ecb20ab",
+                  "links": [
+                    "74b898f1-b1e0-4156-b896-d7e63b112587"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef5gyr201re356mkdb9u43l",
+                  "type": "default",
+                  "x": 2076.12,
+                  "y": 291.72,
+                  "name": "cmef5gyr201rf356m36moy06c",
+                  "parentNode": "2298ef78-f150-41a0-ba8f-40b55ecb20ab",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutex Unlock"
+            },
+            "1044d60c-10fd-435c-a207-09b01bd7d54c": {
+              "id": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+              "type": "tryCatch",
+              "selected": false,
+              "x": 955,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmef5hld801ro356mceqry26k",
+                  "type": "default",
+                  "x": 946.88,
+                  "y": 236.72,
+                  "name": "cmef5hld801rp356mkvi82ri0",
+                  "parentNode": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+                  "links": [
+                    "897225a9-fe15-425d-80d3-cbb31baa0c07"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmef5hld801rq356mhsu8omvt",
+                  "type": "default",
+                  "x": 1101.13,
+                  "y": 236.72,
+                  "name": "cmef5hld801rr356m16r0e1mg",
+                  "parentNode": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+                  "links": [
+                    "b3828647-01cf-4830-b553-25fcd4510d7b"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Try",
+                  "fieldPath": "data.tryNextNodes"
+                },
+                {
+                  "id": "cmef5hld801rs356m0xs840g0",
+                  "type": "default",
+                  "x": 1101.13,
+                  "y": 261.87,
+                  "name": "cmef5hld801rt356mkucaecqp",
+                  "parentNode": "1044d60c-10fd-435c-a207-09b01bd7d54c",
+                  "links": [
+                    "bf474a30-55aa-4cac-8e2d-5c0344ad0b0d"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Catch",
+                  "fieldPath": "data.catchNextNodes"
+                }
+              ],
+              "data": {
+                "tryNextNodes": [
+                  "14e13696-3576-4f4f-a532-be1bdf868689"
+                ],
+                "catchNextNodes": [
+                  "face4374-5b9c-485e-a476-211a5bb9fa27"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Try Catch"
+            },
+            "444b6987-843c-4959-a971-045f5abe7cde": {
+              "id": "444b6987-843c-4959-a971-045f5abe7cde",
+              "type": "response",
+              "selected": false,
+              "x": 1355,
+              "y": 365,
+              "ports": [
+                {
+                  "id": "cmef5iqng01sa356mfq5hv7k4",
+                  "type": "default",
+                  "x": 1346.87,
+                  "y": 396.72,
+                  "name": "cmef5iqng01sb356m92zz1k33",
+                  "parentNode": "444b6987-843c-4959-a971-045f5abe7cde",
+                  "links": [
+                    "1ff91831-6269-4387-ab5c-bc9fd8fffbb1"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmef5iqng01sc356mh92fvj9t",
+                  "type": "default",
+                  "x": 1501.13,
+                  "y": 396.72,
+                  "name": "cmef5iqng01sd356m3837ubci",
+                  "parentNode": "444b6987-843c-4959-a971-045f5abe7cde",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"message\": $state.lastError.info.errors.message\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "78a28cbf-ab3a-4193-835d-a06b28d4716e": {
+              "id": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 1345,
+              "y": 205,
+              "ports": [
+                {
+                  "id": "cmegi8rqu007g356mhxw4aiet",
+                  "type": "default",
+                  "x": 1336.87,
+                  "y": 236.72,
+                  "name": "cmegi8rqu007h356moihp2p6f",
+                  "parentNode": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+                  "links": [
+                    "4b37f95c-1ef1-4a45-8770-67cced392626"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmegi8rqu007i356mw3f7xyiv",
+                  "type": "default",
+                  "x": 1491.12,
+                  "y": 236.72,
+                  "name": "cmegi8rqu007j356mgy85z5lf",
+                  "parentNode": "78a28cbf-ab3a-4193-835d-a06b28d4716e",
+                  "links": [
+                    "e94d5dd8-60d7-4cdd-9aae-cdfb77eb3254"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "fd47288f-8a16-41d3-b36e-9fc6202635a8"
+                ],
+                "transform": "{\r\n  \"orderLineReleaseIds\": $uniq(receiptLine.edges.node.receiptLineOrderLineReleases.edges.node.orderLineReleaseId),\r\n  \"receiptIds\": $uniq(receiptLine.edges.node.receiptId)\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Context"
+            },
+            "f57d9192-9b05-46ee-955b-ea96517f0839": {
+              "id": "f57d9192-9b05-46ee-955b-ea96517f0839",
+              "type": "executeFlow",
+              "selected": false,
+              "x": 2990,
+              "y": 30,
+              "ports": [
+                {
+                  "id": "cmegicf9w00ca356mvj0fp2x4",
+                  "type": "default",
+                  "x": 2981.87,
+                  "y": 61.72,
+                  "name": "cmegicf9w00cb356mr7w822pz",
+                  "parentNode": "f57d9192-9b05-46ee-955b-ea96517f0839",
+                  "links": [
+                    "f4174fd1-2997-4a19-aeef-c5b5d32f1df6"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmegicf9w00cc356m7fgz8eui",
+                  "type": "default",
+                  "x": 3192.57,
+                  "y": 61.72,
+                  "name": "cmegicf9w00cd356muhxva56m",
+                  "parentNode": "f57d9192-9b05-46ee-955b-ea96517f0839",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "flowId": "updateReleaseStatus",
+                "payloadTransform": "{ \"orderLineReleaseIds\": $state.context.orderLineReleaseIds }",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Execute Flow Update Releases"
+            },
+            "8401a61e-eb10-4039-b107-55e6ff23b6d1": {
+              "id": "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+              "type": "executeFlow",
+              "selected": false,
+              "x": 2990,
+              "y": 95,
+              "ports": [
+                {
+                  "id": "cmegicg8q00co356ma28a8gn1",
+                  "type": "default",
+                  "x": 2981.87,
+                  "y": 126.72,
+                  "name": "cmegicg8q00cp356m29hwqanl",
+                  "parentNode": "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+                  "links": [
+                    "d00385b8-e19c-4c76-b467-7810b2ed493b"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmegicg8q00cq356m7gq22pob",
+                  "type": "default",
+                  "x": 3190.42,
+                  "y": 126.72,
+                  "name": "cmegicg8q00cr356mvebvu30w",
+                  "parentNode": "8401a61e-eb10-4039-b107-55e6ff23b6d1",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [],
+                "payloadTransform": "{ \"receiptIds\": $state.context.receiptIds}",
+                "flowId": "updateReceiptStatus"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Execute Flow Update Receipts"
+            }
+          }
+        }
+      ],
+      "name": "Confirm Receipt Line",
+      "type": "System",
+      "version": "0.0.11",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

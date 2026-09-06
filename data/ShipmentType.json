@@ -1,0 +1,23 @@
+{
+  "api": "application",
+  "modelName": "ShipmentType",
+  "payload": [
+    {
+      "id": "return",
+      "name": "Return",
+      "description": "A return shipment to the source that it came from, sometimes because of a defect in the product from a supplier, others because the job work on a customer's item is complete and ready to send back",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "sale",
+      "name": "Sale",
+      "description": "A sale to a customer, direct trade",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

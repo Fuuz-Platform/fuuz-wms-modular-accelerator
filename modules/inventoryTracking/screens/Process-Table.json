@@ -1,0 +1,960 @@
+{
+  "header": {
+    "id": "processTable",
+    "name": "Process Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmehp54gk0cou07753tb0gcdy",
+    "number": "0.0.3",
+    "description": "",
+    "screenId": "processTable",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "ProcessTable",
+          "tabTitle": "Process Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 5,
+                    "Action Button": 4,
+                    "Form": 1,
+                    "Table": 1,
+                    "Table Column": 5,
+                    "Text": 3,
+                    "Checkbox": 1,
+                    "Button Group": 1
+                  },
+                  "module": {
+                    "id": "inventoryTracking",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "Process",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "TnKguUk0x7",
+                  "wk5ZERsbtU"
+                ],
+                "linkedNodes": {}
+              },
+              "TnKguUk0x7": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "EsAHNVO3cU"
+                ],
+                "linkedNodes": {}
+              },
+              "EsAHNVO3cU": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Process",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "TnKguUk0x7",
+                "hidden": false,
+                "nodes": [
+                  "vudy8YTxUK"
+                ],
+                "linkedNodes": {}
+              },
+              "vudy8YTxUK": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "EsAHNVO3cU",
+                "hidden": false,
+                "nodes": [
+                  "TL7D9i5O64",
+                  "pj1ObhyIhW",
+                  "YhyGupT0Xf",
+                  "fJh7Mut8Pb",
+                  "c5S7fq6IC_",
+                  "rDdv7CTW1K"
+                ],
+                "linkedNodes": {}
+              },
+              "pj1ObhyIhW": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "code",
+                  "field": "code",
+                  "description": "The descriptor of the inventory process stage.",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "code._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "YhyGupT0Xf": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Usable",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "usable",
+                  "field": "usable",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "usable._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox1"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "fJh7Mut8Pb": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Description",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "description",
+                  "field": "description",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "description._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "c5S7fq6IC_": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "External Id",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "externalId",
+                  "field": "externalId",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "externalId._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rDdv7CTW1K": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "2LOFZKmh1W": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "TL7D9i5O64",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GwjqUwuBIL": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "plus",
+                      "title": "Create a new Process",
+                      "fields": [
+                        {
+                          "label": "Code",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Process",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "code",
+                                  "dataPath": "code"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "code",
+                          "field": "code",
+                          "description": "The descriptor of the inventory process stage.",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        },
+                        {
+                          "label": "Description",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "description",
+                          "field": "description",
+                          "description": "",
+                          "element": "MarkdownInput",
+                          "type": "markdown"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateProcess($payload: [ProcessCreatePayloadInput!]!) {\n  mutation: createProcess(payload: $payload) {\n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": {\n    \"create\": data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "\"Process \" & data.mutation[0].code & \" created successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "TL7D9i5O64",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "LhlWYh4Qhs": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1 or $components.Table1.selectedRows.system",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "save",
+                      "title": {
+                        "__transform": "\"Update Process \" & $components.Table1.selectedRows[0].code"
+                      },
+                      "fields": [
+                        {
+                          "label": "Code",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Process",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "code",
+                                  "dataPath": "code"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "code",
+                          "field": "code",
+                          "description": "The descriptor of the inventory process stage.",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Usable",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "usable",
+                          "field": "usable",
+                          "description": "",
+                          "element": "Checkbox",
+                          "type": "checkbox"
+                        },
+                        {
+                          "label": "Description",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "description",
+                          "field": "description",
+                          "description": "",
+                          "element": "MarkdownInput",
+                          "type": "markdown"
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "$components.Table1.selectedRows[0]"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateProcess($payload: [ProcessUpdatePayloadInput!]!) {\n  mutation: updateProcess(payload: $payload) {\n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    },\n    \"update\": $$.data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Process \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \" updated successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Update"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "TL7D9i5O64",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7rpZjDWudE": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0 or $components.Table1.selectedRows.system",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Process \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteProcess($payload: [ProcessDeletePayloadInput!]!) {\n  mutation: deleteProcess(payload: $payload) { \n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Process \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Delete"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "TL7D9i5O64",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "RVuGLHNBUr": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Process",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "Process Codes used to define the stage of inventory.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "wk5ZERsbtU",
+                "hidden": false,
+                "nodes": [
+                  "F50AFr3SXt",
+                  "-xI7wbjjh8",
+                  "QQ2k363KOj",
+                  "4nW8X5TZez",
+                  "aGPhvU-yxf"
+                ],
+                "linkedNodes": {}
+              },
+              "F50AFr3SXt": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "code",
+                  "dataPath": "code",
+                  "description": "The descriptor of the inventory process stage.",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/processes/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "RVuGLHNBUr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-xI7wbjjh8": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Usable",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "usable",
+                  "dataPath": "usable",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "RVuGLHNBUr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QQ2k363KOj": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Description",
+                  "format": "markdown",
+                  "sortable": true,
+                  "field": "description",
+                  "dataPath": "description",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "RVuGLHNBUr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "aGPhvU-yxf": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "Process"
+                },
+                "displayName": "Custom Fields Table Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "RVuGLHNBUr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wk5ZERsbtU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "RVuGLHNBUr"
+                ],
+                "linkedNodes": {}
+              },
+              "TL7D9i5O64": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "vudy8YTxUK",
+                "hidden": false,
+                "nodes": [
+                  "2LOFZKmh1W",
+                  "GwjqUwuBIL",
+                  "LhlWYh4Qhs",
+                  "7rpZjDWudE"
+                ],
+                "linkedNodes": {}
+              },
+              "4nW8X5TZez": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "System",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "dataPath": "system",
+                  "description": "",
+                  "query": {},
+                  "field": "system"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "RVuGLHNBUr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdpf86f82cux07759mn7d23g",
+      "title": "Processes",
+      "path": "/inventoryManagement/inventoryTracking/processes",
+      "moduleId": "inventoryTracking",
+      "screenId": "processTable",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

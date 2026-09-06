@@ -1,0 +1,1671 @@
+{
+  "api": "application",
+  "modelName": "StandardCarrierAlphaCode",
+  "payload": [
+    {
+      "id": "aact",
+      "active": true,
+      "isParcel": false,
+      "carrier": "AAA Cooper Transportation",
+      "code": "AACT",
+      "description": null,
+      "name": "AAA Cooper Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "abfs",
+      "active": true,
+      "isParcel": false,
+      "carrier": "ABF Freight",
+      "code": "ABFS",
+      "description": null,
+      "name": "ABF Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "aci ",
+      "active": true,
+      "isParcel": false,
+      "carrier": "ACI Motor Freight inc.",
+      "code": "ACI ",
+      "description": null,
+      "name": "ACI Motor Freight inc.",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "aduie",
+      "active": true,
+      "isParcel": false,
+      "carrier": "A. Duie Pyle",
+      "code": "ADUIE",
+      "description": null,
+      "name": "A. Duie Pyle",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "agce",
+      "active": true,
+      "isParcel": false,
+      "carrier": "ACI Motor Freight",
+      "code": "AGCE",
+      "description": "ACI Motor Freight",
+      "name": "ACI Motor Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "amxl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Amazon",
+      "code": "AMXL",
+      "description": null,
+      "name": "Amazon Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "avrt",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Averitt Express",
+      "code": "AVRT",
+      "description": "e",
+      "name": "Averitt Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "cenf",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Central Freight Lines",
+      "code": "CENF",
+      "description": null,
+      "name": "Central Freight Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ceva",
+      "active": true,
+      "isParcel": false,
+      "carrier": "CEVA Logistics",
+      "code": "CEVA",
+      "description": null,
+      "name": "CEVA Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "chrw",
+      "active": true,
+      "isParcel": false,
+      "carrier": "C.H. Robinson",
+      "code": "CHRW",
+      "description": null,
+      "name": "C.H. Robinson",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "cllq",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Coyote Logistics",
+      "code": "CLLQ",
+      "description": null,
+      "name": "Coyote Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "cnwy",
+      "active": true,
+      "isParcel": false,
+      "carrier": "XPO Con-way Freight",
+      "code": "CNWY",
+      "description": null,
+      "name": "XPO Con-way Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "cofs",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Covenant Transport",
+      "code": "COFS",
+      "description": null,
+      "name": "Covenant Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "crst",
+      "active": true,
+      "isParcel": false,
+      "carrier": "CRST International",
+      "code": "CRST",
+      "description": null,
+      "name": "CRST International",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ctii",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Central Transport",
+      "code": "CTII",
+      "description": null,
+      "name": "Central Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "dafg",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Dayton Freight Lines",
+      "code": "DAFG",
+      "description": null,
+      "name": "Dayton Freight Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "dhl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "DHL",
+      "code": "DHL",
+      "description": null,
+      "name": "DHL Supply Chain",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "dylt",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Daylight Transport",
+      "code": "DYLT",
+      "description": null,
+      "name": "Daylight Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "echo",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Echo Global Logistics",
+      "code": "ECHO",
+      "description": null,
+      "name": "Echo Global Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "engb",
+      "active": true,
+      "isParcel": false,
+      "carrier": "England Logistics",
+      "code": "ENGB",
+      "description": null,
+      "name": "England Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "exla",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Estes Express Lines",
+      "code": "EXLA",
+      "description": null,
+      "name": "Estes Express Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fd2d",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FD2D",
+      "description": null,
+      "name": "FD2D",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fdcc",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FDCC",
+      "description": null,
+      "name": "FEDEX CUSTOM CRITICAL INC",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fdeg",
+      "active": true,
+      "isParcel": false,
+      "carrier": "FedEx",
+      "code": "FDEG",
+      "description": null,
+      "name": "FedEx Ground",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fdxg",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FDXG",
+      "description": null,
+      "name": "FED EXPRESS GROUND",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fe2a",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FE2A",
+      "description": null,
+      "name": "FedEx Two Day AM",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fed2",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FED2",
+      "description": null,
+      "name": "Fedex 2 Day",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fed3",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FED3",
+      "description": null,
+      "name": "FedEx 3 Day",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fedex",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEDEX",
+      "description": null,
+      "name": "FedEx",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fedg",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEDG",
+      "description": null,
+      "name": "FedEx Ground",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fedp",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEDP",
+      "description": null,
+      "name": "Fed Ex First Overnight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "feds",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEDS",
+      "description": null,
+      "name": "Fedex Next Day (Standard onight)",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fedx",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEDX",
+      "description": null,
+      "name": "Federal Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "feie",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEIE",
+      "description": null,
+      "name": "FedEx International Economy",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "feip",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEIP",
+      "description": null,
+      "name": "FedEx International Priority",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fepo",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FEPO",
+      "description": null,
+      "name": "FedEx Priority Overnight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "forw",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Forward Air",
+      "code": "FORW",
+      "description": null,
+      "name": "Forward Air",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fxfe",
+      "active": true,
+      "isParcel": false,
+      "carrier": "FedEx",
+      "code": "FXFE",
+      "description": null,
+      "name": "FedEx Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fxg2",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FXG2",
+      "description": null,
+      "name": "FedEx",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fxgd",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FXGD",
+      "description": null,
+      "name": "FedEx",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fxnl",
+      "active": true,
+      "isParcel": true,
+      "carrier": "FedEx",
+      "code": "FXNL",
+      "description": null,
+      "name": "FEDEX NATIONAL LTL INC",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "glbl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "GlobalTranz",
+      "code": "GLBL",
+      "description": null,
+      "name": "GlobalTranz",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "gsol",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Golden State Overnight",
+      "code": "GSOL",
+      "description": null,
+      "name": "Golden State Overnight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "hmes",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Holland Motor Express",
+      "code": "HMES",
+      "description": null,
+      "name": "Holland Motor Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "hsfw",
+      "active": true,
+      "isParcel": false,
+      "carrier": "HSG-S TO Fort Worth DC",
+      "code": "HSFW",
+      "description": "For sales orders from HSG-S to Fort Worth H.S.I. ",
+      "name": "HSG-S TO Fort Worth DC",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "htld",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Heartland Express",
+      "code": "HTLD",
+      "description": null,
+      "name": "Heartland Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "jbht",
+      "active": true,
+      "isParcel": false,
+      "carrier": "J.B. Hunt Transport",
+      "code": "JBHT",
+      "description": null,
+      "name": "J.B. Hunt Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "knig",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Knight Transportation",
+      "code": "KNIG",
+      "description": null,
+      "name": "Knight Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "land",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Landstar Ranger",
+      "code": "LAND",
+      "description": null,
+      "name": "Landstar Ranger",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "lsso",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Lone Star Overnight",
+      "code": "LSSO",
+      "description": null,
+      "name": "Lone Star Overnight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "lstr",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Landstar System",
+      "code": "LSTR",
+      "description": null,
+      "name": "Landstar System",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "melh",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Melton Truck Lines",
+      "code": "MELH",
+      "description": null,
+      "name": "Melton Truck Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "midw",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Midwest Motor Express",
+      "code": "MIDW",
+      "description": null,
+      "name": "Midwest Motor Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "mrtn",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Marten Transport",
+      "code": "MRTN",
+      "description": null,
+      "name": "Marten Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "nemf",
+      "active": true,
+      "isParcel": false,
+      "carrier": "New England Motor Freight",
+      "code": "NEMF",
+      "description": null,
+      "name": "New England Motor Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "newp",
+      "active": true,
+      "isParcel": false,
+      "carrier": "New Penn Motor Express",
+      "code": "NEWP",
+      "description": null,
+      "name": "New Penn Motor Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "nflo",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Nussbaum Transportation",
+      "code": "NFLO",
+      "description": null,
+      "name": "Nussbaum Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "nwot",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Northwest Motor Freight",
+      "code": "NWOT",
+      "description": null,
+      "name": "Northwest Motor Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "nxtl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Nussbaum Transportation",
+      "code": "NXTL",
+      "description": null,
+      "name": "Nussbaum Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "oakl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Oak Harbor Freight Lines",
+      "code": "OAKL",
+      "description": null,
+      "name": "Oak Harbor Freight Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "odfl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Old Dominion Freight Line",
+      "code": "ODFL",
+      "description": null,
+      "name": "Old Dominion Freight Line",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pens",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Penn Yan Express",
+      "code": "PENS",
+      "description": null,
+      "name": "Penn Yan Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pitd",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Pitt Ohio",
+      "code": "PITD",
+      "description": null,
+      "name": "Pitt Ohio",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "prim",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Prime Inc",
+      "code": "PRIM",
+      "description": null,
+      "name": "Prime Inc",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ptlc",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Prime Trucking",
+      "code": "PTLC",
+      "description": null,
+      "name": "Prime Trucking",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ptsi",
+      "active": true,
+      "isParcel": false,
+      "carrier": "PAM Transport",
+      "code": "PTSI",
+      "description": null,
+      "name": "PAM Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pyle",
+      "active": true,
+      "isParcel": false,
+      "carrier": "A. Duie Pyle",
+      "code": "PYLE",
+      "description": null,
+      "name": "A. Duie Pyle",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "rdwy",
+      "active": true,
+      "isParcel": false,
+      "carrier": "YRC Freight",
+      "code": "RDWY",
+      "description": null,
+      "name": "YRC Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "retl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Reddaway",
+      "code": "RETL",
+      "description": null,
+      "name": "Reddaway",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "rlcs",
+      "active": true,
+      "isParcel": false,
+      "carrier": "R+L Carriers",
+      "code": "RLCS",
+      "description": null,
+      "name": "R+L Carriers",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "saia",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Saia LTL Freight",
+      "code": "SAIA",
+      "description": null,
+      "name": "Saia LTL Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "scnn",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Schneider National",
+      "code": "SCNN",
+      "description": null,
+      "name": "Schneider National",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "sefl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Southeastern Freight Lines",
+      "code": "SEFL",
+      "description": null,
+      "name": "Southeastern Freight Lines",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "smtl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "SM&T",
+      "code": "SMTL",
+      "description": null,
+      "name": "SM&T",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "sndr",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Schneider National Carriers",
+      "code": "SNDR",
+      "description": null,
+      "name": "Schneider National Carriers",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "spde",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Spee-Dee Delivery",
+      "code": "SPDE",
+      "description": null,
+      "name": "Spee-Dee Delivery",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "spnv",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Spinnaker Transport",
+      "code": "SPNV",
+      "description": null,
+      "name": "Spinnaker Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "swft",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Swift Transportation",
+      "code": "SWFT",
+      "description": null,
+      "name": "Swift Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tfin",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Transfinancial",
+      "code": "TFIN",
+      "description": null,
+      "name": "Transfinancial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tfor",
+      "active": true,
+      "isParcel": false,
+      "carrier": "TForce Freight",
+      "code": "TFOR",
+      "description": null,
+      "name": "TForce Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tfox",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Transplace",
+      "code": "TFOX",
+      "description": null,
+      "name": "Transplace",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tfrt",
+      "active": true,
+      "isParcel": false,
+      "carrier": "TForce Freight",
+      "code": "TFRT",
+      "description": null,
+      "name": "TForce Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tval",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Tri-Valley Transport",
+      "code": "TVAL",
+      "description": null,
+      "name": "Tri-Valley Transport",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "tvam",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Transam Trucking",
+      "code": "TVAM",
+      "description": null,
+      "name": "Transam Trucking",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "u1dp",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "U1DP",
+      "description": null,
+      "name": "UPS Next Day Air Saver (late afternoon del)",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "u2cs",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "U2CS",
+      "description": null,
+      "name": "UPS 2nd Day Air Commercial Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "u3cs",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "U3CS",
+      "description": null,
+      "name": "UPS 3 Day Commercial Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "un1s",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UN1S",
+      "description": null,
+      "name": "UPS Next Day Air Residential Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "uncs",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UNCS",
+      "description": null,
+      "name": "UPS Next Day Air Commercial Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "unfi",
+      "active": true,
+      "isParcel": false,
+      "carrier": "UNFI Transportation",
+      "code": "UNFI",
+      "description": null,
+      "name": "UNFI Transportation",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "unsc",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UNSC",
+      "description": null,
+      "name": "UPS Next Day Air Saver Commercial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "unvl",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Universal Truckload Services",
+      "code": "UNVL",
+      "description": null,
+      "name": "Universal Truckload Services",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up1a",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP1A",
+      "description": null,
+      "name": "UPS Next day Priority (8 AM del)",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up1s",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP1S",
+      "description": null,
+      "name": "UPS Next Day Air Saver",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up2a",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP2A",
+      "description": null,
+      "name": "UPS 2nd Day Air AM",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up2c",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP2C",
+      "description": null,
+      "name": "UPS 2nd Day Air Commercial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up2s",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP2S",
+      "description": null,
+      "name": "UPS 2nd Day Air Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up3c",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP3C",
+      "description": null,
+      "name": "UPS 3 Day Commercial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "up3s",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UP3S",
+      "description": null,
+      "name": "UPS 3 Day Res Signature Required",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upbp",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPBP",
+      "description": null,
+      "name": "UPS SurePost Bound Printed Matter",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upcs",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPCS",
+      "description": null,
+      "name": "UPS Ground Commercial Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upg1",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPG1",
+      "description": null,
+      "name": "UPS SurePost Greater than 1lb.",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upgc",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPGC",
+      "description": null,
+      "name": "UPS Ground Commercial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upgf",
+      "active": true,
+      "isParcel": false,
+      "carrier": "UPS",
+      "code": "UPGF",
+      "description": null,
+      "name": "UPS Freight",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upgs",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPGS",
+      "description": null,
+      "name": "UPS Ground Signature Rqd.",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upl1",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPL1",
+      "description": null,
+      "name": "UPS SurePost Less than 1lb.",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upnc",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPNC",
+      "description": null,
+      "name": "UPS Next Day Air Commercial",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ups",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPS",
+      "description": null,
+      "name": "United Parcel Service (UPS)",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ups1",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPS1",
+      "description": null,
+      "name": "UPS Next Day (usually 10:30 AM del)",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ups2",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPS2",
+      "description": null,
+      "name": "UPS 2 Day",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ups3",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPS3",
+      "description": null,
+      "name": "UPS 3 Day",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upsa",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPSA",
+      "description": null,
+      "name": "UPS AIR FREIGHT SERVICES INC",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upsd",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPSD",
+      "description": null,
+      "name": "UPS Sat Delivery",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upsf",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPSF",
+      "description": null,
+      "name": "UPS Freight - use UPGF",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upsn",
+      "active": true,
+      "isParcel": false,
+      "carrier": "UPS",
+      "code": "UPSN",
+      "description": null,
+      "name": "UPS",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upss",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPSS",
+      "description": null,
+      "name": "UPS Next Day Air Saver Residential Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upwe",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPWE",
+      "description": null,
+      "name": "UPS Worlwide Express",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upws",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPWS",
+      "description": null,
+      "name": "UPS Worldwide Saver",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "upwx",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "UPWX",
+      "description": null,
+      "name": "UPS Worldwide Expedited",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "uscc",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "USCC",
+      "description": null,
+      "name": "UPS Next Day Air Saver Commercial Signature Rqd",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "usg",
+      "active": true,
+      "isParcel": true,
+      "carrier": "UPS",
+      "code": "USG",
+      "description": null,
+      "name": "UPS Surepost",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "usld",
+      "active": true,
+      "isParcel": false,
+      "carrier": "US 1 Industries",
+      "code": "USLD",
+      "description": null,
+      "name": "US 1 Industries",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "usxp",
+      "active": true,
+      "isParcel": false,
+      "carrier": "US Xpress",
+      "code": "USXP",
+      "description": null,
+      "name": "US Xpress",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ward",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Ward Transport & Logistics",
+      "code": "WARD",
+      "description": null,
+      "name": "Ward Transport & Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "wern",
+      "active": true,
+      "isParcel": false,
+      "carrier": "Werner Enterprises",
+      "code": "WERN",
+      "description": null,
+      "name": "Werner Enterprises",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "xjlw",
+      "active": true,
+      "isParcel": false,
+      "carrier": "JB Hunt Logistics",
+      "code": "XJLW",
+      "description": null,
+      "name": "JB Hunt Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "xpof",
+      "active": true,
+      "isParcel": false,
+      "carrier": "XPO Logistics",
+      "code": "XPOF",
+      "description": null,
+      "name": "XPO Logistics",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "xpol",
+      "active": true,
+      "isParcel": null,
+      "carrier": null,
+      "code": "XPOL",
+      "description": null,
+      "name": "XPOL",
+      "serviceType": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

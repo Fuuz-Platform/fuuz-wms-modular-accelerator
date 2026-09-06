@@ -1,0 +1,1582 @@
+{
+  "header": {
+    "id": "receiving",
+    "name": "Receiving",
+    "description": "This screen allows for basic receiving functionality, presenting the user a list of open orders which can then be confirmed and received.\n\nMore advanced functionality can be found in the Advanced Receiving screen.",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "orderReceiving",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmekib6eu00x10675bk061wt8",
+    "number": "0.0.22",
+    "description": "",
+    "screenId": "receiving",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 21,
+                    "Form": 7,
+                    "Scan": 11,
+                    "Action Button": 8,
+                    "Table": 10,
+                    "Resizable Panel": 2,
+                    "Select": 10,
+                    "Table Column": 46,
+                    "Dynamic Table Column": 1,
+                    "Text": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "TVZpKV60dw",
+                  "ttDuFT4zFv"
+                ],
+                "linkedNodes": {}
+              },
+              "TVZpKV60dw": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "20%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerMain"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "Q9MWIUEnVx"
+                ],
+                "linkedNodes": {}
+              },
+              "ttDuFT4zFv": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "80%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container11"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "j7iJWw1Fu1"
+                ],
+                "linkedNodes": {}
+              },
+              "j7iJWw1Fu1": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "([\r\n\tedges.node\r\n\t\t~> |$|(\r\n\t\t\t{\r\n\t\t\t\t\"totalItems\": $sum(orderLines.edges.node.orderLineReleases.edges.node.quantity.value)\r\n\t\t\t}\r\n\t\t)|\r\n])",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "orderLines.edges.node.orderLineReleases.edges.node.quantity.value",
+                      "orderLines.edges.node.orderLineReleases.edges.node.id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Order",
+                    "parameters": "{\r\n  \"filter\": {\r\n    \"_and\": [\r\n      {\r\n        \"orderTypeId\": {\r\n          \"_eq\": \"purchase\"\r\n        }\r\n      },\r\n      {\r\n        \"orderStatusId\":{\r\n          \"_in\": [ \"partialFulfillment\", \"pendingFulfillment\"]\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 600,
+                  "hideTableHeader": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": true,
+                  "filterFormName": "FormMain",
+                  "tableName": "Open Orders"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "TableOrders"
+                },
+                "parent": "ttDuFT4zFv",
+                "hidden": false,
+                "nodes": [
+                  "QyhqBkKE6-",
+                  "dJEYzsacnK",
+                  "PgGYB8m2fs",
+                  "75Bqyzn_Gp",
+                  "8gBuxfkTAH",
+                  "gOR79voXiy"
+                ],
+                "linkedNodes": {
+                  "Table2Detail": "KXzo3tHNR4",
+                  "TableOrdersDetail": "Z5JPZVyAe1"
+                }
+              },
+              "QyhqBkKE6-": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderNumber"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KXzo3tHNR4": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "UndeletableContainer1"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dJEYzsacnK": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Supplier",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "businessPartner.code",
+                  "query": {
+                    "fields": [
+                      "businessPartner.id",
+                      "businessPartner.code"
+                    ]
+                  },
+                  "description": "Short Abbreviated code for business partner - must be unique.",
+                  "field": "businessPartner.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderSupplier"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "PgGYB8m2fs": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Status",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderStatus.code",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "orderStatus.id",
+                      "orderStatus.code"
+                    ]
+                  },
+                  "field": "orderStatus.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderStatus"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "75Bqyzn_Gp": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order Lines",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderLines.total"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderLineCount"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8gBuxfkTAH": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Total Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "totalItems",
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderItemTotal"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gOR79voXiy": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Actions",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "none",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "actions": [
+                    {
+                      "icon": {
+                        "icon": "receipt",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "title": "Receive",
+                      "text": "Receive",
+                      "action": [
+                        {
+                          "type": "screenDialog",
+                          "screenId": "newReceiptWidget",
+                          "title": "New Receipt",
+                          "screenName": "NewReceiptWidget",
+                          "screenParams": {
+                            "__transform": "{\r\n  \"orderId\": $$.rowData.id\r\n}",
+                            "__dynamicFields": {
+                              "payload": null,
+                              "context": []
+                            },
+                            "__cacheKey": "",
+                            "__remote": false
+                          }
+                        }
+                      ],
+                      "hidden": {
+                        "__transform": "$not($$.rowData.orderStatus.id in [\"pendingFulfillment\", \"partialFulfillment\"])",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      }
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnOrderActions"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Z5JPZVyAe1": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "TableOrdersDetail"
+                },
+                "parent": "j7iJWw1Fu1",
+                "hidden": false,
+                "nodes": [
+                  "cd5Y20MLoF"
+                ],
+                "linkedNodes": {}
+              },
+              "KtsPkgA5G-": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "100%",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Search orders by field\n",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [
+                          {
+                            "offset": 0,
+                            "length": 23,
+                            "style": "fontfamily-Roboto"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 23,
+                            "style": "fontsize-12"
+                          }
+                        ],
+                        "entityRanges": [],
+                        "data": {
+                          "text-align": "center"
+                        }
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "j-Rh0yCBYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4kJBCoWM53": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "100%",
+                  "height": "50",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.TableOrders.fn.search()"
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Search button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Search Button which search data from table.",
+                    "icon": "search",
+                    "requiresTable": true
+                  },
+                  "elementName": "ButtonSearch"
+                },
+                "parent": "j-Rh0yCBYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "j-Rh0yCBYL": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ContainerSidebar"
+                },
+                "parent": "Q9MWIUEnVx",
+                "hidden": false,
+                "nodes": [
+                  "KtsPkgA5G-",
+                  "ktmnpnitx-",
+                  "-d96GH9k-D",
+                  "OtyB3NHTDd",
+                  "4kJBCoWM53"
+                ],
+                "linkedNodes": {}
+              },
+              "Q9MWIUEnVx": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": true,
+                    "model": "Order"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "FormMain"
+                },
+                "parent": "TVZpKV60dw",
+                "hidden": false,
+                "nodes": [
+                  "j-Rh0yCBYL"
+                ],
+                "linkedNodes": {}
+              },
+              "OtyB3NHTDd": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Order Status",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "tenantId": "",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "FormMain",
+                  "dataPath": "orderStatus._eq",
+                  "target": {
+                    "dataPath": "orderStatusId._eq"
+                  },
+                  "description": "",
+                  "field": "orderStatus",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "orderStatus.id",
+                      "orderStatus.code"
+                    ]
+                  },
+                  "dataModel": "OrderStatus",
+                  "selectFields": [
+                    "code"
+                  ],
+                  "additionalFields": [],
+                  "additionalFilter": {
+                    "__transform": "{\n    \"id\":{\n      \"_in\": [\"pendingReceipt\", \"pendingConfirmation\", \"partiallyReceived\"]\n    }\n}",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "SelectStatus"
+                },
+                "parent": "j-Rh0yCBYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-d96GH9k-D": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Business Partner",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "tenantId": "",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "FormMain",
+                  "dataPath": "bp",
+                  "target": {
+                    "dataPath": "businessPartner.id._eq"
+                  },
+                  "description": "",
+                  "field": "businessPartner",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "businessPartner.id",
+                      "businessPartner.code"
+                    ]
+                  },
+                  "dataModel": "BusinessPartner",
+                  "selectFields": [
+                    "code"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "SelectSupplier"
+                },
+                "parent": "j-Rh0yCBYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ktmnpnitx-": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Open Orders",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "tenantId": "",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": true,
+                  "formElement": "FormMain",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": "number._eq"
+                  },
+                  "labelPath": "number",
+                  "orderByField": "number",
+                  "query": {
+                    "fields": []
+                  },
+                  "dataModel": "Order",
+                  "selectFields": [
+                    "number"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "SelectOrderNumber"
+                },
+                "parent": "j-Rh0yCBYL",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "RVDe7Nuyhj": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Line Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineNumber"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "1nuKS8Jpg_": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "query": {
+                    "fields": [
+                      "orderLine.product.id",
+                      "orderLine.product.code",
+                      "orderLine.product.defaultQuantityUnitId"
+                    ]
+                  },
+                  "dataPath": "orderLine.product.code",
+                  "description": "",
+                  "field": "orderLine.product.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineProduct"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GfocvEbmQH": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "query": {},
+                  "dataPath": "quantity.value",
+                  "field": "quantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineProductQuantity"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "H7Ua3LcumV": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity Left",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "quantityLeft.value",
+                  "query": {},
+                  "field": "quantityLeft.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineQuantityLeft"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ll3laUYEkk": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Status",
+                  "format": "text",
+                  "sortable": true,
+                  "query": {
+                    "fields": [
+                      "orderLineReleaseStatus.id",
+                      "orderLineReleaseStatus.code"
+                    ]
+                  },
+                  "dataPath": "orderLineReleaseStatus.code",
+                  "description": "",
+                  "field": "orderStatus.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineStatus"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "bejXL2HTrv": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receive",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "none",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "actions": [
+                    {
+                      "title": "Receive",
+                      "text": "Receive",
+                      "icon": {
+                        "icon": "list",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "action": [
+                        {
+                          "type": "screenDialog",
+                          "screenId": "createReceiptLineWidget",
+                          "title": "Receiving Details",
+                          "screenName": "ReceivingDetailsWidget",
+                          "screenParams": {
+                            "__transform": "{\r\n  \"defaultQuantityUnitId\": $$.rowData.orderLine.product.defaultQuantityUnitId,\r\n  \"orderLineReleaseId\": $$.rowData.id,\r\n  \"orderId\": $parent.data.id\r\n}",
+                            "__dynamicFields": {
+                              "payload": null,
+                              "context": []
+                            },
+                            "__cacheKey": "",
+                            "__remote": false
+                          },
+                          "transforms": {
+                            "post": "$components.TableOrderLines.fn.search()"
+                          }
+                        }
+                      ],
+                      "useIconButton": false,
+                      "hidden": {
+                        "__transform": "$$.rowData.orderLineReleaseStatus.id in  [\"confirmed\", \"canceled\"]  ",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      }
+                    }
+                  ],
+                  "width": "300px"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "ColumnLineActions"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ZQwiqCabQl": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "UndeletableContainer2"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Xwi-ZFi7Nk": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "TableOrderLinesDetail"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [
+                  "fYWiyUh-1Y",
+                  "gX0j2vEa0d"
+                ],
+                "linkedNodes": {}
+              },
+              "cd5Y20MLoF": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "orderLine.id",
+                      "allowOverage",
+                      "allowPartial",
+                      "orderLine.receiptLines.edges.node.id",
+                      "receiptLineOrderLineReleases.edges.node.receiptLine.quantity._aggregate.value.sum"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "OrderLineRelease",
+                    "parameters": "{\r\n  \"filter\": {\r\n    \"orderLine\":{\r\n      \"orderId\":{\r\n        \"_eq\": $parent.data.id\r\n      }\r\n    },\r\n    \"orderLineReleaseStatusId\":{\r\n      \"_in\": [\"pendingFulfillment\", \"partiallyFulfilled\" ]\r\n    }\r\n  }\r\n}\r\n"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 400,
+                  "hideTableHeader": false,
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false,
+                  "description": "Order Line Releases are the individual ship/firm or plan schedules related to a single order number. ",
+                  "views": [],
+                  "tableName": "Order Lines"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "TableOrderLines"
+                },
+                "parent": "Z5JPZVyAe1",
+                "hidden": false,
+                "nodes": [
+                  "RVDe7Nuyhj",
+                  "1nuKS8Jpg_",
+                  "GfocvEbmQH",
+                  "avuYYs3H-j",
+                  "H7Ua3LcumV",
+                  "ll3laUYEkk",
+                  "bejXL2HTrv"
+                ],
+                "linkedNodes": {
+                  "Table6Detail": "ZQwiqCabQl",
+                  "TableOrderLinesDetail": "Xwi-ZFi7Nk"
+                }
+              },
+              "gX0j2vEa0d": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "receiptLineId"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "ReceiptLineOrderLineRelease",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"orderLineReleaseId\":{\r\n      \"_eq\": $parent.data.id\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "multiple",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "",
+                  "rowMultiSelectWithClick": false,
+                  "tableName": "Receipt Lines",
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "TableReceipts"
+                },
+                "parent": "Xwi-ZFi7Nk",
+                "hidden": false,
+                "nodes": [
+                  "-3xu60MSj2",
+                  "uFcJ_alEDe",
+                  "ZaDg1zu8nR",
+                  "7NKp91bUlK",
+                  "pRWN2oWOxn",
+                  "Vqa1EFSy9a"
+                ],
+                "linkedNodes": {}
+              },
+              "uFcJ_alEDe": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receipt Line Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "receiptLine.number",
+                  "description": "System generated sequence number.",
+                  "query": {},
+                  "field": "receiptLine.number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn37"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7NKp91bUlK": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderLineRelease.orderLine.product.name",
+                  "description": "Human-readable product name using full words\n\nDoesn't strictly have to be unique",
+                  "query": {},
+                  "field": "product.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn39"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "pRWN2oWOxn": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Exception Reason",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "receiptLine.receiptException.receiptExceptionReason.name",
+                  "query": {},
+                  "description": "",
+                  "field": "receiptLine.receiptException.receiptExceptionReason.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn40"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Vqa1EFSy9a": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receipt Line Quantity",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "receiptLine.quantity",
+                  "description": "receipt quantity for this line item only.",
+                  "query": {
+                    "fields": [
+                      "receiptLine.quantity.value",
+                      "receiptLine.quantity.unit.code",
+                      "receiptLine.quantity.unit.id"
+                    ]
+                  },
+                  "field": "receiptLine.quantity"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn41"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-3xu60MSj2": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receipt",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "receiptLine.receipt.number",
+                  "description": "System generated sequence number.",
+                  "query": {
+                    "fields": [
+                      "receiptLine.receipt.id",
+                      "receiptLine.receipt.number"
+                    ]
+                  },
+                  "field": "receiptLine.receipt.number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn43"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "avuYYs3H-j": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receipt Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "na",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "data": {
+                    "__transform": "data.receiptLineOrderLineReleases.edges.node.receiptLine.quantity._aggregate.value.sum",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn45"
+                },
+                "parent": "cd5Y20MLoF",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ZaDg1zu8nR": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Receipt Line Status",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "receiptLine.receiptStatus.code",
+                  "description": "",
+                  "query": {},
+                  "field": "receiptLine.receiptStatus.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn46"
+                },
+                "parent": "gX0j2vEa0d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "fYWiyUh-1Y": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "paddingTop": 8,
+                    "paddingBottom": 8
+                  }
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container20"
+                },
+                "parent": "Xwi-ZFi7Nk",
+                "hidden": false,
+                "nodes": [
+                  "xclUIo0EcA"
+                ],
+                "linkedNodes": {}
+              },
+              "xclUIo0EcA": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.TableReceipts.selectedRows) = 0 ",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "disabled": {
+                        "__transform": "$count($components.TableReceipts.selectedRows) = 0",
+                        "__dynamicFields": {
+                          "payload": [],
+                          "context": [
+                            "components.TableReceipts.selectedRows"
+                          ]
+                        },
+                        "__cacheKey": "deleteButton",
+                        "__remote": false
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & $count($components.TableReceipts.selectedRows) & \" records?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "transforms": {
+                        "pre": "{\n  \"receiptLineOrderLineReleasePayload\": $components.TableReceipts.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  },\n  \"receiptLinePayload\": $components.TableReceipts.selectedRows.{\n    \"where\": {\n      \"id\": receiptLineId\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "$count($components.TableReceipts.selectedRows) & \" records deleted successfully.\""
+                      },
+                      "mutation": "mutation DeleteReceiptLine($receiptLinePayload: [ReceiptLineDeletePayloadInput!]!, $receiptLineOrderLineReleasePayload: [ReceiptLineOrderLineReleaseDeletePayloadInput!]!) {\n  deleteReceiptLineOrderLineRelease(payload: $receiptLineOrderLineReleasePayload) {\n    id\n  }\n  deleteReceiptLine(payload: $receiptLinePayload) {\n    id\n  }\n}"
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.TableOrderLines.fn.search()"
+                    }
+                  ]
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "color": "#9c5a94",
+                    "description": "Delete button which perform delete action.",
+                    "elementName": "Delete Button",
+                    "icon": "trash",
+                    "requiresTable": true,
+                    "requiresForm": true
+                  },
+                  "elementName": "Action Button"
+                },
+                "parent": "fYWiyUh-1Y",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmawonuws001x016u3icn9qu8",
+      "title": "Receiving",
+      "path": "/inventoryManagement/inventoryTracking/receiving",
+      "moduleId": "inventoryTracking",
+      "screenId": "receiving",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

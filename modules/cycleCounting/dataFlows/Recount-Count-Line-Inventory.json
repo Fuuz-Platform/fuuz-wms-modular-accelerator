@@ -1,0 +1,407 @@
+{
+  "header": {
+    "id": "recountCountLineInventory",
+    "name": "Recount Count Line Inventory",
+    "description": "**Use:** This will reset the counted user id on the count line inventory. This will change the progress % on count and require someone to recount the inventory\n\n**Used In:** The count details screen.",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "Screen",
+    "logLevelId": "Trace",
+    "mcpToolConfiguration": null,
+    "moduleId": "cycleCounting",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmcxs7pzl0d2e07758tthepty",
+    "number": "0.0.1",
+    "description": "",
+    "dataFlowId": "recountCountLineInventory",
+    "flow": {
+      "id": "cmcxs7pzl0d2e07758tthepty",
+      "name": "Recount Count Line Inventory",
+      "type": "Screen",
+      "nodes": [
+        {
+          "id": "3b7d3de0-25fe-42d5-ac57-bb52589b607b",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "78ac552c-1cf7-4091-ad76-bf2644bb213c"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "136ab4b6-7fdb-40bc-b497-92ec6c9515f7",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "$",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+          "name": "Mutate",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{\r\n  \"payload\":[\r\n    {\r\n      \"where\": {\r\n        \"id\": data.id\r\n      },\r\n      \"update\":{\r\n        \"counterUserId\": null,\r\n        \"quantity\":{\r\n          \"value\": data.inventory.quantity.value,\r\n          \"unitId\": data.inventory.quantity.unit.id\r\n        },\r\n        \"weight\":{\r\n          \"value\": data.inventory.grossWeight.value,\r\n          \"unitId\": data.inventory.grossWeight.unit.id\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"countId\": $metadata.urlParameters.id\r\n\r\n}",
+            "nextNodes": [
+              "136ab4b6-7fdb-40bc-b497-92ec6c9515f7"
+            ],
+            "mutation": "mutation UpdateCountLineInventory(\r\n  $payload: [CountLineInventoryUpdatePayloadInput!]!\r\n  $countId: String!\r\n) {\r\n  updateCountLineInventory(payload: $payload) {\r\n    id\r\n  }\r\n\r\n  publishMessages(payload:  {\r\n     messages:  {\r\n        value: {\r\n          countId: $countId\r\n        }\r\n     }\r\n     topic:  {\r\n        name: \"update.count.progress\"\r\n     }\r\n  }){\r\n    topic{\r\n      id\r\n    }\r\n  }\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmcxs7pzl0d2e07758tthepty",
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 100,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "a4d0712f-304b-4fda-b4a2-c8b126989110",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "af2223ae-8e9d-425a-a5a5-19b3822e7021": {
+              "points": [
+                {
+                  "id": "5c1639e8-7374-45ee-9732-b65296d982d0",
+                  "type": "point",
+                  "x": 314,
+                  "y": 164.59
+                },
+                {
+                  "id": "2e615638-ccbf-4e18-9a16-02751b79b47d",
+                  "type": "point",
+                  "x": 354.74,
+                  "y": 164.59
+                }
+              ],
+              "id": "af2223ae-8e9d-425a-a5a5-19b3822e7021",
+              "type": "default",
+              "selected": false,
+              "source": "3b7d3de0-25fe-42d5-ac57-bb52589b607b",
+              "sourcePort": "cmcxqd9kg000s356ldzfvgydm",
+              "target": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+              "targetPort": "cmcxqdlp90012356lflkider3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "95bea85e-7db3-4d4d-8222-16dc6d159b28": {
+              "points": [
+                {
+                  "id": "c7977274-aefe-4aca-9b54-b48823eb66cf",
+                  "type": "point",
+                  "x": 508.99,
+                  "y": 164.59
+                },
+                {
+                  "id": "91d400f4-09cc-4f0d-b52c-74b12a06ed16",
+                  "type": "point",
+                  "x": 554.75,
+                  "y": 164.58
+                }
+              ],
+              "id": "95bea85e-7db3-4d4d-8222-16dc6d159b28",
+              "type": "default",
+              "selected": false,
+              "source": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+              "sourcePort": "cmcxqdlp90014356lskpepymw",
+              "target": "136ab4b6-7fdb-40bc-b497-92ec6c9515f7",
+              "targetPort": "cmcxqdf9t000y356l1bmh7s5h",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "d2d98c04-82d8-44b1-95c4-39c4f36dbb05": {
+              "points": [
+                {
+                  "id": "9ae50351-dfb1-4667-816c-eea90b2e4af9",
+                  "type": "point",
+                  "x": 314,
+                  "y": 229.58
+                },
+                {
+                  "id": "59cba25f-fe16-42ee-ad1c-38c89b00d3b7",
+                  "type": "point",
+                  "x": 354.74,
+                  "y": 164.59
+                }
+              ],
+              "id": "d2d98c04-82d8-44b1-95c4-39c4f36dbb05",
+              "type": "default",
+              "selected": false,
+              "source": "1a7f6232-8ef9-4a70-9688-e071d3687a19",
+              "sourcePort": "cmcxqcxdv000m356lgbfwszhc",
+              "target": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+              "targetPort": "cmcxqdlp90012356lflkider3",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "71d1b963-bf38-43d1-b303-6425de24b62c",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "1a7f6232-8ef9-4a70-9688-e071d3687a19": {
+              "id": "1a7f6232-8ef9-4a70-9688-e071d3687a19",
+              "type": "debugSource",
+              "selected": false,
+              "x": 160,
+              "y": 190,
+              "ports": [
+                {
+                  "id": "cmcxqcxdv000m356lgbfwszhc",
+                  "type": "default",
+                  "x": 306.13,
+                  "y": 221.71,
+                  "name": "cmcxqcxdv000n356lz8sems5e",
+                  "parentNode": "1a7f6232-8ef9-4a70-9688-e071d3687a19",
+                  "links": [
+                    "d2d98c04-82d8-44b1-95c4-39c4f36dbb05"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {},
+                "context": {},
+                "nextNodes": [
+                  "78ac552c-1cf7-4091-ad76-bf2644bb213c"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "3b7d3de0-25fe-42d5-ac57-bb52589b607b": {
+              "id": "3b7d3de0-25fe-42d5-ac57-bb52589b607b",
+              "type": "request",
+              "selected": false,
+              "x": 160,
+              "y": 125,
+              "ports": [
+                {
+                  "id": "cmcxqd9kg000s356ldzfvgydm",
+                  "type": "default",
+                  "x": 306.13,
+                  "y": 156.72,
+                  "name": "cmcxqd9kg000t356ld4ogjit1",
+                  "parentNode": "3b7d3de0-25fe-42d5-ac57-bb52589b607b",
+                  "links": [
+                    "af2223ae-8e9d-425a-a5a5-19b3822e7021"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "78ac552c-1cf7-4091-ad76-bf2644bb213c"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "136ab4b6-7fdb-40bc-b497-92ec6c9515f7": {
+              "id": "136ab4b6-7fdb-40bc-b497-92ec6c9515f7",
+              "type": "response",
+              "selected": false,
+              "x": 555,
+              "y": 125,
+              "ports": [
+                {
+                  "id": "cmcxqdf9t000y356l1bmh7s5h",
+                  "type": "default",
+                  "x": 546.88,
+                  "y": 156.71,
+                  "name": "cmcxqdf9t000z356l3gseloxj",
+                  "parentNode": "136ab4b6-7fdb-40bc-b497-92ec6c9515f7",
+                  "links": [
+                    "95bea85e-7db3-4d4d-8222-16dc6d159b28"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmcxqdf9t0010356l67c0ih3i",
+                  "type": "default",
+                  "x": 701.13,
+                  "y": 156.71,
+                  "name": "cmcxqdf9t0011356lisj9kn01",
+                  "parentNode": "136ab4b6-7fdb-40bc-b497-92ec6c9515f7",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "$",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "78ac552c-1cf7-4091-ad76-bf2644bb213c": {
+              "id": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+              "type": "mutate",
+              "selected": true,
+              "x": 355,
+              "y": 125,
+              "ports": [
+                {
+                  "id": "cmcxqdlp90012356lflkider3",
+                  "type": "default",
+                  "x": 346.87,
+                  "y": 156.72,
+                  "name": "cmcxqdlp90013356lipybezsa",
+                  "parentNode": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+                  "links": [
+                    "af2223ae-8e9d-425a-a5a5-19b3822e7021",
+                    "d2d98c04-82d8-44b1-95c4-39c4f36dbb05"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmcxqdlp90014356lskpepymw",
+                  "type": "default",
+                  "x": 501.12,
+                  "y": 156.72,
+                  "name": "cmcxqdlp90015356l8u0gnlee",
+                  "parentNode": "78ac552c-1cf7-4091-ad76-bf2644bb213c",
+                  "links": [
+                    "95bea85e-7db3-4d4d-8222-16dc6d159b28"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{\r\n  \"payload\":[\r\n    {\r\n      \"where\": {\r\n        \"id\": data.id\r\n      },\r\n      \"update\":{\r\n        \"counterUserId\": null,\r\n        \"quantity\":{\r\n          \"value\": data.inventory.quantity.value,\r\n          \"unitId\": data.inventory.quantity.unit.id\r\n        },\r\n        \"weight\":{\r\n          \"value\": data.inventory.grossWeight.value,\r\n          \"unitId\": data.inventory.grossWeight.unit.id\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"countId\": $metadata.urlParameters.id\r\n\r\n}",
+                "nextNodes": [
+                  "136ab4b6-7fdb-40bc-b497-92ec6c9515f7"
+                ],
+                "mutation": "mutation UpdateCountLineInventory(\r\n  $payload: [CountLineInventoryUpdatePayloadInput!]!\r\n  $countId: String!\r\n) {\r\n  updateCountLineInventory(payload: $payload) {\r\n    id\r\n  }\r\n\r\n  publishMessages(payload:  {\r\n     messages:  {\r\n        value: {\r\n          countId: $countId\r\n        }\r\n     }\r\n     topic:  {\r\n        name: \"update.count.progress\"\r\n     }\r\n  }){\r\n    topic{\r\n      id\r\n    }\r\n  }\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate"
+            }
+          }
+        }
+      ],
+      "name": "Recount Count Line Inventory",
+      "type": "Screen",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "api": "application",
+  "modelName": "InventoryStatus",
+  "payload": [
+    {
+      "id": "damaged",
+      "code": "Damaged",
+      "inventoryUse": false,
+      "locationUse": false,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "hold",
+      "code": "Hold",
+      "inventoryUse": false,
+      "locationUse": false,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "lost",
+      "code": "Lost",
+      "inventoryUse": true,
+      "locationUse": true,
+      "lotUse": true,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ok",
+      "code": "Ok",
+      "inventoryUse": false,
+      "locationUse": false,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "packed",
+      "code": "Packed",
+      "inventoryUse": false,
+      "locationUse": true,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "retired",
+      "code": "Retired",
+      "inventoryUse": false,
+      "locationUse": false,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shipped",
+      "code": "Shipped",
+      "inventoryUse": true,
+      "locationUse": false,
+      "lotUse": false,
+      "system": true,
+      "usable": true,
+      "externalId": null,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

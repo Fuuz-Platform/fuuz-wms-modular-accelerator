@@ -1,0 +1,555 @@
+{
+  "header": {
+    "id": "allocateInventoryToLines",
+    "name": "Allocate Inventory to Lines ",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "logistics",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmmkzdee50fsu077574gpdnk3",
+    "number": "0.0.2",
+    "description": "",
+    "screenId": "allocateInventoryToLines",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false,
+                  "pageLoadAction": "(\r\n  $param := $metadata.urlParameters.inventoryToAssign? $metadata.urlParameters.inventoryToAssign :\r\n  [\r\n    {\r\n      \"lines\": [\r\n        {\r\n          \"id\": \"L00000002_SH00000003_SL00000001\",\r\n          \"number\": \"SL00000001\",\r\n          \"orderLine\": {\r\n            \"product\": {\r\n              \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n              \"code\": \"Salt\"\r\n            }\r\n          },\r\n          \"quantity\": {\r\n            \"value\": 0\r\n          },\r\n          \"shipmentLineOrderLineReleases\": {\r\n            \"edges\": [\r\n              {\r\n                \"node\": {\r\n                  \"quantityAllocated\": {\r\n                    \"value\": 20\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"inventories\": {\r\n            \"edges\": []\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"L00000002_SH00000003_SL00000006\",\r\n          \"number\": \"SL00000006\",\r\n          \"orderLine\": {\r\n            \"product\": {\r\n              \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n              \"code\": \"Salt\"\r\n            }\r\n          },\r\n          \"quantity\": {\r\n            \"value\": 0\r\n          },\r\n          \"shipmentLineOrderLineReleases\": {\r\n            \"edges\": [\r\n              {\r\n                \"node\": {\r\n                  \"quantityAllocated\": {\r\n                    \"value\": 65\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          \"inventories\": {\r\n            \"edges\": []\r\n          }\r\n        }\r\n      ],\r\n      \"inventory\": [\r\n        {\r\n          \"id\": \"cmmjh3lmi0bhj077557au3s1g\",\r\n          \"serialNumber\": \"S000000000001\",\r\n          \"quantity\": {\r\n            \"value\": 10\r\n          },\r\n          \"product\": {\r\n            \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n            \"code\": \"Salt\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"cmmjh3lmm0bhk0775g3cderkm\",\r\n          \"serialNumber\": \"S000000000002\",\r\n          \"quantity\": {\r\n            \"value\": 10\r\n          },\r\n          \"product\": {\r\n            \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n            \"code\": \"Salt\"\r\n          }\r\n        },\r\n        {\r\n          \"id\": \"cmmjh3lmn0bhl0775drxl4069\",\r\n          \"serialNumber\": \"S000000000003\",\r\n          \"quantity\": {\r\n            \"value\": 10\r\n          },\r\n          \"product\": {\r\n            \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n            \"code\": \"Salt\"\r\n          }\r\n        }\r\n      ],\r\n      \"product\": {\r\n        \"id\": \"cmmb58m3i00hn356rbfbatvvq\",\r\n        \"code\": \"Salt\"\r\n      }\r\n    }\r\n  ];\r\n\r\n$components.Screen.fn.mergeContext({ \r\n  \"data\": $param,\r\n  \"tableData\": $param.inventory\r\n})\r\n\r\n)"
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Action": 4,
+                    "Accordion": 1,
+                    "Container": 5,
+                    "Table": 1,
+                    "Table Column": 6,
+                    "Form": 1,
+                    "Select": 1,
+                    "Options": 2
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "H9nNGazNoj"
+                ],
+                "linkedNodes": {}
+              },
+              "H9nNGazNoj": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-end",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "qMC4TL_MJy",
+                  "Ic7UBfGnch"
+                ],
+                "linkedNodes": {}
+              },
+              "qMC4TL_MJy": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "$components.Screen.context.tableData",
+                      "remote": false
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": true,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "detailHeight": 300,
+                  "hideTableHeader": false,
+                  "hideRowWhileDragging": true,
+                  "enableRowDragEntireRow": true
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "H9nNGazNoj",
+                "hidden": false,
+                "nodes": [
+                  "Gw4Bo2-0JT",
+                  "JNoQFEVkux",
+                  "a8vjCwwne-",
+                  "d_ldS1K7sU",
+                  "8Hp1Re_GFQ",
+                  "HsGuluVKMR"
+                ],
+                "linkedNodes": {
+                  "Table1Detail": "08EZIIyjZp"
+                }
+              },
+              "Gw4Bo2-0JT": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Serial Number",
+                  "sortable": true,
+                  "flows": [],
+                  "editable": false,
+                  "dataPath": "serialNumber",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "actions": []
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "JNoQFEVkux": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "product.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "a8vjCwwne-": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "quantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "08EZIIyjZp": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Table1Detail"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "d_ldS1K7sU": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Assign Line",
+                  "format": "action",
+                  "sortable": true,
+                  "actions": [
+                    {
+                      "icon": {
+                        "icon": "list-radio",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "action": [
+                        {
+                          "type": "form",
+                          "title": "Lines",
+                          "fields": [
+                            {
+                              "dataPath": "line",
+                              "padding": 8,
+                              "width": "100%",
+                              "height": "auto",
+                              "validation": {
+                                "required": false
+                              },
+                              "uniqueValidationEnabled": false,
+                              "visible": true,
+                              "type": "options",
+                              "label": "Lines",
+                              "multiselect": false,
+                              "isClearable": true,
+                              "selectAll": true,
+                              "searchPredicate": "contains",
+                              "stateTracking": "id",
+                              "optionLimit": 5,
+                              "optionLimitFlex": 5,
+                              "options": {
+                                "__transform": "(\r\n  $productId := data.product.id;\r\n  $components.Screen.context.data[product.id = $productId].lines.{\r\n    \"label\": number,\r\n    \"id\": id\r\n  }\r\n)",
+                                "__dynamicFields": {
+                                  "payload": null,
+                                  "context": []
+                                },
+                                "__cacheKey": "",
+                                "__remote": false
+                              },
+                              "formElement": "Form1"
+                            }
+                          ],
+                          "transforms": {
+                            "post": "(\r\n  $lineId := result.line;\r\n  $line := $components.Screen.context.data.lines[id = $lineId];\r\n\r\n  $newTableData := $components.Screen.context.tableData.( id = $$.rowData.id? $~>|$|{ \"line\": $line} | : $ );\r\n  $context := $components.Screen.context~>| $ | { \"tableData\": $newTableData} |;\r\n  $components.Screen.fn.setContext($context)\r\n)"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  $wait(200);\r\n  $components.Table1.fn.search()\r\n)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn4"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "HsGuluVKMR": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Line",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "line.number",
+                  "width": "200px"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8Hp1Re_GFQ": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Clear Line",
+                  "format": "action",
+                  "sortable": true,
+                  "actions": [
+                    {
+                      "action": [
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n\r\n  $newTable := $components.Screen.context.tableData.( id = $$.rowData.id? $~>|$| {}, [\"line\"] | : $ );\r\n  $newContext := $components.Screen.context~>| $ | { \"tableData\": $newTable} |;\r\n\r\n  $components.Screen.fn.setContext($newContext)\r\n)"
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  $wait(200);\r\n  $components.Table1.fn.search()\r\n)"
+                        }
+                      ],
+                      "icon": {
+                        "icon": "x",
+                        "color": "error",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "useIconButton": true
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn6"
+                },
+                "parent": "qMC4TL_MJy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CicBu4oOND": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "x",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "(\r\n  $data := {\r\n    \"action\": \"cancel\",\r\n    \"data\": $components.Table1.data\r\n  };\r\n\r\n  $components.Screen.fn.return($data)\r\n)"
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action2"
+                },
+                "parent": "Ic7UBfGnch",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Ic7UBfGnch": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "end",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "H9nNGazNoj",
+                "hidden": false,
+                "nodes": [
+                  "CicBu4oOND",
+                  "wFjY3QQq3K"
+                ],
+                "linkedNodes": {}
+              },
+              "wFjY3QQq3K": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "true in $components.Screen.context.tableData.($isNil(line))",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "(\r\n  $data := {\r\n    \"action\": \"accept\",\r\n    \"data\": $components.Table1.data\r\n  };\r\n\r\n  $components.Screen.fn.return($data)\r\n)"
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action4"
+                },
+                "parent": "Ic7UBfGnch",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmmkz6p1f0fqq0775ffpz02f0",
+      "title": "Allocate Inventory to Lines ",
+      "path": "/materialsManagement/logistics/allocateInventoryToLines",
+      "moduleId": "logistics",
+      "screenId": "allocateInventoryToLines",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

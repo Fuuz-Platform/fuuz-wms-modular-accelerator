@@ -1,0 +1,806 @@
+{
+  "header": {
+    "id": "createInventoryWidget",
+    "name": "Create Inventory Widget",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventory",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmk1jmwgx0wh40775gijc3upb",
+    "number": "0.0.5",
+    "description": "",
+    "screenId": "createInventoryWidget",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 4,
+                    "Form": 1,
+                    "Select": 6,
+                    "Integer": 2,
+                    "Icon": 1,
+                    "Switch": 1,
+                    "Text": 1,
+                    "Flow Button": 1,
+                    "Action Button": 2
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "WdZAhPpr-Z"
+                ],
+                "linkedNodes": {}
+              },
+              "WdZAhPpr-Z": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "Knaz2F8ZDZ"
+                ],
+                "linkedNodes": {}
+              },
+              "Knaz2F8ZDZ": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "WdZAhPpr-Z",
+                "hidden": false,
+                "nodes": [
+                  "XrVVe8t6uW",
+                  "UJ488EfMS2"
+                ],
+                "linkedNodes": {}
+              },
+              "XrVVe8t6uW": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "Knaz2F8ZDZ",
+                "hidden": false,
+                "nodes": [
+                  "cp80FkTDAA",
+                  "3nt8Goimhk",
+                  "n4Bq0ZgBps",
+                  "rMbM4MTrW1",
+                  "SB1icMm5wK",
+                  "elT_kOTkXR",
+                  "KmRTY-aEHo"
+                ],
+                "linkedNodes": {}
+              },
+              "cp80FkTDAA": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Product",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "productId",
+                  "formElement": "Form1",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "product.id",
+                      "product.code"
+                    ]
+                  },
+                  "dataModel": "Product",
+                  "selectFields": [
+                    "code"
+                  ],
+                  "additionalFields": [
+                    "defaultQuantityUnitId"
+                  ]
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select1"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "3nt8Goimhk": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Process",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "processId",
+                  "formElement": "Form1",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "process.id",
+                      "process.code"
+                    ]
+                  },
+                  "dataModel": "Process",
+                  "selectFields": [
+                    "code"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select2"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "SB1icMm5wK": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "start",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [
+                  "dAEBuHTgrE",
+                  "SzRfaRUARE",
+                  "EhRESPDzLI",
+                  "MRiVyOroqc"
+                ],
+                "linkedNodes": {}
+              },
+              "dAEBuHTgrE": {
+                "type": {
+                  "resolvedName": "IntegerInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "40%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "integer",
+                  "label": "Number of Inventory",
+                  "variant": "standard",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "numberOf",
+                  "formElement": "Form1",
+                  "defaultValue": 1
+                },
+                "displayName": "Integer",
+                "custom": {
+                  "elementName": "Integer1"
+                },
+                "parent": "SB1icMm5wK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "EhRESPDzLI": {
+                "type": {
+                  "resolvedName": "IntegerInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "40%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "integer",
+                  "label": "Quantity Per",
+                  "variant": "standard",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "quantity",
+                  "formElement": "Form1"
+                },
+                "displayName": "Integer",
+                "custom": {
+                  "elementName": "Integer2"
+                },
+                "parent": "SB1icMm5wK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "SzRfaRUARE": {
+                "type": {
+                  "resolvedName": "Icon"
+                },
+                "isCanvas": false,
+                "props": {
+                  "icon": {
+                    "icon": "slash-forward",
+                    "color": "primary",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Icon",
+                  "height": "32px",
+                  "width": "32px"
+                },
+                "displayName": "Icon",
+                "custom": {
+                  "elementName": "Icon1"
+                },
+                "parent": "SB1icMm5wK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MRiVyOroqc": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "15%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Shippable",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "shippable",
+                  "formElement": "Form1",
+                  "defaultValue": true
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "SB1icMm5wK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "n4Bq0ZgBps": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Status",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "inventoryStatusId",
+                  "formElement": "Form1",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "status.id",
+                      "status.code"
+                    ]
+                  },
+                  "dataModel": "InventoryStatus",
+                  "selectFields": [
+                    "code"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select3"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "elT_kOTkXR": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Lot",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "lot",
+                  "formElement": "Form1",
+                  "labelPath": "number",
+                  "orderByField": "number",
+                  "query": {
+                    "fields": [
+                      "lot.id",
+                      "lot.number"
+                    ]
+                  },
+                  "dataModel": "Lot",
+                  "selectFields": [
+                    "number"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select4"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KmRTY-aEHo": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Work Order Id",
+                  "variant": "standard",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "workorderId",
+                  "formElement": "Form1"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "UJ488EfMS2": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "Knaz2F8ZDZ",
+                "hidden": false,
+                "nodes": [
+                  "HYrCU9ns1L",
+                  "q987Jt-2W8"
+                ],
+                "linkedNodes": {}
+              },
+              "HYrCU9ns1L": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "xmark",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return()"
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "UJ488EfMS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "q987Jt-2W8": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "floppy-disks",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "createInventory",
+                      "transforms": {
+                        "pre": "(\r\n  $numberOf := $components.Form1.data.numberOf; \r\n  $data := $components.Form1.data~>| $ | {}, [\"numberOf\"] |;\r\n  {\r\n    \"inventory\": [[1..$numberOf].($data)]\r\n  }\r\n  \r\n)",
+                        "post": "$components.Screen.fn.return()"
+                      }
+                    }
+                  ]
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "UJ488EfMS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rMbM4MTrW1": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Storage Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "id",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "storageUnitId",
+                  "formElement": "Form1",
+                  "labelPath": "code",
+                  "orderByField": "id",
+                  "query": {
+                    "fields": [
+                      "storageUnitId.id",
+                      "storageUnitId.id"
+                    ]
+                  },
+                  "dataModel": "StorageUnit",
+                  "selectFields": [
+                    "code",
+                    "storageZone.code"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select6"
+                },
+                "parent": "XrVVe8t6uW",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdqwka8e2uv507758owibniu",
+      "title": "Create Inventory Widget",
+      "path": "/materialsManagement/inventory/createInventoryWidget",
+      "moduleId": "inventory",
+      "screenId": "createInventoryWidget",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

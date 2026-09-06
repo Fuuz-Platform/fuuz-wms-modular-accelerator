@@ -1,0 +1,2297 @@
+{
+  "header": {
+    "id": "loadManagement",
+    "name": "Load Management ",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "orderProcessing",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmoiyyqwj0ffe07752zd1h8kd",
+    "number": "0.0.8",
+    "description": "",
+    "screenId": "loadManagement",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "LoadTable",
+          "tabTitle": "Load Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false,
+                  "screenDataFlowIds": [
+                    "addNewShipmentToLoad"
+                  ]
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 9,
+                    "Action Button": 4,
+                    "Form": 1,
+                    "Table": 2,
+                    "Table Column": 22,
+                    "Text": 13,
+                    "Select": 3,
+                    "Button Group": 1,
+                    "Cards": 1,
+                    "Action": 6,
+                    "Date & Time": 1,
+                    "Menu": 1
+                  },
+                  "module": {
+                    "id": "orderProcessing",
+                    "group": {
+                      "id": "orderFulfillment"
+                    }
+                  },
+                  "dataModel": "Load",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "fxOm1mU5rz",
+                  "UWtyP6cpHj"
+                ],
+                "linkedNodes": {}
+              },
+              "fxOm1mU5rz": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "TERMgmG3G-"
+                ],
+                "linkedNodes": {}
+              },
+              "TERMgmG3G-": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Load",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "fxOm1mU5rz",
+                "hidden": false,
+                "nodes": [
+                  "3CjFALRclA"
+                ],
+                "linkedNodes": {}
+              },
+              "3CjFALRclA": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "TERMgmG3G-",
+                "hidden": false,
+                "nodes": [
+                  "A7YtNGIpS2",
+                  "NG6EkrjWuz",
+                  "4oiBRVN_a0",
+                  "f_35sjCOna",
+                  "MGR0ayvWxI",
+                  "5oTWgtn7wp",
+                  "nJ02KOjV_e",
+                  "95Ffw3Ptk7"
+                ],
+                "linkedNodes": {}
+              },
+              "NG6EkrjWuz": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Number",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "number",
+                  "field": "number",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "number._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4oiBRVN_a0": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Appointment Number",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "appointmentNumber",
+                  "field": "appointmentNumber",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "appointmentNumber._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "f_35sjCOna": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Expedite Code",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "expediteCode",
+                  "field": "expediteCode",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "expediteCode._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MGR0ayvWxI": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Note",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "note",
+                  "field": "note",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "note._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text5"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5oTWgtn7wp": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Trailer Number",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "trailerNumber",
+                  "field": "trailerNumber",
+                  "description": "An identifier for the physical trailer, typically given by the carrier (UPS, FedEx, etc.) in addition to other tracking-related information.",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "trailerNumber._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "nJ02KOjV_e": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Dock Storage Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "dockStorageUnit",
+                  "field": "dockStorageUnit",
+                  "description": "",
+                  "element": "SelectInput",
+                  "dataModel": "StorageUnit",
+                  "labelField": "id",
+                  "labelPath": "id",
+                  "additionalFields": [
+                    "id"
+                  ],
+                  "selectFields": [
+                    "id"
+                  ],
+                  "target": {
+                    "dataPath": "dockStorageUnit.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/siteManagement/siteManagement/storageUnits/\" & data.dockStorageUnit.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "dockStorageUnit.id",
+                      "dockStorageUnit.id"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select1"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "95Ffw3Ptk7": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "3vRIpGvSuo": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "sV1yzqnu4B": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "save",
+                      "title": {
+                        "__transform": "\"Update Load \" & $components.Table1.selectedRows[0].number"
+                      },
+                      "fields": [
+                        {
+                          "label": "Number",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": true,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Load",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "number",
+                                  "dataPath": "number"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "number",
+                          "field": "number",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "label": "Dock Storage Unit",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "dockStorageUnit",
+                          "field": "dockStorageUnit",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "api": "Application",
+                          "dataModel": "StorageUnit",
+                          "labelField": "id",
+                          "labelPath": "id",
+                          "additionalFields": [
+                            "id"
+                          ],
+                          "selectFields": [
+                            "id"
+                          ],
+                          "target": {
+                            "dataPath": "dockStorageUnitId"
+                          },
+                          "linkTarget": {
+                            "__transform": "\"/siteManagement/siteManagement/storageUnits/\" & data.dockStorageUnit.id"
+                          },
+                          "query": {
+                            "fields": [
+                              "dockStorageUnit.id",
+                              "dockStorageUnit.id"
+                            ]
+                          }
+                        },
+                        {
+                          "label": "Shipment Transportation Mode",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "shipmentTransportationMode",
+                          "field": "shipmentTransportationMode",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "api": "Application",
+                          "dataModel": "ShipmentTransportationMode",
+                          "labelField": "name",
+                          "labelPath": "name",
+                          "additionalFields": [
+                            "name"
+                          ],
+                          "selectFields": [
+                            "name"
+                          ],
+                          "target": {
+                            "dataPath": "shipmentTransportationModeId"
+                          },
+                          "linkTarget": {
+                            "__transform": "\"/orderFulfillment/orderTracking/shipmentTransportationModes/\" & data.shipmentTransportationMode.id"
+                          },
+                          "query": {
+                            "fields": [
+                              "shipmentTransportationMode.id",
+                              "shipmentTransportationMode.name"
+                            ]
+                          }
+                        },
+                        {
+                          "label": "Shipping Carrier",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "shippingCarrier",
+                          "field": "shippingCarrier",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "api": "Application",
+                          "dataModel": "ShippingCarrier",
+                          "labelField": "name",
+                          "labelPath": "name",
+                          "additionalFields": [
+                            "name"
+                          ],
+                          "selectFields": [
+                            "name"
+                          ],
+                          "target": {
+                            "dataPath": "shippingCarrierId"
+                          },
+                          "linkTarget": {
+                            "__transform": "\"/orderFulfillment/orderTracking/shippingCarriers/\" & data.shippingCarrier.id"
+                          },
+                          "query": {
+                            "fields": [
+                              "shippingCarrier.id",
+                              "shippingCarrier.name"
+                            ]
+                          }
+                        },
+                        {
+                          "label": "Appointment Number",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "appointmentNumber",
+                          "field": "appointmentNumber",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Expedite Code",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "expediteCode",
+                          "field": "expediteCode",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Freight Terms",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "freightTerms",
+                          "field": "freightTerms",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Pro Number",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "proNumber",
+                          "field": "proNumber",
+                          "description": "",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Tracking Number",
+                          "uniqueValidationEnabled": true,
+                          "validation": {
+                            "required": false,
+                            "unique": {
+                              "api": "Application",
+                              "model": "Load",
+                              "excludeId": true,
+                              "byFields": [
+                                {
+                                  "field": "trackingNumber",
+                                  "dataPath": "trackingNumber"
+                                }
+                              ]
+                            }
+                          },
+                          "dataPath": "trackingNumber",
+                          "field": "trackingNumber",
+                          "description": "An identifier, unique per load, typically given by the carrier (UPS, FedEx, etc.) as a reference number for this load for tracking information.",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Trailer Number",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "trailerNumber",
+                          "field": "trailerNumber",
+                          "description": "An identifier for the physical trailer, typically given by the carrier (UPS, FedEx, etc.) in addition to other tracking-related information.",
+                          "element": "TextInput",
+                          "type": "text"
+                        },
+                        {
+                          "label": "Note",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "note",
+                          "field": "note",
+                          "description": "",
+                          "element": "MarkdownInput",
+                          "type": "markdown"
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "$components.Table1.selectedRows[0]"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateLoad($payload: [LoadUpdatePayloadInput!]!) {\n  mutation: updateLoad(payload: $payload) {\n    id\n    number\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    },\n    \"update\": $$.data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Load \" & $components.Table1.selectedRows.number) : $count($components.Table1.selectedRows) & \" records\") & \" updated successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Update"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "gXpUjIqew8": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Load \" & $components.Table1.selectedRows.number) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteLoad($payload: [LoadDeletePayloadInput!]!) {\n  mutation: deleteLoad(payload: $payload) {\n    id\n    number\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Load \" & $components.Table1.selectedRows.number) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "trash",
+                    "color": "inherit",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "title": "Delete"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MMSxIgbOok": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Load",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "scheduledDepartAt",
+                      "departAt",
+                      "loadStatus.name"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 400,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "Load is a single Shipment, or a collection of shipments. A load is already required for shipments. ",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "UWtyP6cpHj",
+                "hidden": false,
+                "nodes": [
+                  "XG1I3bE6KK",
+                  "GErxKY7YOO",
+                  "7SVbZNdcNc",
+                  "0-EDNiakI9",
+                  "TEkjMEWNB2",
+                  "CwQaRcYEzp",
+                  "ngIudJ5ug3",
+                  "AjDsjCt3Tj",
+                  "Ai_SG7eVxs",
+                  "r_jaWAMlim",
+                  "nCUJUNgeXY",
+                  "-dfjXpsoaT"
+                ],
+                "linkedNodes": {
+                  "Table1Detail": "SPOMr_TgYc"
+                }
+              },
+              "XG1I3bE6KK": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "number",
+                  "dataPath": "number",
+                  "description": "",
+                  "linkTarget": {
+                    "__transform": "\"/orderFulfillment/orderProcessing/loads/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ngIudJ5ug3": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Appointment Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "appointmentNumber",
+                  "dataPath": "appointmentNumber",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "AjDsjCt3Tj": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Expedite Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "expediteCode",
+                  "dataPath": "expediteCode",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "r_jaWAMlim": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Note",
+                  "format": "markdown",
+                  "sortable": true,
+                  "field": "note",
+                  "dataPath": "note",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Ai_SG7eVxs": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Trailer Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "trailerNumber",
+                  "dataPath": "trailerNumber",
+                  "description": "An identifier for the physical trailer, typically given by the carrier (UPS, FedEx, etc.) in addition to other tracking-related information."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn8"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0-EDNiakI9": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Dock",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "dockStorageUnit.code",
+                  "dataPath": "dockStorageUnit.code",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn9"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "nCUJUNgeXY": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "Load"
+                },
+                "displayName": "Custom Column",
+                "custom": {
+                  "elementName": "Custom Column1"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "TEkjMEWNB2": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Scheduled Depart At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "dataPath": "scheduledDepartAt",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "scheduledDepartAt"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn12"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CwQaRcYEzp": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Depart At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "dataPath": "departAt",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "departAt"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn13"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "SPOMr_TgYc": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Table1Detail"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [
+                  "04WVn6fVbK",
+                  "PBA8mZThjg"
+                ],
+                "linkedNodes": {}
+              },
+              "UWtyP6cpHj": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "MMSxIgbOok"
+                ],
+                "linkedNodes": {}
+              },
+              "A7YtNGIpS2": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "3CjFALRclA",
+                "hidden": false,
+                "nodes": [
+                  "3vRIpGvSuo",
+                  "_njie4zVm0",
+                  "sV1yzqnu4B",
+                  "Ys1rXItLEk",
+                  "gXpUjIqew8",
+                  "reLi0OnJmh"
+                ],
+                "linkedNodes": {}
+              },
+              "PBA8mZThjg": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "SPOMr_TgYc",
+                "hidden": false,
+                "nodes": [
+                  "5DdyRInp3P"
+                ],
+                "linkedNodes": {}
+              },
+              "5DdyRInp3P": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "sequence"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Shipment",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"loadId\":{\r\n      \"_eq\": $parent.data.id\r\n    }\r\n  },\r\n  \"orderBy\":[\r\n    {\r\n      \"field\": \"sequence\",\r\n      \"direction\": \"desc\"\r\n    }\r\n  ]\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": true,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": true,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Shipment represents a single End Point - Customer - Supplier to which the goods contained within the shipment lines will be delivered to.\n\nA single shipment record links to 1 Order.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table2"
+                },
+                "parent": "PBA8mZThjg",
+                "hidden": false,
+                "nodes": [
+                  "f2XzmPWPeV",
+                  "Xku4hyQPYM",
+                  "DALjh8XYGx",
+                  "9QUMe3m1OE",
+                  "vX6JDgQDCK",
+                  "6ZRHSIKZlQ"
+                ],
+                "linkedNodes": {}
+              },
+              "Xku4hyQPYM": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Shipment",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn14"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9QUMe3m1OE": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "order.number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "order.id",
+                      "order.number"
+                    ]
+                  },
+                  "field": "order.number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn15"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "6ZRHSIKZlQ": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Ship To",
+                  "format": "address",
+                  "sortable": true,
+                  "dataPath": "businessPartnerAddress.address",
+                  "description": "Structured address object",
+                  "query": {
+                    "fields": [
+                      "businessPartnerAddress.address.lines",
+                      "businessPartnerAddress.address.city",
+                      "businessPartnerAddress.address.state",
+                      "businessPartnerAddress.address.postalCode",
+                      "businessPartnerAddress.address.country"
+                    ]
+                  },
+                  "field": "businessPartnerAddress.address"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn16"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "DALjh8XYGx": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Sequence",
+                  "format": "integer",
+                  "sortable": true,
+                  "dataPath": "sequence",
+                  "description": "The load sequence - meaning, if the load must be handled in FIFO basis, the shipments for the load must be organized that way as well. using this sequence field.\n\nThis field is required and defaults to 1000, lower numbers are presumed to be loaded ahead of larger numbers.\n\nThis correlates to the a stop sequence, but in reverse order.",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "sequence"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn17"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "k9oKGVBN7U": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "48px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$isNotNilOrEmpty( $parent.data.departAt )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": true,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateShipment($payload: [ShipmentUpdatePayloadInput!]!) {\n  updateShipment(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "(\r\n  $numberOfRows := $count($components.Table2.data);\r\n\r\n  {\r\n    \"payload\":[\r\n      $components.Table2.data#$i.{\r\n        \"where\":{ \"id\": id },\r\n        \"update\": { \"sequence\": $numberOfRows - $i }\r\n      }\r\n    ]\r\n  }\r\n)"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table2.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "floppy-disks",
+                    "color": "success",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action2"
+                },
+                "parent": "04WVn6fVbK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "vX6JDgQDCK": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Tracking Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "trackingNumber",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "trackingNumber"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn18"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "f2XzmPWPeV": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": " ",
+                  "format": "action",
+                  "sortable": true,
+                  "actions": [
+                    {
+                      "icon": {
+                        "icon": "pencil",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "useIconButton": true,
+                      "disabled": {
+                        "__transform": "$isNotNilOrEmpty( $parent.data.departAt )",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "action": [
+                        {
+                          "type": "screenDialog",
+                          "screenId": "editShipmentWidget",
+                          "screenName": "EditShipment",
+                          "screenParams": {
+                            "__transform": "{\r\n  \"shipmentId\": data.id,\r\n  \"loadId\": $parent.data.id\r\n}",
+                            "__dynamicFields": {
+                              "payload": null,
+                              "context": []
+                            },
+                            "__cacheKey": "",
+                            "__remote": false
+                          },
+                          "title": "Shipment",
+                          "canvasDialog": {
+                            "maxWidth": "xl",
+                            "width": "xl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "right-left",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "title": "Move Shipment to New Load",
+                      "action": [
+                        {
+                          "type": "form",
+                          "fields": [
+                            {
+                              "validation": {
+                                "required": true
+                              },
+                              "uniqueValidationEnabled": false,
+                              "visible": true,
+                              "type": "select",
+                              "label": "Load",
+                              "dialogMode": "never",
+                              "multiselect": false,
+                              "isClearable": true,
+                              "selectAll": true,
+                              "searchPredicate": "contains",
+                              "api": "Application",
+                              "stateTracking": "ID",
+                              "optionLimit": 5,
+                              "optionLimitFlex": 5,
+                              "alwaysReloadOptions": false,
+                              "dataPath": "loadId",
+                              "labelPath": "number",
+                              "orderByField": "number",
+                              "query": {
+                                "fields": [
+                                  "load.id",
+                                  "load.number"
+                                ]
+                              },
+                              "dataModel": "Load",
+                              "selectFields": [
+                                "number"
+                              ],
+                              "additionalFields": [],
+                              "additionalFilter": {
+                                "_and": [
+                                  {
+                                    "loadStatusId": {
+                                      "_in": [
+                                        "new",
+                                        "packed"
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ],
+                          "title": "Load to Move Shipment to."
+                        },
+                        {
+                          "type": "mutation",
+                          "api": "Application",
+                          "mutation": "mutation UpdateShipment($payload: [ShipmentUpdatePayloadInput!]!) {\n  updateShipment(payload: $payload) {\n    id\n  }\n}",
+                          "transforms": {
+                            "pre": "{\r\n  \"payload\":[\r\n    {\r\n      \"where\":{ \"id\": rowData.id },\r\n      \"update\": {\r\n        \"loadId\": data.loadId\r\n      }\r\n    }\r\n  ]\r\n}"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "$components.Table2.fn.search()"
+                        }
+                      ],
+                      "disabled": {
+                        "__transform": "$isNotNilOrEmpty( $parent.data.departAt )",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      }
+                    },
+                    {
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "trash",
+                        "color": "error",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "action": [
+                        {
+                          "type": "flow",
+                          "flowId": "deleteShipment",
+                          "transforms": {
+                            "pre": "{\r\n  \"shipmentId\": data.id\r\n}"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "$components.Table2.fn.search()"
+                        }
+                      ],
+                      "disabled": {
+                        "__transform": "$isNotNilOrEmpty( $parent.data.departAt )",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      }
+                    }
+                  ],
+                  "width": "175px"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn19"
+                },
+                "parent": "5DdyRInp3P",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "04WVn6fVbK": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "paddingLeft": "16px",
+                    "paddingRight": "8px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "SPOMr_TgYc",
+                "hidden": false,
+                "nodes": [
+                  "PnIIlsyDgR",
+                  "crErOxd6ka",
+                  "k9oKGVBN7U"
+                ],
+                "linkedNodes": {}
+              },
+              "PnIIlsyDgR": {
+                "type": {
+                  "resolvedName": "RichText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "width": "auto",
+                  "height": "auto",
+                  "content": {
+                    "blocks": [
+                      {
+                        "key": "cl9qaup740002356nczbdvi6q",
+                        "text": "Shipments",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [
+                          {
+                            "offset": 0,
+                            "length": 9,
+                            "style": "fontfamily-Roboto"
+                          },
+                          {
+                            "offset": 0,
+                            "length": 9,
+                            "style": "fontsize-16"
+                          }
+                        ],
+                        "entityRanges": [],
+                        "data": {}
+                      }
+                    ],
+                    "entityMap": {}
+                  }
+                },
+                "displayName": "Text",
+                "custom": {},
+                "parent": "04WVn6fVbK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Ys1rXItLEk": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1 or $not($components.Table1.selectedRows.loadStatus.id = \"packed\")",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "shipShipment",
+                      "transforms": {
+                        "pre": "{ \"loadId\": $components.Table1.selectedRows.id }"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "truck-fast",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Ship"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action4"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7SVbZNdcNc": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Status",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "loadStatus.name",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "loadStatus.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn20"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "crErOxd6ka": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "48px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$isNotNilOrEmpty( $parent.data.departAt )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": true,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "addNewShipmentToLoad",
+                      "transforms": {
+                        "pre": "{ \"loadId\": $parent.data.id}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table2.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus",
+                    "color": "success",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action5"
+                },
+                "parent": "04WVn6fVbK",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_njie4zVm0": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "fields": [
+                        {
+                          "label": "Number",
+                          "name": "number",
+                          "type": "text",
+                          "dataPath": "number"
+                        },
+                        {
+                          "validation": {
+                            "required": false
+                          },
+                          "uniqueValidationEnabled": false,
+                          "type": "select",
+                          "label": "SCAC",
+                          "dialogMode": "never",
+                          "multiselect": false,
+                          "isClearable": true,
+                          "selectAll": true,
+                          "searchPredicate": "contains",
+                          "api": "Application",
+                          "stateTracking": "id",
+                          "optionLimit": 5,
+                          "optionLimitFlex": 5,
+                          "alwaysReloadOptions": false,
+                          "additionalFilter": {},
+                          "dataPath": "scacId",
+                          "field": "standardCarierAlphaCode",
+                          "description": "",
+                          "element": "SelectInput",
+                          "dataModel": "StandardCarierAlphaCode",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "additionalFields": [
+                            "id",
+                            "code"
+                          ],
+                          "selectFields": [
+                            "name",
+                            "code"
+                          ],
+                          "predicate": "_eq",
+                          "query": {
+                            "fields": [
+                              "StandardCarierAlphaCode.id"
+                            ]
+                          },
+                          "name": "scac"
+                        },
+                        {
+                          "label": "Appointment Number",
+                          "name": "appointmentNumber",
+                          "type": "text",
+                          "dataPath": "appointmentNumber"
+                        },
+                        {
+                          "label": "Trailer Number",
+                          "name": "trailerNumber",
+                          "type": "text",
+                          "dataPath": "trailerNumber"
+                        },
+                        {
+                          "label": "Seal number",
+                          "name": "sealNumber",
+                          "type": "text",
+                          "dataPath": "sealNumber"
+                        },
+                        {
+                          "validation": {
+                            "required": false
+                          },
+                          "uniqueValidationEnabled": false,
+                          "type": "select",
+                          "label": "Dock Storage Unit",
+                          "dialogMode": "never",
+                          "multiselect": false,
+                          "isClearable": true,
+                          "selectAll": true,
+                          "searchPredicate": "contains",
+                          "api": "Application",
+                          "stateTracking": "id",
+                          "optionLimit": 5,
+                          "optionLimitFlex": 5,
+                          "alwaysReloadOptions": false,
+                          "additionalFilter": {},
+                          "dataPath": "dockStorageUnitId",
+                          "field": "dockStorageUnit",
+                          "description": "",
+                          "element": "SelectInput",
+                          "dataModel": "StorageUnit",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "additionalFields": [
+                            "id",
+                            "code"
+                          ],
+                          "selectFields": [
+                            "code",
+                            "storageZone.code"
+                          ],
+                          "predicate": "_eq",
+                          "query": {
+                            "fields": [
+                              "dockStorageUnit.id",
+                              "dockStorageUnit.id"
+                            ]
+                          },
+                          "name": "dockStorageUnit"
+                        },
+                        {
+                          "validation": {
+                            "required": false
+                          },
+                          "uniqueValidationEnabled": false,
+                          "type": "select",
+                          "label": "Transportation Mode",
+                          "dialogMode": "never",
+                          "multiselect": false,
+                          "isClearable": true,
+                          "selectAll": true,
+                          "searchPredicate": "contains",
+                          "api": "Application",
+                          "stateTracking": "id",
+                          "optionLimit": 5,
+                          "optionLimitFlex": 5,
+                          "alwaysReloadOptions": false,
+                          "additionalFilter": {},
+                          "dataPath": "shipmentTransportationModeId",
+                          "field": "shipmentTransportationMode",
+                          "description": "",
+                          "element": "SelectInput",
+                          "dataModel": "ShipmentTransportationMode",
+                          "labelField": "name",
+                          "labelPath": "name",
+                          "additionalFields": [
+                            "id",
+                            "name"
+                          ],
+                          "selectFields": [
+                            "id",
+                            "name"
+                          ],
+                          "predicate": "_eq",
+                          "name": "shipmentTransportationModeId"
+                        },
+                        {
+                          "validation": {
+                            "required": false
+                          },
+                          "uniqueValidationEnabled": false,
+                          "visible": true,
+                          "type": "datetime",
+                          "label": "Appointment At",
+                          "variant": "standard",
+                          "name": "appointmentAt",
+                          "dataPath": "appointmentAt"
+                        },
+                        {
+                          "validation": {
+                            "required": false
+                          },
+                          "uniqueValidationEnabled": false,
+                          "visible": true,
+                          "type": "datetime",
+                          "label": "Scheduled Depart At",
+                          "variant": "standard",
+                          "name": "scheduledDepartAt",
+                          "dataPath": "scheduledDepartAt"
+                        },
+                        {
+                          "label": "Note",
+                          "name": "note",
+                          "type": "markdown",
+                          "dataPath": "note"
+                        }
+                      ],
+                      "title": "Add Shell Load"
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateLoad($payload: [LoadCreatePayloadInput!]!) {\n  createLoad(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\r\n  \"payload\":[\r\n    {\r\n      \"create\": data\r\n    }\r\n  ]\r\n}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "message": "Load Created"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Create"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "editor": {
+                    "category": "Buttons",
+                    "description": "Create button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Create Button which open form.",
+                    "icon": "plus",
+                    "requiresTable": true
+                  },
+                  "elementName": "Action6"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "reLi0OnJmh": {
+                "type": {
+                  "resolvedName": "MenuButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 0,
+                  "isFlow": false,
+                  "actions": [
+                    {
+                      "text": "BOLs"
+                    },
+                    {
+                      "text": "Certificate of Conformance"
+                    },
+                    {
+                      "text": "Commercial Invoice"
+                    }
+                  ],
+                  "elementName": "Menu Button",
+                  "height": "48px",
+                  "width": "48px",
+                  "menuIcon": "file-lines",
+                  "iconSize": "medium",
+                  "title": "Docs"
+                },
+                "displayName": "Menu",
+                "custom": {
+                  "elementName": "Menu1"
+                },
+                "parent": "A7YtNGIpS2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-dfjXpsoaT": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Seal Number",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "sealNumber",
+                  "dataPath": "sealNumber",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn21"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GErxKY7YOO": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Scac",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "scac.code",
+                  "dataPath": "scac.code",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn22"
+                },
+                "parent": "MMSxIgbOok",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmmtm5dze04mo06756qbrci8p",
+      "title": "Load Management ",
+      "path": "/orderFulfillment/orderProcessing/loads",
+      "moduleId": "orderProcessing",
+      "screenId": "loadManagement",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

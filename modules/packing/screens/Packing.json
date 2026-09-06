@@ -1,0 +1,4657 @@
+{
+  "header": {
+    "id": "packing",
+    "name": "Packing",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "packing",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrt8yrtf02ai013l9eiddukw",
+    "number": "0.0.6",
+    "description": "Update HU Tables so there wouldn't be overflow and added a background to the back and pack complete button container.",
+    "screenId": "packing",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false,
+                  "pageLoadDataFlowIds": [
+                    "packingWebFlow"
+                  ],
+                  "screenDataFlowIds": [
+                    "packingWebFlow"
+                  ]
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 58,
+                    "Action": 37,
+                    "Button Group": 9,
+                    "Icon": 1,
+                    "Text": 21,
+                    "Select": 9,
+                    "GraphQL Where Input": 1,
+                    "Form": 11,
+                    "Resizable Panel": 2,
+                    "Table Column": 173,
+                    "Table": 38,
+                    "Scan": 2,
+                    "Options": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "w4RfrBD9yB",
+                  "AsJ1E-U8IV"
+                ],
+                "linkedNodes": {}
+              },
+              "w4RfrBD9yB": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "OrderContainer"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "Drxd-8Ib5K",
+                  "wEhfl216J8"
+                ],
+                "linkedNodes": {}
+              },
+              "dv1-MpDSdy": {
+                "type": {
+                  "resolvedName": "ResizablePanelLayout"
+                },
+                "isCanvas": true,
+                "props": {
+                  "handle": "right",
+                  "toggleHotkey": "",
+                  "defaultSize": 350,
+                  "axis": false,
+                  "minSize": 0,
+                  "maxSize": 800
+                },
+                "displayName": "Resizable Panel",
+                "custom": {
+                  "elementName": "ResizablePanel1"
+                },
+                "parent": "Drxd-8Ib5K",
+                "hidden": false,
+                "nodes": [
+                  "-I5bmLV8fK",
+                  "tCatQhcicI"
+                ],
+                "linkedNodes": {}
+              },
+              "-I5bmLV8fK": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "space-evenly",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "OrderFormContainer"
+                },
+                "parent": "dv1-MpDSdy",
+                "hidden": false,
+                "nodes": [
+                  "3ytPPxqh7O"
+                ],
+                "linkedNodes": {}
+              },
+              "PVdX9mpqML": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 0,
+                  "width": "75%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "number",
+                      "orderStatus.code"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Order",
+                    "parameters": "{\n  \"filter\":{\n    \"_and\": [\n      {\"active\":{\n        \"_eq\": true\n        }\n      },\n      {\n        \"loadId\": {\n          \"_isNull\": false\n        }\n      },\n       {\n        \"orderStatusId\": {\n          \"_in\": [\"partialPick\", \"picked\"]\n        }\n       }\n    ]\n  }\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false,
+                  "filterFormName": "OrderForm",
+                  "tableName": "Sales Orders"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "OrderTable"
+                },
+                "parent": "Drxd-8Ib5K",
+                "hidden": false,
+                "nodes": [
+                  "Km7CUhcAiw",
+                  "SbKqCL7kNO",
+                  "nJEwcBomWI",
+                  "1v849dkRSy"
+                ],
+                "linkedNodes": {}
+              },
+              "Km7CUhcAiw": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Action",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "width": "75px",
+                  "actions": [
+                    {
+                      "title": "Pack",
+                      "text": "Pack",
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "box",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "buttonColor": "primary",
+                      "action": [
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  /* get and set the id to the screen context */\r\n  $id := $.rowData.id;\r\n  $components.Screen.fn.setContext({\"id\": $id});\r\n  $wait(500);\r\n\r\n  /* show/hide containers */\r\n  $components.OrderTableContainer.fn.hide();\r\n  $components.OrderPackContainer.fn.show();\r\n\r\n  /* refresh data using the screen context id */\r\n  $components.OrderHeaderForm.fn.loadData();\r\n  $components.OrderPackTable.fn.search();\r\n  $components.OrderHuTable.fn.search()\r\n)"
+                        }
+                      ]
+                    }
+                  ],
+                  "editable": false
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "PVdX9mpqML",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "SbKqCL7kNO": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn12"
+                },
+                "parent": "PVdX9mpqML",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "nJEwcBomWI": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order Status",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderStatus.code",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "orderStatus.id",
+                      "orderStatus.code"
+                    ]
+                  },
+                  "field": "orderStatus.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn13"
+                },
+                "parent": "PVdX9mpqML",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "3ytPPxqh7O": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Order",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "readPreference": "primaryPreferred",
+                    "disableDataChangeIndicator": false,
+                    "fields": []
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "OrderForm"
+                },
+                "parent": "-I5bmLV8fK",
+                "hidden": false,
+                "nodes": [
+                  "Wt97I-dubM"
+                ],
+                "linkedNodes": {}
+              },
+              "Wt97I-dubM": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "430%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "3ytPPxqh7O",
+                "hidden": false,
+                "nodes": [
+                  "dfrJKCxtDd",
+                  "iOUNb_ACi5",
+                  "iY2uoi6h3I"
+                ],
+                "linkedNodes": {}
+              },
+              "dfrJKCxtDd": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "50%",
+                  "height": "75px",
+                  "verticalOrientation": false
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup4"
+                },
+                "parent": "Wt97I-dubM",
+                "hidden": false,
+                "nodes": [
+                  "K_GL03leVb"
+                ],
+                "linkedNodes": {}
+              },
+              "K_GL03leVb": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": true,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.OrderTable.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "SEARCH",
+                  "text": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action4"
+                },
+                "parent": "dfrJKCxtDd",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "iOUNb_ACi5": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Number",
+                  "variant": "outlined",
+                  "size": "medium",
+                  "formElement": "filterForm",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": "number._contains"
+                  },
+                  "field": "number",
+                  "predicate": "_contains",
+                  "description": ""
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text5"
+                },
+                "parent": "Wt97I-dubM",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "iY2uoi6h3I": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Order Status",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "formElement": "OrderForm",
+                  "dataPath": "orderStatusId",
+                  "description": "",
+                  "field": "orderStatusId",
+                  "target": {
+                    "dataPath": "orderStatusId._eq"
+                  },
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "orderStatusId.id",
+                      "orderStatusId.code"
+                    ]
+                  },
+                  "dataModel": "OrderStatus",
+                  "selectFields": [
+                    "code",
+                    "description"
+                  ],
+                  "additionalFields": [],
+                  "predicate": "_eq",
+                  "additionalFilter": {
+                    "_and": [
+                      {
+                        "id": {
+                          "_in": [
+                            "picked",
+                            "partialPick"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select5"
+                },
+                "parent": "Wt97I-dubM",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "tCatQhcicI": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Order",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "readPreference": "primaryPreferred",
+                    "disableDataChangeIndicator": false,
+                    "fields": []
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form3"
+                },
+                "parent": "dv1-MpDSdy",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "AsJ1E-U8IV": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "LoadContainer"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "j8xmVV3zd2",
+                  "DZ6_1KS_uu"
+                ],
+                "linkedNodes": {}
+              },
+              "CIVm-8gp9d": {
+                "type": {
+                  "resolvedName": "ResizablePanelLayout"
+                },
+                "isCanvas": true,
+                "props": {
+                  "handle": "right",
+                  "toggleHotkey": "",
+                  "defaultSize": 350,
+                  "axis": false,
+                  "minSize": 0,
+                  "maxSize": 800
+                },
+                "displayName": "Resizable Panel",
+                "custom": {
+                  "elementName": "ResizablePanel2"
+                },
+                "parent": "j8xmVV3zd2",
+                "hidden": false,
+                "nodes": [
+                  "BtNSYdwGrS",
+                  "TlL-mkuKbz"
+                ],
+                "linkedNodes": {}
+              },
+              "BtNSYdwGrS": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "space-evenly",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "LoadFormContainer"
+                },
+                "parent": "CIVm-8gp9d",
+                "hidden": false,
+                "nodes": [
+                  "sHKQeMSA2u"
+                ],
+                "linkedNodes": {}
+              },
+              "sHKQeMSA2u": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Load",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "readPreference": "primaryPreferred",
+                    "disableDataChangeIndicator": false,
+                    "fields": []
+                  },
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Load is a single Shipment, or a collection of shipments. A load is already required for shipments."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "LoadForm"
+                },
+                "parent": "BtNSYdwGrS",
+                "hidden": false,
+                "nodes": [
+                  "UiwT09GIxV"
+                ],
+                "linkedNodes": {}
+              },
+              "UiwT09GIxV": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "center",
+                  "width": "100%",
+                  "height": "430%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container13"
+                },
+                "parent": "sHKQeMSA2u",
+                "hidden": false,
+                "nodes": [
+                  "hwv97EHDAr",
+                  "QBmYr4Okzq",
+                  "NatbQDOU-d"
+                ],
+                "linkedNodes": {}
+              },
+              "hwv97EHDAr": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "50%",
+                  "height": "75px",
+                  "verticalOrientation": false
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup7"
+                },
+                "parent": "UiwT09GIxV",
+                "hidden": false,
+                "nodes": [
+                  "k1JpURjWxq"
+                ],
+                "linkedNodes": {}
+              },
+              "k1JpURjWxq": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": true,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.LoadTable.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "SEARCH",
+                  "text": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action7"
+                },
+                "parent": "hwv97EHDAr",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QBmYr4Okzq": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Number",
+                  "variant": "outlined",
+                  "size": "medium",
+                  "formElement": "filterForm",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": "number._contains"
+                  },
+                  "field": "number",
+                  "predicate": "_contains",
+                  "description": ""
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "UiwT09GIxV",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "TlL-mkuKbz": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Order",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "readPreference": "primaryPreferred",
+                    "disableDataChangeIndicator": false,
+                    "fields": []
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form6"
+                },
+                "parent": "CIVm-8gp9d",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ZPH_6pgObw": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 0,
+                  "width": "75%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "number",
+                      "loadStatus.name"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Load",
+                    "parameters": "{\n  \"filter\":{\n    \"_and\": [\n      {\"active\":{\n        \"_eq\": true\n        }\n      }\n    ]\n  }\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Load is a single Shipment, or a collection of shipments. A load is already required for shipments.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false,
+                  "filterFormName": "LoadForm",
+                  "tableName": "Load"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "LoadTable"
+                },
+                "parent": "j8xmVV3zd2",
+                "hidden": false,
+                "nodes": [
+                  "x536Dpa2Xj",
+                  "QToJ96xcKB",
+                  "c9SKjl1uop"
+                ],
+                "linkedNodes": {}
+              },
+              "x536Dpa2Xj": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Action",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "width": "75px",
+                  "actions": [
+                    {
+                      "title": "Pack",
+                      "text": "Pack",
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "box",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "buttonColor": "primary",
+                      "action": [
+                        {
+                          "type": "transformation",
+                          "transformation": "(\r\n  /* get and set the id to the screen context */\r\n  $id := $.rowData.id;\r\n  $components.Screen.fn.setContext({\"id\": $id});\r\n  $wait(500);\r\n\r\n  /* show/hide containers */\r\n  $components.LoadTableContainer.fn.hide();\r\n  $components.LoadPackContainer.fn.show();\r\n\r\n  /* refresh data using the screen context id */\r\n  $components.LoadHeaderForm.fn.loadData();\r\n  $components.LoadPackTable.fn.search();\r\n  $components.LoadHuTable.fn.search()\r\n)\r\n"
+                        }
+                      ]
+                    }
+                  ],
+                  "editable": false
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn14"
+                },
+                "parent": "ZPH_6pgObw",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QToJ96xcKB": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn15"
+                },
+                "parent": "ZPH_6pgObw",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "c9SKjl1uop": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Load Status",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "loadStatus.name",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "loadStatus.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn16"
+                },
+                "parent": "ZPH_6pgObw",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "NatbQDOU-d": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Load Status",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "dataPath": "loadStatusId",
+                  "description": "",
+                  "field": "loadStatusId",
+                  "target": {
+                    "dataPath": "loadStatusId._eq"
+                  },
+                  "formElement": "LoadForm",
+                  "labelPath": "name",
+                  "orderByField": "id",
+                  "query": {
+                    "fields": [
+                      "loadStatusId.id",
+                      "loadStatusId.id"
+                    ]
+                  },
+                  "dataModel": "LoadStatus",
+                  "selectFields": [
+                    "name",
+                    "description"
+                  ],
+                  "additionalFields": [],
+                  "predicate": "_eq",
+                  "defaultValue": "Picked"
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select9"
+                },
+                "parent": "UiwT09GIxV",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wEhfl216J8": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "OrderPackContainer"
+                },
+                "parent": "w4RfrBD9yB",
+                "hidden": false,
+                "nodes": [
+                  "jl_YKQknzi",
+                  "Osd9fye7Nw",
+                  "iEsQob-Hgw"
+                ],
+                "linkedNodes": {}
+              },
+              "jl_YKQknzi": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "75%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container22"
+                },
+                "parent": "wEhfl216J8",
+                "hidden": false,
+                "nodes": [
+                  "_o40pdZo--",
+                  "3VvnVyrirY"
+                ],
+                "linkedNodes": {}
+              },
+              "_o40pdZo--": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "20%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container18"
+                },
+                "parent": "jl_YKQknzi",
+                "hidden": false,
+                "nodes": [
+                  "6LgLcSVRph"
+                ],
+                "linkedNodes": {}
+              },
+              "6LgLcSVRph": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "primary",
+                  "customBackground": "#fbd197",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container17"
+                },
+                "parent": "_o40pdZo--",
+                "hidden": false,
+                "nodes": [
+                  "UAWumGUsGz"
+                ],
+                "linkedNodes": {}
+              },
+              "3VvnVyrirY": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "80%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "customBackground": "#d7fdd6",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container21"
+                },
+                "parent": "jl_YKQknzi",
+                "hidden": false,
+                "nodes": [
+                  "Hee5IO6uPP",
+                  "d5o4PKUFXJ"
+                ],
+                "linkedNodes": {}
+              },
+              "Hee5IO6uPP": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "primary",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container20"
+                },
+                "parent": "3VvnVyrirY",
+                "hidden": false,
+                "nodes": [
+                  "eaO8WslC3p",
+                  "NYcvf7X5lK",
+                  "zsm3E-ewfJ"
+                ],
+                "linkedNodes": {}
+              },
+              "eaO8WslC3p": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "55%",
+                  "height": "10%",
+                  "disabled": false,
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "printBoxContentLabel",
+                      "transforms": {
+                        "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $components.HandlingUnitTable.data[-1].id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "(\n  $components.HandlingUnitTable.fn.search();\n  $components.Action19.fn.execute();\n)",
+                      "transforms": {}
+                    }
+                  ],
+                  "icon": {
+                    "icon": "",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "print Handling Unit"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action10"
+                },
+                "parent": "Hee5IO6uPP",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "NYcvf7X5lK": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "10%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "createHandlingUnitWebFlow",
+                      "transforms": {
+                        "pre": "{\r\n  \"orderId\": $components.Screen.context.id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "flow",
+                      "flowId": "printBoxContentLabel",
+                      "transforms": {
+                        "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $components.HandlingUnitTable.data[-1].id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "(\n  $components.OrderHuTable.fn.search()\n)"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "New Handling Unit"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action11"
+                },
+                "parent": "Hee5IO6uPP",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "zsm3E-ewfJ": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 0,
+                  "width": "100%",
+                  "height": "90%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "barcode",
+                      "handlingUnitType.name"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "HandlingUnit",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"load\":{\r\n      \"orders\":{\r\n        \"_some\":{\r\n          \"id\":{\r\n            \"_eq\": $components.Screen.context.id\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 300,
+                  "hideTableHeader": true,
+                  "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": true,
+                  "tableName": "Order Handling Units"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "OrderHuTable"
+                },
+                "parent": "Hee5IO6uPP",
+                "hidden": false,
+                "nodes": [
+                  "1pWsnrdc77",
+                  "--mPFzuYec",
+                  "T4uaBx-LnN"
+                ],
+                "linkedNodes": {
+                  "Table4Detail": "0Qz637bSA0",
+                  "OrderHuTableDetail": "hFa4SRQAGB"
+                }
+              },
+              "1pWsnrdc77": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Handling Unit Barcode",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "barcode",
+                  "description": "The barcode field is a full string typically for a 2D barcode of this handling unit. This field must be UNIQUE for all ACTIVE handling units.",
+                  "query": {},
+                  "field": "barcode",
+                  "width": "175%",
+                  "style": {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "background": "#abef95"
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn17"
+                },
+                "parent": "zsm3E-ewfJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "T4uaBx-LnN": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Label",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "actions": [
+                    {
+                      "title": "Print Box Content Label",
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "print",
+                        "color": "primary",
+                        "variant": "solid",
+                        "size": "large"
+                      },
+                      "action": [
+                        {
+                          "type": "flow",
+                          "message": "Label Printed",
+                          "flowId": "printBoxContentLabel",
+                          "transforms": {
+                            "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $.rowData.id\r\n}"
+                          }
+                        },
+                        {
+                          "type": "navigation",
+                          "navigationType": "Document",
+                          "documentContent": {
+                            "__transform": "$.documentContent"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn18"
+                },
+                "parent": "zsm3E-ewfJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0Qz637bSA0": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container19"
+                },
+                "parent": "zsm3E-ewfJ",
+                "hidden": false,
+                "nodes": [
+                  "D441-Z9Qpu"
+                ],
+                "linkedNodes": {}
+              },
+              "D441-Z9Qpu": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "250px",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "[\n\tedges.node\n\t\t~> |$|{\n\t\t\t\"order\": pickStepInventories.edges.node.pickStep.pick.orders.edges.node.number,\n\t\t\t\"colour\": \"#0bde1d\"\n\t\t}|\n]",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "orderId",
+                      "pickStepInventories.edges.node.pickStep.pick.orders.edges.node.number"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Inventory",
+                    "parameters": "{\n\t\"filter\": {\n\t\t\"handlingUnitId\": {\n\t\t\t\"_in\": [$parent.data.id]\n\t\t}\n\t}\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Inventory Model - Data changes are tracked for 25 Years.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table3"
+                },
+                "parent": "0Qz637bSA0",
+                "hidden": false,
+                "nodes": [
+                  "8Ko02oqU6D",
+                  "tynFvotcu6",
+                  "q7UPOpu69H",
+                  "WrBgy3Mncc"
+                ],
+                "linkedNodes": {}
+              },
+              "8Ko02oqU6D": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Change HU ",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "action",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": []
+                  },
+                  "width": "100px",
+                  "actions": [
+                    {
+                      "title": "Update HU",
+                      "text": "HU",
+                      "icon": {
+                        "icon": "right-left",
+                        "color": "primary",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "useIconButton": true,
+                      "action": [
+                        {
+                          "type": "screenDialog",
+                          "flowId": "assignHanldingUnit",
+                          "screenId": "selectHandlingUnit",
+                          "title": "Select Handling Unit",
+                          "screenName": "Select Handling Unit",
+                          "screenParams": {
+                            "__transform": "{\r\n  \"inventoryId\": $.rowData.id,\r\n  \"orderId\": $components.Screen.context.orderId,\r\n   \"load\": $components.Form1.data.number,\r\n  \"loadId\": $components.Screen.context.loadId\r\n}",
+                            "__dynamicFields": {
+                              "payload": null,
+                              "context": []
+                            },
+                            "__cacheKey": "",
+                            "__remote": false
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "($components.OrderDetailsTable.fn.search();\n$components.HandlingUnitTable.fn.search();\n)"
+                        }
+                      ],
+                      "hidden": false
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn19"
+                },
+                "parent": "D441-Z9Qpu",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "tynFvotcu6": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order #",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderId",
+                  "query": {
+                    "fields": []
+                  },
+                  "description": "",
+                  "field": "orderId"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn20"
+                },
+                "parent": "D441-Z9Qpu",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "q7UPOpu69H": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "product.code",
+                  "description": "Product/Model number",
+                  "query": {},
+                  "field": "pickStep.product.number",
+                  "width": "150px"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn21"
+                },
+                "parent": "D441-Z9Qpu",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "WrBgy3Mncc": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "measure",
+                  "sortable": true,
+                  "dataPath": "quantity",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "quantity.value",
+                      "quantity.unit.code",
+                      "quantity.unit.id"
+                    ]
+                  },
+                  "field": "quantity",
+                  "width": "150px"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn22"
+                },
+                "parent": "D441-Z9Qpu",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "d5o4PKUFXJ": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 4,
+                  "width": "75%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "([\n\tedges.node\n\t\t~> |$|(\n\t\t\t$qty:= quantity.value;\n\t\t\t$unit := $uppercase(quantity.unit.id);\n\t\t\t$packQty := packedQuantity.value;\n\t\t\t$packUnit := $uppercase(packedQuantity.unit.id);\n\t\t\t$serials := orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node[picked = true and inventory.handlingUnitId = null].inventory.serialNumber;\n\n\t\t\t{\n        \"orderQuantity\": $qty & \" \" & $unit,\n\t\t\t\t\"packedQuantity\": $packQty > 0 ? $packQty & \" \" & $packUnit : \"0 \" & $unit,\n\t\t\t\t\"serialsToPack\": $join($serials[], \", \") & \"\"\n\t\t\t}\n\t\t)|\n])",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "quantity.value",
+                      "quantity.unit.id",
+                      "packedQuantity.value",
+                      "packedQuantity.unit.id",
+                      "inventories.edges.node.serialNumber",
+                      "inventories.edges.node.handlingUnit.loadId",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.picked",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.inventory.serialNumber",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.inventory.handlingUnitId"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "ShipmentLine",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"orderLineRelease\":{\r\n      \"orderLine\":{\r\n        \"orderId\":{\r\n          \"_in\": [$components.Screen.context.id]\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "OrderHeaderForm",
+                  "description": "Represents a quantity of a single product for a single order during it's journey from load creation to shipment completion.",
+                  "rowMultiSelectWithClick": false,
+                  "fontSize": "1vw",
+                  "limitToOneActiveDetail": false,
+                  "headerFontSize": "1vw",
+                  "defaultSort": [],
+                  "tableName": "Order Details"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "OrderPackTable"
+                },
+                "parent": "3VvnVyrirY",
+                "hidden": false,
+                "nodes": [
+                  "brM8KKnr0j",
+                  "VKQSCanO95",
+                  "-acePRLjAF",
+                  "byc1f2KAsC"
+                ],
+                "linkedNodes": {}
+              },
+              "Osd9fye7Nw": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "15%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container25"
+                },
+                "parent": "wEhfl216J8",
+                "hidden": false,
+                "nodes": [
+                  "W6nDuTdWlx"
+                ],
+                "linkedNodes": {}
+              },
+              "W6nDuTdWlx": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "HandlingUnit"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)"
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "OrderScanForm"
+                },
+                "parent": "Osd9fye7Nw",
+                "hidden": false,
+                "nodes": [
+                  "rskhlxlIqq"
+                ],
+                "linkedNodes": {}
+              },
+              "rskhlxlIqq": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container24"
+                },
+                "parent": "W6nDuTdWlx",
+                "hidden": false,
+                "nodes": [
+                  "Xd5nT7h3Ud",
+                  "clENxZF601",
+                  "_Q-D-Gb_uu"
+                ],
+                "linkedNodes": {}
+              },
+              "clENxZF601": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "60%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Scan Barcode",
+                  "variant": "outlined",
+                  "hideIcons": false,
+                  "terminatorCharacters": [
+                    "tab",
+                    "enter"
+                  ],
+                  "customTerminators": [
+                    ""
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": true,
+                  "allowManualInput": true,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": false,
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "scanData",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "The barcode field is a full string typically for a 2D barcode of this handling unit. This field must be UNIQUE for all ACTIVE handling units.",
+                  "field": "barcode",
+                  "onChange": "(\r\n  $$.newValue and $isNotNilOrEmpty($$.newValue) \r\n    ? $components.OrderSubmitButton.fn.execute({ \"serial\": $$.newValue })\r\n)"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "OrderSerialScan"
+                },
+                "parent": "rskhlxlIqq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_Q-D-Gb_uu": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "transforms": {
+                        "pre": "{\r\n  \"serial\": $$.state.serial ? $$.state.serial : $$.data.serial,\r\n  \"orderId\": $components.Screen.context.id,\r\n  \"handlingUnitId\": $boolean($components.OrderHuTable.data) and $count($components.OrderHuTable.data) > 0 ? $components.OrderHuTable.data[-1].barcode : null\r\n}"
+                      },
+                      "flowId": "packInventory"
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": " (\r\n  $components.ScanForm.fn.setValue(\"scanData\", \"\");\r\n  $components.OrderPackTable.fn.search();\r\n  $components.OrderHuTable.fn.search();\r\n  $components.OrderInvTable.fn.search()\r\n )",
+                      "transforms": {}
+                    }
+                  ],
+                  "icon": {
+                    "icon": "mouse-pointer",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "OrderSubmitButton"
+                },
+                "parent": "rskhlxlIqq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "iEsQob-Hgw": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "10%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container26"
+                },
+                "parent": "wEhfl216J8",
+                "hidden": false,
+                "nodes": [
+                  "GVyLrEWwul"
+                ],
+                "linkedNodes": {}
+              },
+              "GVyLrEWwul": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "60%",
+                  "height": "100%",
+                  "verticalOrientation": false
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup8"
+                },
+                "parent": "iEsQob-Hgw",
+                "hidden": false,
+                "nodes": [
+                  "DOrqjMUhj5",
+                  "eSKjp5-MHy"
+                ],
+                "linkedNodes": {}
+              },
+              "DOrqjMUhj5": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "(\r\n  $components.Screen.fn.setContext({\"orderId\": null});\r\n  $components.OrderTableContainer.fn.show();\r\n  $components.OrderPackContainer.fn.hide();\r\n  $components.OrderTable.fn.search()\r\n)"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "left",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "BACK",
+                  "customTextSize": 18
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "OrderBackButton"
+                },
+                "parent": "GVyLrEWwul",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "eSKjp5-MHy": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "green",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "packingWebFlow",
+                      "transforms": {
+                        "pre": "{\r\n  \"action\": \"packComplete\",\r\n  \"orderId\": $components.Screen.context.id\r\n}"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "Pack Complete",
+                  "customTextSize": 18
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "OrderPackCompleteButton"
+                },
+                "parent": "GVyLrEWwul",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Drxd-8Ib5K": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "OrderTableContainer"
+                },
+                "parent": "w4RfrBD9yB",
+                "hidden": false,
+                "nodes": [
+                  "dv1-MpDSdy",
+                  "PVdX9mpqML"
+                ],
+                "linkedNodes": {}
+              },
+              "j8xmVV3zd2": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "LoadTableContainer"
+                },
+                "parent": "AsJ1E-U8IV",
+                "hidden": false,
+                "nodes": [
+                  "CIVm-8gp9d",
+                  "ZPH_6pgObw"
+                ],
+                "linkedNodes": {}
+              },
+              "DZ6_1KS_uu": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "LoadPackContainer"
+                },
+                "parent": "AsJ1E-U8IV",
+                "hidden": false,
+                "nodes": [
+                  "_0dANohUOv",
+                  "Xth7QqHWCY",
+                  "W0tM8Q4-_J"
+                ],
+                "linkedNodes": {}
+              },
+              "_0dANohUOv": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "75%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container36"
+                },
+                "parent": "DZ6_1KS_uu",
+                "hidden": false,
+                "nodes": [
+                  "CXjmt62p-F",
+                  "QCV_54xl0L"
+                ],
+                "linkedNodes": {}
+              },
+              "CXjmt62p-F": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "20%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container32"
+                },
+                "parent": "_0dANohUOv",
+                "hidden": false,
+                "nodes": [
+                  "fwaoW7p2dy"
+                ],
+                "linkedNodes": {}
+              },
+              "fwaoW7p2dy": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "primary",
+                  "customBackground": "#fbd197",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container31"
+                },
+                "parent": "CXjmt62p-F",
+                "hidden": false,
+                "nodes": [
+                  "_GWsS442rJ"
+                ],
+                "linkedNodes": {}
+              },
+              "_GWsS442rJ": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": "(\n  edges.node\n    ~> |$|\n    (\n      $order:= $.orders.edges.node.number;\n{\n  \"orderNumbers\": $join($distinct($order), \", \")\n}\n    )\n    |\n)",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"id\":{\r\n      \"_eq\": $components.Screen.context.id\r\n      }\r\n    }\r\n}",
+                    "fields": [
+                      "id",
+                      "number",
+                      "pick.number",
+                      "orders.edges.node.number"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "Load",
+                    "readPreference": "primaryPreferred"
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false,
+                  "description": ""
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "LoadHeaderForm"
+                },
+                "parent": "fwaoW7p2dy",
+                "hidden": false,
+                "nodes": [
+                  "uoMHfQxLrt"
+                ],
+                "linkedNodes": {}
+              },
+              "uoMHfQxLrt": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 4,
+                  "margin": 4,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "98%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container30"
+                },
+                "parent": "_GWsS442rJ",
+                "hidden": false,
+                "nodes": [
+                  "G4FRx0WmK9",
+                  "XQutlggOj6",
+                  "08-NtFr22f"
+                ],
+                "linkedNodes": {}
+              },
+              "XQutlggOj6": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "20%",
+                  "height": "100%",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Order Number(s)",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "h5",
+                  "formElement": "Form1",
+                  "dataPath": "orderNumbers",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "orders.edges.node.number",
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text14"
+                },
+                "parent": "uoMHfQxLrt",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "08-NtFr22f": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "20%",
+                  "height": "100%",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Pick Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "h5",
+                  "formElement": "Form1",
+                  "dataPath": "pick.number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "pick.number",
+                  "query": {
+                    "fields": []
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text16"
+                },
+                "parent": "uoMHfQxLrt",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "QCV_54xl0L": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "80%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper",
+                  "customBackground": "#d7fdd6",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container35"
+                },
+                "parent": "_0dANohUOv",
+                "hidden": false,
+                "nodes": [
+                  "KOakN1UlD2",
+                  "Y047i55ooR"
+                ],
+                "linkedNodes": {}
+              },
+              "KOakN1UlD2": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "primary",
+                  "data": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container34"
+                },
+                "parent": "QCV_54xl0L",
+                "hidden": false,
+                "nodes": [
+                  "wkzRboAU7F",
+                  "MSR_c8HYm6",
+                  "C6DtbQNo4v"
+                ],
+                "linkedNodes": {}
+              },
+              "Xth7QqHWCY": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "15%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container39"
+                },
+                "parent": "DZ6_1KS_uu",
+                "hidden": false,
+                "nodes": [
+                  "vOW5pzZH9K"
+                ],
+                "linkedNodes": {}
+              },
+              "vOW5pzZH9K": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "HandlingUnit"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)"
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form10"
+                },
+                "parent": "Xth7QqHWCY",
+                "hidden": false,
+                "nodes": [
+                  "WzyO1kdg3B"
+                ],
+                "linkedNodes": {}
+              },
+              "WzyO1kdg3B": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container38"
+                },
+                "parent": "vOW5pzZH9K",
+                "hidden": false,
+                "nodes": [
+                  "OumOAWRXDk",
+                  "4W6QputbBg",
+                  "8Mmgbgvpuh"
+                ],
+                "linkedNodes": {}
+              },
+              "OumOAWRXDk": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "0%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container37"
+                },
+                "parent": "WzyO1kdg3B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "4W6QputbBg": {
+                "type": {
+                  "resolvedName": "ScanTextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "60%",
+                  "height": "61px",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "scanText",
+                  "label": "Scan Barcode",
+                  "variant": "outlined",
+                  "hideIcons": false,
+                  "terminatorCharacters": [
+                    "tab",
+                    "enter"
+                  ],
+                  "customTerminators": [
+                    ""
+                  ],
+                  "prefixString": "",
+                  "stripPrefixString": true,
+                  "allowManualInput": true,
+                  "scanTimeoutMilliseconds": 200,
+                  "clearable": true,
+                  "autoFocus": true,
+                  "clearOnFocus": true,
+                  "beepOnScan": true,
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "scanData",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "The barcode field is a full string typically for a 2D barcode of this handling unit. This field must be UNIQUE for all ACTIVE handling units.",
+                  "field": "barcode",
+                  "onChange": "(\r\n  $$.newValue and $isNotNilOrEmpty($$.newValue) \r\n    ? $components.LoadSubmitButton.fn.execute({ \"serial\": $$.newValue })\r\n)"
+                },
+                "displayName": "Scan",
+                "custom": {
+                  "elementName": "Scan2"
+                },
+                "parent": "WzyO1kdg3B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "W0tM8Q4-_J": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "10%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container40"
+                },
+                "parent": "DZ6_1KS_uu",
+                "hidden": false,
+                "nodes": [
+                  "DS4zV6d-Mg"
+                ],
+                "linkedNodes": {}
+              },
+              "DS4zV6d-Mg": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "60%",
+                  "height": "100%",
+                  "verticalOrientation": false
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup9"
+                },
+                "parent": "W0tM8Q4-_J",
+                "hidden": false,
+                "nodes": [
+                  "GjqsW_o1wX",
+                  "mm9p6lMCxV"
+                ],
+                "linkedNodes": {}
+              },
+              "GjqsW_o1wX": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "(\r\n  $components.Screen.fn.setContext({\"loadId\": null});\r\n  $components.LoadTableContainer.fn.show();\r\n  $components.LoadPackContainer.fn.hide();\r\n  $components.LoadTable.fn.search()\r\n)"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "left",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "BACK",
+                  "customTextSize": 18
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "LoadBackButton"
+                },
+                "parent": "DS4zV6d-Mg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "mm9p6lMCxV": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "green",
+                  "width": "100%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "packingWebFlow",
+                      "transforms": {
+                        "pre": "{\r\n  \"action\": \"packComplete\",\r\n  \"loadId\": $components.Screen.context.id\r\n}",
+                        "post": "$components.LoadTable.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "Pack Complete",
+                  "customTextSize": 18
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "LoadPackCompleteButton"
+                },
+                "parent": "DS4zV6d-Mg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "UAWumGUsGz": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": false
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": $components.Screen.context.id\n    }\n  }\n}",
+                    "fields": [
+                      "id",
+                      "load.number",
+                      "load.pick.number"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "Order"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Data change set for 90 days by default, changes to the orders should only be initiated from the external ERP system or via other mechnisms and typically not done manually via Fuuz - however, if you do make manual changes, those changes will be tracked for 90 days unless this setting is modified.\n\nDeleting an Order, will delete the line and release - providing no other transactions have been performed."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "OrderHeaderForm"
+                },
+                "parent": "6LgLcSVRph",
+                "hidden": false,
+                "nodes": [
+                  "4xIrIK3mHe"
+                ],
+                "linkedNodes": {}
+              },
+              "4xIrIK3mHe": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container42"
+                },
+                "parent": "UAWumGUsGz",
+                "hidden": false,
+                "nodes": [
+                  "l8dQFqOKj-",
+                  "bXwsLE9Hk9",
+                  "xRMt4DhUVX"
+                ],
+                "linkedNodes": {}
+              },
+              "l8dQFqOKj-": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "33%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Order Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "body1",
+                  "dataPath": "number",
+                  "description": "",
+                  "field": "number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "formElement": "Form11"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text17"
+                },
+                "parent": "4xIrIK3mHe",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "bXwsLE9Hk9": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "33%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Load Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "body1",
+                  "dataPath": "load.number",
+                  "field": "load.number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "formElement": "Form11"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text18"
+                },
+                "parent": "4xIrIK3mHe",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "xRMt4DhUVX": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "33%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Pick Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "body1",
+                  "dataPath": "load.pick.number",
+                  "field": "load.pick.number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "formElement": "Form11"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text19"
+                },
+                "parent": "4xIrIK3mHe",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "hFa4SRQAGB": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "OrderHuDetail"
+                },
+                "parent": "zsm3E-ewfJ",
+                "hidden": false,
+                "nodes": [
+                  "ug8XjNzaMZ"
+                ],
+                "linkedNodes": {}
+              },
+              "brM8KKnr0j": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "The identifier of this line item in the corresponding shipment. It is gauranteed to be unique per shipment, but not globally unique.",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn51"
+                },
+                "parent": "d5o4PKUFXJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "VKQSCanO95": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderQuantity",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn53"
+                },
+                "parent": "d5o4PKUFXJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "-acePRLjAF": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Packed Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "packedQuantity",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "packedQuantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn54"
+                },
+                "parent": "d5o4PKUFXJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "byc1f2KAsC": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "To Pack",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "serialsToPack",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "packedQuantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn57"
+                },
+                "parent": "d5o4PKUFXJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Xd5nT7h3Ud": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "0%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container23"
+                },
+                "parent": "rskhlxlIqq",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ug8XjNzaMZ": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "80%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "[\n\tedges.node\n\t\t~> |$|{\n\t\t\t\"order\": pickStepInventories.edges.node.pickStep.pick.orders.edges.node.number,\n\t\t\t\"colour\": \"#0bde1d\",\n\t\t\t\"quantityLabel\": quantity.value & \" \" & quantity.unitId\n\t\t}|\n]",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "quantity.value",
+                      "quantity.unitId"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Inventory",
+                    "parameters": "{\n\t\"filter\": {\n\t\t\"handlingUnitId\": {\n\t\t\t\"_in\": [$parent.data.id]\n\t\t}\n\t}\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Inventory Model - Data changes are tracked for 25 Years.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "OrderInvTable"
+                },
+                "parent": "hFa4SRQAGB",
+                "hidden": false,
+                "nodes": [
+                  "NKnP-MpDkS",
+                  "6hZWVxQjS9",
+                  "yKRlXf1uTS",
+                  "5xx7MiVPhk"
+                ],
+                "linkedNodes": {}
+              },
+              "NKnP-MpDkS": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Change HU ",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "action",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": []
+                  },
+                  "width": "100%",
+                  "actions": [
+                    {
+                      "title": "Update HU",
+                      "text": "HU",
+                      "icon": {
+                        "icon": "right-left",
+                        "color": "primary",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "useIconButton": true,
+                      "action": [
+                        {
+                          "type": "flow",
+                          "flowId": "packingWebFlow",
+                          "transforms": {
+                            "pre": "{\r\n  \"action\": \"changeHu\",\r\n  \"serialNumber\": rowData.serialNumber\r\n}"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "(\n  $components.OrderInvTable.fn.search();\n)",
+                          "screenParams": {
+                            "__transform": "",
+                            "__dynamicFields": null
+                          }
+                        }
+                      ],
+                      "hidden": false
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn58"
+                },
+                "parent": "ug8XjNzaMZ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "6hZWVxQjS9": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "product.code",
+                  "description": "Product/Model number",
+                  "query": {},
+                  "field": "pickStep.product.number",
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn60"
+                },
+                "parent": "ug8XjNzaMZ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5xx7MiVPhk": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "quantityLabel",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn61"
+                },
+                "parent": "ug8XjNzaMZ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8Mmgbgvpuh": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "transforms": {
+                        "pre": "{\n  \"serial\": $$.state.serial ? $$.state.serial : $$.data.serial,\n  \"loadId\": $components.Screen.context.id,\n  \"handlingUnitId\": $boolean($components.LoadHuTable.data) and $count($components.LoadHuTable.data) > 0 ? $components.LoadHuTable.data[-1].barcode : null\n}"
+                      },
+                      "flowId": "packInventory"
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": " (\r\n  $components.ScanForm.fn.setValue(\"scanData\", \"\");\r\n  $components.LoadPackTable.fn.search();\r\n  $components.LoadHuTable.fn.search();\r\n  $components.LoadInvTable.fn.search()\r\n )\r\n"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "mouse-pointer",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "LoadSubmitButton"
+                },
+                "parent": "WzyO1kdg3B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "yKRlXf1uTS": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Serial Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "serialNumber",
+                  "description": "A unique number identifying this inventory - maybe a Lot or Serial. This will be used to set the Id field - using a system trigger.",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "serialNumber"
+                    ]
+                  },
+                  "field": "serialNumber",
+                  "width": "125%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn68"
+                },
+                "parent": "ug8XjNzaMZ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "--mPFzuYec": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Type",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "handlingUnitType.name",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "handlingUnitType.name",
+                  "width": "7%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn70"
+                },
+                "parent": "zsm3E-ewfJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "1v849dkRSy": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Action",
+                  "format": "menu",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "actions": [
+                    {
+                      "text": "Action 1"
+                    },
+                    {
+                      "text": "Action 2"
+                    },
+                    {
+                      "text": "Action 3"
+                    }
+                  ],
+                  "flows": [
+                    {}
+                  ],
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-h",
+                  "iconSize": "medium"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn71"
+                },
+                "parent": "PVdX9mpqML",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MSR_c8HYm6": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "10%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "createHandlingUnitWebFlow",
+                      "transforms": {
+                        "pre": "{\r\n  \"loadId\": $components.Screen.context.id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "flow",
+                      "flowId": "printBoxContentLabel",
+                      "transforms": {
+                        "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $components.HandlingUnitTable.data[-1].id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "(\n  $components.LoadHuTable.fn.search()\n)"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "New Handling Unit"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action34"
+                },
+                "parent": "KOakN1UlD2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wkzRboAU7F": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "55%",
+                  "height": "10%",
+                  "disabled": false,
+                  "hidden": true,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "printBoxContentLabel",
+                      "transforms": {
+                        "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $components.HandlingUnitTable.data[-1].id\r\n}"
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "transformation": "(\n  $components.HandlingUnitTable.fn.search();\n  $components.Action19.fn.execute();\n)",
+                      "transforms": {}
+                    }
+                  ],
+                  "icon": {
+                    "icon": "",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "text": "print Handling Unit"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action19"
+                },
+                "parent": "KOakN1UlD2",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Y047i55ooR": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 4,
+                  "width": "75%",
+                  "height": "100%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "([\n\tedges.node\n\t\t~> |$|(\n\t\t\t$qty:= quantity.value;\n\t\t\t$unit := $uppercase(quantity.unit.id);\n\t\t\t$packQty := packedQuantity.value;\n\t\t\t$packUnit := $uppercase(packedQuantity.unit.id);\n\t\t\t$serials := orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node[picked = true and inventory.handlingUnitId = null].inventory.serialNumber;\n\n\t\t\t{\n        \"orderQuantity\": $qty & \" \" & $unit,\n\t\t\t\t\"packedQuantity\": $packQty > 0 ? $packQty & \" \" & $packUnit : \"0 \" & $unit,\n\t\t\t\t\"serialsToPack\": $join($serials[], \", \") & \"\"\n\t\t\t}\n\t\t)|\n])",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "quantity.value",
+                      "quantity.unit.id",
+                      "packedQuantity.value",
+                      "packedQuantity.unit.id",
+                      "inventories.edges.node.serialNumber",
+                      "inventories.edges.node.handlingUnit.loadId",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.picked",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.inventory.serialNumber",
+                      "orderLineRelease.pickSteps.edges.node.inventoryPickSteps.edges.node.inventory.handlingUnitId"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "ShipmentLine",
+                    "parameters": "{\r\n  \"filter\": {\r\n    \"orderLineRelease\":{\r\n      \"orderLine\":{\r\n        \"order\": {\r\n          \"loadId\": {\r\n            \"_in\": [$components.Screen.context.id]\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "LoadHeaderForm",
+                  "description": "Represents a quantity of a single product for a single order during it's journey from load creation to shipment completion.",
+                  "rowMultiSelectWithClick": false,
+                  "fontSize": "1vw",
+                  "limitToOneActiveDetail": false,
+                  "headerFontSize": "1vw",
+                  "defaultSort": [],
+                  "tableName": "Load Details"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "LoadPackTable"
+                },
+                "parent": "QCV_54xl0L",
+                "hidden": false,
+                "nodes": [
+                  "iewkrwNbha",
+                  "edxAPCeuhB",
+                  "2ykfmuxy3V",
+                  "N_u1hFcwbw"
+                ],
+                "linkedNodes": {}
+              },
+              "iewkrwNbha": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "number",
+                  "description": "The identifier of this line item in the corresponding shipment. It is gauranteed to be unique per shipment, but not globally unique.",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "number"
+                    ]
+                  },
+                  "field": "number"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn120"
+                },
+                "parent": "Y047i55ooR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "edxAPCeuhB": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Order Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "orderQuantity",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn121"
+                },
+                "parent": "Y047i55ooR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "2ykfmuxy3V": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Packed Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "packedQuantity",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "packedQuantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn122"
+                },
+                "parent": "Y047i55ooR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "N_u1hFcwbw": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "To Pack",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "serialsToPack",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "packedQuantity.value"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn123"
+                },
+                "parent": "Y047i55ooR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "G4FRx0WmK9": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "20%",
+                  "height": "100%",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Load Number",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "body1",
+                  "fontSize": "h5",
+                  "formElement": "Form1",
+                  "dataPath": "number",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "field": "number",
+                  "query": {
+                    "fields": []
+                  },
+                  "description": ""
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text21"
+                },
+                "parent": "uoMHfQxLrt",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "C6DtbQNo4v": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 0,
+                  "width": "100%",
+                  "height": "90%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "barcode",
+                      "handlingUnitType.name"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "HandlingUnit",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"loadId\":{\r\n      \"_eq\": $components.Screen.context.id\r\n    }\r\n  }\r\n}\r\n"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 300,
+                  "hideTableHeader": true,
+                  "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": true,
+                  "tableName": "Load Handling Units"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "LoadHuTable"
+                },
+                "parent": "KOakN1UlD2",
+                "hidden": false,
+                "nodes": [
+                  "3fbLv4gefJ",
+                  "35GWEIwWZ5",
+                  "GAHryUHJMY"
+                ],
+                "linkedNodes": {
+                  "LoadHuTableDetail": "q5CmfrtXQG"
+                }
+              },
+              "3fbLv4gefJ": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Handling Unit Barcode",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "barcode",
+                  "description": "The barcode field is a full string typically for a 2D barcode of this handling unit. This field must be UNIQUE for all ACTIVE handling units.",
+                  "query": {},
+                  "field": "barcode",
+                  "width": "175%",
+                  "style": {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "background": "#abef95"
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn163"
+                },
+                "parent": "C6DtbQNo4v",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "35GWEIwWZ5": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Type",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "handlingUnitType.name",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "handlingUnitType.name",
+                  "width": "7%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn164"
+                },
+                "parent": "C6DtbQNo4v",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GAHryUHJMY": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Label",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "actions": [
+                    {
+                      "title": "Print Box Content Label",
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "print",
+                        "color": "primary",
+                        "variant": "solid",
+                        "size": "large"
+                      },
+                      "action": [
+                        {
+                          "type": "flow",
+                          "message": "Label Printed",
+                          "flowId": "printBoxContentLabel",
+                          "transforms": {
+                            "pre": "{\r\n  \"userId\": $metadata.user.id,\r\n  \"handlingUnitId\": $.rowData.id\r\n}"
+                          }
+                        },
+                        {
+                          "type": "navigation",
+                          "navigationType": "Document",
+                          "documentContent": {
+                            "__transform": "$.documentContent"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn165"
+                },
+                "parent": "C6DtbQNo4v",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "q5CmfrtXQG": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container58"
+                },
+                "parent": "C6DtbQNo4v",
+                "hidden": false,
+                "nodes": [
+                  "c8_vSs4wdC"
+                ],
+                "linkedNodes": {}
+              },
+              "c8_vSs4wdC": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "80%",
+                  "flexGrow": false,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": "[\n\tedges.node\n\t\t~> |$|{\n\t\t\t\"order\": pickStepInventories.edges.node.pickStep.pick.orders.edges.node.number,\n\t\t\t\"colour\": \"#0bde1d\",\n\t\t\t\"quantityLabel\": quantity.value & \" \" & quantity.unitId\n\t\t}|\n]",
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "quantity.value",
+                      "quantity.unitId"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "Inventory",
+                    "parameters": "{\n\t\"filter\": {\n\t\t\"handlingUnitId\": {\n\t\t\t\"_in\": [$parent.data.id]\n\t\t}\n\t}\n}"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": false,
+                  "showStatusBar": false,
+                  "enableGrouping": false,
+                  "enableCharts": false,
+                  "showColumnMenu": false,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "Inventory Model - Data changes are tracked for 25 Years.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "LoadInvTable"
+                },
+                "parent": "q5CmfrtXQG",
+                "hidden": false,
+                "nodes": [
+                  "gH2yfarDAb",
+                  "5y7lc6BaSZ",
+                  "L3M_oVFKgx",
+                  "q94gx4ocFg"
+                ],
+                "linkedNodes": {}
+              },
+              "gH2yfarDAb": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Change HU ",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "action",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": []
+                  },
+                  "width": "100%",
+                  "actions": [
+                    {
+                      "title": "Update HU",
+                      "text": "HU",
+                      "icon": {
+                        "icon": "right-left",
+                        "color": "primary",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "useIconButton": true,
+                      "action": [
+                        {
+                          "type": "flow",
+                          "flowId": "packingWebFlow",
+                          "transforms": {
+                            "pre": "{\r\n  \"action\": \"changeHu\",\r\n  \"serialNumber\": rowData.serialNumber\r\n}"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "(\n  $components.OrderInvTable.fn.search();\n)",
+                          "screenParams": {
+                            "__transform": "",
+                            "__dynamicFields": null
+                          }
+                        }
+                      ],
+                      "hidden": false
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn170"
+                },
+                "parent": "c8_vSs4wdC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5y7lc6BaSZ": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Product",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "product.code",
+                  "description": "Product/Model number",
+                  "query": {},
+                  "field": "pickStep.product.number",
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn171"
+                },
+                "parent": "c8_vSs4wdC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "L3M_oVFKgx": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Serial Number",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "serialNumber",
+                  "description": "A unique number identifying this inventory - maybe a Lot or Serial. This will be used to set the Id field - using a system trigger.",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "serialNumber"
+                    ]
+                  },
+                  "field": "serialNumber",
+                  "width": "125%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn172"
+                },
+                "parent": "c8_vSs4wdC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "q94gx4ocFg": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Quantity",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "quantityLabel",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "width": "100%"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn173"
+                },
+                "parent": "c8_vSs4wdC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmqgpp73s00v001626kto15xm",
+      "title": "Packing",
+      "path": "/materialsManagement/packing/packing",
+      "moduleId": "packing",
+      "screenId": "packing",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "header": {
+    "id": "shipmentType",
+    "name": "ShipmentType",
+    "description": "A system model that describes what kind of transaction this shipment is, whether a sale to a customer, a transfer to another facility, or a return to supplier.",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmg7424ci0na601a3358rfk57",
+    "number": "3",
+    "dataModelId": "shipmentType",
+    "modelDefinition": {
+      "name": "ShipmentType",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "orderProcessing",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": false,
+            "retentionDays": 9999
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "labelField": "name",
+          "queries": {
+            "defaultReadPreference": "secondary"
+          },
+          "editor": {
+            "autosort": true
+          },
+          "indices": []
+        },
+        "mongo": {
+          "collection": "shipmentType"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "name",
+          "type": "String!",
+          "description": "The human-readable label for this shipment type",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "description",
+          "type": "String!",
+          "description": "A longer explanation of what this shipment type is and when it's used",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "shipments",
+          "description": "",
+          "type": "[Shipment!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "shipmentTypeId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "A system model that describes what kind of transaction this shipment is, whether a sale to a customer, a transfer to another facility, or a return to supplier."
+    },
+    "dataModelTypeId": "setup"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmg7424ci0na601a3358rfk57",
+      "dataModelVersion": {
+        "number": "3"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

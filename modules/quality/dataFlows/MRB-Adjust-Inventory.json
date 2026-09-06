@@ -1,0 +1,2169 @@
+{
+  "header": {
+    "id": "mrbAdjustInventory",
+    "name": "MRB Adjust Inventory",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "quality",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmqawvar100f6018a0yc972k7",
+    "number": "0.0.1",
+    "description": "",
+    "dataFlowId": "mrbAdjustInventory",
+    "flow": {
+      "id": "cmqawvar100f6018a0yc972k7",
+      "name": "MRB Adjust Inventory",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "ed125046-1532-4ce5-925a-f8fd4c241132",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "ed9f47aa-cbd3-436c-8582-76f1f411ac1d"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+          "name": "Validate Input",
+          "type": "validate",
+          "data": {
+            "nextNodes": [
+              "56493dd8-42f1-44ff-afa6-4918ac14a634"
+            ],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "inventoryId": {
+                  "type": "string"
+                },
+                "adjustmentId": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "number"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "inventoryId",
+                "adjustmentId",
+                "quantity"
+              ]
+            }
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+          "name": "Merge Input",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "a111cbb0-f32d-4566-ae40-94060c7ecd3c"
+            ],
+            "transform": "{\r\n  \"INPUT\": {\r\n    \"inventoryId\": inventoryId,\r\n    \"adjustmentId\": adjustmentId,\r\n    \"quantity\": quantity,\r\n    \"note\": $exists(note) ? note : null\r\n  }\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+          "name": "Query Inventory",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\r\n  \"where\": {\r\n    \"id\": { \"_eq\": $state.context.INPUT.inventoryId }\r\n  }\r\n}",
+            "query": "query GetInventory($where: InventoryWhereInput!) {\n  inventory(where: $where) {\n    total\n    edges {\n      node {\n        id\n        serialNumber\n        active\n        inventoryStatusId\n        quantity { value unitId }\n        mrbHoldStatus\n        mrbCaseId\n        product { id code }\n        storageUnit { id code }\n        lot { id number }\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "4ff08f85-1e3c-4461-892d-e98d06e4d774"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+          "name": "Merge Inventory",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "ed5309d3-f077-4cb5-b859-4b80419e2ecf"
+            ],
+            "transform": "{\r\n  \"INV\": inventory.edges.node[0]\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+          "name": "Route — Inventory Check",
+          "type": "switch",
+          "data": {
+            "branches": [
+              {
+                "name": "NOT FOUND",
+                "transform": "inventory.total = 0",
+                "nextNodes": [
+                  "848d3842-d5f1-496e-a075-5362f931c25b"
+                ]
+              },
+              {
+                "name": "INACTIVE",
+                "transform": "$state.context.INV.active = false",
+                "nextNodes": [
+                  "86bd93eb-3d03-46f4-af7d-a3fe30394ac9"
+                ]
+              },
+              {
+                "name": "RETIRED",
+                "transform": "$state.context.INV.inventoryStatusId = \"retired\"",
+                "nextNodes": [
+                  "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca"
+                ]
+              },
+              {
+                "name": "MRB HOLD",
+                "transform": "$exists($state.context.INV.mrbHoldStatus) and $state.context.INV.mrbHoldStatus != null",
+                "nextNodes": [
+                  "848abe57-a923-4683-a873-c63e512e1a00"
+                ]
+              },
+              {
+                "name": "PASS",
+                "transform": "true",
+                "nextNodes": [
+                  "12b9298a-adea-4c0e-b65f-e0d2665d73d4"
+                ]
+              }
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "848d3842-d5f1-496e-a075-5362f931c25b",
+          "name": "Response — Inventory Not Found",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Not Found\",\r\n  \"message\": \"No inventory record found for the provided ID.\",\r\n  \"data\": { \"inventoryId\": $state.context.INPUT.inventoryId }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "86bd93eb-3d03-46f4-af7d-a3fe30394ac9",
+          "name": "Response — Inventory Inactive",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Inactive\",\r\n  \"message\": \"This inventory record has been soft-deleted and cannot be adjusted.\",\r\n  \"data\": { \"serialNumber\": $state.context.INV.serialNumber }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca",
+          "name": "Response — Inventory Retired",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Retired\",\r\n  \"message\": \"This inventory has been retired and cannot be adjusted.\",\r\n  \"data\": { \"serialNumber\": $state.context.INV.serialNumber }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "848abe57-a923-4683-a873-c63e512e1a00",
+          "name": "Response — MRB Quality Hold",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"MRB Quality Hold!\",\r\n  \"message\": \"This inventory is on MRB quality hold (\" & $state.context.INV.mrbHoldStatus & \") and cannot be adjusted directly. Use the MRB disposition process. Case ID: \" & $state.context.INV.mrbCaseId,\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"mrbHoldStatus\": $state.context.INV.mrbHoldStatus,\r\n    \"mrbCaseId\": $state.context.INV.mrbCaseId\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+          "name": "Query Adjustment Type",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "{\r\n  \"where\": {\r\n    \"id\": { \"_eq\": $state.context.INPUT.adjustmentId }\r\n  }\r\n}",
+            "query": "query GetAdjustment($where: AdjustmentWhereInput!) {\n  adjustment(where: $where) {\n    total\n    edges {\n      node {\n        id\n        name\n        usable\n        tolerance\n      }\n    }\n  }\n}",
+            "nextNodes": [
+              "ba363530-7b54-4ee0-b194-53393095b811"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ba363530-7b54-4ee0-b194-53393095b811",
+          "name": "Merge Adjustment Type",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "65399932-65a9-4c2b-8458-b0dd7e5d44bc"
+            ],
+            "transform": "{\r\n  \"ADJ\": adjustment.edges.node[0]\r\n}"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+          "name": "Route — Adjustment Check",
+          "type": "switch",
+          "data": {
+            "branches": [
+              {
+                "name": "NOT FOUND",
+                "transform": "adjustment.total = 0",
+                "nextNodes": [
+                  "b6170df6-b1e6-4794-abfe-c8743528f419"
+                ]
+              },
+              {
+                "name": "NOT USABLE",
+                "transform": "$state.context.ADJ.usable = false",
+                "nextNodes": [
+                  "b6170df6-b1e6-4794-abfe-c8743528f419"
+                ]
+              },
+              {
+                "name": "PASS",
+                "transform": "true",
+                "nextNodes": [
+                  "1c9264f5-826e-4354-bc54-7ff59a761429"
+                ]
+              }
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "b6170df6-b1e6-4794-abfe-c8743528f419",
+          "name": "Response — Adjustment Type Invalid",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Invalid Adjustment Type\",\r\n  \"message\": \"The adjustment type provided does not exist or is not usable.\",\r\n  \"data\": { \"adjustmentId\": $state.context.INPUT.adjustmentId }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "1c9264f5-826e-4354-bc54-7ff59a761429",
+          "name": "Mutate — Adjust Inventory Quantity",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{\r\n  \"payload\": [{\r\n    \"where\": { \"id\": $state.context.INV.id },\r\n    \"update\": {\r\n      \"quantity\": {\r\n        \"value\": $state.context.INPUT.quantity,\r\n        \"unitId\": $state.context.INV.quantity.unitId\r\n      },\r\n      \"lastAdjustmentId\": $state.context.ADJ.id,\r\n      \"lastTransactionTypeId\": \"inventoryAdjustment\",\r\n      \"note\": $state.context.INPUT.note\r\n    }\r\n  }]\r\n}",
+            "mutation": "mutation AdjustInventory($payload: [InventoryUpdatePayloadInput!]!) {\n  updateInventory(payload: $payload) {\n    id\n    serialNumber\n    quantity { value unitId }\n    lastAdjustmentId\n    lastTransactionTypeId\n  }\n}",
+            "nextNodes": [
+              "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+          "name": "MRB Scrap Adjustment?",
+          "type": "ifElse",
+          "data": {
+            "transform": "$state.context.ADJ.id = \"mrbScrap\" and $exists($state.context.INV.mrbCaseId) and $state.context.INV.mrbCaseId != null",
+            "onTrueNextNodes": [
+              "ebc5113f-b205-4628-b9f4-e37a32bd140c"
+            ],
+            "onFalseNextNodes": [
+              "6ed0d948-4610-44b4-b546-c3a5edcef52b"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "6ed0d948-4610-44b4-b546-c3a5edcef52b",
+          "name": "Response — Success",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"title\": \"Adjustment Complete\",\r\n  \"message\": \"Inventory quantity adjusted successfully.\",\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"adjustmentType\": $state.context.ADJ.name,\r\n    \"newQuantity\": $state.context.INPUT.quantity,\r\n    \"unitId\": $state.context.INV.quantity.unitId\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "ebc5113f-b205-4628-b9f4-e37a32bd140c",
+          "name": "Response — MRB Scrap Success",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"title\": \"MRB Scrap Complete\",\r\n  \"message\": \"Inventory adjusted to zero. Update the MRB Scrap action item in QCS to complete the disposition. Case ID: \" & $state.context.INV.mrbCaseId,\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"mrbCaseId\": $state.context.INV.mrbCaseId,\r\n    \"newQuantity\": $state.context.INPUT.quantity\r\n  }\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmqawvar100f6018a0yc972k7",
+      "offsetX": -1653,
+      "offsetY": 3,
+      "zoom": 100,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "ada9a43e-7145-477e-9f1a-c1d98b1da301",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "a582e2d8-f15c-4ee6-b739-63839f1b1cf0": {
+              "points": [
+                {
+                  "id": "ff38da65-5095-454e-ab0d-2202c32fda32",
+                  "type": "point",
+                  "x": 329,
+                  "y": 524.73
+                },
+                {
+                  "id": "f50ebe6a-f80d-4213-86d0-74e2e647925f",
+                  "type": "point",
+                  "x": 365,
+                  "y": 524.73
+                }
+              ],
+              "id": "a582e2d8-f15c-4ee6-b739-63839f1b1cf0",
+              "type": "default",
+              "source": "ed125046-1532-4ce5-925a-f8fd4c241132",
+              "sourcePort": "cmqawt74900k6356p57ini81z",
+              "target": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+              "targetPort": "cmqawt74900kg356poa6uc6hc",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "857b3bcc-ba21-4751-833b-4157e5865b83": {
+              "points": [
+                {
+                  "id": "0cd26b19-91d4-4b42-ae88-201dc4aa0ac2",
+                  "type": "point",
+                  "x": 519,
+                  "y": 524.73
+                },
+                {
+                  "id": "5cb365d8-4b74-4203-92ea-99a490620bbc",
+                  "type": "point",
+                  "x": 555,
+                  "y": 524.73
+                }
+              ],
+              "id": "857b3bcc-ba21-4751-833b-4157e5865b83",
+              "type": "default",
+              "source": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+              "sourcePort": "cmqawt74900ki356p8q8iiufb",
+              "target": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+              "targetPort": "cmqawt74a00ks356pqtenvp8f",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "294d7e38-fedd-4e28-bc27-b94de99c1c5e": {
+              "points": [
+                {
+                  "id": "6bf56283-bfa5-4a07-9ddf-d5516bfa1022",
+                  "type": "point",
+                  "x": 709,
+                  "y": 524.73
+                },
+                {
+                  "id": "942a23db-ba9b-4f08-928e-a2909ef57fe1",
+                  "type": "point",
+                  "x": 745,
+                  "y": 524.73
+                }
+              ],
+              "id": "294d7e38-fedd-4e28-bc27-b94de99c1c5e",
+              "type": "default",
+              "source": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+              "sourcePort": "cmqawt74a00ku356po1k07hd3",
+              "target": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+              "targetPort": "cmqawt74b00l4356p0hb8o65h",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "7f502db5-5003-4910-b70e-2a1ce95c01c8": {
+              "points": [
+                {
+                  "id": "c98d48a4-51ce-42c4-9f9f-98a1e9190f4c",
+                  "type": "point",
+                  "x": 899,
+                  "y": 524.73
+                },
+                {
+                  "id": "27a87a35-bf5b-40df-8f16-5f3f948ec315",
+                  "type": "point",
+                  "x": 940,
+                  "y": 524.73
+                }
+              ],
+              "id": "7f502db5-5003-4910-b70e-2a1ce95c01c8",
+              "type": "default",
+              "source": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+              "sourcePort": "cmqawt74b00l6356pu4d8o184",
+              "target": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+              "targetPort": "cmqawt74c00lg356ps04bjmd6",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "1300ff4d-6c20-4641-a680-5cb6e1f22588": {
+              "points": [
+                {
+                  "id": "8edaaea8-7574-4a1f-8214-d0df5a81e907",
+                  "type": "point",
+                  "x": 1094,
+                  "y": 524.73
+                },
+                {
+                  "id": "f8a8cf3c-f822-421e-9b94-0f2c48aaf9ae",
+                  "type": "point",
+                  "x": 1130,
+                  "y": 524.73
+                }
+              ],
+              "id": "1300ff4d-6c20-4641-a680-5cb6e1f22588",
+              "type": "default",
+              "source": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+              "sourcePort": "cmqawt74c00li356pg6lssqx9",
+              "target": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "targetPort": "cmqawt74e00m8356pl8wngj2r",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f9c29fec-45e1-40dd-99c2-8c4ac2f8d1a8": {
+              "points": [
+                {
+                  "id": "3e91f8b9-a48c-4651-84aa-dbad02aa19b0",
+                  "type": "point",
+                  "x": 1308.67,
+                  "y": 524.73
+                },
+                {
+                  "id": "647e3c3e-6661-4b0c-bfbf-dc400d9ca93a",
+                  "type": "point",
+                  "x": 1350,
+                  "y": 454.73
+                }
+              ],
+              "id": "f9c29fec-45e1-40dd-99c2-8c4ac2f8d1a8",
+              "type": "default",
+              "source": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "sourcePort": "cmqawt74e00ma356pflcv6yu7",
+              "target": "848d3842-d5f1-496e-a075-5362f931c25b",
+              "targetPort": "cmqawt74f00mq356pscwqjbaf",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "5efea253-498d-41a2-8045-77e979fa14b3": {
+              "points": [
+                {
+                  "id": "d7d599b0-84fd-43e2-b641-6715a60fcd7f",
+                  "type": "point",
+                  "x": 1308.67,
+                  "y": 549.89
+                },
+                {
+                  "id": "55b2a243-25b3-4b27-94b6-6be4359cbb54",
+                  "type": "point",
+                  "x": 1350,
+                  "y": 509.73
+                }
+              ],
+              "id": "5efea253-498d-41a2-8045-77e979fa14b3",
+              "type": "default",
+              "source": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "sourcePort": "cmqawt74e00mc356pwxyrsq04",
+              "target": "86bd93eb-3d03-46f4-af7d-a3fe30394ac9",
+              "targetPort": "cmqawt74h00n0356ptzecsu1q",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "bcc855aa-c18c-4105-8483-ad3682b6c9b8": {
+              "points": [
+                {
+                  "id": "15a7fee9-85d0-406a-add5-4855c17fef54",
+                  "type": "point",
+                  "x": 1308.67,
+                  "y": 575.04
+                },
+                {
+                  "id": "a5051a29-032f-4c51-89d9-5c1f5e6ca863",
+                  "type": "point",
+                  "x": 1350,
+                  "y": 564.73
+                }
+              ],
+              "id": "bcc855aa-c18c-4105-8483-ad3682b6c9b8",
+              "type": "default",
+              "source": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "sourcePort": "cmqawt74e00me356pams44j1x",
+              "target": "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca",
+              "targetPort": "cmqawt74i00na356parlqdoy0",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "ab64d94b-236f-4e56-bdc5-acd254d9e071": {
+              "points": [
+                {
+                  "id": "9629bdea-36de-47c5-9f2d-74adb67f76bd",
+                  "type": "point",
+                  "x": 1308.67,
+                  "y": 600.2
+                },
+                {
+                  "id": "91b13786-5e1f-41d4-8731-c9ef05748e8b",
+                  "type": "point",
+                  "x": 1350,
+                  "y": 619.73
+                }
+              ],
+              "id": "ab64d94b-236f-4e56-bdc5-acd254d9e071",
+              "type": "default",
+              "source": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "sourcePort": "cmqawt74e00mg356psddagxav",
+              "target": "848abe57-a923-4683-a873-c63e512e1a00",
+              "targetPort": "cmqawt74k00nk356pqp8aifcw",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "5d200943-11f8-47df-b1e5-21dd9885e511": {
+              "points": [
+                {
+                  "id": "93eeb5c2-e1b5-40a1-9c81-78984622ac02",
+                  "type": "point",
+                  "x": 1308.67,
+                  "y": 625.35
+                },
+                {
+                  "id": "ea4065e0-17f0-466b-8035-77aa3ec96da0",
+                  "type": "point",
+                  "x": 1350,
+                  "y": 704.73
+                }
+              ],
+              "id": "5d200943-11f8-47df-b1e5-21dd9885e511",
+              "type": "default",
+              "source": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "sourcePort": "cmqawt74e00mi356pyp8ibrtg",
+              "target": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+              "targetPort": "cmqawt74m00nw356p8neyrpvl",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "836d409f-a72f-447b-af1b-bb76b34d1ca7": {
+              "points": [
+                {
+                  "id": "fac50773-2483-48b7-aeee-379d0c5d0cef",
+                  "type": "point",
+                  "x": 1520.67,
+                  "y": 704.73
+                },
+                {
+                  "id": "f78a66f8-35c5-4b22-ac4c-b5aa47017782",
+                  "type": "point",
+                  "x": 1555,
+                  "y": 704.73
+                }
+              ],
+              "id": "836d409f-a72f-447b-af1b-bb76b34d1ca7",
+              "type": "default",
+              "source": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+              "sourcePort": "cmqawt74m00ny356pdu9qhk0j",
+              "target": "ba363530-7b54-4ee0-b194-53393095b811",
+              "targetPort": "cmqawt74o00o8356p9grt7fh5",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "42c05743-1cb2-4406-88d2-5e1c489f5d2d": {
+              "points": [
+                {
+                  "id": "1c5f7cb8-d5f4-4f2a-a1bb-2f1828bc6a31",
+                  "type": "point",
+                  "x": 1728.48,
+                  "y": 704.73
+                },
+                {
+                  "id": "767ab62d-e292-4e92-b93e-a586f3a9eb8d",
+                  "type": "point",
+                  "x": 1760,
+                  "y": 704.73
+                }
+              ],
+              "id": "42c05743-1cb2-4406-88d2-5e1c489f5d2d",
+              "type": "default",
+              "source": "ba363530-7b54-4ee0-b194-53393095b811",
+              "sourcePort": "cmqawt74o00oa356pq1lb73ke",
+              "target": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+              "targetPort": "cmqawt74q00oq356pu0e0yclk",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "80017451-40ff-4425-a766-e41958cabb2c": {
+              "points": [
+                {
+                  "id": "75c9b22a-f55b-46e9-b5c6-cef264175fc4",
+                  "type": "point",
+                  "x": 1951.32,
+                  "y": 704.73
+                },
+                {
+                  "id": "c0424fea-ccfa-4511-9b5c-2dba5e7b6486",
+                  "type": "point",
+                  "x": 2000,
+                  "y": 714.73
+                }
+              ],
+              "id": "80017451-40ff-4425-a766-e41958cabb2c",
+              "type": "default",
+              "source": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+              "sourcePort": "cmqawt74q00os356pury2v7dq",
+              "target": "b6170df6-b1e6-4794-abfe-c8743528f419",
+              "targetPort": "cmqawt74s00p4356pgju5r9uj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "a7f2e0c8-1c3e-4657-a29a-ed570f2069a5": {
+              "points": [
+                {
+                  "id": "d70331c8-df6f-4704-bbc6-3c4ad8f00ee9",
+                  "type": "point",
+                  "x": 1951.32,
+                  "y": 729.89
+                },
+                {
+                  "id": "edc28929-2a5d-4d56-a3d0-462c8e183974",
+                  "type": "point",
+                  "x": 2000,
+                  "y": 714.73
+                }
+              ],
+              "id": "a7f2e0c8-1c3e-4657-a29a-ed570f2069a5",
+              "type": "default",
+              "source": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+              "sourcePort": "cmqawt74q00ou356p6ztbn8z3",
+              "target": "b6170df6-b1e6-4794-abfe-c8743528f419",
+              "targetPort": "cmqawt74s00p4356pgju5r9uj",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "326b9afd-4ad3-4f2a-accb-dd80fef5a354": {
+              "points": [
+                {
+                  "id": "71e264a3-dbe1-4803-89aa-9838338ac3b0",
+                  "type": "point",
+                  "x": 1951.32,
+                  "y": 755.04
+                },
+                {
+                  "id": "b4c9a4ff-b63c-49af-afc7-960e5772d262",
+                  "type": "point",
+                  "x": 2000,
+                  "y": 784.73
+                }
+              ],
+              "id": "326b9afd-4ad3-4f2a-accb-dd80fef5a354",
+              "type": "default",
+              "source": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+              "sourcePort": "cmqawt74q00ow356p4mus4ye0",
+              "target": "1c9264f5-826e-4354-bc54-7ff59a761429",
+              "targetPort": "cmqawt74u00pg356pwlfsqfsh",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e143a21e-7a5a-411a-99e7-9c4cde492341": {
+              "points": [
+                {
+                  "id": "577f5bd1-cda1-4b68-beed-8bcaa995bcab",
+                  "type": "point",
+                  "x": 2235.28,
+                  "y": 784.73
+                },
+                {
+                  "id": "0508559a-540b-4009-a743-5a7eb04f7559",
+                  "type": "point",
+                  "x": 2265,
+                  "y": 784.73
+                }
+              ],
+              "id": "e143a21e-7a5a-411a-99e7-9c4cde492341",
+              "type": "default",
+              "source": "1c9264f5-826e-4354-bc54-7ff59a761429",
+              "sourcePort": "cmqawt74u00pi356pkl0hl6e1",
+              "target": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+              "targetPort": "cmqawt74w00pw356p725k7g8j",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "f70c0725-f9da-4fdd-95a6-12b856a4be87": {
+              "points": [
+                {
+                  "id": "6cadebcc-b1cd-41e8-9d71-69adec1b6952",
+                  "type": "point",
+                  "x": 2440.82,
+                  "y": 784.73
+                },
+                {
+                  "id": "d1ce9244-6108-44fb-a86f-de63a0b6d521",
+                  "type": "point",
+                  "x": 2490,
+                  "y": 784.73
+                }
+              ],
+              "id": "f70c0725-f9da-4fdd-95a6-12b856a4be87",
+              "type": "default",
+              "source": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+              "sourcePort": "cmqawt74w00py356pvh37hk81",
+              "target": "ebc5113f-b205-4628-b9f4-e37a32bd140c",
+              "targetPort": "cmqawt75200qi356p53as1el8",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "962328b6-4385-4b55-bb40-afff11b71b85": {
+              "points": [
+                {
+                  "id": "aee360c5-8c87-4588-92a6-a0869019a642",
+                  "type": "point",
+                  "x": 2440.82,
+                  "y": 809.89
+                },
+                {
+                  "id": "2432fbd3-1fd8-42a0-9d14-bb27b716e323",
+                  "type": "point",
+                  "x": 2490,
+                  "y": 839.73
+                }
+              ],
+              "id": "962328b6-4385-4b55-bb40-afff11b71b85",
+              "type": "default",
+              "source": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+              "sourcePort": "cmqawt74x00q0356pam71wrny",
+              "target": "6ed0d948-4610-44b4-b546-c3a5edcef52b",
+              "targetPort": "cmqawt74z00q8356pxwmpt92i",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "2ba6bd52-f8ac-4450-8f21-860cd25605e5",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "ed125046-1532-4ce5-925a-f8fd4c241132": {
+              "id": "ed125046-1532-4ce5-925a-f8fd4c241132",
+              "type": "request",
+              "selected": false,
+              "x": 175,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74900k6356p57ini81z",
+                  "type": "default",
+                  "x": 321,
+                  "y": 516.73,
+                  "name": "cmqawt74900k7356pnp9bny5f",
+                  "parentNode": "ed125046-1532-4ce5-925a-f8fd4c241132",
+                  "links": [
+                    "a582e2d8-f15c-4ee6-b739-63839f1b1cf0"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "ed9f47aa-cbd3-436c-8582-76f1f411ac1d"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "ed9f47aa-cbd3-436c-8582-76f1f411ac1d": {
+              "id": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+              "type": "validate",
+              "selected": false,
+              "x": 365,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74900kg356poa6uc6hc",
+                  "type": "default",
+                  "x": 357,
+                  "y": 516.73,
+                  "name": "cmqawt74900kh356ppuumtlmt",
+                  "parentNode": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+                  "links": [
+                    "a582e2d8-f15c-4ee6-b739-63839f1b1cf0"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74900ki356p8q8iiufb",
+                  "type": "default",
+                  "x": 511,
+                  "y": 516.73,
+                  "name": "cmqawt74900kj356pdmijik7o",
+                  "parentNode": "ed9f47aa-cbd3-436c-8582-76f1f411ac1d",
+                  "links": [
+                    "857b3bcc-ba21-4751-833b-4157e5865b83"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "56493dd8-42f1-44ff-afa6-4918ac14a634"
+                ],
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inventoryId": {
+                      "type": "string"
+                    },
+                    "adjustmentId": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "inventoryId",
+                    "adjustmentId",
+                    "quantity"
+                  ]
+                }
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Validate Input"
+            },
+            "56493dd8-42f1-44ff-afa6-4918ac14a634": {
+              "id": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 555,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74a00ks356pqtenvp8f",
+                  "type": "default",
+                  "x": 547,
+                  "y": 516.73,
+                  "name": "cmqawt74a00kt356pltu1v2dj",
+                  "parentNode": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+                  "links": [
+                    "857b3bcc-ba21-4751-833b-4157e5865b83"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74a00ku356po1k07hd3",
+                  "type": "default",
+                  "x": 701,
+                  "y": 516.73,
+                  "name": "cmqawt74a00kv356pdxwg0fc9",
+                  "parentNode": "56493dd8-42f1-44ff-afa6-4918ac14a634",
+                  "links": [
+                    "294d7e38-fedd-4e28-bc27-b94de99c1c5e"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "a111cbb0-f32d-4566-ae40-94060c7ecd3c"
+                ],
+                "transform": "{\r\n  \"INPUT\": {\r\n    \"inventoryId\": inventoryId,\r\n    \"adjustmentId\": adjustmentId,\r\n    \"quantity\": quantity,\r\n    \"note\": $exists(note) ? note : null\r\n  }\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Input"
+            },
+            "a111cbb0-f32d-4566-ae40-94060c7ecd3c": {
+              "id": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+              "type": "query",
+              "selected": false,
+              "x": 745,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74b00l4356p0hb8o65h",
+                  "type": "default",
+                  "x": 737,
+                  "y": 516.73,
+                  "name": "cmqawt74b00l5356pxwaqnrgh",
+                  "parentNode": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+                  "links": [
+                    "294d7e38-fedd-4e28-bc27-b94de99c1c5e"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74b00l6356pu4d8o184",
+                  "type": "default",
+                  "x": 891,
+                  "y": 516.73,
+                  "name": "cmqawt74b00l7356p2acu57sg",
+                  "parentNode": "a111cbb0-f32d-4566-ae40-94060c7ecd3c",
+                  "links": [
+                    "7f502db5-5003-4910-b70e-2a1ce95c01c8"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\r\n  \"where\": {\r\n    \"id\": { \"_eq\": $state.context.INPUT.inventoryId }\r\n  }\r\n}",
+                "query": "query GetInventory($where: InventoryWhereInput!) {\n  inventory(where: $where) {\n    total\n    edges {\n      node {\n        id\n        serialNumber\n        active\n        inventoryStatusId\n        quantity { value unitId }\n        mrbHoldStatus\n        mrbCaseId\n        product { id code }\n        storageUnit { id code }\n        lot { id number }\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "4ff08f85-1e3c-4461-892d-e98d06e4d774"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query Inventory"
+            },
+            "4ff08f85-1e3c-4461-892d-e98d06e4d774": {
+              "id": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 940,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74c00lg356ps04bjmd6",
+                  "type": "default",
+                  "x": 932,
+                  "y": 516.73,
+                  "name": "cmqawt74c00lh356pyszp0b0p",
+                  "parentNode": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+                  "links": [
+                    "7f502db5-5003-4910-b70e-2a1ce95c01c8"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74c00li356pg6lssqx9",
+                  "type": "default",
+                  "x": 1086,
+                  "y": 516.73,
+                  "name": "cmqawt74c00lj356pn15wfbnc",
+                  "parentNode": "4ff08f85-1e3c-4461-892d-e98d06e4d774",
+                  "links": [
+                    "1300ff4d-6c20-4641-a680-5cb6e1f22588"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "ed5309d3-f077-4cb5-b859-4b80419e2ecf"
+                ],
+                "transform": "{\r\n  \"INV\": inventory.edges.node[0]\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Inventory"
+            },
+            "ed5309d3-f077-4cb5-b859-4b80419e2ecf": {
+              "id": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+              "type": "switch",
+              "selected": false,
+              "x": 1130,
+              "y": 485,
+              "ports": [
+                {
+                  "id": "cmqawt74e00m8356pl8wngj2r",
+                  "type": "default",
+                  "x": 1122,
+                  "y": 516.73,
+                  "name": "cmqawt74e00m9356pmjv9tljj",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "1300ff4d-6c20-4641-a680-5cb6e1f22588"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74e00ma356pflcv6yu7",
+                  "type": "default",
+                  "x": 1300.67,
+                  "y": 516.73,
+                  "name": "cmqawt74e00mb356phpmexyj3",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "f9c29fec-45e1-40dd-99c2-8c4ac2f8d1a8"
+                  ],
+                  "in": false,
+                  "groupName": "NOT FOUND",
+                  "groupIndex": 0,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74e00mc356pwxyrsq04",
+                  "type": "default",
+                  "x": 1300.67,
+                  "y": 541.89,
+                  "name": "cmqawt74e00md356pnyp3f0al",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "5efea253-498d-41a2-8045-77e979fa14b3"
+                  ],
+                  "in": false,
+                  "groupName": "INACTIVE",
+                  "groupIndex": 1,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74e00me356pams44j1x",
+                  "type": "default",
+                  "x": 1300.67,
+                  "y": 567.04,
+                  "name": "cmqawt74e00mf356p8r6nfans",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "bcc855aa-c18c-4105-8483-ad3682b6c9b8"
+                  ],
+                  "in": false,
+                  "groupName": "RETIRED",
+                  "groupIndex": 2,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74e00mg356psddagxav",
+                  "type": "default",
+                  "x": 1300.67,
+                  "y": 592.2,
+                  "name": "cmqawt74e00mh356p9gr7r8mt",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "ab64d94b-236f-4e56-bdc5-acd254d9e071"
+                  ],
+                  "in": false,
+                  "groupName": "MRB HOLD",
+                  "groupIndex": 3,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74e00mi356pyp8ibrtg",
+                  "type": "default",
+                  "x": 1300.67,
+                  "y": 617.35,
+                  "name": "cmqawt74e00mj356plrb61xw9",
+                  "parentNode": "ed5309d3-f077-4cb5-b859-4b80419e2ecf",
+                  "links": [
+                    "5d200943-11f8-47df-b1e5-21dd9885e511"
+                  ],
+                  "in": false,
+                  "groupName": "PASS",
+                  "groupIndex": 4,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                }
+              ],
+              "data": {
+                "branches": [
+                  {
+                    "name": "NOT FOUND",
+                    "transform": "inventory.total = 0",
+                    "nextNodes": [
+                      "848d3842-d5f1-496e-a075-5362f931c25b"
+                    ]
+                  },
+                  {
+                    "name": "INACTIVE",
+                    "transform": "$state.context.INV.active = false",
+                    "nextNodes": [
+                      "86bd93eb-3d03-46f4-af7d-a3fe30394ac9"
+                    ]
+                  },
+                  {
+                    "name": "RETIRED",
+                    "transform": "$state.context.INV.inventoryStatusId = \"retired\"",
+                    "nextNodes": [
+                      "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca"
+                    ]
+                  },
+                  {
+                    "name": "MRB HOLD",
+                    "transform": "$exists($state.context.INV.mrbHoldStatus) and $state.context.INV.mrbHoldStatus != null",
+                    "nextNodes": [
+                      "848abe57-a923-4683-a873-c63e512e1a00"
+                    ]
+                  },
+                  {
+                    "name": "PASS",
+                    "transform": "true",
+                    "nextNodes": [
+                      "12b9298a-adea-4c0e-b65f-e0d2665d73d4"
+                    ]
+                  }
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Route — Inventory Check"
+            },
+            "848d3842-d5f1-496e-a075-5362f931c25b": {
+              "id": "848d3842-d5f1-496e-a075-5362f931c25b",
+              "type": "response",
+              "selected": false,
+              "x": 1350,
+              "y": 415,
+              "ports": [
+                {
+                  "id": "cmqawt74f00mq356pscwqjbaf",
+                  "type": "default",
+                  "x": 1342,
+                  "y": 446.73,
+                  "name": "cmqawt74f00mr356p3ypvxtd1",
+                  "parentNode": "848d3842-d5f1-496e-a075-5362f931c25b",
+                  "links": [
+                    "f9c29fec-45e1-40dd-99c2-8c4ac2f8d1a8"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt74f00ms356pk64886el",
+                  "type": "default",
+                  "x": 1565.67,
+                  "y": 446.73,
+                  "name": "cmqawt74f00mt356p6lpv5hmr",
+                  "parentNode": "848d3842-d5f1-496e-a075-5362f931c25b",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Not Found\",\r\n  \"message\": \"No inventory record found for the provided ID.\",\r\n  \"data\": { \"inventoryId\": $state.context.INPUT.inventoryId }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — Inventory Not Found"
+            },
+            "86bd93eb-3d03-46f4-af7d-a3fe30394ac9": {
+              "id": "86bd93eb-3d03-46f4-af7d-a3fe30394ac9",
+              "type": "response",
+              "selected": false,
+              "x": 1350,
+              "y": 470,
+              "ports": [
+                {
+                  "id": "cmqawt74h00n0356ptzecsu1q",
+                  "type": "default",
+                  "x": 1342,
+                  "y": 501.73,
+                  "name": "cmqawt74h00n1356pwb5kk584",
+                  "parentNode": "86bd93eb-3d03-46f4-af7d-a3fe30394ac9",
+                  "links": [
+                    "5efea253-498d-41a2-8045-77e979fa14b3"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt74h00n2356ppowxptfr",
+                  "type": "default",
+                  "x": 1551.51,
+                  "y": 501.73,
+                  "name": "cmqawt74h00n3356paz9fd5xa",
+                  "parentNode": "86bd93eb-3d03-46f4-af7d-a3fe30394ac9",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Inactive\",\r\n  \"message\": \"This inventory record has been soft-deleted and cannot be adjusted.\",\r\n  \"data\": { \"serialNumber\": $state.context.INV.serialNumber }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — Inventory Inactive"
+            },
+            "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca": {
+              "id": "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca",
+              "type": "response",
+              "selected": false,
+              "x": 1350,
+              "y": 525,
+              "ports": [
+                {
+                  "id": "cmqawt74i00na356parlqdoy0",
+                  "type": "default",
+                  "x": 1342,
+                  "y": 556.73,
+                  "name": "cmqawt74i00nb356ply2ytbcr",
+                  "parentNode": "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca",
+                  "links": [
+                    "bcc855aa-c18c-4105-8483-ad3682b6c9b8"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt74i00nc356pto6wyq62",
+                  "type": "default",
+                  "x": 1547.43,
+                  "y": 556.73,
+                  "name": "cmqawt74i00nd356pedvi1qvp",
+                  "parentNode": "eef9d0f6-42e8-4e93-a7de-89e6287bd5ca",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Inventory Retired\",\r\n  \"message\": \"This inventory has been retired and cannot be adjusted.\",\r\n  \"data\": { \"serialNumber\": $state.context.INV.serialNumber }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — Inventory Retired"
+            },
+            "848abe57-a923-4683-a873-c63e512e1a00": {
+              "id": "848abe57-a923-4683-a873-c63e512e1a00",
+              "type": "response",
+              "selected": false,
+              "x": 1350,
+              "y": 580,
+              "ports": [
+                {
+                  "id": "cmqawt74k00nk356pqp8aifcw",
+                  "type": "default",
+                  "x": 1342,
+                  "y": 611.73,
+                  "name": "cmqawt74k00nl356pc1h6d0x0",
+                  "parentNode": "848abe57-a923-4683-a873-c63e512e1a00",
+                  "links": [
+                    "ab64d94b-236f-4e56-bdc5-acd254d9e071"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt74k00nm356pxw8rjnoi",
+                  "type": "default",
+                  "x": 1550.74,
+                  "y": 611.73,
+                  "name": "cmqawt74k00nn356pqkgy3kq8",
+                  "parentNode": "848abe57-a923-4683-a873-c63e512e1a00",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"MRB Quality Hold!\",\r\n  \"message\": \"This inventory is on MRB quality hold (\" & $state.context.INV.mrbHoldStatus & \") and cannot be adjusted directly. Use the MRB disposition process. Case ID: \" & $state.context.INV.mrbCaseId,\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"mrbHoldStatus\": $state.context.INV.mrbHoldStatus,\r\n    \"mrbCaseId\": $state.context.INV.mrbCaseId\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — MRB Quality Hold"
+            },
+            "12b9298a-adea-4c0e-b65f-e0d2665d73d4": {
+              "id": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+              "type": "query",
+              "selected": false,
+              "x": 1350,
+              "y": 665,
+              "ports": [
+                {
+                  "id": "cmqawt74m00nw356p8neyrpvl",
+                  "type": "default",
+                  "x": 1342,
+                  "y": 696.73,
+                  "name": "cmqawt74m00nx356pz0e4sriw",
+                  "parentNode": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+                  "links": [
+                    "5d200943-11f8-47df-b1e5-21dd9885e511"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74m00ny356pdu9qhk0j",
+                  "type": "default",
+                  "x": 1512.67,
+                  "y": 696.73,
+                  "name": "cmqawt74m00nz356pz6eplrkf",
+                  "parentNode": "12b9298a-adea-4c0e-b65f-e0d2665d73d4",
+                  "links": [
+                    "836d409f-a72f-447b-af1b-bb76b34d1ca7"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "{\r\n  \"where\": {\r\n    \"id\": { \"_eq\": $state.context.INPUT.adjustmentId }\r\n  }\r\n}",
+                "query": "query GetAdjustment($where: AdjustmentWhereInput!) {\n  adjustment(where: $where) {\n    total\n    edges {\n      node {\n        id\n        name\n        usable\n        tolerance\n      }\n    }\n  }\n}",
+                "nextNodes": [
+                  "ba363530-7b54-4ee0-b194-53393095b811"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query Adjustment Type"
+            },
+            "ba363530-7b54-4ee0-b194-53393095b811": {
+              "id": "ba363530-7b54-4ee0-b194-53393095b811",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 1555,
+              "y": 665,
+              "ports": [
+                {
+                  "id": "cmqawt74o00o8356p9grt7fh5",
+                  "type": "default",
+                  "x": 1547,
+                  "y": 696.73,
+                  "name": "cmqawt74o00o9356p0sxiwzuo",
+                  "parentNode": "ba363530-7b54-4ee0-b194-53393095b811",
+                  "links": [
+                    "836d409f-a72f-447b-af1b-bb76b34d1ca7"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74o00oa356pq1lb73ke",
+                  "type": "default",
+                  "x": 1720.48,
+                  "y": 696.73,
+                  "name": "cmqawt74o00ob356pu4waby9o",
+                  "parentNode": "ba363530-7b54-4ee0-b194-53393095b811",
+                  "links": [
+                    "42c05743-1cb2-4406-88d2-5e1c489f5d2d"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "65399932-65a9-4c2b-8458-b0dd7e5d44bc"
+                ],
+                "transform": "{\r\n  \"ADJ\": adjustment.edges.node[0]\r\n}"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Adjustment Type"
+            },
+            "65399932-65a9-4c2b-8458-b0dd7e5d44bc": {
+              "id": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+              "type": "switch",
+              "selected": false,
+              "x": 1760,
+              "y": 665,
+              "ports": [
+                {
+                  "id": "cmqawt74q00oq356pu0e0yclk",
+                  "type": "default",
+                  "x": 1752,
+                  "y": 696.73,
+                  "name": "cmqawt74q00or356pko89xeb9",
+                  "parentNode": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+                  "links": [
+                    "42c05743-1cb2-4406-88d2-5e1c489f5d2d"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74q00os356pury2v7dq",
+                  "type": "default",
+                  "x": 1943.32,
+                  "y": 696.73,
+                  "name": "cmqawt74q00ot356p3vjuywbo",
+                  "parentNode": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+                  "links": [
+                    "80017451-40ff-4425-a766-e41958cabb2c"
+                  ],
+                  "in": false,
+                  "groupName": "NOT FOUND",
+                  "groupIndex": 0,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74q00ou356p6ztbn8z3",
+                  "type": "default",
+                  "x": 1943.32,
+                  "y": 721.89,
+                  "name": "cmqawt74q00ov356peyi1dtnl",
+                  "parentNode": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+                  "links": [
+                    "a7f2e0c8-1c3e-4657-a29a-ed570f2069a5"
+                  ],
+                  "in": false,
+                  "groupName": "NOT USABLE",
+                  "groupIndex": 1,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                },
+                {
+                  "id": "cmqawt74q00ow356p4mus4ye0",
+                  "type": "default",
+                  "x": 1943.32,
+                  "y": 747.04,
+                  "name": "cmqawt74q00ox356pmqp053kd",
+                  "parentNode": "65399932-65a9-4c2b-8458-b0dd7e5d44bc",
+                  "links": [
+                    "326b9afd-4ad3-4f2a-accb-dd80fef5a354"
+                  ],
+                  "in": false,
+                  "groupName": "PASS",
+                  "groupIndex": 2,
+                  "groupPath": "data.branches",
+                  "fieldLabel": null,
+                  "fieldPath": "nextNodes"
+                }
+              ],
+              "data": {
+                "branches": [
+                  {
+                    "name": "NOT FOUND",
+                    "transform": "adjustment.total = 0",
+                    "nextNodes": [
+                      "b6170df6-b1e6-4794-abfe-c8743528f419"
+                    ]
+                  },
+                  {
+                    "name": "NOT USABLE",
+                    "transform": "$state.context.ADJ.usable = false",
+                    "nextNodes": [
+                      "b6170df6-b1e6-4794-abfe-c8743528f419"
+                    ]
+                  },
+                  {
+                    "name": "PASS",
+                    "transform": "true",
+                    "nextNodes": [
+                      "1c9264f5-826e-4354-bc54-7ff59a761429"
+                    ]
+                  }
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Route — Adjustment Check"
+            },
+            "b6170df6-b1e6-4794-abfe-c8743528f419": {
+              "id": "b6170df6-b1e6-4794-abfe-c8743528f419",
+              "type": "response",
+              "selected": false,
+              "x": 2000,
+              "y": 675,
+              "ports": [
+                {
+                  "id": "cmqawt74s00p4356pgju5r9uj",
+                  "type": "default",
+                  "x": 1992,
+                  "y": 706.73,
+                  "name": "cmqawt74s00p5356p7ihmo8lc",
+                  "parentNode": "b6170df6-b1e6-4794-abfe-c8743528f419",
+                  "links": [
+                    "80017451-40ff-4425-a766-e41958cabb2c",
+                    "a7f2e0c8-1c3e-4657-a29a-ed570f2069a5"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt74s00p6356pv6hi3sfb",
+                  "type": "default",
+                  "x": 2236.04,
+                  "y": 706.73,
+                  "name": "cmqawt74s00p7356pmpwekx34",
+                  "parentNode": "b6170df6-b1e6-4794-abfe-c8743528f419",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": false,\r\n  \"severity\": \"error\",\r\n  \"title\": \"Invalid Adjustment Type\",\r\n  \"message\": \"The adjustment type provided does not exist or is not usable.\",\r\n  \"data\": { \"adjustmentId\": $state.context.INPUT.adjustmentId }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — Adjustment Type Invalid"
+            },
+            "1c9264f5-826e-4354-bc54-7ff59a761429": {
+              "id": "1c9264f5-826e-4354-bc54-7ff59a761429",
+              "type": "mutate",
+              "selected": false,
+              "x": 2000,
+              "y": 745,
+              "ports": [
+                {
+                  "id": "cmqawt74u00pg356pwlfsqfsh",
+                  "type": "default",
+                  "x": 1992,
+                  "y": 776.73,
+                  "name": "cmqawt74u00ph356p6c4cww4p",
+                  "parentNode": "1c9264f5-826e-4354-bc54-7ff59a761429",
+                  "links": [
+                    "326b9afd-4ad3-4f2a-accb-dd80fef5a354"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74u00pi356pkl0hl6e1",
+                  "type": "default",
+                  "x": 2227.28,
+                  "y": 776.73,
+                  "name": "cmqawt74u00pj356p3ehpane5",
+                  "parentNode": "1c9264f5-826e-4354-bc54-7ff59a761429",
+                  "links": [
+                    "e143a21e-7a5a-411a-99e7-9c4cde492341"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{\r\n  \"payload\": [{\r\n    \"where\": { \"id\": $state.context.INV.id },\r\n    \"update\": {\r\n      \"quantity\": {\r\n        \"value\": $state.context.INPUT.quantity,\r\n        \"unitId\": $state.context.INV.quantity.unitId\r\n      },\r\n      \"lastAdjustmentId\": $state.context.ADJ.id,\r\n      \"lastTransactionTypeId\": \"inventoryAdjustment\",\r\n      \"note\": $state.context.INPUT.note\r\n    }\r\n  }]\r\n}",
+                "mutation": "mutation AdjustInventory($payload: [InventoryUpdatePayloadInput!]!) {\n  updateInventory(payload: $payload) {\n    id\n    serialNumber\n    quantity { value unitId }\n    lastAdjustmentId\n    lastTransactionTypeId\n  }\n}",
+                "nextNodes": [
+                  "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate — Adjust Inventory Quantity"
+            },
+            "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac": {
+              "id": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+              "type": "ifElse",
+              "selected": false,
+              "x": 2265,
+              "y": 745,
+              "ports": [
+                {
+                  "id": "cmqawt74w00pw356p725k7g8j",
+                  "type": "default",
+                  "x": 2257,
+                  "y": 776.73,
+                  "name": "cmqawt74w00px356p1sgjx2nc",
+                  "parentNode": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+                  "links": [
+                    "e143a21e-7a5a-411a-99e7-9c4cde492341"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmqawt74w00py356pvh37hk81",
+                  "type": "default",
+                  "x": 2432.82,
+                  "y": 776.73,
+                  "name": "cmqawt74w00pz356pp7j722q6",
+                  "parentNode": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+                  "links": [
+                    "f70c0725-f9da-4fdd-95a6-12b856a4be87"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "True",
+                  "fieldPath": "data.onTrueNextNodes"
+                },
+                {
+                  "id": "cmqawt74x00q0356pam71wrny",
+                  "type": "default",
+                  "x": 2432.82,
+                  "y": 801.89,
+                  "name": "cmqawt74x00q1356pf2umwxrr",
+                  "parentNode": "8ab7b81b-fee8-41dd-a3b8-55a8e89c05ac",
+                  "links": [
+                    "962328b6-4385-4b55-bb40-afff11b71b85"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "False",
+                  "fieldPath": "data.onFalseNextNodes"
+                }
+              ],
+              "data": {
+                "transform": "$state.context.ADJ.id = \"mrbScrap\" and $exists($state.context.INV.mrbCaseId) and $state.context.INV.mrbCaseId != null",
+                "onTrueNextNodes": [
+                  "ebc5113f-b205-4628-b9f4-e37a32bd140c"
+                ],
+                "onFalseNextNodes": [
+                  "6ed0d948-4610-44b4-b546-c3a5edcef52b"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "MRB Scrap Adjustment?"
+            },
+            "6ed0d948-4610-44b4-b546-c3a5edcef52b": {
+              "id": "6ed0d948-4610-44b4-b546-c3a5edcef52b",
+              "type": "response",
+              "selected": false,
+              "x": 2490,
+              "y": 800,
+              "ports": [
+                {
+                  "id": "cmqawt74z00q8356pxwmpt92i",
+                  "type": "default",
+                  "x": 2482,
+                  "y": 831.73,
+                  "name": "cmqawt75000q9356pbo0qpxew",
+                  "parentNode": "6ed0d948-4610-44b4-b546-c3a5edcef52b",
+                  "links": [
+                    "962328b6-4385-4b55-bb40-afff11b71b85"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt75000qa356pmyl3aaf0",
+                  "type": "default",
+                  "x": 2641.41,
+                  "y": 831.73,
+                  "name": "cmqawt75000qb356pxvynngvi",
+                  "parentNode": "6ed0d948-4610-44b4-b546-c3a5edcef52b",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"title\": \"Adjustment Complete\",\r\n  \"message\": \"Inventory quantity adjusted successfully.\",\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"adjustmentType\": $state.context.ADJ.name,\r\n    \"newQuantity\": $state.context.INPUT.quantity,\r\n    \"unitId\": $state.context.INV.quantity.unitId\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — Success"
+            },
+            "ebc5113f-b205-4628-b9f4-e37a32bd140c": {
+              "id": "ebc5113f-b205-4628-b9f4-e37a32bd140c",
+              "type": "response",
+              "selected": true,
+              "x": 2490,
+              "y": 745,
+              "ports": [
+                {
+                  "id": "cmqawt75200qi356p53as1el8",
+                  "type": "default",
+                  "x": 2482,
+                  "y": 776.73,
+                  "name": "cmqawt75200qj356pnb1ytgw4",
+                  "parentNode": "ebc5113f-b205-4628-b9f4-e37a32bd140c",
+                  "links": [
+                    "f70c0725-f9da-4fdd-95a6-12b856a4be87"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmqawt75200qk356pc4xucbh7",
+                  "type": "default",
+                  "x": 2704.5,
+                  "y": 776.73,
+                  "name": "cmqawt75200ql356p7okyw729",
+                  "parentNode": "ebc5113f-b205-4628-b9f4-e37a32bd140c",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"severity\": \"success\",\r\n  \"title\": \"MRB Scrap Complete\",\r\n  \"message\": \"Inventory adjusted to zero. Update the MRB Scrap action item in QCS to complete the disposition. Case ID: \" & $state.context.INV.mrbCaseId,\r\n  \"data\": {\r\n    \"serialNumber\": $state.context.INV.serialNumber,\r\n    \"mrbCaseId\": $state.context.INV.mrbCaseId,\r\n    \"newQuantity\": $state.context.INPUT.quantity\r\n  }\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response — MRB Scrap Success"
+            }
+          }
+        }
+      ],
+      "name": "MRB Adjust Inventory",
+      "type": "System",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

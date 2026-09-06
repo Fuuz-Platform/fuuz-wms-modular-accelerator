@@ -1,0 +1,57 @@
+{
+  "api": "application",
+  "modelName": "PickStepStatus",
+  "payload": [
+    {
+      "id": "completed",
+      "usable": true,
+      "description": "A pick step that has been fully completed and dropped off.",
+      "name": "Completed",
+      "userId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "new",
+      "usable": true,
+      "description": "A pick step that has been configured, but not yet started.",
+      "name": "New",
+      "userId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "picked",
+      "usable": true,
+      "description": "A pick step that has been completely picked, but not yet dropped off.",
+      "name": "Picked",
+      "userId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "ready",
+      "usable": true,
+      "description": "A pick step that has been released and can be picked.",
+      "name": "Ready",
+      "userId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "started",
+      "usable": true,
+      "description": "A pick step that has been started, but not completely picked.",
+      "name": "Started",
+      "userId": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

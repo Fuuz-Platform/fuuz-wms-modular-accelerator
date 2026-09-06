@@ -1,0 +1,272 @@
+{
+  "header": {
+    "id": "shipmentLineOrderLineRelease",
+    "name": "ShipmentLineOrderLineRelease",
+    "description": "Defines how much and to which shipment line(s) a given order line release is allocated.",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmnz4z9z40evk07751n133928",
+    "number": "6",
+    "dataModelId": "shipmentLineOrderLineRelease",
+    "modelDefinition": {
+      "name": "ShipmentLineOrderLineRelease",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "orderProcessing",
+            "group": {
+              "id": "orderFulfillment"
+            }
+          },
+          "indices": [
+            {
+              "name": "Unique Shipment to Release Pair",
+              "unique": true,
+              "fields": [
+                "shipmentLineId",
+                "orderLineReleaseId"
+              ]
+            },
+            {
+              "name": "Quantity Allocated",
+              "unique": false,
+              "fields": [
+                "quantityAllocated"
+              ]
+            }
+          ],
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "editor": {
+            "autosort": false
+          },
+          "triggers": {
+            "create": "$ ~> |$| {\r\n  \"id\": $not($exists($after.id)) ? $after.shipmentLineId & \"_\" & $after.orderLineReleaseId,\r\n  \"quantityOriginallyAllocated\": quantityAllocated\r\n} |"
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "queries": {
+            "defaultReadPreference": "primaryPreferred"
+          }
+        },
+        "mongo": {
+          "collection": "shipmentLineOrderLineRelease"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "quantityAllocated",
+          "type": "Measure!",
+          "description": "The quantity from the order line release that was allocated to the corresponding shipment line\n\nIf a shipment is short shipped this will be updated to the amount that was actually shipped. the difference between the OriginalAllocatedQuantity and the allocatedQuantity is how much this line is short by.\n\nThis is because the quantityAlocated is how the system calculates the quantityLeft for sales orders.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "shipmentLineId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "shipmentLine",
+          "description": "",
+          "type": "ShipmentLine!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "shipmentLineId",
+                  "to": "id"
+                },
+                "deletionReferenceBehavior": "prevent"
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineReleaseId",
+          "type": "ID!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "orderLineRelease",
+          "description": "",
+          "type": "OrderLineRelease!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "orderLineReleaseId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "quantityOriginallyAllocated",
+          "description": "",
+          "type": "Measure",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "Defines how much and to which shipment line(s) a given order line release is allocated."
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmnz4z9z40evk07751n133928",
+      "dataModelVersion": {
+        "number": "6"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

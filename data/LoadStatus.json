@@ -1,0 +1,57 @@
+{
+  "api": "application",
+  "modelName": "LoadStatus",
+  "payload": [
+    {
+      "id": "new",
+      "active": true,
+      "usable": true,
+      "description": "This is the status that loads are first created in. These loads need to still be packed ",
+      "name": "New",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "packed",
+      "active": true,
+      "usable": true,
+      "description": "Loads in this status have been fully packed and are ready to ship",
+      "name": "Packed",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "picked",
+      "active": true,
+      "usable": true,
+      "description": "The load has been completed picked.",
+      "name": "Picked",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shipped",
+      "active": false,
+      "usable": true,
+      "description": "Loads in this have already been shipped.",
+      "name": "Shipped",
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "shortShipped",
+      "active": false,
+      "usable": true,
+      "description": "Loads in this status have been shipped but at least one shipment line was shipped with out meeting the expected quantity",
+      "name": "Short Shipped",
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

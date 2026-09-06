@@ -1,0 +1,1642 @@
+{
+  "header": {
+    "id": "businessPartnersTable",
+    "name": "Business Partners Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "logistics",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmdxji1z03t5u07754u5adark",
+    "number": "0.0.3",
+    "description": "",
+    "screenId": "businessPartnersTable",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "BusinessPartnerTable",
+          "tabTitle": "Business Partner Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 9,
+                    "Action Button": 8,
+                    "Form": 2,
+                    "Table": 2,
+                    "Table Column": 10,
+                    "Text": 3,
+                    "Checkbox": 3,
+                    "Button Group": 1
+                  },
+                  "module": {
+                    "id": "orderProcessing",
+                    "group": {
+                      "id": "orderFulfillment"
+                    }
+                  },
+                  "dataModel": "BusinessPartner",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "MGkIVbJtjI"
+                ],
+                "linkedNodes": {}
+              },
+              "GOUDtnMIWU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "row",
+                  "justifyContent": "start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "MGkIVbJtjI",
+                "hidden": false,
+                "nodes": [
+                  "pOR2PVwHrU"
+                ],
+                "linkedNodes": {}
+              },
+              "pOR2PVwHrU": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "BusinessPartner",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "GOUDtnMIWU",
+                "hidden": false,
+                "nodes": [
+                  "555slZCtg5"
+                ],
+                "linkedNodes": {}
+              },
+              "555slZCtg5": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "pOR2PVwHrU",
+                "hidden": false,
+                "nodes": [
+                  "glX__380k9",
+                  "gx5cnZydHg",
+                  "c50tiLta77",
+                  "b56z3shl-S",
+                  "tlpRffa89Y",
+                  "HjShSGL6DF",
+                  "FbvZ-MpfoK"
+                ],
+                "linkedNodes": {}
+              },
+              "gx5cnZydHg": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "code",
+                  "field": "code",
+                  "description": "Short Abbreviated code for business partner - must be unique.",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "code._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "c50tiLta77": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Allow Transfer",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "allowTransfer",
+                  "field": "allowTransfer",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "allowTransfer._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox1"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "b56z3shl-S": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Customer",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "customer",
+                  "field": "customer",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "customer._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox2"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "tlpRffa89Y": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Supplier",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "supplier",
+                  "field": "supplier",
+                  "description": "",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "supplier._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox3"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "HjShSGL6DF": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "External Id",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "externalId",
+                  "field": "externalId",
+                  "description": "",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "externalId._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "FbvZ-MpfoK": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "PkJCxHNZF4": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "glX__380k9",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "WwzxNnHGGo": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "businessPartnerDetailForm",
+                      "screenName": "BusinessPartnerDetail",
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      },
+                      "title": "New Business Partner"
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "glX__380k9",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "8VFZUJ-AUJ": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "businessPartnerDetailForm",
+                      "screenParams": {
+                        "__transform": "{\r\n  \"id\": $components.Table1.selectedRows.id\r\n}",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "screenName": "BusinessPartnerDetail",
+                      "title": {
+                        "__transform": "$components.Table1.selectedRows.code"
+                      }
+                    }
+                  ],
+                  "title": "Update"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "glX__380k9",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "yA4Un9M1TS": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Business Partner \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteBusinessPartner($payload: [BusinessPartnerDeletePayloadInput!]!) {\n  mutation: deleteBusinessPartner(payload: $payload) { \n    id\n    code\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Business Partner \" & $components.Table1.selectedRows.code) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Delete"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "glX__380k9",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Xn2s4g96kg": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "BusinessPartner",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 450,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "kRs8bdtdIc",
+                "hidden": false,
+                "nodes": [
+                  "QzoIc3T8jV",
+                  "BRAQpufuVm",
+                  "5MqVk5FJQC",
+                  "MwkBz84uku",
+                  "VDAS7rXsFz",
+                  "VgJ70NVoGs",
+                  "9ko2V1FyZM"
+                ],
+                "linkedNodes": {
+                  "Table1Detail": "rGFLoRezid"
+                }
+              },
+              "QzoIc3T8jV": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "code",
+                  "dataPath": "code",
+                  "description": "Short Abbreviated code for business partner - must be unique.",
+                  "linkTarget": {
+                    "__transform": "\"/orderFulfillment/orderProcessing/businessPartners/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "BRAQpufuVm": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Allow Transfer",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "allowTransfer",
+                  "dataPath": "allowTransfer",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "5MqVk5FJQC": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Customer",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "customer",
+                  "dataPath": "customer",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "MwkBz84uku": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Supplier",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "field": "supplier",
+                  "dataPath": "supplier",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn4"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "VDAS7rXsFz": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "External Id",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "externalId",
+                  "dataPath": "externalId",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9ko2V1FyZM": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "BusinessPartner"
+                },
+                "displayName": "Custom Fields Table Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "kRs8bdtdIc": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "MGkIVbJtjI",
+                "hidden": false,
+                "nodes": [
+                  "Xn2s4g96kg"
+                ],
+                "linkedNodes": {}
+              },
+              "glX__380k9": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "555slZCtg5",
+                "hidden": false,
+                "nodes": [
+                  "PkJCxHNZF4",
+                  "WwzxNnHGGo",
+                  "8VFZUJ-AUJ",
+                  "yA4Un9M1TS"
+                ],
+                "linkedNodes": {}
+              },
+              "MGkIVbJtjI": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "GOUDtnMIWU",
+                  "kRs8bdtdIc"
+                ],
+                "linkedNodes": {}
+              },
+              "VgJ70NVoGs": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Addresses ",
+                  "format": "integer",
+                  "sortable": true,
+                  "dataPath": "businessPartnerAddresses.total",
+                  "description": "",
+                  "query": {},
+                  "field": "businessPartnerAddresses.total"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn6"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rGFLoRezid": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Table1Detail"
+                },
+                "parent": "Xn2s4g96kg",
+                "hidden": false,
+                "nodes": [
+                  "Ob0obKQbT_"
+                ],
+                "linkedNodes": {}
+              },
+              "0er7oEpmU_": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "Ob0obKQbT_",
+                "hidden": false,
+                "nodes": [
+                  "cB94rmssYM"
+                ],
+                "linkedNodes": {}
+              },
+              "Ob0obKQbT_": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container7"
+                },
+                "parent": "rGFLoRezid",
+                "hidden": false,
+                "nodes": [
+                  "0er7oEpmU_",
+                  "wi50NZIG0B",
+                  "2miTNafJ_D"
+                ],
+                "linkedNodes": {}
+              },
+              "cB94rmssYM": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "model": "BusinessPartnerAddress"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "description": "An addressed location for a business partner. May contain additional notes such as for packaging and shipping specifications. Acts as an endpoint for shipping and receiving."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form2"
+                },
+                "parent": "0er7oEpmU_",
+                "hidden": false,
+                "nodes": [
+                  "Ual0Mmya6N"
+                ],
+                "linkedNodes": {}
+              },
+              "Ual0Mmya6N": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": true,
+                  "shadow": false,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container8"
+                },
+                "parent": "cB94rmssYM",
+                "hidden": false,
+                "nodes": [
+                  "pjj2kfUhGq"
+                ],
+                "linkedNodes": {}
+              },
+              "pjj2kfUhGq": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Text Address",
+                  "formElement": "Form2",
+                  "dataPath": "textAddress",
+                  "target": {
+                    "dataPath": "textAddress._contains"
+                  },
+                  "description": "Unstructured address.",
+                  "field": "textAddress",
+                  "predicate": "_contains"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "Ual0Mmya6N",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wi50NZIG0B": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "Ob0obKQbT_",
+                "hidden": false,
+                "nodes": [
+                  "D2QdGYK8U6",
+                  "lAXNptOcN0",
+                  "jgKyjofj84",
+                  "0H2HduZsJK"
+                ],
+                "linkedNodes": {}
+              },
+              "D2QdGYK8U6": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table2.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Search button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Search Button which search data from table.",
+                    "icon": "search",
+                    "requiresTable": true
+                  },
+                  "elementName": "Action Button"
+                },
+                "parent": "wi50NZIG0B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "lAXNptOcN0": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "businessPartnerAddressDetailForm",
+                      "title": "New Address",
+                      "screenParams": {
+                        "__transform": "{\r\n  \"businessPartnerId\": $parent.data.id\r\n}",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "transforms": {
+                        "post": "$components.Table2.fn.search()"
+                      }
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Create button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Create Button which open form.",
+                    "icon": "plus",
+                    "requiresTable": true
+                  }
+                },
+                "parent": "wi50NZIG0B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "2miTNafJ_D": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "BusinessPartnerAddress",
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"businessPartnerId\":{\r\n      \"_eq\": $parent.data.id\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "multiple",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "description": "An addressed location for a business partner. May contain additional notes such as for packaging and shipping specifications. Acts as an endpoint for shipping and receiving.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false,
+                  "filterFormName": "Form2"
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table2"
+                },
+                "parent": "Ob0obKQbT_",
+                "hidden": false,
+                "nodes": [
+                  "3Ji8PuEmdN",
+                  "DwnjN8tTrY",
+                  "xw3rgJkHZO"
+                ],
+                "linkedNodes": {}
+              },
+              "3Ji8PuEmdN": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "code",
+                  "description": "",
+                  "query": {
+                    "fields": [
+                      "id",
+                      "code"
+                    ]
+                  },
+                  "field": "code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn7"
+                },
+                "parent": "2miTNafJ_D",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "DwnjN8tTrY": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Address",
+                  "format": "address",
+                  "sortable": true,
+                  "dataPath": "address",
+                  "description": "Structured address object",
+                  "query": {
+                    "fields": [
+                      "address.lines",
+                      "address.city",
+                      "address.state",
+                      "address.postalCode",
+                      "address.country"
+                    ]
+                  },
+                  "field": "address"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn8"
+                },
+                "parent": "2miTNafJ_D",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "xw3rgJkHZO": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Text Address",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "textAddress",
+                  "description": "Unstructured address.",
+                  "query": {},
+                  "field": "textAddress"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn10"
+                },
+                "parent": "2miTNafJ_D",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "jgKyjofj84": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table2.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "businessPartnerAddressDetailForm",
+                      "title": {
+                        "__transform": "$components.Table2.selectedRows.code"
+                      },
+                      "screenParams": {
+                        "__transform": "{\r\n  \"businessPartnerId\": $parent.data.id,\r\n  \"id\": $components.Table2.selectedRows.id\r\n}",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "transforms": {
+                        "post": "$components.Table2.fn.search()"
+                      }
+                    }
+                  ],
+                  "title": "Update"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Edit button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Edit Button which open form with auto fill.",
+                    "icon": "pencil",
+                    "requiresTable": true
+                  }
+                },
+                "parent": "wi50NZIG0B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0H2HduZsJK": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table2.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "disabled": {
+                        "__transform": "$count($components.Table2.selectedRows) = 0",
+                        "__dynamicFields": {
+                          "payload": [],
+                          "context": [
+                            "components.Table2.selectedRows"
+                          ]
+                        },
+                        "__cacheKey": "deleteButton",
+                        "__remote": false
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & $count($components.Table2.selectedRows) & \" records?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table2.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "$count($components.Table2.selectedRows) & \" records deleted successfully.\""
+                      },
+                      "mutation": "mutation DeleteBusinessPartnerAddress($payload: [BusinessPartnerAddressDeletePayloadInput!]!) {\n  deleteBusinessPartnerAddress(payload: $payload) {\n    id\n  }\n}"
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table2.fn.search()"
+                    }
+                  ]
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "color": "#9c5a94",
+                    "description": "Delete button which perform delete action.",
+                    "elementName": "Delete Button",
+                    "icon": "trash",
+                    "requiresTable": true,
+                    "requiresForm": true
+                  }
+                },
+                "parent": "wi50NZIG0B",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdq40waf2hup0775hx440hun",
+      "title": "Business Partners",
+      "path": "/materialsManagement/logistics/businessPartnersTable",
+      "moduleId": "logistics",
+      "screenId": "businessPartnersTable",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

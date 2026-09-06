@@ -1,0 +1,740 @@
+{
+  "header": {
+    "id": "scac",
+    "name": "SCAC",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "shipping",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmqs9831n03a2018yf67f78rk",
+    "number": "0.0.5",
+    "description": "",
+    "screenId": "scac",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false,
+                  "screenDataFlowIds": [
+                    "addEditScacWebFlow"
+                  ]
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Resizable Panel": 1,
+                    "Form": 2,
+                    "Container": 5,
+                    "Table": 1,
+                    "Table Column": 7,
+                    "Action": 2,
+                    "Text": 3,
+                    "Switch": 2,
+                    "Button Group": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "Ux7UGAgZ1d",
+                  "5Hes8gYoKo"
+                ],
+                "linkedNodes": {}
+              },
+              "Ux7UGAgZ1d": {
+                "type": {
+                  "resolvedName": "ResizablePanelLayout"
+                },
+                "isCanvas": true,
+                "props": {
+                  "handle": "right",
+                  "toggleHotkey": "",
+                  "defaultSize": 300,
+                  "axis": false,
+                  "minSize": 0,
+                  "maxSize": 700
+                },
+                "displayName": "Resizable Panel",
+                "custom": {
+                  "elementName": "ResizablePanel1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "j0NMqHNv2K"
+                ],
+                "linkedNodes": {}
+              },
+              "A1xL3geY5y": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "StandardCarrierAlphaCode"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": ""
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "j0NMqHNv2K",
+                "hidden": false,
+                "nodes": [
+                  "Ysb4c4zElm"
+                ],
+                "linkedNodes": {}
+              },
+              "Ysb4c4zElm": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "95%",
+                  "height": "180%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "A1xL3geY5y",
+                "hidden": false,
+                "nodes": [
+                  "26iJOIkjdJ",
+                  "hNprR4xZWs",
+                  "e_K77Mp6_5",
+                  "Sh-w7NYLfr",
+                  "rviypNHlq9"
+                ],
+                "linkedNodes": {}
+              },
+              "aNwsKkw-Oh": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 8,
+                  "width": "100%",
+                  "height": "90%",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id",
+                      "code",
+                      "name",
+                      "carrier"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "selectedDataChangeIndicator": null,
+                    "model": "StandardCarrierAlphaCode"
+                  },
+                  "selectable": "none",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "5Hes8gYoKo",
+                "hidden": false,
+                "nodes": [
+                  "v6frvxWoPP",
+                  "R72IG3ExGj",
+                  "m3xb0FrR4U",
+                  "jFBO91WL65",
+                  "9P3cA5K3zR"
+                ],
+                "linkedNodes": {}
+              },
+              "5Hes8gYoKo": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "ScreenContainer"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "aNwsKkw-Oh"
+                ],
+                "linkedNodes": {}
+              },
+              "R72IG3ExGj": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "code",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "aNwsKkw-Oh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "m3xb0FrR4U": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Name",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "name",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "aNwsKkw-Oh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "jFBO91WL65": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Carrier",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "carrier",
+                  "description": "",
+                  "query": {
+                    "fields": []
+                  },
+                  "field": "carrier"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn4"
+                },
+                "parent": "aNwsKkw-Oh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9P3cA5K3zR": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Parcel",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "dataPath": "isParcel",
+                  "description": "",
+                  "query": {},
+                  "field": "isParcel",
+                  "data": {
+                    "__transform": "data.isParcel ? true : null",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "aNwsKkw-Oh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dMheoNF2n1": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "100%",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "magnifying-glass",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action1"
+                },
+                "parent": "26iJOIkjdJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "e_K77Mp6_5": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "dataPath": "code",
+                  "target": {
+                    "dataPath": "code._contains"
+                  },
+                  "description": "",
+                  "field": "code"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "Ysb4c4zElm",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "hNprR4xZWs": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Active",
+                  "formElement": "Form1",
+                  "dataPath": "active",
+                  "target": {
+                    "dataPath": "active._eq"
+                  },
+                  "description": "",
+                  "field": "active",
+                  "defaultValue": true
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "Ysb4c4zElm",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Sh-w7NYLfr": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Name",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "dataPath": "name",
+                  "target": {
+                    "dataPath": "name._contains"
+                  },
+                  "description": "",
+                  "field": "name"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "Ysb4c4zElm",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rviypNHlq9": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Carrier",
+                  "variant": "standard",
+                  "formElement": "Form1",
+                  "dataPath": "carrier",
+                  "target": {
+                    "dataPath": "carrier._contains"
+                  },
+                  "description": "",
+                  "field": "carrier"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "Ysb4c4zElm",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "j0NMqHNv2K": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "Ux7UGAgZ1d",
+                "hidden": false,
+                "nodes": [
+                  "A1xL3geY5y"
+                ],
+                "linkedNodes": {}
+              },
+              "2muzKEykIO": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "20%",
+                  "height": "100%",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "flow",
+                      "flowId": "addEditScacWebFlow",
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus-large",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "Action2"
+                },
+                "parent": "26iJOIkjdJ",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "v6frvxWoPP": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": " ",
+                  "format": "action",
+                  "sortable": true,
+                  "dataPath": "id",
+                  "description": "The primary unique ID of the record.  Every model should have an id field.",
+                  "query": {
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "field": "id",
+                  "actions": [
+                    {
+                      "title": "Edit SCAC",
+                      "useIconButton": true,
+                      "icon": {
+                        "icon": "pencil",
+                        "color": "inherit",
+                        "variant": "duotone",
+                        "size": "icon"
+                      },
+                      "action": [
+                        {
+                          "type": "flow",
+                          "flowId": "addEditScacWebFlow",
+                          "transforms": {
+                            "pre": "{\r\n  \"action\": \"edit\",\r\n  \"id\": $.rowData.id\r\n}"
+                          }
+                        },
+                        {
+                          "type": "transformation",
+                          "transformation": "$components.Table1.fn.search()"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn6"
+                },
+                "parent": "aNwsKkw-Oh",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "26iJOIkjdJ": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "Ysb4c4zElm",
+                "hidden": false,
+                "nodes": [
+                  "dMheoNF2n1",
+                  "2muzKEykIO"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmmdvwvdv0kkt017w2swh7ceu",
+      "title": "SCAC",
+      "path": "/materialsManagement/logistics/scac",
+      "moduleId": "logistics",
+      "screenId": "scac",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

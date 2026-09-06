@@ -1,0 +1,426 @@
+{
+  "header": {
+    "id": "unpickModal",
+    "name": "Unpick Modal",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "picking",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmph9nk2d027k019dd17z6qq5",
+    "number": "0.0.25",
+    "description": "Updated ButtonOk to handle the update for untieing the handlingUnitId from the inventoryPickStep.",
+    "screenId": "unpickModal",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Form": 1,
+                    "Container": 3,
+                    "Select": 1,
+                    "Action": 3,
+                    "Text": 4,
+                    "Rich Text": 1,
+                    "Scan": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "YPxo2GDWSw"
+                ],
+                "linkedNodes": {}
+              },
+              "YPxo2GDWSw": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": id\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "dataChangeIndicatorSize": "normal",
+                    "model": "Unpick"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": ""
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "c_-2GUv7-F"
+                ],
+                "linkedNodes": {}
+              },
+              "c_-2GUv7-F": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": true,
+                  "borderRadius": 4,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "YPxo2GDWSw",
+                "hidden": false,
+                "nodes": [
+                  "nH7qwmhftG",
+                  "PUOSFiWqqR",
+                  "noOr5geU9L"
+                ],
+                "linkedNodes": {}
+              },
+              "nH7qwmhftG": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Unpick Reason",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": true,
+                  "formElement": "Form1",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "unpickReason",
+                  "description": "",
+                  "field": "unpickReason",
+                  "labelPath": "id",
+                  "orderByField": "id",
+                  "query": {
+                    "fields": [
+                      "unpickReason.id",
+                      "unpickReason.id"
+                    ]
+                  },
+                  "dataModel": "UnpickReason",
+                  "selectFields": [
+                    "name"
+                  ],
+                  "additionalFields": [
+                    "id",
+                    "name"
+                  ]
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select1"
+                },
+                "parent": "c_-2GUv7-F",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "PUOSFiWqqR": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Note (optional)",
+                  "variant": "filled",
+                  "formElement": "Form1",
+                  "dataPath": "note",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "Include any extra information that might be useful when reviewing this \"unpick\" later",
+                  "field": "note",
+                  "multiline": true,
+                  "inputMode": "none",
+                  "query": {
+                    "fields": []
+                  },
+                  "disabled": false
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "TextNote"
+                },
+                "parent": "c_-2GUv7-F",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "AFYUfNWQJb": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "96px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return({\"success\":\"cancelled\"})",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "xmark",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ButtonCancel"
+                },
+                "parent": "noOr5geU9L",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "yRTom8tAcf": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "96px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$not($components.Form1.formState.valid)",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Form1.formState.valid"
+                      ]
+                    },
+                    "__cacheKey": "FormStateIsNotValid",
+                    "__remote": false,
+                    "__fallbackValue": true
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "query",
+                      "query": "query InventoryPickStep($where: InventoryPickStepWhereInput, $orderBy: [InventoryPickStepOrderByInput!], $first: Int, $after: String) {\n  inventoryPickStep(\n    where: $where\n    orderBy: $orderBy\n    first: $first\n    after: $after\n  ) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}",
+                      "api": "Application",
+                      "transforms": {
+                        "pre": "{\r\n  \"where\":{\r\n    \"pickStepId\":{\r\n      \"_eq\": $metadata.urlParameters.pickStepId\r\n    },\r\n    \"_or\": [\r\n      {\r\n        \"inventoryId\":{\r\n          \"_eq\": $metadata.urlParameters.inventoryId\r\n        }\r\n      },\r\n      {\r\n        \"inventory\":{\r\n          \"handlingUnitId\":{\r\n            \"_eq\": $metadata.urlParameters.inventoryId\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateInventoryPickStep($payload: [InventoryPickStepUpdatePayloadInput!]!) {\n  updateInventoryPickStep(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\r\n  \"payload\": [\r\n    {\r\n      \"update\": {\r\n        \"picked\": false\r\n      },\r\n      \"where\": {\r\n        \"id\": data.inventoryPickStep.edges.node.id\r\n      }\r\n    }\r\n  ]\r\n}"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateUnpick($payload: [UnpickCreatePayloadInput!]!) {\n  createUnpick(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\r\n  \"payload\": [\r\n    {\r\n      \"create\": {\r\n        \"userId\": $metadata.user.id,\r\n        \"unpickReasonId\": $components.Form1.data.unpickReason.id,\r\n        \"note\": $components.Form1.data.note\r\n      }\r\n    }\r\n  ]\r\n}"
+                      }
+                    },
+                    {
+                      "type": "message",
+                      "title": "Success!",
+                      "message": "Inventory successfully unpicked!",
+                      "severity": "info",
+                      "transforms": {
+                        "post": "$components.Screen.fn.return({\r\n  \"success\": true,\r\n  \"inventoryId\": $metadata.urlParameters.inventoryId\r\n})"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "check",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ButtonOK"
+                },
+                "parent": "noOr5geU9L",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "noOr5geU9L": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container3"
+                },
+                "parent": "c_-2GUv7-F",
+                "hidden": false,
+                "nodes": [
+                  "yRTom8tAcf",
+                  "AFYUfNWQJb"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmmmhsqn507qf0775bsyhc3sv",
+      "title": "Unpick Modal",
+      "path": "/orderFulfillment/picking/unpickModal",
+      "moduleId": "picking",
+      "screenId": "unpickModal",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

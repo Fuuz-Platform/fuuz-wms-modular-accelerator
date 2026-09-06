@@ -1,0 +1,316 @@
+{
+  "header": {
+    "id": "nonConformancePublichMessage",
+    "name": "NonConformancePublichMessage",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "picking",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmmrybxiw029b0775heds13tu",
+    "number": "0.0.3",
+    "description": "",
+    "dataFlowId": "nonConformancePublichMessage",
+    "flow": {
+      "id": "cmmrybxiw029b0775heds13tu",
+      "name": "NonConformancePublichMessage",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "8ffe3198-78c0-4bd9-8fdd-63917f929fe0",
+          "name": "Data Changes",
+          "type": "dataChanges",
+          "data": {
+            "api": "Application",
+            "type": "NonConformance",
+            "operations": [
+              "Create"
+            ],
+            "nextNodes": [
+              "3a013a21-2c95-4ab2-bfcd-b94b36282aef"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+          "name": "Publish",
+          "type": "publish",
+          "data": {
+            "bulkPublishing": false,
+            "nextNodes": [],
+            "topicId": "cmmry564d021t0775gr6qfabf"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.2"
+    },
+    "diagram": {
+      "id": "cmmrybxiw029b0775heds13tu",
+      "offsetX": -15,
+      "offsetY": 44,
+      "zoom": 100,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "0ac56046-bd59-4100-a24b-e6693419d27d",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "3320f533-bb79-4bc8-97c4-6aa966f9a080": {
+              "points": [
+                {
+                  "id": "c7d0a394-4bc3-4868-b65c-838bc8ab4257",
+                  "type": "point",
+                  "x": 844,
+                  "y": 429.73
+                },
+                {
+                  "id": "86814044-a4ff-4f86-a831-00def08d08d5",
+                  "type": "point",
+                  "x": 995,
+                  "y": 424.73
+                }
+              ],
+              "id": "3320f533-bb79-4bc8-97c4-6aa966f9a080",
+              "type": "default",
+              "selected": false,
+              "source": "8ffe3198-78c0-4bd9-8fdd-63917f929fe0",
+              "sourcePort": "cmmry8fd1003k356qra1vrzv0",
+              "target": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+              "targetPort": "cmmry8jzt003m356qe6d7y3gx",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "b9f9b27e-6193-49b3-9761-3a1a18ad6c52": {
+              "points": [
+                {
+                  "id": "16ed5bea-8210-43f3-85be-ce19036034ea",
+                  "type": "point",
+                  "x": 844.94,
+                  "y": 499.73
+                },
+                {
+                  "id": "2d0de013-997f-4089-b3ed-ddea82a75759",
+                  "type": "point",
+                  "x": 995,
+                  "y": 424.73
+                }
+              ],
+              "id": "b9f9b27e-6193-49b3-9761-3a1a18ad6c52",
+              "type": "default",
+              "selected": false,
+              "source": "bf99ae27-eaa3-4a00-9872-3e4dc3c3fd58",
+              "sourcePort": "cmmry8a31003i356qu32rqi4i",
+              "target": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+              "targetPort": "cmmry8jzt003m356qe6d7y3gx",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "77b76f96-dda5-4690-8646-f32753720daa",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "bf99ae27-eaa3-4a00-9872-3e4dc3c3fd58": {
+              "id": "bf99ae27-eaa3-4a00-9872-3e4dc3c3fd58",
+              "type": "debugDataChange",
+              "selected": true,
+              "x": 690,
+              "y": 460,
+              "ports": [
+                {
+                  "id": "cmmry8a31003i356qu32rqi4i",
+                  "type": "default",
+                  "x": 836.94,
+                  "y": 491.73,
+                  "name": "cmmry8a31003j356qwcz822dw",
+                  "parentNode": "bf99ae27-eaa3-4a00-9872-3e4dc3c3fd58",
+                  "links": [
+                    "b9f9b27e-6193-49b3-9761-3a1a18ad6c52"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "beforeData": null,
+                "afterData": {
+                  "affectedPickstep": "A",
+                  "causePickStep": "B"
+                },
+                "nextNodes": [
+                  "3a013a21-2c95-4ab2-bfcd-b94b36282aef"
+                ],
+                "type": "NonConformance",
+                "operation": "Create"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Data Change Source"
+            },
+            "8ffe3198-78c0-4bd9-8fdd-63917f929fe0": {
+              "id": "8ffe3198-78c0-4bd9-8fdd-63917f929fe0",
+              "type": "dataChanges",
+              "selected": false,
+              "x": 690,
+              "y": 390,
+              "ports": [
+                {
+                  "id": "cmmry8fd1003k356qra1vrzv0",
+                  "type": "default",
+                  "x": 836,
+                  "y": 421.73,
+                  "name": "cmmry8fd1003l356qinlpnyv1",
+                  "parentNode": "8ffe3198-78c0-4bd9-8fdd-63917f929fe0",
+                  "links": [
+                    "3320f533-bb79-4bc8-97c4-6aa966f9a080"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Message",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "type": "NonConformance",
+                "operations": [
+                  "Create"
+                ],
+                "nextNodes": [
+                  "3a013a21-2c95-4ab2-bfcd-b94b36282aef"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Data Changes"
+            },
+            "3a013a21-2c95-4ab2-bfcd-b94b36282aef": {
+              "id": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+              "type": "publish",
+              "selected": false,
+              "x": 995,
+              "y": 385,
+              "ports": [
+                {
+                  "id": "cmmry8jzt003m356qe6d7y3gx",
+                  "type": "default",
+                  "x": 987,
+                  "y": 416.73,
+                  "name": "cmmry8jzt003n356qmnejjj5r",
+                  "parentNode": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+                  "links": [
+                    "3320f533-bb79-4bc8-97c4-6aa966f9a080",
+                    "b9f9b27e-6193-49b3-9761-3a1a18ad6c52"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Message"
+                },
+                {
+                  "id": "cmmry8jzt003o356qnpmsics6",
+                  "type": "default",
+                  "x": 1141,
+                  "y": 416.73,
+                  "name": "cmmry8jzt003p356qv64tbwbc",
+                  "parentNode": "3a013a21-2c95-4ab2-bfcd-b94b36282aef",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "bulkPublishing": false,
+                "nextNodes": [],
+                "topicId": "cmmry564d021t0775gr6qfabf"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Publish"
+            }
+          }
+        }
+      ],
+      "name": "NonConformancePublichMessage",
+      "type": "System",
+      "version": "0.0.2",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

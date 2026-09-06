@@ -1,0 +1,55 @@
+{
+  "api": "application",
+  "modelName": "OrderLineReleaseStatus",
+  "payload": [
+    {
+      "id": "canceled",
+      "code": "Canceled ",
+      "description": "Indicates that the release has been canceled and can not be operated against.",
+      "system": true,
+      "usable": true,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "fulfilled",
+      "code": "Fulfilled",
+      "description": "Indicates that the release has had its entire quantity operated against.",
+      "system": true,
+      "usable": true,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "partiallyFulfilled",
+      "code": "Partially Fulfilled",
+      "description": "Indicates that the release has been operated against but not completed.",
+      "system": true,
+      "usable": true,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    },
+    {
+      "id": "pendingFulfillment",
+      "code": "Pending Fulfillment",
+      "description": "The starting status of a release. Indicates that the release is ready to be operated against.",
+      "system": true,
+      "usable": true,
+      "customData": null,
+      "integrationData": null,
+      "_customFields": {
+        "_externalId": null
+      }
+    }
+  ],
+  "metadata": {}
+}

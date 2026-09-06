@@ -1,0 +1,1744 @@
+{
+  "header": {
+    "id": "productTable2",
+    "name": "Product Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventoryTracking",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrouy7810f7i017r5jw6a5m7",
+    "number": "0.0.6",
+    "description": "Added re-sizeable panel and active switch.",
+    "screenId": "productTable2",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "ProductTable",
+          "tabTitle": "Product Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 8,
+                    "Action Button": 8,
+                    "Form": 2,
+                    "Table": 2,
+                    "Table Column": 25,
+                    "Text": 3,
+                    "Float": 8,
+                    "Select": 6,
+                    "Split Button": 2,
+                    "Button Group": 1,
+                    "Custom Fields Table Column": 1,
+                    "Resizable Panel": 1,
+                    "Switch": 1
+                  },
+                  "module": {
+                    "id": "inventoryTracking",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "Product",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "jsnzOnkT3a",
+                  "IKeBrW06OZ"
+                ],
+                "linkedNodes": {}
+              },
+              "_Me6l0cujj": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "jsnzOnkT3a",
+                "hidden": false,
+                "nodes": [
+                  "TzoaMlpCVS"
+                ],
+                "linkedNodes": {}
+              },
+              "TzoaMlpCVS": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Product",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "_Me6l0cujj",
+                "hidden": false,
+                "nodes": [
+                  "BqyfpIbYB4"
+                ],
+                "linkedNodes": {}
+              },
+              "BqyfpIbYB4": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-start",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "TzoaMlpCVS",
+                "hidden": false,
+                "nodes": [
+                  "2DS9gbjwII",
+                  "3hm_JdlqV4",
+                  "O1xzqdEsUb",
+                  "ROLZ7GpJjK",
+                  "K0_jX0fmxA",
+                  "AYBiIMxQhu",
+                  "qovQHLFEP2"
+                ],
+                "linkedNodes": {}
+              },
+              "O1xzqdEsUb": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "code",
+                  "field": "code",
+                  "description": "A human-readable and unique shorthand name for the product",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "code._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ROLZ7GpJjK": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Name",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "name",
+                  "field": "name",
+                  "description": "Human-readable product name using full words\n\nDoesn't strictly have to be unique",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "name._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "K0_jX0fmxA": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Number",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "number",
+                  "field": "number",
+                  "description": "Product/Model number",
+                  "element": "TextInput",
+                  "predicate": "_contains",
+                  "target": {
+                    "dataPath": "number._contains"
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "AYBiIMxQhu": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Default Quantity Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "defaultQuantityUnit",
+                  "field": "defaultQuantityUnit",
+                  "description": "The default unit to assign the quantity of inventory of this product",
+                  "element": "SelectInput",
+                  "dataModel": "Unit",
+                  "labelField": "code",
+                  "labelPath": "code",
+                  "additionalFields": [
+                    "code"
+                  ],
+                  "selectFields": [
+                    "code"
+                  ],
+                  "target": {
+                    "dataPath": "defaultQuantityUnit.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/system/configuration/units/\" & data.defaultQuantityUnit.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "defaultQuantityUnit.id",
+                      "defaultQuantityUnit.code"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select5"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qovQHLFEP2": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and.0"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "yJj5OYcwHe": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "2DS9gbjwII",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "M_HoH6E_8I": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "productDetailsForm",
+                      "screenName": "ProductDetailsForm",
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Create"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "2DS9gbjwII",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Tu7zQSEN2C": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "screenDialog",
+                      "screenId": "productDetailsForm",
+                      "screenName": "ProductDetailsForm",
+                      "screenParams": {
+                        "__transform": "{\r\n  \"id\": $components.Table1.selectedRows.id\r\n}",
+                        "__dynamicFields": {
+                          "payload": null,
+                          "context": []
+                        },
+                        "__cacheKey": "",
+                        "__remote": false
+                      },
+                      "transforms": {
+                        "post": "$components.Table1.fn.search()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Update"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton3"
+                },
+                "parent": "2DS9gbjwII",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "zgSy0MDkLR": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Product",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": true,
+                  "detailHeight": 450,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "Product is a common data model should be used across Fuuz apps that require product, item, sku level information.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "IKeBrW06OZ",
+                "hidden": false,
+                "nodes": [
+                  "xg6BvuQL_W",
+                  "xXumu75CSD",
+                  "hV8RIg52q_",
+                  "j8dWgPsonr",
+                  "yVcJPxtxOP",
+                  "KEflmF1TkN",
+                  "BfpwkleJX7",
+                  "JP6jL0yfln",
+                  "pMyVnUBkaU"
+                ],
+                "linkedNodes": {
+                  "Table1Detail": "On8iZHBqR9"
+                }
+              },
+              "xg6BvuQL_W": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "code",
+                  "dataPath": "code",
+                  "description": "A human-readable and unique shorthand name for the product",
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/inventoryTracking/products/\" & data.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "id",
+                      "code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "j8dWgPsonr": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Default Quantity Unit",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "defaultQuantityUnit.code",
+                  "dataPath": "defaultQuantityUnit.code",
+                  "description": "The short code of the Unit.",
+                  "linkTarget": {
+                    "__transform": "\"/system/configuration/units/\" & data.defaultQuantityUnit.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "defaultQuantityUnit.id",
+                      "defaultQuantityUnit.code"
+                    ]
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn15"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "xXumu75CSD": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Revision",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "revision",
+                  "description": "Product/Model number revision",
+                  "query": {},
+                  "field": "revision"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn16"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KEflmF1TkN": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Shelf Life Days",
+                  "format": "integer",
+                  "sortable": true,
+                  "dataPath": "shelfLifeDays",
+                  "description": "Shelf life in calendar days for this product. Default value is 0; no expiration.",
+                  "query": {},
+                  "field": "shelfLifeDays"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn17"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "BfpwkleJX7": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "GTIN",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "gtin",
+                  "description": "A GTIN (Global Trade Item Number) is a universally recognized identifier for a product. It is globally unique and customer-facing, allowing retailers and online marketplaces to easily identify what is being sold.",
+                  "query": {},
+                  "field": "gtin"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn18"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "JP6jL0yfln": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "SKU",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "sku",
+                  "description": "An SKU (Stock Keeping Unit) is a company-specific identifier used for internal inventory management",
+                  "query": {},
+                  "field": "sku"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn19"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "pMyVnUBkaU": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "UPC",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "upc",
+                  "description": "UPC (Universal Product Code) is a specific type of GTIN used in North America",
+                  "query": {},
+                  "field": "upc"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn20"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "yVcJPxtxOP": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Barcode Design",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "barcodeDesign.name",
+                  "description": "The name of the document design.",
+                  "query": {
+                    "fields": [
+                      "barcodeDesign.id",
+                      "barcodeDesign.name"
+                    ]
+                  },
+                  "field": "barcodeDesign.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn21"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "2DS9gbjwII": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [
+                  "yJj5OYcwHe",
+                  "M_HoH6E_8I",
+                  "Tu7zQSEN2C"
+                ],
+                "linkedNodes": {}
+              },
+              "IKeBrW06OZ": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "zgSy0MDkLR"
+                ],
+                "linkedNodes": {}
+              },
+              "On8iZHBqR9": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "lockSize": true
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Table1Detail"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [
+                  "mF4GbSfYQW"
+                ],
+                "linkedNodes": {}
+              },
+              "mF4GbSfYQW": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "On8iZHBqR9",
+                "hidden": false,
+                "nodes": [
+                  "Z3g74_PFmm",
+                  "pE6RAokNaN",
+                  "vYihUX7mbv"
+                ],
+                "linkedNodes": {}
+              },
+              "Z3g74_PFmm": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container7"
+                },
+                "parent": "mF4GbSfYQW",
+                "hidden": false,
+                "nodes": [
+                  "zRcM0VP9LD"
+                ],
+                "linkedNodes": {}
+              },
+              "zRcM0VP9LD": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "ProductPreferredStorageUnit",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false,
+                  "enableConfirmOnDataChanged": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form2"
+                },
+                "parent": "Z3g74_PFmm",
+                "hidden": false,
+                "nodes": [
+                  "nNJdo_hxy-"
+                ],
+                "linkedNodes": {}
+              },
+              "nNJdo_hxy-": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "zRcM0VP9LD",
+                "hidden": false,
+                "nodes": [
+                  "qZMryuv8cq"
+                ],
+                "linkedNodes": {}
+              },
+              "qZMryuv8cq": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "300px",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Storage Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "Form2",
+                  "additionalFilter": {
+                    "__transform": "{\r\n      \"storage\":{\r\n        \"_eq\": true\r\n      }\r\n    }",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "dataPath": "storageUnit",
+                  "field": "storageUnit",
+                  "description": "",
+                  "element": "SelectInput",
+                  "dataModel": "StorageUnit",
+                  "labelField": "id",
+                  "labelPath": "code",
+                  "additionalFields": [
+                    "id"
+                  ],
+                  "selectFields": [
+                    "code"
+                  ],
+                  "target": {
+                    "dataPath": "storageUnit.id._eq"
+                  },
+                  "predicate": "_eq",
+                  "linkTarget": {
+                    "__transform": "\"/siteManagement/siteManagement/storageUnits/\" & data.storageUnit.id"
+                  },
+                  "query": {
+                    "fields": [
+                      "storageUnit.id",
+                      "storageUnit.code"
+                    ]
+                  }
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select6"
+                },
+                "parent": "nNJdo_hxy-",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "pE6RAokNaN": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container8"
+                },
+                "parent": "mF4GbSfYQW",
+                "hidden": false,
+                "nodes": [
+                  "53uvX3rI45",
+                  "rJ4NroiMaK",
+                  "D8eAyx19yH",
+                  "7gfeP11OTu"
+                ],
+                "linkedNodes": {}
+              },
+              "53uvX3rI45": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table2.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Search"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton5"
+                },
+                "parent": "pE6RAokNaN",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "rJ4NroiMaK": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "plus",
+                      "title": "Create a new Product Preferred Storage Unit",
+                      "fields": [
+                        {
+                          "label": "Priority",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "priority",
+                          "field": "priority",
+                          "description": "The priority of preference for a storage unit for some particular product. Each product may have any number of preferred storage units to pick from in ascending priority order.",
+                          "element": "IntegerInput",
+                          "type": "integer"
+                        },
+                        {
+                          "label": "Storage Unit",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "storageUnit",
+                          "field": "storageUnit",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "api": "Application",
+                          "dataModel": "StorageUnit",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "additionalFields": [
+                            "id",
+                            "code"
+                          ],
+                          "additionalFilter": {
+                            "storage": {
+                              "_eq": true
+                            }
+                          },
+                          "selectFields": [
+                            "code"
+                          ],
+                          "target": {
+                            "dataPath": "storageUnitId"
+                          },
+                          "linkTarget": {
+                            "__transform": "\"/siteManagement/siteManagement/storageUnits/\" & data.storageUnit.id"
+                          },
+                          "query": {
+                            "fields": [
+                              "storageUnit.id",
+                              "storageUnit.id"
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation CreateProductPreferredStorageUnit($payload: [ProductPreferredStorageUnitCreatePayloadInput!]!) {\n  mutation: createProductPreferredStorageUnit(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": {\n    \"create\": data~>| $ | {\"productId\": $parent.data.id} |\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "\"Product Preferred Storage Unit \" & data.mutation[0].id & \" created successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "title": "Create"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton6"
+                },
+                "parent": "pE6RAokNaN",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "D8eAyx19yH": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table2.selectedRows) != 1",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table2.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "updateButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "save",
+                      "title": {
+                        "__transform": "\"Update Product Preferred Storage Unit \" & $components.Table2.selectedRows[0].id"
+                      },
+                      "fields": [
+                        {
+                          "label": "Priority",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "priority",
+                          "field": "priority",
+                          "description": "The priority of preference for a storage unit for some particular product. Each product may have any number of preferred storage units to pick from in ascending priority order.",
+                          "element": "IntegerInput",
+                          "type": "integer"
+                        },
+                        {
+                          "label": "Storage Unit",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "dataPath": "storageUnit",
+                          "field": "storageUnit",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "api": "Application",
+                          "dataModel": "StorageUnit",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "additionalFields": [
+                            "id",
+                            "code"
+                          ],
+                          "selectFields": [
+                            "code"
+                          ],
+                          "additionalFilter": {
+                            "storage": {
+                              "_eq": true
+                            }
+                          },
+                          "target": {
+                            "dataPath": "storageUnitId"
+                          },
+                          "linkTarget": {
+                            "__transform": "\"/siteManagement/siteManagement/storageUnits/\" & data.storageUnit.id"
+                          },
+                          "query": {
+                            "fields": [
+                              "storageUnit.id",
+                              "storageUnit.id"
+                            ]
+                          }
+                        }
+                      ],
+                      "transforms": {
+                        "pre": "$components.Table2.selectedRows[0]"
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation UpdateProductPreferredStorageUnit($payload: [ProductPreferredStorageUnitUpdatePayloadInput!]!) {\n  mutation: updateProductPreferredStorageUnit(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table2.selectedRows.{\n    \"where\": {\n      \"id\": id\n    },\n    \"update\": $$.data\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Product Preferred Storage Unit \" & $components.Table1.selectedRows.id) : $count($components.Table2.selectedRows) & \" records\") & \" updated successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table2.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "pencil",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "title": "Update"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton7"
+                },
+                "parent": "pE6RAokNaN",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7gfeP11OTu": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table2.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table2.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table2.selectedRows) = 1 ? (\"Product Preferred Storage Unit \" & $components.Table1.selectedRows.id) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteProductPreferredStorageUnit($payload: [ProductPreferredStorageUnitDeletePayloadInput!]!) {\n  mutation: deleteProductPreferredStorageUnit(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table2.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table2.selectedRows) = 1 ? (\"Product Preferred Storage Unit \" & $components.Table1.selectedRows.id) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table2.fn.search()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "title": "Delete"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton8"
+                },
+                "parent": "pE6RAokNaN",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "vYihUX7mbv": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "ProductPreferredStorageUnit",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ],
+                    "parameters": "{\r\n  \"filter\":{\r\n    \"productId\":{\r\n      \"_eq\": $parent.data.id\r\n    }\r\n  }\r\n}"
+                  },
+                  "selectable": "single",
+                  "showToolPanels": false,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form2",
+                  "description": "Used to determine which storage units each product is compatible with, and with what priority, for both filtering and auto-assigning features",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table2"
+                },
+                "parent": "mF4GbSfYQW",
+                "hidden": false,
+                "nodes": [
+                  "LDOWzKPovi",
+                  "FcgnqUw7jV"
+                ],
+                "linkedNodes": {}
+              },
+              "LDOWzKPovi": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Priority",
+                  "format": "integer",
+                  "sortable": true,
+                  "field": "priority",
+                  "dataPath": "priority",
+                  "description": "The priority of preference for a storage unit for some particular product. Each product may have any number of preferred storage units to pick from in ascending priority order."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn22"
+                },
+                "parent": "vYihUX7mbv",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "FcgnqUw7jV": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Storage Unit Code",
+                  "format": "text",
+                  "sortable": true,
+                  "field": "storageUnit.code",
+                  "dataPath": "storageUnit.code",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn24"
+                },
+                "parent": "vYihUX7mbv",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "hV8RIg52q_": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Category",
+                  "format": "text",
+                  "sortable": true,
+                  "dataPath": "productCategory.code",
+                  "description": "",
+                  "query.fields": [
+                    "productCategory.id",
+                    "productCategory.code"
+                  ],
+                  "field": "productCategory.code"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn25"
+                },
+                "parent": "zgSy0MDkLR",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "jsnzOnkT3a": {
+                "type": {
+                  "resolvedName": "ResizablePanelLayout"
+                },
+                "isCanvas": true,
+                "props": {
+                  "handle": "right",
+                  "toggleHotkey": "",
+                  "defaultSize": 300,
+                  "axis": false,
+                  "minSize": 0,
+                  "maxSize": 800
+                },
+                "displayName": "Resizable Panel",
+                "custom": {
+                  "elementName": "ResizablePanel1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "_Me6l0cujj"
+                ],
+                "linkedNodes": {}
+              },
+              "3hm_JdlqV4": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Active",
+                  "dataPath": "active",
+                  "description": "True if this product is in use\n\nFalse if the record would otherwise be deleted\n\nDefaults to True",
+                  "field": "active",
+                  "target": {
+                    "dataPath": "active._eq"
+                  },
+                  "formElement": "Form1",
+                  "defaultValue": true,
+                  "predicate": "_eq"
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "BqyfpIbYB4",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdp2l8du23ha077550awgyu6",
+      "title": "Products",
+      "path": "/inventoryManagement/inventoryTracking/products",
+      "moduleId": "inventoryTracking",
+      "screenId": "productTable2",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}

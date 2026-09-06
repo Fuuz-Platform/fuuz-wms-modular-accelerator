@@ -1,0 +1,855 @@
+{
+  "header": {
+    "id": "updateReceiptStatus",
+    "name": "Update Receipt Status",
+    "description": "",
+    "active": true,
+    "substitutesDataFlowId": null,
+    "dataFlowTypeId": "System",
+    "logLevelId": "Info",
+    "mcpToolConfiguration": null,
+    "moduleId": "orderReceiving",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmegjs8tc15yx0875fjpkakr0",
+    "number": "0.0.2",
+    "description": "",
+    "dataFlowId": "updateReceiptStatus",
+    "flow": {
+      "id": "cmegjs8tc15yx0875fjpkakr0",
+      "name": "Update Receipt Status",
+      "type": "System",
+      "nodes": [
+        {
+          "id": "1b94cd30-7796-45de-9f57-2ed63374493b",
+          "name": "Request",
+          "type": "request",
+          "data": {
+            "nextNodes": [
+              "66fa7387-9374-42f8-b25d-cce38acca54a"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "182d2798-49cc-437f-9f34-fdad2ccd232f",
+          "name": "Response",
+          "type": "response",
+          "data": {
+            "responseTransform": "{\r\n  \"success\": true,\r\n  \"message\": \"Receipts updated.\"\r\n}",
+            "nextNodes": []
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+          "name": "Merge Context",
+          "type": "mergeContext",
+          "data": {
+            "nextNodes": [
+              "c15d936d-97d5-480a-88c3-c31897917057"
+            ],
+            "transform": "{ \"orderIds\": $uniq($.**.orderId) }"
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "66fa7387-9374-42f8-b25d-cce38acca54a",
+          "name": "Validate",
+          "type": "validate",
+          "data": {
+            "nextNodes": [
+              "e782319a-fa89-47e3-86c8-da848a42f36d"
+            ],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "receiptIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "receiptIds"
+              ]
+            }
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "e782319a-fa89-47e3-86c8-da848a42f36d",
+          "name": "Query Receipt Data",
+          "type": "query",
+          "data": {
+            "api": "application",
+            "variablesTransform": "$",
+            "query": "query($receiptIds: [String!]!){\r\n  receipt(\r\n    where:  {\r\n       id:{\r\n        _in: $receiptIds\r\n       }\r\n    }\r\n  ){\r\n    edges{\r\n      node{\r\n        id\r\n        receiptLines{\r\n          edges{\r\n            node{\r\n              receiptStatusId\r\n              _aggregate{\r\n                receiptStatusId{\r\n                  count\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+            "nextNodes": [
+              "5dc1e02e-76a5-4c4e-9872-d080ba5ca007"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "c15d936d-97d5-480a-88c3-c31897917057",
+          "name": "Prepare Payload",
+          "type": "transform",
+          "data": {
+            "transform": "receipt.edges.node.{\r\n    \"where\":{ \"id\": id},\r\n    \"update\":{\r\n      \"receiptStatusId\": $all(\r\n        [receiptLines.edges.node.receiptStatusId], \r\n        function($v){$v = \"confirmed\"})? \"confirmed\" : \"pendingConfirmation\"\r\n    }\r\n  }\r\n",
+            "nextNodes": [
+              "db9fbf87-0def-40ec-86f1-1023b94c97ec"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": false,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        },
+        {
+          "id": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+          "name": "Mutate Receipt",
+          "type": "mutate",
+          "data": {
+            "api": "Application",
+            "variablesTransform": "{\r\n  \"payload\": [$]\r\n}",
+            "mutation": "mutation UpdateReceipt($payload: [ReceiptUpdatePayloadInput!]!) {\n  updateReceipt(payload: $payload) {\n    id\n  }\n}",
+            "nextNodes": [
+              "182d2798-49cc-437f-9f34-fdad2ccd232f"
+            ]
+          },
+          "debug": {
+            "breakpointEnabled": true,
+            "publishSubscribeClient": false,
+            "publishToMFGx": false
+          },
+          "logging": {
+            "executionMetrics": false,
+            "executionStarted": false,
+            "executionSucceeded": false,
+            "executionFailed": true,
+            "enableTraceLogging": false
+          }
+        }
+      ],
+      "version": "0.0.1"
+    },
+    "diagram": {
+      "id": "cmegjs8tc15yx0875fjpkakr0",
+      "offsetX": -721,
+      "offsetY": -56,
+      "zoom": 100,
+      "gridSize": 5,
+      "layers": [
+        {
+          "id": "3424e7ac-0134-4705-848d-edeff9becd2e",
+          "type": "diagram-links",
+          "isSvg": true,
+          "transformed": true,
+          "models": {
+            "8f215b0d-4de7-41b8-b17d-9c9a7d5d812f": {
+              "points": [
+                {
+                  "id": "4278fe33-166f-453f-911a-52b6a0dfcdad",
+                  "type": "point",
+                  "x": 474,
+                  "y": 194.59
+                },
+                {
+                  "id": "eea4f015-ba15-4882-9fbc-1a7f0ed040ef",
+                  "type": "point",
+                  "x": 499.75,
+                  "y": 269.59
+                }
+              ],
+              "id": "8f215b0d-4de7-41b8-b17d-9c9a7d5d812f",
+              "type": "default",
+              "source": "1c9982d5-1d40-4f77-9ae1-df7dddae40ee",
+              "sourcePort": "cmeghlxin000g356mm3bjmppj",
+              "target": "66fa7387-9374-42f8-b25d-cce38acca54a",
+              "targetPort": "cmeghlxiq001k356m7o0lryws",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9ba849f5-2adc-4dcf-a971-d665a9187d9a": {
+              "points": [
+                {
+                  "id": "7382421e-d2df-4e62-b792-d18289bf85fc",
+                  "type": "point",
+                  "x": 473.01,
+                  "y": 271.44
+                },
+                {
+                  "id": "a228946c-793e-43e1-aeb3-45aa45b68440",
+                  "type": "point",
+                  "x": 499.75,
+                  "y": 269.59
+                }
+              ],
+              "id": "9ba849f5-2adc-4dcf-a971-d665a9187d9a",
+              "type": "default",
+              "source": "1b94cd30-7796-45de-9f57-2ed63374493b",
+              "sourcePort": "cmeghlxin000m356mgrca0lp7",
+              "target": "66fa7387-9374-42f8-b25d-cce38acca54a",
+              "targetPort": "cmeghlxiq001k356m7o0lryws",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "e09f73ff-8869-4be0-af55-c01ac1040d47": {
+              "points": [
+                {
+                  "id": "1982896f-f678-4ef2-8795-195ededff9b9",
+                  "type": "point",
+                  "x": 1023,
+                  "y": 271.44
+                },
+                {
+                  "id": "c3687c8a-4293-4f51-817e-7196da1b295e",
+                  "type": "point",
+                  "x": 1058.75,
+                  "y": 271.44
+                }
+              ],
+              "id": "e09f73ff-8869-4be0-af55-c01ac1040d47",
+              "type": "default",
+              "source": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+              "sourcePort": "cmeghlxip001a356m25buhrhb",
+              "target": "c15d936d-97d5-480a-88c3-c31897917057",
+              "targetPort": "cmeghlxir0028356m4vfp0j36",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "b2981823-15d8-476c-842d-4d02f7026ef1": {
+              "points": [
+                {
+                  "id": "abfbf1f8-f153-4b30-ba0b-961e11556952",
+                  "type": "point",
+                  "x": 653.99,
+                  "y": 269.59
+                },
+                {
+                  "id": "6eaf8620-4bd6-4895-8363-447d102fc10d",
+                  "type": "point",
+                  "x": 683.75,
+                  "y": 271.44
+                }
+              ],
+              "id": "b2981823-15d8-476c-842d-4d02f7026ef1",
+              "type": "default",
+              "source": "66fa7387-9374-42f8-b25d-cce38acca54a",
+              "sourcePort": "cmeghlxiq001m356mb0r5rr2n",
+              "target": "e782319a-fa89-47e3-86c8-da848a42f36d",
+              "targetPort": "cmeghlxiq001w356mv42gjjro",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "9f02211a-74a4-4695-9678-080df5396c22": {
+              "points": [
+                {
+                  "id": "3c13421d-a22a-44d8-b8f2-55e5eac1174d",
+                  "type": "point",
+                  "x": 838,
+                  "y": 271.44
+                },
+                {
+                  "id": "728d7634-1a39-4681-8e70-6c160ff00f95",
+                  "type": "point",
+                  "x": 868.75,
+                  "y": 271.44
+                }
+              ],
+              "id": "9f02211a-74a4-4695-9678-080df5396c22",
+              "type": "default",
+              "source": "e782319a-fa89-47e3-86c8-da848a42f36d",
+              "sourcePort": "cmeghlxiq001y356myj6bginp",
+              "target": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+              "targetPort": "cmeghlxip0018356mklxwwad9",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "d537dc7f-276c-446d-8dc0-010dd22afb19": {
+              "points": [
+                {
+                  "id": "a0482319-b080-4b8b-ab32-95abb0548ebc",
+                  "type": "point",
+                  "x": 1213,
+                  "y": 271.44
+                },
+                {
+                  "id": "f0bea790-b839-4e7a-872b-9c901d6473dc",
+                  "type": "point",
+                  "x": 1244.75,
+                  "y": 269.59
+                }
+              ],
+              "id": "d537dc7f-276c-446d-8dc0-010dd22afb19",
+              "type": "default",
+              "source": "c15d936d-97d5-480a-88c3-c31897917057",
+              "sourcePort": "cmeghlxir002a356md5x6sust",
+              "target": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+              "targetPort": "cmeghlxis002k356m1okv13hs",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            },
+            "191cf915-b2e5-4ee3-b3cf-0658d7e501a7": {
+              "points": [
+                {
+                  "id": "3e173d5c-d421-4334-8e3f-362627d03cbd",
+                  "type": "point",
+                  "x": 1398.99,
+                  "y": 269.59
+                },
+                {
+                  "id": "94b7c2d1-614f-4318-a7fa-0a892e5b143b",
+                  "type": "point",
+                  "x": 1434.75,
+                  "y": 269.59
+                }
+              ],
+              "id": "191cf915-b2e5-4ee3-b3cf-0658d7e501a7",
+              "type": "default",
+              "selected": false,
+              "source": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+              "sourcePort": "cmeghlxis002m356mfa826pf5",
+              "target": "182d2798-49cc-437f-9f34-fdad2ccd232f",
+              "targetPort": "cmeghlxio000w356mjln96aqg",
+              "labels": [],
+              "width": 3,
+              "curvyness": 50
+            }
+          }
+        },
+        {
+          "id": "dcf9c3f7-560d-4cde-8628-5f7cb7c1cd10",
+          "type": "diagram-nodes",
+          "isSvg": false,
+          "transformed": true,
+          "models": {
+            "1c9982d5-1d40-4f77-9ae1-df7dddae40ee": {
+              "id": "1c9982d5-1d40-4f77-9ae1-df7dddae40ee",
+              "type": "debugSource",
+              "selected": false,
+              "x": 320,
+              "y": 155,
+              "ports": [
+                {
+                  "id": "cmeghlxin000g356mm3bjmppj",
+                  "type": "default",
+                  "x": 466.13,
+                  "y": 186.72,
+                  "name": "cmeghlxin000h356m0n1n69b7",
+                  "parentNode": "1c9982d5-1d40-4f77-9ae1-df7dddae40ee",
+                  "links": [
+                    "8f215b0d-4de7-41b8-b17d-9c9a7d5d812f"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "payload": {
+                  "receiptIds": [
+                    "R6"
+                  ]
+                },
+                "context": {},
+                "nextNodes": [
+                  "66fa7387-9374-42f8-b25d-cce38acca54a"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Source"
+            },
+            "1b94cd30-7796-45de-9f57-2ed63374493b": {
+              "id": "1b94cd30-7796-45de-9f57-2ed63374493b",
+              "type": "request",
+              "selected": false,
+              "x": 319.01,
+              "y": 231.85,
+              "ports": [
+                {
+                  "id": "cmeghlxin000m356mgrca0lp7",
+                  "type": "default",
+                  "x": 465.14,
+                  "y": 263.56,
+                  "name": "cmeghlxin000n356m90y1vjgp",
+                  "parentNode": "1b94cd30-7796-45de-9f57-2ed63374493b",
+                  "links": [
+                    "9ba849f5-2adc-4dcf-a971-d665a9187d9a"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Payload",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "66fa7387-9374-42f8-b25d-cce38acca54a"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Request"
+            },
+            "182d2798-49cc-437f-9f34-fdad2ccd232f": {
+              "id": "182d2798-49cc-437f-9f34-fdad2ccd232f",
+              "type": "response",
+              "selected": false,
+              "x": 1435,
+              "y": 230,
+              "ports": [
+                {
+                  "id": "cmeghlxio000w356mjln96aqg",
+                  "type": "default",
+                  "x": 1426.88,
+                  "y": 261.72,
+                  "name": "cmeghlxio000x356mcc5imnoo",
+                  "parentNode": "182d2798-49cc-437f-9f34-fdad2ccd232f",
+                  "links": [
+                    "191cf915-b2e5-4ee3-b3cf-0658d7e501a7"
+                  ],
+                  "in": true,
+                  "fieldLabel": "Response"
+                },
+                {
+                  "id": "cmeghlxio000y356megr8m2cd",
+                  "type": "default",
+                  "x": 1581.13,
+                  "y": 261.72,
+                  "name": "cmeghlxio000z356mtws3cidt",
+                  "parentNode": "182d2798-49cc-437f-9f34-fdad2ccd232f",
+                  "links": [],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "responseTransform": "{\r\n  \"success\": true,\r\n  \"message\": \"Receipts updated.\"\r\n}",
+                "nextNodes": []
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Response"
+            },
+            "5dc1e02e-76a5-4c4e-9872-d080ba5ca007": {
+              "id": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+              "type": "mergeContext",
+              "selected": false,
+              "x": 869.01,
+              "y": 231.85,
+              "ports": [
+                {
+                  "id": "cmeghlxip0018356mklxwwad9",
+                  "type": "default",
+                  "x": 860.88,
+                  "y": 263.56,
+                  "name": "cmeghlxip0019356may7lgsdd",
+                  "parentNode": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+                  "links": [
+                    "9f02211a-74a4-4695-9678-080df5396c22"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeghlxip001a356m25buhrhb",
+                  "type": "default",
+                  "x": 1015.13,
+                  "y": 263.56,
+                  "name": "cmeghlxip001b356m16j29y22",
+                  "parentNode": "5dc1e02e-76a5-4c4e-9872-d080ba5ca007",
+                  "links": [
+                    "e09f73ff-8869-4be0-af55-c01ac1040d47"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "c15d936d-97d5-480a-88c3-c31897917057"
+                ],
+                "transform": "{ \"orderIds\": $uniq($.**.orderId) }"
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Merge Context"
+            },
+            "66fa7387-9374-42f8-b25d-cce38acca54a": {
+              "id": "66fa7387-9374-42f8-b25d-cce38acca54a",
+              "type": "validate",
+              "selected": false,
+              "x": 500,
+              "y": 230,
+              "ports": [
+                {
+                  "id": "cmeghlxiq001k356m7o0lryws",
+                  "type": "default",
+                  "x": 491.88,
+                  "y": 261.72,
+                  "name": "cmeghlxiq001l356mrtuk8zf8",
+                  "parentNode": "66fa7387-9374-42f8-b25d-cce38acca54a",
+                  "links": [
+                    "8f215b0d-4de7-41b8-b17d-9c9a7d5d812f",
+                    "9ba849f5-2adc-4dcf-a971-d665a9187d9a"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeghlxiq001m356mb0r5rr2n",
+                  "type": "default",
+                  "x": 646.12,
+                  "y": 261.72,
+                  "name": "cmeghlxiq001n356mryeztr23",
+                  "parentNode": "66fa7387-9374-42f8-b25d-cce38acca54a",
+                  "links": [
+                    "b2981823-15d8-476c-842d-4d02f7026ef1"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "nextNodes": [
+                  "e782319a-fa89-47e3-86c8-da848a42f36d"
+                ],
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "receiptIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "receiptIds"
+                  ]
+                }
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Validate"
+            },
+            "e782319a-fa89-47e3-86c8-da848a42f36d": {
+              "id": "e782319a-fa89-47e3-86c8-da848a42f36d",
+              "type": "query",
+              "selected": false,
+              "x": 684.01,
+              "y": 231.85,
+              "ports": [
+                {
+                  "id": "cmeghlxiq001w356mv42gjjro",
+                  "type": "default",
+                  "x": 675.88,
+                  "y": 263.56,
+                  "name": "cmeghlxiq001x356m2j6ica2q",
+                  "parentNode": "e782319a-fa89-47e3-86c8-da848a42f36d",
+                  "links": [
+                    "b2981823-15d8-476c-842d-4d02f7026ef1"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeghlxiq001y356myj6bginp",
+                  "type": "default",
+                  "x": 830.13,
+                  "y": 263.56,
+                  "name": "cmeghlxiq001z356mkv0i2upk",
+                  "parentNode": "e782319a-fa89-47e3-86c8-da848a42f36d",
+                  "links": [
+                    "9f02211a-74a4-4695-9678-080df5396c22"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "application",
+                "variablesTransform": "$",
+                "query": "query($receiptIds: [String!]!){\r\n  receipt(\r\n    where:  {\r\n       id:{\r\n        _in: $receiptIds\r\n       }\r\n    }\r\n  ){\r\n    edges{\r\n      node{\r\n        id\r\n        receiptLines{\r\n          edges{\r\n            node{\r\n              receiptStatusId\r\n              _aggregate{\r\n                receiptStatusId{\r\n                  count\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+                "nextNodes": [
+                  "5dc1e02e-76a5-4c4e-9872-d080ba5ca007"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Query Receipt Data"
+            },
+            "c15d936d-97d5-480a-88c3-c31897917057": {
+              "id": "c15d936d-97d5-480a-88c3-c31897917057",
+              "type": "transform",
+              "selected": false,
+              "x": 1059.01,
+              "y": 231.85,
+              "ports": [
+                {
+                  "id": "cmeghlxir0028356m4vfp0j36",
+                  "type": "default",
+                  "x": 1050.88,
+                  "y": 263.56,
+                  "name": "cmeghlxir0029356mgrngnskd",
+                  "parentNode": "c15d936d-97d5-480a-88c3-c31897917057",
+                  "links": [
+                    "e09f73ff-8869-4be0-af55-c01ac1040d47"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeghlxir002a356md5x6sust",
+                  "type": "default",
+                  "x": 1205.13,
+                  "y": 263.56,
+                  "name": "cmeghlxir002b356mn4hdxlga",
+                  "parentNode": "c15d936d-97d5-480a-88c3-c31897917057",
+                  "links": [
+                    "d537dc7f-276c-446d-8dc0-010dd22afb19"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "transform": "receipt.edges.node.{\r\n    \"where\":{ \"id\": id},\r\n    \"update\":{\r\n      \"receiptStatusId\": $all(\r\n        [receiptLines.edges.node.receiptStatusId], \r\n        function($v){$v = \"confirmed\"})? \"confirmed\" : \"pendingConfirmation\"\r\n    }\r\n  }\r\n",
+                "nextNodes": [
+                  "db9fbf87-0def-40ec-86f1-1023b94c97ec"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": false,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Prepare Payload"
+            },
+            "db9fbf87-0def-40ec-86f1-1023b94c97ec": {
+              "id": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+              "type": "mutate",
+              "selected": true,
+              "x": 1245,
+              "y": 230,
+              "ports": [
+                {
+                  "id": "cmeghlxis002k356m1okv13hs",
+                  "type": "default",
+                  "x": 1236.88,
+                  "y": 261.72,
+                  "name": "cmeghlxis002l356m3wgjwonw",
+                  "parentNode": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+                  "links": [
+                    "d537dc7f-276c-446d-8dc0-010dd22afb19"
+                  ],
+                  "in": true
+                },
+                {
+                  "id": "cmeghlxis002m356mfa826pf5",
+                  "type": "default",
+                  "x": 1391.12,
+                  "y": 261.72,
+                  "name": "cmeghlxis002n356mg8td8ao1",
+                  "parentNode": "db9fbf87-0def-40ec-86f1-1023b94c97ec",
+                  "links": [
+                    "191cf915-b2e5-4ee3-b3cf-0658d7e501a7"
+                  ],
+                  "in": false,
+                  "groupIndex": null,
+                  "groupPath": null,
+                  "fieldLabel": "Output",
+                  "fieldPath": "data.nextNodes"
+                }
+              ],
+              "data": {
+                "api": "Application",
+                "variablesTransform": "{\r\n  \"payload\": [$]\r\n}",
+                "mutation": "mutation UpdateReceipt($payload: [ReceiptUpdatePayloadInput!]!) {\n  updateReceipt(payload: $payload) {\n    id\n  }\n}",
+                "nextNodes": [
+                  "182d2798-49cc-437f-9f34-fdad2ccd232f"
+                ]
+              },
+              "debug": {
+                "breakpointEnabled": true,
+                "publishSubscribeClient": false,
+                "publishToMFGx": false
+              },
+              "logging": {
+                "executionMetrics": false,
+                "executionStarted": false,
+                "executionSucceeded": false,
+                "executionFailed": true,
+                "enableTraceLogging": false
+              },
+              "name": "Mutate Receipt"
+            }
+          }
+        }
+      ],
+      "name": "Update Receipt Status",
+      "type": "System",
+      "version": "0.0.1",
+      "walkthrough": {
+        "steps": []
+      }
+    }
+  }
+}

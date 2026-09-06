@@ -1,0 +1,551 @@
+{
+  "header": {
+    "id": "storageZone",
+    "name": "StorageZone",
+    "description": "",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmfyet3o70ok10775g28eazal",
+    "number": "6",
+    "dataModelId": "storageZone",
+    "modelDefinition": {
+      "name": "StorageZone",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "siteManagement",
+            "group": {
+              "id": "siteManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 120
+          },
+          "customFields": {
+            "exposed": true
+          },
+          "editor": {
+            "autosort": true
+          }
+        },
+        "mongo": {
+          "collection": "storageZone"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "crossDocking",
+          "type": "Boolean!",
+          "description": "- **Description**: Areas where incoming products are immediately prepared for outbound shipping\n- **Characteristics**:Minimal or no storage time\nLocated near both receiving and shipping docks\nFocused on speed of throughput\n\n- **Best for**: Pre-allocated orders, promotional items, seasonal products\n- **Layout considerations**: Staging areas with clear demarcation for order consolidation",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "fastMoving",
+          "type": "Boolean!",
+          "description": "- **Description**: Areas dedicated to high-velocity products that have frequent picks\n- **Characteristics**:Located near packing stations to minimize travel distance\nOptimized for easy access and quick retrieval\nOften feature forward pick locations\n\n- **Best for**: Top 20% of SKUs that generate 80% of picking activity\n- **Layout considerations**: Usually at waist or chest height to minimize bending/reaching",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "hazardous",
+          "type": "Boolean!",
+          "description": "- **Description**: Segregated areas for dangerous or regulated substances\n- **Characteristics**:Special safety equipment and protocols\nOften have restricted access\nMay need specialized ventilation or containment\n\n- **Best for**: Chemicals, flammables, corrosives, regulated substances\n- **Layout considerations**: Generally separated from main picking areas, with special handling requirements",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "highValue",
+          "type": "Boolean!",
+          "description": "- **Description**: Secured areas for expensive or theft-prone items\n- **Characteristics**:Limited access controls (key cards, biometrics)\nAdditional surveillance\nMay require two-person verification for picking\n\n- **Best for**: Electronics, luxury goods, controlled substances, high-value components\n- **Layout considerations**: Caged areas, locked cabinets, separate security protocols",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "kitting",
+          "type": "Boolean!",
+          "description": "- **Description**: Areas where multiple items are combined into kits or assembled before shipping\n- **Characteristics**:Work tables or assembly stations\nMultiple item pick access\nOften involves specialized packaging\n\n- **Best for**: Product bundles, gift sets, items requiring assembly\n- **Layout considerations**: Need workspace and access to component parts",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "overflow",
+          "type": "Boolean!",
+          "description": "- **Description**: Flexible spaces that can be repurposed based on seasonal needs\n- **Characteristics**:Less permanent storage solutions\nMay be used differently throughout the year\nCan serve as buffer capacity\n\n- **Best for**: Holiday merchandise, seasonal products, promotional items\n- **Layout considerations**: Modular storage that can be reconfigured",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "oversized",
+          "type": "Boolean!",
+          "description": "- **Description**: Areas designed for large or heavy products\n- **Characteristics**:Wider aisles to accommodate larger handling equipment\nSpecialized storage like floor stacking or cantilever racking\nOften requires mechanical assistance for picking\n\n- **Best for**: Furniture, large appliances, long materials, palletized items\n- **Layout considerations**: Floor-level accessibility, reinforced shelving or floor storage",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "refrigerated",
+          "type": "Boolean!",
+          "description": "- **Description**: Temperature-controlled areas for perishable items\n- **Characteristics**:Maintain specific temperature ranges\nMay have different picking equipment requirements\nOften require expedited picking processes to maintain cold chain\n\n- **Best for**: Food products, pharmaceuticals, chemicals requiring temperature control\n- **Layout considerations**: Need to minimize door openings and time spent retrieving products",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "returnProcessing",
+          "type": "Boolean!",
+          "description": "- **Description**: Dedicated areas for processing returned merchandise\n- **Characteristics**:Inspection stations\nSorting capabilities\nRepackaging equipment\n\n- **Best for**: Customer returns, damaged goods processing\n- **Layout considerations**: Often near receiving but separate from regular inventory",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "slowMoving",
+          "type": "Boolean!",
+          "description": "- **Description**: Areas for products with lower picking frequency\n- **Characteristics**:Can be located farther from main picking aisles\nMay use more dense storage methods\nOften located in upper or lower storage positions\n\n- **Best for**: Items that are ordered less frequently but still need to be accessible\n- **Layout considerations**: Can utilize harder-to-access locations since visits are infrequent",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "usable",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "code",
+          "type": "String!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "areaId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "area",
+          "description": "",
+          "type": "Area",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "areaId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "storageUnits",
+          "description": "",
+          "type": "[StorageUnit!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "storageZoneId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "countParameters",
+          "description": "",
+          "type": "[CountParameters!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "storageZoneId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": ""
+    },
+    "dataModelTypeId": "master"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmfyet3o70ok10775g28eazal",
+      "dataModelVersion": {
+        "number": "6"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

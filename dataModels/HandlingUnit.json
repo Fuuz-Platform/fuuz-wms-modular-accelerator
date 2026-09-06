@@ -1,0 +1,817 @@
+{
+  "header": {
+    "id": "handlingUnit",
+    "name": "HandlingUnit",
+    "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)",
+    "dataModelKindId": "reference",
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmq5e9odr0195017bcuj99tuo",
+    "number": "12",
+    "dataModelId": "handlingUnit",
+    "modelDefinition": {
+      "name": "HandlingUnit",
+      "metadata": {
+        "mfgx": {
+          "module": {
+            "id": "inventoryTracking",
+            "group": {
+              "id": "inventoryManagement"
+            }
+          },
+          "exposed": true,
+          "mutable": true,
+          "mutations": {
+            "create": true,
+            "update": true,
+            "del": true
+          },
+          "dataChangeCapture": {
+            "exposed": true,
+            "retentionDays": 9999
+          },
+          "labelField": "serialNumber",
+          "triggers": {
+            "create": "$merge(\r\n  [\r\n    $,\r\n    {\r\n      \"id\": $uppercase($after.code),\r\n      \"code\": $uppercase($after.code)\r\n    }\r\n  ]\r\n)"
+          },
+          "editor": {
+            "autosort": false
+          },
+          "indices": [
+            {
+              "name": "activeUniqueBarcode",
+              "unique": true,
+              "partialFilterPredicate": {
+                "active": {
+                  "_eq": true
+                },
+                "barcode": {
+                  "_gt": ""
+                }
+              },
+              "fields": [
+                "barcode"
+              ]
+            },
+            {
+              "name": "activeUniqueExternalId",
+              "unique": true,
+              "partialFilterPredicate": {
+                "active": {
+                  "_eq": true
+                },
+                "externalId": {
+                  "_gt": ""
+                }
+              },
+              "fields": [
+                "externalId"
+              ]
+            }
+          ],
+          "customFields": {
+            "exposed": true
+          }
+        },
+        "mongo": {
+          "collection": "handlingUnit"
+        },
+        "graphql": {
+          "type": "Object"
+        }
+      },
+      "kind": "Reference",
+      "fields": [
+        {
+          "name": "id",
+          "type": "ID!",
+          "description": "The primary unique ID of the record.  Every model should have an id field.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": false
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "active",
+          "type": "Boolean!",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": true
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "serialNumber",
+          "type": "String!",
+          "description": "Handling Unit number, is a combination of the assigned sequence plus a prefix value.\n\n~~The prefix value is determined by the mixed boolean.~~\n\nHandling Units typically will recieve 1 of 2 prefixes - either designating that the contents are all the same, or they are mixed.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "sequence": {
+                "id": "handlingUnit"
+              }
+            },
+            "unique": true
+          }
+        },
+        {
+          "name": "level",
+          "type": "Int!",
+          "description": "Handling Unit Level defines the number of levels away from the base inventory object this HU is. For example, if this HU is a case, containing 3 inventory objects, the inventory objects are level 0 and the HU would be level 1. If the HU is a pallet, with cases, which have inventory inside the cases, then the Pallet HU is level 3. Typically HU levels go up to 9. The default HU level value is 1.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": 1
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "mixed",
+          "type": "Boolean!",
+          "description": "The mixed flag is used to specify that the contents of this HU are mixed. Meaning not all the same product, or not all the same product.process. The state of this boolean will determine the code for the handling unit - Prefix value.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              },
+              "defaultValue": false
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "barcode",
+          "type": "String",
+          "description": "The barcode field is a full string typically for a 2D barcode of this handling unit. This field must be UNIQUE for all ACTIVE handling units.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "note",
+          "type": "String",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "gln",
+          "type": "String",
+          "description": "GLN (Global Location Number) for identifying locations",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "gtin",
+          "type": "String",
+          "description": "The **Global Trade Item Number (GTIN)** is a unique identifier used to identify trade items, including handling units, in the supply chain. Here are the key details about GTIN:\n\n### Components of GTIN\n\n1. **Company Prefix**: Assigned by GS1, this prefix identifies the company that created the GTIN [[1]](https://www.saplogisticsexpert.com/all-about-handling-units-and-bar-codes-in-sap-s4-hana/).\n2. **Item Reference**: A unique number assigned by the company to identify the specific trade item [[1]](https://www.saplogisticsexpert.com/all-about-handling-units-and-bar-codes-in-sap-s4-hana/).\n3. **Check Digit**: A digit calculated to ensure the GTIN is correctly composed [[1]](https://www.saplogisticsexpert.com/all-about-handling-units-and-bar-codes-in-sap-s4-hana/).\n\n### Types of GTIN\n\nGTINs can vary in length depending on the application:\n\n- **GTIN-8**: Used for small items, typically scanned at point-of-sale.\n- **GTIN-12**: Commonly used in the United States, often seen on retail products.\n- **GTIN-13**: The most common type, used globally for retail products.\n- **GTIN-14**: Used for groupings of trade items not intended for point-of-sale scanning.\n\n### Uses of GTIN\n\n- **Identification**: GTINs uniquely identify trade items, ensuring accurate tracking and management [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n- **Barcoding**: GTINs are encoded into barcodes like EAN/UPC, ITF-14, and GS1-128 [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n- **Supply Chain Efficiency**: GTINs enhance supply chain operations by providing a standardized method for identifying and tracking items [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n\n### Benefits of GTIN\n\n- **Global Standardization**: GTINs are recognized worldwide, facilitating international trade [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n- **Accuracy**: Reduces errors in inventory management and product identification [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n- **Compliance**: Helps meet regulatory requirements in various industries [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n\n### Example of GTIN\n\nA GTIN-13 might look like this:\n\n- **Company Prefix**: 1234567\n- **Item Reference**: 890123\n- **Check Digit**: 5\n\n### Implementation\n\nGTINs are typically encoded into barcodes and included on labels for handling units. These barcodes can be scanned to track the items electronically, ensuring real-time visibility and management [[2]](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3).\n\nWould you like to know more about how GTINs are used in specific industries or any other aspect of supply chain management?\n\nReferences\n\n[2] [GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "sscc",
+          "type": "String",
+          "description": "The **Serial Shipping Container Code (SSCC)** is a globally unique identifier used to track logistic units, such as cartons, pallets, or containers, throughout the supply chain. Here are the key details about SSCC:\n\n### Components of SSCC\n\n1. **Application Identifier (AI)**: Two digits that identify the type of data encoded into the SSCC barcode [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n2. **Extension Digit**: A number between 0-9 that differentiates multiple SSCCs assigned by the same manufacturer [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n3. **GS1 Company Prefix**: A 7-9 digit number that identifies the entity responsible for assigning the SSCC [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n4. **Serial Reference**: A unique number assigned to each shipping container [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n5. **Check Digit**: A digit that mathematically validates the accuracy of the SSCC [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n\n### Uses of SSCC\n\n- **Tracking**: SSCCs are used to track logistic units from the point of origin to the destination, ensuring efficient and accurate shipment management [[2]](https://documents.gs1us.org/adobe/assets/deliver/urn:aaid:aem:494e625b-e1d8-4bbd-a1be-5918879cfc3d/An-Introduction-to-the-Serial-Shipping-Container-Code-SSCC.pdf).\n- **Identification**: Each SSCC acts like a license plate, uniquely identifying each logistic unit [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n- **Visibility**: SSCCs enhance supply chain visibility, allowing companies to monitor the status and location of shipments [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n\n### Benefits of SSCC\n\n- **Efficiency**: Improves supply chain efficiency by enabling precise tracking and management of shipments [[2]](https://documents.gs1us.org/adobe/assets/deliver/urn:aaid:aem:494e625b-e1d8-4bbd-a1be-5918879cfc3d/An-Introduction-to-the-Serial-Shipping-Container-Code-SSCC.pdf).\n- **Accuracy**: Reduces errors in shipment handling and inventory management [[2]](https://documents.gs1us.org/adobe/assets/deliver/urn:aaid:aem:494e625b-e1d8-4bbd-a1be-5918879cfc3d/An-Introduction-to-the-Serial-Shipping-Container-Code-SSCC.pdf).\n- **Compliance**: Helps meet regulatory requirements in industries like food and pharmaceuticals [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes).\n\n### Example of SSCC\n\nAn SSCC with a 7-digit GS1 Company Prefix can assign up to 10 billion unique SSCCs [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes). Here’s a breakdown of how an SSCC is structured:\n\n- **AI**: 00\n- **Extension Digit**: 3\n- **GS1 Company Prefix**: 1234567\n- **Serial Reference**: 890123456\n- **Check Digit**: 5\n\n### Implementation\n\nSSCCs are typically encoded into a GS1-128 barcode and included on a GS1 Logistics Label [[1]](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes). These barcodes can be scanned to track the logistic units electronically, ensuring real-time visibility and management.\n\nWould you like to know more about how SSCCs are used in specific industries or any other aspect of supply chain management?\n\nReferences\n\n[1] [Serialized Shipping Container Codes (SSCC) | GS1 US](https://www.gs1us.org/upcs-barcodes-prefixes/serialized-shipping-container-codes)\n\n[2] [An Introduction to the Serial Shipping Container Code (SSCC) - GS1US](https://documents.gs1us.org/adobe/assets/deliver/urn:aaid:aem:494e625b-e1d8-4bbd-a1be-5918879cfc3d/An-Introduction-to-the-Serial-Shipping-Container-Code-SSCC.pdf)",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "description": "This is to link this HU to another external system or app - this value must be unique for all active HU's.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "customData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "integrationData",
+          "type": "JSON",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "length",
+          "type": "Measure",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "width",
+          "type": "Measure",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "height",
+          "type": "Measure",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "volume",
+          "type": "Measure",
+          "description": "The volume occupied by the handling unit",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "weight",
+          "type": "Measure",
+          "description": "The tare weight of this handling unit when empty.",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "parentHandlingUnitId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "parentHandlingUnit",
+          "description": "",
+          "type": "HandlingUnit",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "parentHandlingUnitId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "packagingConfigurationId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "inventories",
+          "description": "",
+          "type": "[Inventory!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "handlingUnitId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "childHandlingUnits",
+          "description": "",
+          "type": "[HandlingUnit!]!",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "fields": {
+                  "from": "id",
+                  "to": "parentHandlingUnitId"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "loadId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "load",
+          "description": "",
+          "type": "Load",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "loadId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "handlingUnitTypeId",
+          "type": "ID",
+          "description": "",
+          "metadata": {
+            "mfgx": {
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        },
+        {
+          "name": "handlingUnitType",
+          "description": "",
+          "type": "HandlingUnitType",
+          "metadata": {
+            "mfgx": {
+              "relation": {
+                "deletionReferenceBehavior": "prevent",
+                "fields": {
+                  "from": "handlingUnitTypeId",
+                  "to": "id"
+                }
+              },
+              "mutations": {
+                "create": {
+                  "include": true
+                },
+                "update": {
+                  "include": true
+                }
+              },
+              "queries": {
+                "include": true
+              },
+              "where": {
+                "include": true
+              }
+            },
+            "unique": false
+          }
+        }
+      ],
+      "description": "According to GS1, a **handling unit** is a physical unit that consists of packaging materials (such as load carriers or packaging material) and the goods contained within. It is always a combination of materials and packaging materials, designed to facilitate the handling, storage, and transportation of goods.\n\nHandling units are uniquely identified using standards like the Serial Shipping Container Code (SSCC), which allows for efficient tracking and management throughout the supply chain.\n\n[GS1 Logistic Label Guideline](https://www.gs1.org/standards/gs1-logistic-label-guideline/1-3)"
+    },
+    "dataModelTypeId": "transactional"
+  },
+  "migration": "$",
+  "migrations": [
+    {
+      "dataModelVersionId": "cmq5e9odr0195017bcuj99tuo",
+      "dataModelVersion": {
+        "number": "12"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmppupsa702b9013tf5fi98mx",
+      "dataModelVersion": {
+        "number": "11"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmp2qpu0200qv012d124123d1",
+      "dataModelVersion": {
+        "number": "10"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmnnn16nf12zx0775d9gp908c",
+      "dataModelVersion": {
+        "number": "9"
+      },
+      "mappingExpression": "$"
+    },
+    {
+      "dataModelVersionId": "cmcl2llm805as0775ca6ogkwk",
+      "dataModelVersion": {
+        "number": "8"
+      },
+      "mappingExpression": "$"
+    }
+  ]
+}

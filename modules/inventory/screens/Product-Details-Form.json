@@ -1,0 +1,1600 @@
+{
+  "header": {
+    "id": "productDetailsForm",
+    "name": "Product Details Form",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "inventory",
+    "substitutesScreenId": null,
+    "isWidget": true,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmrvzyll500lp012d5xx4e2qo",
+    "number": "0.0.12",
+    "description": "Removed required from the dimension measures since unit dropdown isn't working.",
+    "screenId": "productDetailsForm",
+    "design": {
+      "components": [
+        {
+          "name": "New Screen",
+          "tabTitle": "New Tab",
+          "type": "canvas",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "column",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "auto",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 11,
+                    "Form": 2,
+                    "Text": 26,
+                    "Rich Text": 3,
+                    "Measure": 9,
+                    "Select": 6,
+                    "JSON": 4,
+                    "Integer": 1,
+                    "Action Button": 2,
+                    "Markdown": 1,
+                    "Switch": 1
+                  }
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "m_eDTLji67"
+                ],
+                "linkedNodes": {}
+              },
+              "m_eDTLji67": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "Cs11bXo_vn"
+                ],
+                "linkedNodes": {}
+              },
+              "Cs11bXo_vn": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "parameters": "{\n  \"filter\": {\n    \"id\": {\n      \"_eq\": $coalesce([ id, \"-1\"])\n    }\n  },\n  \"first\": 1\n}",
+                    "fields": [
+                      "id"
+                    ],
+                    "disableDataChangeIndicator": false,
+                    "model": "Product"
+                  },
+                  "blockNavigationWhenDirty": true,
+                  "enableConfirmOnDataChanged": false,
+                  "description": "Product is a common data model should be used across Fuuz apps that require product, item, sku level information."
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form2"
+                },
+                "parent": "m_eDTLji67",
+                "hidden": false,
+                "nodes": [
+                  "KhrA_zBBau",
+                  "dvuHnYFqZG",
+                  "qNEFFn7q6U",
+                  "_h1VuihtE3",
+                  "VPfqcCQS54",
+                  "etkSs0GjD_"
+                ],
+                "linkedNodes": {}
+              },
+              "KhrA_zBBau": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container5"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "_MwK8gIaQ_",
+                  "oCFqwWqiTm",
+                  "DLpfEb4mhl",
+                  "GiHwbVuUHV",
+                  "u8Apdk8yaU",
+                  "kbSkHchkwi"
+                ],
+                "linkedNodes": {}
+              },
+              "oCFqwWqiTm": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Code",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "code",
+                  "description": "A human-readable and unique shorthand name for the product",
+                  "field": "code",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text1"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "DLpfEb4mhl": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Name",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "name",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "Human-readable product name using full words\n\nDoesn't strictly have to be unique",
+                  "field": "name"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text2"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "GiHwbVuUHV": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Number",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "number",
+                  "description": "Product/Model number",
+                  "field": "number",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text3"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_MwK8gIaQ_": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Details",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "subtitle2",
+                  "fontSize": "body1",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "labelPosition": {
+                    "id": "column",
+                    "label": "Above"
+                  },
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text6"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qNEFFn7q6U": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container6"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "T1MCHbru1z",
+                  "a-xsFBs7qL",
+                  "S5yHZPgY6-",
+                  "sWRYs74n0y"
+                ],
+                "linkedNodes": {}
+              },
+              "T1MCHbru1z": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Standard Product Identifiers",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "subtitle2",
+                  "fontSize": "body1",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "labelPosition": {
+                    "id": "column",
+                    "label": "Above"
+                  },
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text7"
+                },
+                "parent": "qNEFFn7q6U",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "a-xsFBs7qL": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Gtin",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "gtin",
+                  "description": "A GTIN (Global Trade Item Number) is a universally recognized identifier for a product. It is globally unique and customer-facing, allowing retailers and online marketplaces to easily identify what is being sold.",
+                  "field": "gtin",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text8"
+                },
+                "parent": "qNEFFn7q6U",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "S5yHZPgY6-": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Sku",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "sku",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "An SKU (Stock Keeping Unit) is a company-specific identifier used for internal inventory management",
+                  "field": "sku"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text9"
+                },
+                "parent": "qNEFFn7q6U",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "sWRYs74n0y": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Upc",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "upc",
+                  "description": "UPC (Universal Product Code) is a specific type of GTIN used in North America",
+                  "field": "upc",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text10"
+                },
+                "parent": "qNEFFn7q6U",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "dvuHnYFqZG": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container7"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "2nGxVbeMZP",
+                  "9uzH9g67Vj",
+                  "ZDdQha31Rl",
+                  "_ZX_L2eRw6",
+                  "e1AsjWPdOZ",
+                  "BErVTuLzCG"
+                ],
+                "linkedNodes": {}
+              },
+              "2nGxVbeMZP": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Dimensions ",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "subtitle2",
+                  "fontSize": "body1",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "labelPosition": {
+                    "id": "column",
+                    "label": "Above"
+                  },
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "description": "",
+                  "field": "length"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text11"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "ZDdQha31Rl": {
+                "type": {
+                  "resolvedName": "MeasureInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "measure",
+                  "label": "Length",
+                  "formElement": "Form2",
+                  "dataPath": "length",
+                  "query": {
+                    "fields": [
+                      "length.value",
+                      "length.unitId",
+                      "length.unit.code"
+                    ]
+                  },
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "",
+                  "field": "length",
+                  "unitType": "length"
+                },
+                "displayName": "Measure",
+                "custom": {
+                  "elementName": "Measure1"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_ZX_L2eRw6": {
+                "type": {
+                  "resolvedName": "MeasureInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "measure",
+                  "label": "Width",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "width",
+                  "query": {
+                    "fields": [
+                      "width.value",
+                      "width.unitId",
+                      "width.unit.code"
+                    ]
+                  },
+                  "description": "",
+                  "field": "width",
+                  "unitType": "length"
+                },
+                "displayName": "Measure",
+                "custom": {
+                  "elementName": "Measure2"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "e1AsjWPdOZ": {
+                "type": {
+                  "resolvedName": "MeasureInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "measure",
+                  "label": "Height",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "height",
+                  "query": {
+                    "fields": [
+                      "height.value",
+                      "height.unitId",
+                      "height.unit.code"
+                    ]
+                  },
+                  "description": "",
+                  "field": "height",
+                  "unitType": "length"
+                },
+                "displayName": "Measure",
+                "custom": {
+                  "elementName": "Measure3"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "BErVTuLzCG": {
+                "type": {
+                  "resolvedName": "MeasureInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "measure",
+                  "label": "Weight",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "weight",
+                  "query": {
+                    "fields": [
+                      "weight.value",
+                      "weight.unitId",
+                      "weight.unit.code"
+                    ]
+                  },
+                  "description": "",
+                  "field": "weight",
+                  "unitType": "weight"
+                },
+                "displayName": "Measure",
+                "custom": {
+                  "elementName": "Measure4"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "VPfqcCQS54": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container8"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "zImwgn6Vo7",
+                  "xZSPF7043S",
+                  "WcSTzn-c6U",
+                  "YvITUgd22z"
+                ],
+                "linkedNodes": {}
+              },
+              "zImwgn6Vo7": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Metadata",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "subtitle2",
+                  "fontSize": "body1",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "labelPosition": {
+                    "id": "column",
+                    "label": "Above"
+                  },
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "description": "",
+                  "field": "length"
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text18"
+                },
+                "parent": "VPfqcCQS54",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "xZSPF7043S": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "External Id",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "externalId",
+                  "description": "",
+                  "field": "externalId",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text19"
+                },
+                "parent": "VPfqcCQS54",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "WcSTzn-c6U": {
+                "type": {
+                  "resolvedName": "JSONInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "json",
+                  "label": "Custom Data",
+                  "showEditor": true,
+                  "formElement": "Form2",
+                  "dataPath": "customData",
+                  "description": "",
+                  "field": "customData",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "JSON",
+                "custom": {
+                  "elementName": "Json1"
+                },
+                "parent": "VPfqcCQS54",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "YvITUgd22z": {
+                "type": {
+                  "resolvedName": "JSONInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "json",
+                  "label": "Integration Data",
+                  "showEditor": true,
+                  "formElement": "Form2",
+                  "dataPath": "integrationData",
+                  "description": "",
+                  "field": "integrationData",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "JSON",
+                "custom": {
+                  "elementName": "Json2"
+                },
+                "parent": "VPfqcCQS54",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_h1VuihtE3": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container9"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "gEVVn-knlk",
+                  "utnoZXmliS",
+                  "_YP27R_sde",
+                  "47Hr3UgrNf"
+                ],
+                "linkedNodes": {}
+              },
+              "gEVVn-knlk": {
+                "type": {
+                  "resolvedName": "DisplayText"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "display",
+                  "label": "Others",
+                  "justifyContent": "start",
+                  "alignTextItems": "start",
+                  "labelFontSize": "subtitle2",
+                  "fontSize": "body1",
+                  "formElement": "Form2",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "dataPath": "na",
+                  "labelPosition": {
+                    "id": "column",
+                    "label": "Above"
+                  },
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text20"
+                },
+                "parent": "_h1VuihtE3",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "utnoZXmliS": {
+                "type": {
+                  "resolvedName": "IntegerInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "integer",
+                  "label": "Shelf Life Days",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "shelfLifeDays",
+                  "description": "Shelf life in calendar days for this product. Default value is 0; no expiration.",
+                  "field": "shelfLifeDays",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Integer",
+                "custom": {
+                  "elementName": "Integer1"
+                },
+                "parent": "_h1VuihtE3",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "_YP27R_sde": {
+                "type": {
+                  "resolvedName": "TextInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "text",
+                  "label": "Revision",
+                  "variant": "standard",
+                  "size": "medium",
+                  "formElement": "Form2",
+                  "dataPath": "revision",
+                  "description": "Product/Model number revision",
+                  "field": "revision",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Text",
+                "custom": {
+                  "elementName": "Text24"
+                },
+                "parent": "_h1VuihtE3",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "etkSs0GjD_": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "end",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": true,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {
+                    "borderTop": "solid black 1px"
+                  },
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container10"
+                },
+                "parent": "Cs11bXo_vn",
+                "hidden": false,
+                "nodes": [
+                  "EbW9INuKYU",
+                  "aRHHAorn1c"
+                ],
+                "linkedNodes": {}
+              },
+              "aRHHAorn1c": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$components.Form2.formState.invalid",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": [
+                        "components.Form2.formState.invalid"
+                      ]
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "mutation",
+                      "mutation": "mutation UpsertProduct($payload: [ProductUpsertPayloadInput!]!) {\n  upsertProduct(payload: $payload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "(\r\n  $formatMesure := | $ | {\"unitId\": $coalesce([unitId, unit.id])}, [\"unit\"] |;\r\n  $id := $coalesce([$metadata.urlParameters.id, $cuid()]);\r\n  $data := $components.Form2.data~> | $ | {\r\n    \"defaultQuantityUnitId\": defaultQuantityUnit.id? defaultQuantityUnit.id : null, \r\n    \"barcodeDesignId\": barcodeDesign.id? barcodeDesign.id : null,\r\n    \"productCategoryId\": productCategory.id? productCategory.id : null,\r\n    \"width\": $formatMesure(width),\r\n    \"length\": $formatMesure(length),\r\n    \"height\": $formatMesure(height),\r\n    \"weight\": $formatMesure(weight),\r\n    \"active\": true\r\n    }, \r\n    [\"barcodeDesign\", \"defaultQuantityUnit\", \"id\", \"total\", \"edges\", \"productCategory\"] |;\r\n\r\n  {\r\n    \"payload\":{\r\n      \"where\":{ \"id\": $id },\r\n      \"update\": $data,\r\n      \"create\": $data\r\n    }\r\n  }\r\n)",
+                        "post": "$components.Screen.fn.return()"
+                      }
+                    }
+                  ],
+                  "icon": {
+                    "icon": "save"
+                  }
+                },
+                "displayName": "Action",
+                "custom": {
+                  "editor": {
+                    "category": "Interaction",
+                    "description": "Save button action.",
+                    "color": "#9c5a94",
+                    "elementName": "Save Button which saves form data.",
+                    "icon": "save",
+                    "requiresForm": true
+                  }
+                },
+                "parent": "etkSs0GjD_",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "EbW9INuKYU": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Screen.fn.return()"
+                    }
+                  ],
+                  "icon": {
+                    "icon": "xmark",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "customButtonColor": "#ff0000"
+                },
+                "displayName": "Action",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "etkSs0GjD_",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "9uzH9g67Vj": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": true
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Default Quantity Unit",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "Form2",
+                  "dataPath": "defaultQuantityUnit",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "defaultQuantityUnit.id",
+                      "defaultQuantityUnit.code"
+                    ]
+                  },
+                  "dataModel": "Unit",
+                  "selectFields": [
+                    "name",
+                    "code"
+                  ],
+                  "additionalFields": [
+                    "id",
+                    "code"
+                  ],
+                  "targetDataPath": "defaultQuantityUnitIdssss",
+                  "target": {
+                    "dataPath": "defaultQuantityUnitId"
+                  },
+                  "description": "The default unit to assign the quantity of inventory of this product",
+                  "field": "defaultQuantityUnit"
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select4"
+                },
+                "parent": "dvuHnYFqZG",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "47Hr3UgrNf": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Barcode Design",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "Form2",
+                  "dataPath": "barcodeDesign",
+                  "description": "A reference to the document which specifies the barcode format to be used on this product",
+                  "field": "barcodeDesign",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "labelPath": "name",
+                  "orderByField": "name",
+                  "query": {
+                    "fields": [
+                      ""
+                    ]
+                  },
+                  "dataModel": "DocumentDesign",
+                  "selectFields": [
+                    "name"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select5"
+                },
+                "parent": "_h1VuihtE3",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "kbSkHchkwi": {
+                "type": {
+                  "resolvedName": "MarkdownInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "markdown",
+                  "label": "Description",
+                  "formElement": "Form2",
+                  "dataPath": "description",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "Full description of the product. Usually about a paragraph, depending on the product.",
+                  "field": "description"
+                },
+                "displayName": "Markdown",
+                "custom": {
+                  "elementName": "Markdown1"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "KyNiShxc4w": {
+                "type": {
+                  "resolvedName": "SelectInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "75%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "select",
+                  "label": "Product Category",
+                  "dialogMode": "never",
+                  "multiselect": false,
+                  "isClearable": true,
+                  "selectAll": true,
+                  "searchPredicate": "contains",
+                  "api": "Application",
+                  "stateTracking": "full",
+                  "optionLimit": 5,
+                  "optionLimitFlex": 5,
+                  "alwaysReloadOptions": false,
+                  "tenantId": "",
+                  "formElement": "Form2",
+                  "dataPath": "productCategory",
+                  "target": {
+                    "dataPath": null
+                  },
+                  "description": "",
+                  "field": "productCategory",
+                  "labelPath": "code",
+                  "orderByField": "code",
+                  "query": {
+                    "fields": [
+                      "productCategory.id",
+                      "productCategory.code"
+                    ]
+                  },
+                  "dataModel": "ProductCategory",
+                  "selectFields": [
+                    "code",
+                    "description"
+                  ],
+                  "additionalFields": []
+                },
+                "displayName": "Select",
+                "custom": {
+                  "elementName": "Select6"
+                },
+                "parent": "u8Apdk8yaU",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "7fevxJWzOu": {
+                "type": {
+                  "resolvedName": "Switch"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "25%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "switch",
+                  "label": "Allow Pick Overage",
+                  "formElement": "Form2",
+                  "dataPath": "allowPickOverage",
+                  "description": "",
+                  "field": "allowPickOverage",
+                  "target": {
+                    "dataPath": null
+                  }
+                },
+                "displayName": "Switch",
+                "custom": {
+                  "elementName": "Switch1"
+                },
+                "parent": "u8Apdk8yaU",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "u8Apdk8yaU": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {}
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container11"
+                },
+                "parent": "KhrA_zBBau",
+                "hidden": false,
+                "nodes": [
+                  "KyNiShxc4w",
+                  "7fevxJWzOu"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmdp1ezow1yle0775au912au0",
+      "title": "Product Details Form",
+      "path": "/materialsManagement/inventory/productDetailsForm",
+      "moduleId": "inventory",
+      "screenId": "productDetailsForm",
+      "isMenuAccessible": false,
+      "submenu": ""
+    }
+  ]
+}

@@ -1,0 +1,1156 @@
+{
+  "header": {
+    "id": "countTable",
+    "name": "Count Table",
+    "description": "",
+    "active": true,
+    "edgeScreen": false,
+    "forceFullscreen": false,
+    "moduleId": "cycleCounting",
+    "substitutesScreenId": null,
+    "isWidget": false,
+    "_customFields": {
+      "_externalId": null
+    }
+  },
+  "version": {
+    "id": "cmfzqbjm918iz07757xl7e5kr",
+    "number": "0.0.4",
+    "description": "",
+    "screenId": "countTable",
+    "design": {
+      "components": [
+        {
+          "type": "canvas",
+          "name": "CountTable",
+          "tabTitle": "Count Table",
+          "props": {
+            "design": {
+              "ROOT": {
+                "type": {
+                  "resolvedName": "Screen"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 0,
+                  "margin": 0,
+                  "flexDirection": "row",
+                  "flexWrap": false,
+                  "alignItems": "stretch",
+                  "justifyContent": "flex-start",
+                  "width": "100%",
+                  "height": "100%",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "flowsDelay": 0,
+                  "removeOuterMargin": false
+                },
+                "displayName": "Screen",
+                "custom": {
+                  "elementName": "Screen",
+                  "elementCounts": {
+                    "Container": 4,
+                    "Action Button": 5,
+                    "Form": 1,
+                    "Table": 1,
+                    "Table Column": 8,
+                    "Integer": 2,
+                    "Checkbox": 1,
+                    "Date Range": 4,
+                    "Select": 1,
+                    "Flow Button": 1,
+                    "Button Group": 1
+                  },
+                  "module": {
+                    "id": "cycleCounting",
+                    "group": {
+                      "id": "inventoryManagement"
+                    }
+                  },
+                  "dataModel": "Count",
+                  "template": "table"
+                },
+                "parent": null,
+                "hidden": false,
+                "nodes": [
+                  "kgPW0GAXtC",
+                  "Axt0rua4Xq"
+                ],
+                "linkedNodes": {}
+              },
+              "M7xGC4HLFL": {
+                "type": {
+                  "resolvedName": "Form"
+                },
+                "isCanvas": true,
+                "props": {
+                  "query": {
+                    "api": "Application",
+                    "model": "Count",
+                    "query": null,
+                    "dataPath": "edges[0]",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": false
+                  },
+                  "blockNavigationWhenDirty": false
+                },
+                "displayName": "Form",
+                "custom": {
+                  "elementName": "Form1"
+                },
+                "parent": "kgPW0GAXtC",
+                "hidden": false,
+                "nodes": [
+                  "RxObMnmNid"
+                ],
+                "linkedNodes": {}
+              },
+              "RxObMnmNid": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 1,
+                  "flexWrap": true,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "alignItems": "flex-end",
+                  "width": "100%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": true,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container2"
+                },
+                "parent": "M7xGC4HLFL",
+                "hidden": false,
+                "nodes": [
+                  "uMRj6FzqZ2",
+                  "60_cSfYoTk",
+                  "wMh4hDTzFw",
+                  "27W_gF8t3A",
+                  "U7UfDs-VoL",
+                  "3O1-6f4iEq",
+                  "CbcZOYaB4L",
+                  "FfYSFSIpR6"
+                ],
+                "linkedNodes": {}
+              },
+              "uMRj6FzqZ2": {
+                "type": {
+                  "resolvedName": "IntegerInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "integer",
+                  "label": "Number Min",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "number._gte",
+                  "field": "number",
+                  "description": "",
+                  "element": "IntegerInput",
+                  "predicate": "_gte"
+                },
+                "displayName": "Integer",
+                "custom": {
+                  "elementName": "Integer1"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "60_cSfYoTk": {
+                "type": {
+                  "resolvedName": "IntegerInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "integer",
+                  "label": "Number Max",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "number._lte",
+                  "field": "number",
+                  "description": "",
+                  "element": "IntegerInput",
+                  "predicate": "_lte"
+                },
+                "displayName": "Integer",
+                "custom": {
+                  "elementName": "Integer2"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "wMh4hDTzFw": {
+                "type": {
+                  "resolvedName": "Checkbox"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "checkbox",
+                  "label": "Blind",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "blind",
+                  "field": "blind",
+                  "description": "If Blind is True, the users will not be shown the expected quantities or expected weight information. If Blind is false, users will be provided the information during the count.",
+                  "element": "Checkbox",
+                  "predicate": "_eq",
+                  "target": {
+                    "dataPath": "blind._eq"
+                  }
+                },
+                "displayName": "Checkbox",
+                "custom": {
+                  "elementName": "Checkbox1"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "27W_gF8t3A": {
+                "type": {
+                  "resolvedName": "DateRangeInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "datetimeRange",
+                  "label": "Scheduled Start At",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "scheduledStartAt",
+                  "field": "scheduledStartAt",
+                  "description": "",
+                  "element": "DateRangeInput"
+                },
+                "displayName": "Date Range",
+                "custom": {
+                  "elementName": "DateRange1"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "U7UfDs-VoL": {
+                "type": {
+                  "resolvedName": "DateRangeInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "datetimeRange",
+                  "label": "Actual Start At",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "actualStartAt",
+                  "field": "actualStartAt",
+                  "description": "",
+                  "element": "DateRangeInput"
+                },
+                "displayName": "Date Range",
+                "custom": {
+                  "elementName": "DateRange2"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "3O1-6f4iEq": {
+                "type": {
+                  "resolvedName": "DateRangeInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "datetimeRange",
+                  "label": "Completed At",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "completedAt",
+                  "field": "completedAt",
+                  "description": "",
+                  "element": "DateRangeInput"
+                },
+                "displayName": "Date Range",
+                "custom": {
+                  "elementName": "DateRange3"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "CbcZOYaB4L": {
+                "type": {
+                  "resolvedName": "DateRangeInput"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "datetimeRange",
+                  "label": "Created At",
+                  "formElement": "Form1",
+                  "additionalFilter": {},
+                  "dataPath": "createdAt",
+                  "field": "createdAt",
+                  "description": "The date and time the record was created.",
+                  "element": "DateRangeInput"
+                },
+                "displayName": "Date Range",
+                "custom": {
+                  "elementName": "DateRange4"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "FfYSFSIpR6": {
+                "type": {
+                  "resolvedName": "WrappedGraphQLPredicate"
+                },
+                "isCanvas": false,
+                "props": {
+                  "padding": 8,
+                  "width": "100%",
+                  "height": "auto",
+                  "validation": {
+                    "required": false
+                  },
+                  "uniqueValidationEnabled": false,
+                  "visible": true,
+                  "type": "graphqlWhere",
+                  "dataPath": "predicate",
+                  "target": {
+                    "dataPath": "_and"
+                  },
+                  "label": "Filter Builder",
+                  "formElement": "Form1"
+                },
+                "displayName": "GraphQL Where Input",
+                "custom": {
+                  "elementName": "GraphQlWhereInput1"
+                },
+                "parent": "RxObMnmNid",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Q9xXPVGP2c": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "search",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "transformation",
+                      "transformation": "$components.Table1.fn.search()",
+                      "remote": false
+                    }
+                  ],
+                  "title": "Search"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton1"
+                },
+                "parent": "ShWNWO7ceC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "YP0edYgx-h": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "secondary",
+                  "icon": {
+                    "icon": "plus",
+                    "variant": "regular",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": false,
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "form",
+                      "submitIcon": "plus",
+                      "title": "Create a new Count",
+                      "fields": [
+                        {
+                          "label": "Blind",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": true
+                          },
+                          "defaultValue": false,
+                          "dataPath": "blind",
+                          "field": "blind",
+                          "description": "If Blind is True, the users will not be shown the expected quantities or expected weight information. If Blind is false, users will be provided the information during the count.",
+                          "element": "switch",
+                          "type": "switch"
+                        },
+                        {
+                          "label": "Scheduled Start At",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "scheduledStartAt",
+                          "field": "scheduledStartAt",
+                          "description": "",
+                          "element": "DateTimeInput",
+                          "type": "datetime"
+                        },
+                        {
+                          "label": "Product Category",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "productCategoryId",
+                          "field": "productCategory",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "query": {
+                            "fields": [
+                              "id",
+                              "code"
+                            ]
+                          },
+                          "dataModel": "ProductCategory",
+                          "selectFields": [
+                            "code"
+                          ]
+                        },
+                        {
+                          "label": "Product",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "productId",
+                          "field": "product",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "query": {
+                            "fields": [
+                              "id",
+                              "code"
+                            ]
+                          },
+                          "dataModel": "Product",
+                          "selectFields": [
+                            "code",
+                            "number"
+                          ]
+                        },
+                        {
+                          "label": "Area",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "areaId",
+                          "field": "area",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "query": {
+                            "fields": [
+                              "id",
+                              "code"
+                            ]
+                          },
+                          "dataModel": "Area",
+                          "selectFields": [
+                            "code",
+                            "name"
+                          ]
+                        },
+                        {
+                          "label": "Storage Zone",
+                          "uniqueValidationEnabled": false,
+                          "validation": {
+                            "required": false
+                          },
+                          "dataPath": "storageZoneId",
+                          "field": "storageZone",
+                          "description": "",
+                          "element": "SelectInput",
+                          "type": "select",
+                          "labelField": "code",
+                          "labelPath": "code",
+                          "query": {
+                            "fields": [
+                              "id",
+                              "code"
+                            ]
+                          },
+                          "dataModel": "StorageZone",
+                          "selectFields": [
+                            "code"
+                          ],
+                          "additionalFilter": {
+                            "__transform": "{'areaId':{'_eq': data.areaId.id}}"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation ($createCountPayload: [CountCreatePayloadInput!]!, $createCountParametersPayload: [CountParametersCreatePayloadInput!]!) {\n  createCount(payload: $createCountPayload) {\n    id\n  }\n  createCountParameters(payload: $createCountParametersPayload) {\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "(\n  $countId := $cuid();\n \n  {\n    \"createCountPayload\": {\n      \"create\": {\n        \"id\": $countId,\n        \"blind\": data.blind,\n        \"scheduledStartAt\": data.scheduledStartAt,\n        \"countStatusId\": \"New\"\n      }\n    },\n    \"createCountParametersPayload\":{\n      \"create\":{\n        \"countId\": $countId,\n        \"productCategoryId\": data.productCategoryId,\n        \"productId\": data.productId,\n        \"areaId\": data.areaId,\n        \"storageZoneId\": data.storageZoneId\n      }\n    }\n  }\n)"
+                      },
+                      "message": {
+                        "__transform": "\"Count \" & data.mutation[0].id & \" created successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Create"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton2"
+                },
+                "parent": "ShWNWO7ceC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "l_LCgwOd2g": {
+                "type": {
+                  "resolvedName": "ActionButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "error",
+                  "icon": {
+                    "icon": "trash",
+                    "variant": "solid",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$count($components.Table1.selectedRows) = 0",
+                    "__dynamicFields": {
+                      "payload": [],
+                      "context": [
+                        "components.Table1.selectedRows"
+                      ]
+                    },
+                    "__cacheKey": "deleteButton",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "disableHover": false,
+                  "disableRipple": false,
+                  "action": [
+                    {
+                      "type": "confirmation",
+                      "buttonColor": "error",
+                      "submitIcon": {
+                        "icon": "trash",
+                        "variant": "solid"
+                      },
+                      "message": {
+                        "__transform": "\"Delete \" & ($count($components.Table1.selectedRows) = 1 ? (\"Count \" & $components.Table1.selectedRows.id) : $count($components.Table1.selectedRows) & \" records\") & \"?\""
+                      }
+                    },
+                    {
+                      "type": "mutation",
+                      "api": "Application",
+                      "mutation": "mutation DeleteCount($payload: [CountDeletePayloadInput!]!) {\n  mutation: deleteCount(payload: $payload) { \n    id\n    id\n  }\n}",
+                      "transforms": {
+                        "pre": "{\n  \"payload\": $components.Table1.selectedRows.{\n    \"where\": {\n      \"id\": id\n    }\n  }\n}"
+                      },
+                      "message": {
+                        "__transform": "($count($components.Table1.selectedRows) = 1 ? (\"Count \" & $components.Table1.selectedRows.id) : $count($components.Table1.selectedRows) & \" records\") & \" deleted successfully.\""
+                      }
+                    },
+                    {
+                      "type": "transformation",
+                      "remote": false,
+                      "transformation": "$components.Table1.fn.search()"
+                    }
+                  ],
+                  "title": "Delete"
+                },
+                "displayName": "Action Button",
+                "custom": {
+                  "elementName": "ActionButton4"
+                },
+                "parent": "ShWNWO7ceC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "IcuXxvtICf": {
+                "type": {
+                  "resolvedName": "Table"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 1,
+                  "width": "100%",
+                  "height": "auto",
+                  "flexGrow": true,
+                  "query": {
+                    "api": "Application",
+                    "model": "Count",
+                    "query": null,
+                    "dataPath": "edges",
+                    "dataTransform": {
+                      "transform": null,
+                      "remote": true
+                    },
+                    "dataSubscription": {
+                      "enabled": false
+                    },
+                    "autoLoad": true,
+                    "fields": [
+                      "id"
+                    ]
+                  },
+                  "selectable": "single",
+                  "showToolPanels": true,
+                  "showStatusBar": true,
+                  "enableGrouping": true,
+                  "enableCharts": true,
+                  "showColumnMenu": true,
+                  "enableRowDragging": false,
+                  "disableColumnDragging": false,
+                  "disableDragLeaveHidesColumns": false,
+                  "masterDetail": false,
+                  "hideTableHeader": false,
+                  "filterFormName": "Form1",
+                  "description": "Cycle counts for optimizing inventory movements. Cycle parameters are the filters used to query the system for inventory that should be counted - all parameters are \"OR\" statements. Any inventory matching any of the parameters will be included in the count.",
+                  "rowMultiSelectWithClick": false,
+                  "limitToOneActiveDetail": false
+                },
+                "displayName": "Table",
+                "custom": {
+                  "elementName": "Table1"
+                },
+                "parent": "Axt0rua4Xq",
+                "hidden": false,
+                "nodes": [
+                  "D5SvKjiQGG",
+                  "bMF6XFPwgA",
+                  "qqZP6wkV6E",
+                  "0cFGor3NIO",
+                  "VuOgpj84hK",
+                  "Y6VpkZx9jG",
+                  "aFZ9feyGIT",
+                  "TWXD_Us-y4"
+                ],
+                "linkedNodes": {}
+              },
+              "D5SvKjiQGG": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Number",
+                  "format": "integer",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "number",
+                  "dataPath": "number",
+                  "description": "",
+                  "query": {
+                    "fields": null
+                  },
+                  "linkTarget": {
+                    "__transform": "\"/inventoryManagement/cycleCounting/countDetails/\" & data.id",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  }
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn1"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "bMF6XFPwgA": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Blind",
+                  "format": "checkmark",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "blind",
+                  "dataPath": "blind",
+                  "description": "If Blind is True, the users will not be shown the expected quantities or expected weight information. If Blind is false, users will be provided the information during the count."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn2"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "qqZP6wkV6E": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Scheduled Start At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "scheduledStartAt",
+                  "dataPath": "scheduledStartAt",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn3"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "0cFGor3NIO": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Actual Start At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "actualStartAt",
+                  "dataPath": "actualStartAt",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn4"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "VuOgpj84hK": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Completed At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "completedAt",
+                  "dataPath": "completedAt",
+                  "description": ""
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn5"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "Y6VpkZx9jG": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Created At",
+                  "format": "datetime",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "field": "createdAt",
+                  "dataPath": "createdAt",
+                  "description": "The date and time the record was created."
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn6"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "aFZ9feyGIT": {
+                "type": {
+                  "resolvedName": "CustomFieldsTableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Custom Fields",
+                  "expandGroups": false,
+                  "dataPath": "_customFields",
+                  "field": "_customFields",
+                  "dataModel": "Count"
+                },
+                "displayName": "Custom Fields Table Column",
+                "custom": {
+                  "elementName": "Custom Fields Table Column1"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "TWXD_Us-y4": {
+                "type": {
+                  "resolvedName": "TableColumn"
+                },
+                "isCanvas": false,
+                "props": {
+                  "label": "Status",
+                  "format": "text",
+                  "sortable": true,
+                  "isFlow": false,
+                  "menuIcon": "ellipsis-v",
+                  "iconSize": "small",
+                  "query": {},
+                  "dataPath": "countStatus.name",
+                  "description": "",
+                  "field": "countStatus.name"
+                },
+                "displayName": "Table Column",
+                "custom": {
+                  "elementName": "TableColumn8"
+                },
+                "parent": "IcuXxvtICf",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "P0fld1S1y3": {
+                "type": {
+                  "resolvedName": "FlowButton"
+                },
+                "isCanvas": false,
+                "props": {
+                  "margin": 6,
+                  "buttonColor": "primary",
+                  "icon": {
+                    "icon": "play",
+                    "color": "inherit",
+                    "variant": "duotone",
+                    "size": "icon"
+                  },
+                  "width": "76px",
+                  "height": "48px",
+                  "disabled": {
+                    "__transform": "$isNilOrEmpty( $components.Table1.selectedRows.id )",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "hidden": false,
+                  "useIconButton": false,
+                  "payload": {
+                    "__transform": "{\"countId\": $components.Table1.selectedRows.id}",
+                    "__dynamicFields": {
+                      "payload": null,
+                      "context": []
+                    },
+                    "__cacheKey": "",
+                    "__remote": false
+                  },
+                  "dataFlowId": "cycleCountWebFlow"
+                },
+                "displayName": "Flow Button",
+                "custom": {
+                  "elementName": "FlowButton1"
+                },
+                "parent": "ShWNWO7ceC",
+                "hidden": false,
+                "nodes": [],
+                "linkedNodes": {}
+              },
+              "kgPW0GAXtC": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": false,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "25%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": true,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container1"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "ShWNWO7ceC",
+                  "M7xGC4HLFL"
+                ],
+                "linkedNodes": {}
+              },
+              "Axt0rua4Xq": {
+                "type": {
+                  "resolvedName": "Container"
+                },
+                "isCanvas": true,
+                "props": {
+                  "padding": 8,
+                  "margin": 8,
+                  "flexWrap": true,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-start",
+                  "alignItems": "stretch",
+                  "width": "75%",
+                  "height": "auto",
+                  "hidden": false,
+                  "flexGrow": false,
+                  "flexShrink": false,
+                  "shadow": false,
+                  "borderRadius": 0,
+                  "collapsible": false,
+                  "collapsedFooter": false,
+                  "collapsedSize": 0,
+                  "collapsedByDefault": false,
+                  "onClickTransform": false,
+                  "layout": "flex",
+                  "bordersInput": {},
+                  "justifyItems": "start",
+                  "style": {},
+                  "background": "paper"
+                },
+                "displayName": "Container",
+                "custom": {
+                  "elementName": "Container4"
+                },
+                "parent": "ROOT",
+                "hidden": false,
+                "nodes": [
+                  "IcuXxvtICf"
+                ],
+                "linkedNodes": {}
+              },
+              "ShWNWO7ceC": {
+                "type": {
+                  "resolvedName": "ButtonsGroup"
+                },
+                "isCanvas": true,
+                "props": {
+                  "margin": 6,
+                  "width": "100%",
+                  "height": "auto"
+                },
+                "displayName": "Button Group",
+                "custom": {
+                  "elementName": "ButtonGroup1"
+                },
+                "parent": "kgPW0GAXtC",
+                "hidden": false,
+                "nodes": [
+                  "Q9xXPVGP2c",
+                  "YP0edYgx-h",
+                  "l_LCgwOd2g",
+                  "P0fld1S1y3"
+                ],
+                "linkedNodes": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "cmcnp09fm06ek0775gc3v7kas",
+      "title": "Counts",
+      "path": "/inventoryManagement/cycleCounting/counts",
+      "moduleId": "cycleCounting",
+      "screenId": "countTable",
+      "isMenuAccessible": true,
+      "submenu": ""
+    }
+  ]
+}
